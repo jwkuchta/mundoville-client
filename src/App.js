@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import './App.css'
+import {Route, Switch, Redirect} from "react-router-dom"
+import Navigation from './components/Navigation'
+import LoggedOutNavBar from './components/LoggedOutNavBar'
+import UserHomePage from './containers/UserHomePage'
+import HomePage from './containers/HomePage'
+import UsersPage from './containers/UsersPage'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  componentDidMount() {
+    this.props.getUsers()
+  }
+
+  render() {
+    return (
+      <div className="App">
+        {localStorage.jwt ? <Navigation /> : <LoggedOutNavBar />}
+        <Switch>
+          <Route exact path='/'>
+            {!localStorage.jwt ? <div className='mainPage'>< HomePage /></div> : <div className='mainPage'>< UserHomePage /></div>}
+          </Route>
+
+          <Route exact path='/login'>
+            {localStorage.jwt ? <Redirect to='/' />: <HomePage />}
+          </Route>
+
+          <Route exact strict path='/users'>
+            <div className='mainPage'><UsersPage /></div>
+          </Route>
+          <Redirect from='*' to='/' />
+        </Switch>
+      </div>
+    )
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    users: state.users
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getUsers: users => dispatch({type: 'GET_USERS', payload: users}),
+    addNewUser: user => dispatch({type: 'ADD_NEW_USER', payload: user})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

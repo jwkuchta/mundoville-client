@@ -1,38 +1,96 @@
 .App {
   text-align: center;
+  background-color: #246a92;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-logo {
+  position: absolute;
+  top: 1%;
+  left: 25%;
+  display: inline-block;
+  height: 20px;
+  width: 100px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main-page-question {
+  position: absolute;
+  top: 30%;
+  left: 24%;
+  color: teal;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.main-page-buttons {
+  position: absolute;
+  top: 18px;
+  left: 570px;
+  display: inline-block;
+  /* color: white; */
 }
 
-.App-link {
-  color: #61dafb;
+.button {
+  color: teal;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* .ui-teal-basic-button {
+  position: absolute;
+  top: 10%;
+  display: inline-block;
+} */
+
+.main-page-forms {
+  position: absolute;
+  display: inline-block;
+  left: 350px;
+  top: -620px;
 }
+
+.navigation-container {
+  width: flex;
+  margin: 0;
+}
+
+.logo {
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+.profile-icon {
+  padding-top: 6px;
+}
+
+.search-icon {
+  padding-top: 6px;
+}
+
+.main-page {
+  margin-top: 0px;
+  margin-bottom: 100px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.sidebar {
+  clear: both;
+}
+
+.log-out {
+  font-size: 1.5rem;
+}
+
+.background-img {
+  height: 50px;
+  width: 100px;
+  background-size: contain;
+  resize: both;
+  overflow: scroll;
+}
+
+#sakura {
+  size: 60px, 100px;
+}
+
+.logged-out-nav-bar-container {
+  margin: 0px;
+}
+
+/* teal: #246a92 */
