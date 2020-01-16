@@ -22,7 +22,7 @@ const Navigation = (props) => {
             widths={7}>
                 <Menu.Item link size='medium'>
                 <Popup content='back to main page' trigger={<Image
-                    inverted
+                    inverted='true'
                     name='white-logo'
                     src={logo_white} 
                     size ='huge' 
@@ -34,7 +34,7 @@ const Navigation = (props) => {
                 <Menu.Item>
                 <Popup content='your messages' trigger={<Icon fitted
                     inverted 
-                    name='messages' 
+                    // name='messages' 
                     size='large' 
                     className='envelope outline icon' 
                     link

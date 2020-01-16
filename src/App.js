@@ -15,14 +15,18 @@ class App extends Component {
       fetch('http://localhost:3000/api/v1/profile', {
         headers: {
             'Authorization': `Bearer ${localStorage.jwt}`,
+            // 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.g0U5SAOLozk3dz0mNUrvBSR-0CSewJ5eParRWg_abVk',
+            
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           }
       })
       .then(response => response.json())
+      // .then(data => console.log(data))
       .then(data => {
-        this.props.loggedIn(data.user)
+        this.props.loggedIn(data)
       })
+      // .then(data => console.log(data))
 
       fetch('http://localhost:3000/api/v1/users', {
         headers: {
@@ -35,23 +39,11 @@ class App extends Component {
       .then(data => {
         this.props.getUsers(data)
       })
-
-      // fetch('http://localhost:3000/reviews', {
-      //   headers: {
-      //     'Authorization': `Bearer ${localStorage.jwt}`,
-      //     'Content-Type': 'application/json',
-      //     'Accept': 'application/json'
-      //   }
-      // })
-      // .then(response => response.json())
-      // .then(data => {
-      //   this.props.getReviews(data)
-      // })
     } else {
       localStorage.clear()
     }
   }
-
+  
   render() {
     return (
       <div className="App">
@@ -76,25 +68,13 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    currentUser: state.currentUser
-  }
+  return {currentUser: state.currentUser}
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loggedIn: user => { 
-      dispatch({
-          type: 'LOGGED_IN',
-          user: user
-      }) 
-    },
-    getUsers: users => {
-      dispatch({
-        type: 'ADD_USERS',
-        users: users
-      })
-    }
+    loggedIn: user => dispatch({type: 'LOGGED_IN', user: user}),
+    getUsers: users => dispatch({type: 'ADD_USERS', users: users})
   }
 }
 

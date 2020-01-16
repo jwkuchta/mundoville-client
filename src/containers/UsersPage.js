@@ -4,9 +4,9 @@ import {connect} from 'react-redux'
 
 class UsersPage extends Component  {
     
-    // componentDidMount() {
-    //     this.props.getUsers()
-    // }
+    componentDidMount() {
+        this.props.getUsers()
+    }
 
     render() {
 
@@ -17,7 +17,7 @@ class UsersPage extends Component  {
 
         return (
             <div>
-                <h1>You are logged in as {this.props.currentUser.username}</h1>
+                <h1>You are logged in as {this.props.user.username}</h1>
                 {users.map(user => <li>{user.username}</li>)}
                 
             </div>
@@ -34,7 +34,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
     return {
         users: state.users,
-        currentUser: state.currentUser
+        user: state.currentUser
     }
 }
 

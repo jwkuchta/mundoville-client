@@ -14,10 +14,10 @@ class UserHomePage extends Component {
 
     render() {
 
-        console.log(this.props.user.username)
+        // console.log(this.props)
         return (
             <div>
-            {/* <h1>You are currently logged in as {user.username}</h1> */}
+            {/* <h1>You are currently logged in as {this.props.user.username}</h1> */}
                 {/* <p>{loremIpsum}</p> */}
                 {/* <SemanticGoodies />  */}
                 <ProfileCard />  
@@ -27,9 +27,10 @@ class UserHomePage extends Component {
 }
 
 const mapStateToProps = state => {
+    // console.log(state)
     return {
         users: state.users,
-        user: state.currentUser
+        currentUser: state.currentUser
     }
 }
 

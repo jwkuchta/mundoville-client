@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
-import { Button, Form, Segment} from 'semantic-ui-react'
-import {connect} from 'react-redux'
-import {logIn, setCurrentUser} from '../redux/actions'
+import React, {Component} from 'react'
+import {Segment, Form, Button} from 'semantic-ui-react'
 
 class LoginForm extends Component {
+
     constructor() {
         super()
         this.state = {
@@ -13,7 +12,7 @@ class LoginForm extends Component {
         }
     }
 
-    changeHandler = (e) => {
+    handleChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value
         })
@@ -21,9 +20,33 @@ class LoginForm extends Component {
 
     handleLogin = (e) => {
         e.preventDefault()
-        let user = this.state
-        this.props.logIn(user)
-        this.props.setCurrentUser({username: this.state.username, user: true})
+        this.fetchLogin()
+    }
+
+    fetchLogin = () => {
+        fetch('http://localhost:3000/api/v1/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({user: { 
+                username: this.state.username, 
+                password: this.state.password 
+            }})
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.user){
+                localStorage.setItem('jwt', data.jwt)
+                this.setState({
+                    ...this.state,
+                    user: true
+                })
+            } else {
+                alert('Invalid Username or Password')
+            }
+        })
     }
 
     render() {
@@ -40,7 +63,7 @@ class LoginForm extends Component {
                                 type='text' 
                                 placeholder='Username'
                                 value={this.state.username}
-                                onChange={(e) => this.changeHandler(e)}
+                                onChange={(e) => this.handleChange(e)}
                             />
                         </Form.Group>
                         <Form.Group>
@@ -50,7 +73,7 @@ class LoginForm extends Component {
                                 type='password' 
                                 placeholder='Password'
                                 value={this.state.password}
-                                onChange={(e) => this.changeHandler(e)}
+                                onChange={(e) => this.handleChange(e)}
                             />
                         </Form.Group><br/>
                         <Form.Group >
@@ -64,19 +87,5 @@ class LoginForm extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        loggedInUser: state.currentUser
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        logIn: user => dispatch(logIn(user)),
-        setCurrentUser: user => dispatch(setCurrentUser(user))
-    }
-}
-
-// export default connect(null, mapDispatchToProps)(LoginForm)
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
+export default LoginForm
 

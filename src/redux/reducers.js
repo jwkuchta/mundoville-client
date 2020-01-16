@@ -24,8 +24,8 @@ let usersReducer = (state = initState.users, action) => {
             return action.users
         case 'GET_USERS_SUCCESS':
             return action.users
-        case 'LOG_IN':
-            return action.user
+        // case 'LOG_IN':
+        //     return action.user
         default: 
             return state
     }
@@ -35,25 +35,24 @@ let usersReducer = (state = initState.users, action) => {
 let currentUserReducer = (state=initState.currentUser, action) => {
     switch (action.type) {
         case 'LOGGED_IN':
-            return {user: action.user}
-            // return {
-                // user: action.user,
-                // frienders: action.user.frienders,
-                // friendeds: action.user.friendeds,
-                // messages: action.payload.following,
-                // reviews: action.payload.reviews,
-            // }
+            // debugger
+            return {...action.user}
+            //later add:
+            // frienders: action.user.frienders,
+            // friendeds: action.user.friendeds,
+            // messages: action.payload.following,
+            // reviews: action.payload.reviews,
         case 'FRIEND':
             return {
                 user: action.user,
-                friended: action.payload.friended,
+                // friended: action.payload.friended,
                 // messages: action.payload.following,
                 // reviews: action.payload.reviews,
             }
         case 'UNFRIEND':
             return {
                 user: action.user,
-                friended: action.payload.friended,
+                // friended: action.payload.friended,
                 // messages: action.payload.following,
                 // reviews: action.payload.reviews,
             }
@@ -71,7 +70,7 @@ let optionsReducer = (state={option: ''}, action) => {
     }
 }
 
-// combine reducers
+
 let rootReducer = combineReducers({
     users: usersReducer,
     options: optionsReducer,
@@ -79,4 +78,3 @@ let rootReducer = combineReducers({
 })
 
 export default rootReducer
-
