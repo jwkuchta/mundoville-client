@@ -1,31 +1,35 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {connect} from 'react-redux'
 // import Avatar from './Avatar'
-import SemanticGoodies from '../components/SemanticGoodies'
+// import SemanticGoodies from '../components/SemanticGoodies'
 import ProfileCard from '../components/ProfileCard'
+// import { setCurrentUser } from '../redux/actions'
 // import {loremIpsum} from './loremIpsum'
 
-const UserHomePage = (props) => {
+class UserHomePage extends Component {
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        const formData = new FormData()
+    // const handleSubmit = e => {
+    //     e.preventDefault()
+    //     const formData = new FormData()
 
-    }
-         
-    return (
-        <div>
-            <h1>This is the UserHomePage</h1>
-            {/* <p>{loremIpsum}</p> */}
-            {/* <SemanticGoodies />  */}
-            <ProfileCard />  
-        </div>
-    )
+    render() {
+
+        console.log(this.props.user.username)
+        return (
+            <div>
+            {/* <h1>You are currently logged in as {user.username}</h1> */}
+                {/* <p>{loremIpsum}</p> */}
+                {/* <SemanticGoodies />  */}
+                <ProfileCard />  
+            </div>
+        )
+    }  
 }
 
 const mapStateToProps = state => {
     return {
-        users: state.users
+        users: state.users,
+        user: state.currentUser
     }
 }
 

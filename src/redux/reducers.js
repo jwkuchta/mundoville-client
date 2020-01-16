@@ -1,16 +1,11 @@
 import {combineReducers} from 'redux'
 
-// import {getUsers, addNewUser, setOption} from './actions'
-
-// initial state
-let initialState = {
+let initState = {
     users: [],
     currentUser: {
         user: [],
-    },
-    newUserFormData: {
-        username: '',
-
+        friendeds: [],
+        frienders: []
     },
     search: {
         input: '',
@@ -20,10 +15,13 @@ let initialState = {
 }
 
 //reducer for getting all users
-let usersReducer = (state=initialState.users, action) => {
+let usersReducer = (state = initState.users, action) => {
+// let usersReducer = (state = initState.users, action) => {
+    // debugger
     switch(action.type) {
         case 'ADD_USERS':
-            return action.payload
+            // return {...state, users: action.users}
+            return action.users
         case 'GET_USERS_SUCCESS':
             return action.users
         case 'LOG_IN':
@@ -34,27 +32,28 @@ let usersReducer = (state=initialState.users, action) => {
 }
 
 //currentUserReducer
-let currentUserReducer = (state=initialState.currentUser, action) => {
+let currentUserReducer = (state=initState.currentUser, action) => {
     switch (action.type) {
         case 'LOGGED_IN':
-            return {
-                user: action.payload,
-                frienders: action.payload.frienders,
-                friendeds: action.payload.friendeds,
+            return {user: action.user}
+            // return {
+                // user: action.user,
+                // frienders: action.user.frienders,
+                // friendeds: action.user.friendeds,
                 // messages: action.payload.following,
                 // reviews: action.payload.reviews,
-            }
+            // }
         case 'FRIEND':
             return {
-                user: action.payload,
-                friended: action.payload.following,
+                user: action.user,
+                friended: action.payload.friended,
                 // messages: action.payload.following,
                 // reviews: action.payload.reviews,
             }
         case 'UNFRIEND':
             return {
-                user: action.payload,
-                friended: action.payload.following,
+                user: action.user,
+                friended: action.payload.friended,
                 // messages: action.payload.following,
                 // reviews: action.payload.reviews,
             }

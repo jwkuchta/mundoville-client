@@ -11,7 +11,45 @@ import UsersPage from './containers/UsersPage'
 class App extends Component {
 
   componentDidMount() {
-    this.props.getUsers()
+    if (localStorage.jwt) {
+      fetch('http://localhost:3000/api/v1/profile', {
+        headers: {
+            'Authorization': `Bearer ${localStorage.jwt}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+        this.props.loggedIn(data.user)
+      })
+
+      fetch('http://localhost:3000/api/v1/users', {
+        headers: {
+          'Authorization': `Bearer ${localStorage.jwt}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        this.props.getUsers(data)
+      })
+
+      // fetch('http://localhost:3000/reviews', {
+      //   headers: {
+      //     'Authorization': `Bearer ${localStorage.jwt}`,
+      //     'Content-Type': 'application/json',
+      //     'Accept': 'application/json'
+      //   }
+      // })
+      // .then(response => response.json())
+      // .then(data => {
+      //   this.props.getReviews(data)
+      // })
+    } else {
+      localStorage.clear()
+    }
   }
 
   render() {
@@ -37,16 +75,26 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    users: state.users
+    currentUser: state.currentUser
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    getUsers: users => dispatch({type: 'GET_USERS', payload: users}),
-    addNewUser: user => dispatch({type: 'ADD_NEW_USER', payload: user})
+    loggedIn: user => { 
+      dispatch({
+          type: 'LOGGED_IN',
+          user: user
+      }) 
+    },
+    getUsers: users => {
+      dispatch({
+        type: 'ADD_USERS',
+        users: users
+      })
+    }
   }
 }
 
