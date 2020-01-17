@@ -1,38 +1,46 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Grid, Card, Icon, Image } from 'semantic-ui-react'
+import { Grid, Card, Icon, Image, Button } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
 import {connect} from 'react-redux'
+// import EditProfilePage from '../containers/EditProfilePage'
 
-const ProfileCard = (props) => {
-    return (
-        <Grid.Column>
-            <Card link style={{marginBottom: 25, padding: 10, backgroundColor: '#eeeeee'}}>
-                <Link to={`/users/${props.user.username}`} style={{color: 'black'}}>
+class ProfileCard extends Component {
+
+    render() {
+        return (
+            <Grid.Column>
+                <Card>
                     <Card.Content>
-                        <Image size='small' src={props.user.profile_pic
-                            ? props.user.profile_pic
+                        <Image size='small' src={this.props.currentUser.profile_pic
+                            ? this.props.currentUser.profile_pic
                                 : placeholder} />
                         <Card.Header as='h3'>
-                            {props.user.verified 
+                            {this.props.currentUser.verified 
                                 ? <Icon color='green' name='check circle'/> 
                                     : null}
-                            {props.user.username}
+                            {this.props.currentUser.username}
                         </Card.Header>
                         <Card.Meta>
-                            {props.user.user_type} | {props.user.rating 
-                                ? props.user.rating + '/5' 
+                            {this.props.currentUser.user_type} | {this.props.currentUser.rating 
+                                ? this.props.currentUser.rating + '/5' 
                                     : 'Unrated'}
                         </Card.Meta>
+                        <Button className='ui button'>
+                            <Link to={`/users/${this.props.currentUser.username}/edit`}>Edit your profile</Link>
+                        </Button>
                     </Card.Content>
-                </Link>
-            </Card>
-        </Grid.Column>
-    )
+                </Card>
+            </Grid.Column>
+        )
+    }
 }
 
 const mapStateToProps = state => {
-    return {user: state.currentUser}
+    return {
+        currentUser: state.currentUser,
+        users: state.users
+    }
 }
 export default connect(mapStateToProps)(ProfileCard)
 

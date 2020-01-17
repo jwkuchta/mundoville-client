@@ -1,12 +1,8 @@
 import React, {Component} from 'react'
-import {getUsers} from '../redux/actions'
+// import {getUsers} from '../redux/actions'
 import {connect} from 'react-redux'
 
 class UsersPage extends Component  {
-    
-    componentDidMount() {
-        this.props.getUsers()
-    }
 
     render() {
 
@@ -17,25 +13,19 @@ class UsersPage extends Component  {
 
         return (
             <div>
-                <h1>You are logged in as {this.props.user.username}</h1>
-                {users.map(user => <li>{user.username}</li>)}
+                <h1>You are logged in as {currentUser.username}</h1>
+                {users.map(user => <li ley={user.id}>{user.username}</li>)}
                 
             </div>
         )
     } 
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        getUsers: () => dispatch(getUsers())
-    }
-}
-
 const mapStateToProps = state => {
     return {
         users: state.users,
-        user: state.currentUser
+        currentUser: state.currentUser
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersPage)
+export default connect(mapStateToProps)(UsersPage)

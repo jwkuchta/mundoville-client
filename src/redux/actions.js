@@ -3,12 +3,7 @@
 
 // ** Users Actions ** //
 
-// const setUsers = (users) => {
-//     return {
-//         type: 'ADD_USERS',
-//         users
-//     }
-// }
+
 
 // ** Async Actions ** //
 // export const getUsers = () => {
@@ -47,3 +42,49 @@
 //     option: option
 //   }
 // }
+
+// ** FETCHES ** //
+
+export const fetchProfile = () => {
+  return dispatch => {
+    return fetch('http://localhost:3000/api/v1/profile', {
+      headers: {
+          'Authorization': `Bearer ${localStorage.jwt}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+    })
+    .then(resp => resp.json())
+    .then(data => dispatch(loggedIn(data))
+    )
+  }
+  
+}
+
+export const fetchUsers = () => {
+  return dispatch => {
+    return fetch('http://localhost:3000/api/v1/users', {
+      headers: {
+        'Authorization': `Bearer ${localStorage.jwt}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => dispatch(getUsers(data)))
+  }
+  
+}
+
+// ** ACTION CREATORS ** //
+
+export const loggedIn = user => {
+  return {type: 'LOGGED_IN', user: user}
+}
+
+export const getUsers = users => {
+  return {type: 'ADD_USERS', users: users}
+}
+  
+
+

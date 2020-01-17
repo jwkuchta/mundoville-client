@@ -3,8 +3,8 @@ import {connect} from 'react-redux'
 // import Avatar from './Avatar'
 // import SemanticGoodies from '../components/SemanticGoodies'
 import ProfileCard from '../components/ProfileCard'
-// import { setCurrentUser } from '../redux/actions'
-// import {loremIpsum} from './loremIpsum'
+// import {Button, Link} from 'semantic-ui-react'
+
 
 class UserHomePage extends Component {
 
@@ -17,7 +17,7 @@ class UserHomePage extends Component {
         // console.log(this.props)
         return (
             <div>
-            {/* <h1>You are currently logged in as {this.props.user.username}</h1> */}
+            <h1>You are currently logged in as {this.props.currentUser.username}</h1>
                 {/* <p>{loremIpsum}</p> */}
                 {/* <SemanticGoodies />  */}
                 <ProfileCard />  
