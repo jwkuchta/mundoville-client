@@ -1,7 +1,8 @@
 import React from 'react'
 import { Segment, Grid, Image } from 'semantic-ui-react'
 
-const PhotoUpload = (props) => {
+const PictureUpload = (props) => {
+    
     const previewFile = () => {
         var file    = document.querySelector('input[type=file]').files[0];
         var reader  = new FileReader();
@@ -49,4 +50,4 @@ const PhotoUpload = (props) => {
     }
 }
 
-export default PhotoUpload
+export default PictureUpload

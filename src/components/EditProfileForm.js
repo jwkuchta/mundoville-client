@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Form, Button, Header, Modal, Icon } from 'semantic-ui-react'
-import PicUpload from './PicUpload'
+import {Form, Button, Header, Modal, Icon, Dropdown, Grid, Search, Segment} from 'semantic-ui-react'
+import PictureUpload from './PictureUpload'
+import LanguageForm from './LanguageForm'
+// import DropdownExample from './DropdownExample'
+import {languageOptions1, languageOptions2, countryList, countries} from './dropdown'
+import _ from 'lodash'
+import { COUNTRY_OPTIONS } from './countriesData.js';
 
 const usersUrl = 'http://localhost:3000/api/v1/users/'
 
@@ -16,7 +21,15 @@ class EditProfileForm extends Component {
             bio: '',
             email: '',
             password: '',
-            passConfirmation: ''
+            passConfirmation: '',
+            country: '',
+            city: '',
+            language1: '',
+            language2: '',
+            language3: '',
+            isLoading: false,
+            results: [],
+            value: ''
         }
     }
 
@@ -88,55 +101,126 @@ class EditProfileForm extends Component {
         })
     }
 
+    handleClick = e => {
+        console.log(e.target)
+    }
+
     render() {
 
         return (
             <Form 
                 size='small' 
-                onChange={(e) => this.handleChange(e)}
+                // onChange={(e) => this.handleChange(e)}
                 onSubmit={(e) => this.handleSubmit(e, this.state, this.props.currentUser)}
-            >                
-                <Form.Group width={16}>
-                    <PicUpload currentUser={this.props.currentUser} /><br/>
+            >    
+            {/* PHOTO */}
+
+                <Form.Group width={12}>
+                    <PictureUpload currentUser={this.props.currentUser} /><br/>
                 </Form.Group>
+
+            {/* MAIN INFO */}
 
                 <Form.Group widths='equal'>
                     <Form.Input
                         id='first_name'
                         label='First Name' 
                         placeholder={this.props.currentUser.first_name}
+                        onChange={(e) => this.handleChange(e)}
                     />
                     <Form.Input
                         id='last_name'
                         label='Last Name' 
                         placeholder={this.props.currentUser.last_name}
+                        onChange={(e) => this.handleChange(e)}
                     />
                 </Form.Group>  
-
                 <Form.TextArea 
                     id='bio'
                     label='Bio'
                     placeholder={this.props.currentUser.bio}
+                    onChange={(e) => this.handleChange(e)}
                 />
+
+            {/* EMAIL AND PASSWORD */}
 
                 <Form.Input
                     id='email'
                     label='Email' 
                     placeholder={this.props.currentUser.email}
+                    onChange={(e) => this.handleChange(e)}
                 /> 
-
                 <Form.Group widths='equal'>
                     <Form.Input
                         id='password'
                         label='Password' 
                         placeholder='Password'
+                        onChange={(e) => this.handleChange(e)}
                     />
                     <Form.Input
                         id='passConfirmation'
                         label='Confirm Password' 
                         placeholder='Confirm Password'
+                        onChange={(e) => this.handleChange(e)}
                     />
-                </Form.Group><br/>    
+                </Form.Group><br/> 
+
+            {/* COUNTRY */}
+            {/* put it in DropdownExample cause it was not working */}
+ 
+            <Form.Group widths='equal'>
+                <Form.Dropdown
+                    id='country'
+                    label='Country'
+                    placeholder='Country'
+                    fluid
+                    selection
+                    options={countryList}
+                    onChange = {(e, { id, value }) => this.setState({ [id]: value })}
+                />
+                <Form.Input
+                    id='city'
+                    label='City'
+                    placeholder='City'
+                    onChange={(e) => this.handleChange(e)}
+                />
+            </Form.Group><br/>
+ 
+            {/* LANGUAGES */}
+            <Form.Group widths='equal'>
+                <Form.Dropdown
+                    id='language1'
+                    label='Primary Language'
+                    placeholder='Select your primary language'
+                    fluid
+                    selection
+                    options={languageOptions1}
+                    onChange = {(e, { id, value }) => this.setState({ [id]: value })}
+                />
+                <Form.Dropdown
+                    id='language2'
+                    label='Secondary Language'
+                    placeholder='Select your secondary language'
+                    fluid
+                    selection
+                    options={languageOptions1}
+                    onChange = {(e, { id, value }) => this.setState({ [id]: value })}
+                />
+                <Form.Dropdown
+                    id='language3'
+                    label='Another Language'
+                    placeholder='Wow a third language?'
+                    fluid
+                    selection
+                    options={languageOptions2}
+                    onChange = {(e, { id, value }) => this.setState({ [id]: value })}
+                />
+            </Form.Group>
+
+                
+
+            {/* DELETE ACCOUNT MODAL*/}
+
                 <Button basic type='submit' content='Update'/>
                 <br/><br/>
                 <Modal 
@@ -171,9 +255,7 @@ class EditProfileForm extends Component {
 }
 
 const mapStateToProps = state => {
-    return {
-        currentUser: state.currentUser
-    }
+    return {currentUser: state.currentUser}
 }
 
 export default connect(mapStateToProps)(EditProfileForm)
