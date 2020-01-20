@@ -11,34 +11,22 @@ class ProfileCard extends Component {
     render() {
         // debugger
 
-        let pic_url = `http://localhost:3000/ + ${this.props.currentUser.profile_pic_url}`
+        let pic_url = `http://localhost:3000/${this.props.currentUser.profile_pic_url}`
 
         // const img_url=this.props.currentUser.profile_pic_url
         return (
             <Grid.Column>
                 <Card>
                     <Card.Content>
-                        <Image src={this.props.currentUser.profile_pic_url 
-                        ? pic_url : placeholder} />
-
-                        {/* <img className ='profile-pic' src={this.props.currentUser.profile_pic_url
-                            // ? this.props.currentUser.profile_pic_url
-                            ? img_url : placeholder} alt='profile pic'/> */}
-
-                        {/* <img className ='profile-pic' src={this.props.currentUser.profile_pic_url
-                            ? "https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg"
-                                : placeholder} alt='profile pic'/> */}
+                        <Image src={this.props.currentUser.profile_pic_url ? pic_url : placeholder} />
                         <Card.Header as='h3'>
-                            {this.props.currentUser.verified 
-                                ? <Icon color='green' name='check circle'/> 
-                                    : null}
                             {this.props.currentUser.username}
                         </Card.Header>
-                        <Card.Meta>
+                        {/* <Card.Meta>
                             {this.props.currentUser.user_type} | {this.props.currentUser.rating 
                                 ? this.props.currentUser.rating + '/5' 
                                     : 'Unrated'}
-                        </Card.Meta>
+                        </Card.Meta> */}
                         <PicUpload />
                         <Button className='ui button'>
                             <Link to={`/users/${this.props.currentUser.username}/edit`}>Edit your profile</Link>

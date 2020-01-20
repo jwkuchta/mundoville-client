@@ -4,7 +4,10 @@ import { connect } from 'react-redux'
 class PicUpload extends Component {
     constructor(props) {
         super(props)
-        this.state = {photoFile: null}
+        this.state = {
+            photoFile: null,
+            photoUrl: null
+        }
     }
 
     handleInput = e => {
@@ -37,10 +40,20 @@ class PicUpload extends Component {
     }
 
     handleFile = e => {
-        this.setState({photoFile: e.target.files[0]})
+        const file = e.target.files[0]
+        const fileReader = new FileReader()
+        fileReader.onloadend = () => {
+            this.setState({photoFile: file, photoUrl: fileReader.result})
+        }   
+
+        if(file) {
+            fileReader.readAsDataURL(file)
+        }
     }
 
     render() {
+
+        const preview = this.state.photoUrl ? <img src={this.state.photoUrl} alt='preview'/> : null
         console.log(this.state)
         return (
             <form onSubmit={this.handleSubmit}>
@@ -49,6 +62,8 @@ class PicUpload extends Component {
                 <input type='file' id='profile_pic' 
                 value={this.state.profile_pic} 
                 onChange={e => this.handleFile(e)} />
+                <h4>image preview</h4>
+                {preview}
             </form>
         )
     }
