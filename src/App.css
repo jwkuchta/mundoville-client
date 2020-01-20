@@ -19,6 +19,13 @@
   color: teal;
 }
 
+.main-page-description {
+  position: absolute;
+  top: 30%;
+  left: 24%;
+  color: #246a92;
+}
+
 .main-page-buttons {
   position: absolute;
   top: 18px;

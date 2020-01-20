@@ -7,38 +7,15 @@ import LoggedOutNavBar from './components/LoggedOutNavBar'
 import UserHomePage from './containers/UserHomePage'
 import HomePage from './containers/HomePage'
 import UsersPage from './containers/UsersPage'
+import {fetchProfile, fetchUsers} from './redux/actions'
+import EditProfilePage from './containers/EditProfilePage'
 
 class App extends Component {
 
   componentDidMount() {
     if (localStorage.jwt) {
-      fetch('http://localhost:3000/api/v1/profile', {
-        headers: {
-            'Authorization': `Bearer ${localStorage.jwt}`,
-            // 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.g0U5SAOLozk3dz0mNUrvBSR-0CSewJ5eParRWg_abVk',
-            
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          }
-      })
-      .then(response => response.json())
-      // .then(data => console.log(data))
-      .then(data => {
-        this.props.loggedIn(data)
-      })
-      // .then(data => console.log(data))
-
-      fetch('http://localhost:3000/api/v1/users', {
-        headers: {
-          'Authorization': `Bearer ${localStorage.jwt}`,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      })
-      .then(response => response.json())
-      .then(data => {
-        this.props.getUsers(data)
-      })
+      this.props.fetchProfile()
+      this.props.fetchUsers()   
     } else {
       localStorage.clear()
     }
@@ -60,6 +37,9 @@ class App extends Component {
           <Route exact strict path='/users'>
             <div className='mainPage'><UsersPage /></div>
           </Route>
+          <Route path={`/users/${this.props.currentUser.username}/edit`}>
+            <div className='userEditPage'><EditProfilePage /></div>
+          </Route>
           <Redirect from='*' to='/' />
         </Switch>
       </div>
@@ -67,14 +47,14 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {currentUser: state.currentUser}
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    loggedIn: user => dispatch({type: 'LOGGED_IN', user: user}),
-    getUsers: users => dispatch({type: 'ADD_USERS', users: users})
+    fetchProfile: user => dispatch(fetchProfile(user)),
+    fetchUsers: users => dispatch(fetchUsers(users))
   }
 }
 
