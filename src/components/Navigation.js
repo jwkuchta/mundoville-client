@@ -15,7 +15,7 @@ const Navigation = (props) => {
         <Container fluid >
             <Menu 
             fluid 
-            inverted='true'
+            inverted
             pointing 
             secondary 
             size ='huge' 
@@ -33,7 +33,7 @@ const Navigation = (props) => {
                 <Menu.Item></Menu.Item>
                 <Menu.Item>
                 <Popup content='your messages' trigger={<Icon fitted
-                    inverted='true'
+                    inverted
                     // name='messages' 
                     size='large' 
                     className='envelope outline icon' 
@@ -43,7 +43,7 @@ const Navigation = (props) => {
                 </Menu.Item>
                 <Menu.Item>
                 <Popup content='back to main page' trigger={<Icon fitted
-                    inverted='true'
+                    inverted
                     name='home' 
                     size='large' 
                     className='home-icon' 
@@ -54,7 +54,7 @@ const Navigation = (props) => {
                 </Menu.Item>
                 <Menu.Item>
                 <Popup content='search destinations' trigger={<Icon fitted
-                    inverted='true'
+                    inverted
                     link
                     name='search' 
                     size='large' 
@@ -65,7 +65,7 @@ const Navigation = (props) => {
                 </Menu.Item>
                 <Menu.Item>
                 <Popup content='more info' trigger={<Icon fitted
-                    inverted='true' 
+                    inverted
                     link
                     name='question circle outline' 
                     size='large' 

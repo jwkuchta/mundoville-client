@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {Form, Button, Header, Modal, Icon, Dropdown, Grid, Search, Segment} from 'semantic-ui-react'
-import PictureUpload from './PictureUpload'
-import LanguageForm from './LanguageForm'
+import {Form, Button, Header, Modal, Icon} from 'semantic-ui-react'
+// import PictureUpload from './PictureUpload'
+// import PicUpload from './PicUpload'
+// import LanguageForm from './LanguageForm'
 // import DropdownExample from './DropdownExample'
-import {languageOptions1, languageOptions2, countryList, countries} from './dropdown'
-import _ from 'lodash'
-import { COUNTRY_OPTIONS } from './countriesData.js';
+import {languageOptions1, languageOptions2, countryList} from './dropdown'
+// import _ from 'lodash'
+// import { COUNTRY_OPTIONS } from './countriesData.js';
 
 const usersUrl = 'http://localhost:3000/api/v1/users/'
 
@@ -116,7 +117,8 @@ class EditProfileForm extends Component {
             {/* PHOTO */}
 
                 <Form.Group width={12}>
-                    <PictureUpload currentUser={this.props.currentUser} /><br/>
+                    {/* <PicUpload /> */}
+                    {/* <PictureUpload currentUser={this.props.currentUser} /><br/> */}
                 </Form.Group>
 
             {/* MAIN INFO */}

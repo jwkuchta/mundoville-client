@@ -1,8 +1,10 @@
 import React from 'react'
+import Dropzone from 'react-dropzone'
 import { Segment, Grid, Image } from 'semantic-ui-react'
-import {connect} from 'react-redux'
 
-const PictureUpload = (props) => {
+ const PictureUpload = (props) => {
+
+    
     
     const previewFile = () => {
         var file    = document.querySelector('input[type=file]').files[0];
@@ -11,7 +13,7 @@ const PictureUpload = (props) => {
         reader.addEventListener("load", function () {
             let base64 = reader.result
 
-            fetch('http://localhost:3000/upload', {
+            fetch('http://localhost:3000/api/v1/upload', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${localStorage.jwt}`,
@@ -34,6 +36,17 @@ const PictureUpload = (props) => {
 
     if (props.currentUser.username) {
         return (
+            <Dropzone onDrop={this.onDrop} accept="image/png, image/gif,image/jpg,image/jpeg" >
+
+            {({getRootProps, getInputProps}) => (
+              <div {...getRootProps()}>
+					<input {...getInputProps()} />
+					{this.state.image !== null ? "File Uploaded" :
+					"Click me to upload a file!" }
+              </div>
+            )}
+            </Dropzone>
+
             <Segment basic style={{margin: 'auto'}}>
                 <Grid columns={2}>
                     <Grid.Column width='8'>
@@ -51,10 +64,4 @@ const PictureUpload = (props) => {
     }
 }
 
-const mapSTP = state => {
-    return {
-        currentUser: state.currentUser
-    }
-}
-
-export default connect(mapSTP)(PictureUpload)
+export default PictureUpload
