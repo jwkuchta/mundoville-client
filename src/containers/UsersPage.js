@@ -8,7 +8,6 @@ class UsersPage extends Component  {
 
     render() {
 
-        // debugger
         const currentUser = this.props.currentUser
         let allUsers = this.props.users
         const users = allUsers.filter(user => user.username !== currentUser.username)
@@ -19,12 +18,13 @@ class UsersPage extends Component  {
                 <Grid columns={4} divided>
                 
                     <Grid.Row>
-                        
-                        {users.map(user => 
-                        <Grid.Column>
-                            <SingleUserProfileCard user={user} />
-                        <Grid.Row></Grid.Row>
-                        </Grid.Column>
+  
+                        {users.map(user => <>
+                                            <Grid.Column key={user.id}>
+                                                <SingleUserProfileCard user={user} />
+                                                <Grid.Row></Grid.Row>
+                                            </Grid.Column>
+                                            </>
                         )}
 
                     </Grid.Row>

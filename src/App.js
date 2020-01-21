@@ -4,7 +4,7 @@ import './App.css'
 import {Route, Switch, Redirect} from "react-router-dom"
 import LoggedInNavBar from './components/LoggedInNavBar'
 import LoggedOutNavBar from './components/LoggedOutNavBar'
-import UserHomePage from './containers/UserHomePage'
+import CurrentUserHomePage from './containers/CurrentUserHomePage'
 import HomePage from './containers/HomePage'
 import UsersPage from './containers/UsersPage'
 import {fetchProfile, fetchUsers, getExchanges} from './redux/actions'
@@ -72,7 +72,7 @@ class App extends Component {
         <Switch>
 
           <Route exact path='/'>
-            {!localStorage.jwt ? <div className='mainPage'>< HomePage /></div> : <div className='mainPage'>< UserHomePage /></div>}
+            {!localStorage.jwt ? <div className='mainPage'>< HomePage /></div> : <div className='mainPage'>< CurrentUserHomePage /></div>}
           </Route>
 
           <Route exact path='/login'>
@@ -87,9 +87,12 @@ class App extends Component {
             <div className='userEditPage'><EditProfilePage /></div>
           </Route>
 
-          <Route exact strict path='/users/:username'>
+          {/* <Route exact strict path='/users/:username'>
             <div className='mainPage'><SingleUserProfilePage/></div>
-          </Route>
+          </Route> */}
+
+          <Route exact strict path='/users/:username' component={SingleUserProfilePage}/>
+
 
           <Route exact strict path='/messages'>
             {!localStorage.jwt

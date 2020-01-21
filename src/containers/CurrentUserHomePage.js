@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 // import Avatar from './Avatar'
 // import SemanticGoodies from '../components/SemanticGoodies'
-import ProfileCard from '../components/ProfileCard'
+import CurrentUserProfileCard from '../components/CurrentUserProfileCard'
 import { Grid } from 'semantic-ui-react'
 // import {Button, Link} from 'semantic-ui-react'
 
 
-class UserHomePage extends Component {
+class CurrentUserHomePage extends Component {
 
     render() {
 
@@ -17,7 +17,7 @@ class UserHomePage extends Component {
             <h1>Hello, {this.props.currentUser.username}</h1>
             <Grid.Column>
                 <Grid.Row>
-                <ProfileCard /> 
+                <CurrentUserProfileCard /> 
                 </Grid.Row>
             </Grid.Column>    
             </div>
@@ -33,4 +33,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(UserHomePage)
+export default connect(mapStateToProps)(CurrentUserHomePage)
