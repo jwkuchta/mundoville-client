@@ -58,11 +58,10 @@ class PicUpload extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <label htmlFor="profile_pic"></label>
-                <button>Add a Profile Picture</button>
+                <button>upload a picture</button>
                 <input type='file' id='profile_pic' 
                 value={this.state.profile_pic} 
                 onChange={e => this.handleFile(e)} />
-                <h4>image preview</h4>
                 {preview}
             </form>
         )

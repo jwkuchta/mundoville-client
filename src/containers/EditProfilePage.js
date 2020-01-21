@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Segment, Header, Button } from 'semantic-ui-react'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {Segment, Header, Button} from 'semantic-ui-react'
 import EditProfileForm from '../components/EditProfileForm'
 
 class EditProfilePage extends Component {
@@ -9,7 +9,7 @@ class EditProfilePage extends Component {
         // debugger
 
         return (
-            <Segment tertiary padded='very'>
+            <Segment secondary padded='very'>
                 <Header as='h1'>
                     <Button 
                             basic 
@@ -20,13 +20,11 @@ class EditProfilePage extends Component {
                         <div style={{marginRight: 140}}>Edit Profile for {this.props.currentUser.username}</div> 
                 </Header><br/>
                     <Segment padded='very'>
-                        {/* <EditProfileForm currentUser={props.currentUser}/> */}
                         <EditProfileForm/>
                     </Segment>
             </Segment>
         )
     }
-    
 }
 
 const mapStateToProps = state => {
@@ -36,4 +34,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(EditProfilePage)
-// export default EditProfilePage

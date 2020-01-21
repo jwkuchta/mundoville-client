@@ -8,6 +8,6 @@ class LoggedOutHomePage extends Component {
             <h1>Logged LoggedOutHomePage</h1>
         )
     }
-
-
 }
+
+// nothing here yet, copy some stuff from couchsurfing

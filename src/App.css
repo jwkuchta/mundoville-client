@@ -92,6 +92,11 @@
   overflow: scroll;
 }
 
+/* .profile-pic {
+  height: 300px;
+  width: 400px;
+} */
+
 #sakura {
   size: 60px, 100px;
 }

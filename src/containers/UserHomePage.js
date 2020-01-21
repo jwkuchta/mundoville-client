@@ -8,18 +8,12 @@ import ProfileCard from '../components/ProfileCard'
 
 class UserHomePage extends Component {
 
-    // const handleSubmit = e => {
-    //     e.preventDefault()
-    //     const formData = new FormData()
-
     render() {
 
         // console.log(this.props)
         return (
             <div>
-            <h1>You are currently logged in as {this.props.currentUser.username}</h1>
-                {/* <p>{loremIpsum}</p> */}
-                {/* <SemanticGoodies />  */}
+            <h1>Hello, {this.props.currentUser.username}</h1>
                 <ProfileCard />  
             </div>
         )

@@ -189,6 +189,7 @@ class EditProfileForm extends Component {
             </Form.Group><br/>
  
             {/* LANGUAGES */}
+
             <Form.Group widths='equal'>
                 <Form.Dropdown
                     id='language1'
@@ -218,8 +219,6 @@ class EditProfileForm extends Component {
                     onChange = {(e, { id, value }) => this.setState({ [id]: value })}
                 />
             </Form.Group>
-
-                
 
             {/* DELETE ACCOUNT MODAL*/}
 

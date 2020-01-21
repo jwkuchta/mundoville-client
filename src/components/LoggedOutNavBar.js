@@ -41,16 +41,6 @@ const LoggedOutNavBar = () => {
                 <Menu.Item></Menu.Item>
                 <Menu.Item></Menu.Item>
                 <Menu.Item></Menu.Item>
-                {/* <Menu.Item header
-                name='JOIN'
-                size='medium'
-                active={activeItem === 'join'}
-                onClick={() => window.location.href = '/join'} />
-                <Menu.Item header
-                name='LOG IN'
-                size='medium'
-                active={activeItem === 'login'}
-                onClick={() => window.location.href = '/login'} />      */}
             </Menu>
         </Container>
     )

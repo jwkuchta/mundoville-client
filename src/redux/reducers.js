@@ -12,6 +12,9 @@ let initState = {
         output: []
     },
     verifications: [],
+    exchanges: [],
+    reviews: []
+
 }
 
 //reducer for getting all users
@@ -40,8 +43,8 @@ let currentUserReducer = (state=initState.currentUser, action) => {
             //later add:
             // frienders: action.user.frienders,
             // friendeds: action.user.friendeds,
-            // messages: action.payload.following,
-            // reviews: action.payload.reviews,
+            // messages: action.user.following,
+            // reviews: action.user.reviews,
         case 'FRIEND':
             return {
                 user: action.user,
@@ -70,11 +73,32 @@ let optionsReducer = (state={option: ''}, action) => {
     }
 }
 
+let exchangesReducer = (state=initState.exchanges, action) => {
+    switch(action.type) {
+        case 'GET_EXCHANGES':
+            return action.exchanges
+        case 'ADD_EXCHANGE':
+            return {...state, exchange: action.exchange}
+        default:
+            return state
+    }
+}
+
+let reviewsReducer = (state=initState.reviews, action) => {
+    switch(action.type) {
+        case 'GET_REVIEWS':
+            return action.reviews
+        default:
+            return state
+    }
+}
 
 let rootReducer = combineReducers({
     users: usersReducer,
     options: optionsReducer,
-    currentUser: currentUserReducer
+    currentUser: currentUserReducer,
+    exchanges: exchangesReducer,
+    reviews: reviewsReducer
 })
 
 export default rootReducer
