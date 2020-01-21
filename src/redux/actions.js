@@ -86,6 +86,10 @@ export const getExchanges = exchanges => {
   return {type: 'GET_EXCHANGES', exchanges: exchanges}
 }
 
+export const selectedUser = user => {
+  return {type: 'SELECTED', user: user}
+}
+
 // export const addExchange = exchange => {
 //   return {type: 'ADD_EXCHANGE', exchange: exchange}
 // }

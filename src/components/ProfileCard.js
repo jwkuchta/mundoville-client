@@ -15,7 +15,6 @@ class ProfileCard extends Component {
 
         return (
             <>
-            <Grid.Column width={10}>
                 <Card>
                     <Card.Content>
                         <Image src={this.props.currentUser.profile_pic_url ? pic_url : placeholder} />
@@ -28,16 +27,6 @@ class ProfileCard extends Component {
                         </Button>
                     </Card.Content>
                 </Card>
-                <Grid.Row>
-                    something here
-                </Grid.Row>
-                <Grid.Row>
-                    something else here
-                </Grid.Row>
-            </Grid.Column>
-            <Grid.Column width={6}>
-
-            </Grid.Column>
             </>
         )
     }

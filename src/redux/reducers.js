@@ -7,6 +7,7 @@ let initState = {
         friendeds: [],
         frienders: []
     },
+    selectedUser: [],
     search: {
         input: '',
         output: []
@@ -64,6 +65,18 @@ let currentUserReducer = (state=initState.currentUser, action) => {
     }
 }
 
+let selectedUserReducer = (state=initState.selectedUser, action) => {
+    switch (action.type) {
+        case 'SELECTED':
+            return action.selectedUser
+        case 'ADD_HEART':
+            // debugger
+            return action.payload
+        default:
+            return state
+    }
+}
+
 // other
 let optionsReducer = (state={option: ''}, action) => {
     switch(action.type) {
@@ -98,7 +111,8 @@ let rootReducer = combineReducers({
     options: optionsReducer,
     currentUser: currentUserReducer,
     exchanges: exchangesReducer,
-    reviews: reviewsReducer
+    reviews: reviewsReducer,
+    selectedUser: selectedUserReducer
 })
 
 export default rootReducer

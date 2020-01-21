@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import './App.css'
 import {Route, Switch, Redirect} from "react-router-dom"
-import Navigation from './components/Navigation'
+import LoggedInNavBar from './components/LoggedInNavBar'
 import LoggedOutNavBar from './components/LoggedOutNavBar'
 import UserHomePage from './containers/UserHomePage'
 import HomePage from './containers/HomePage'
@@ -10,6 +10,7 @@ import UsersPage from './containers/UsersPage'
 import {fetchProfile, fetchUsers, getExchanges} from './redux/actions'
 import EditProfilePage from './containers/EditProfilePage'
 import MessagesContainer from './containers/MessagesContainer'
+import SingleUserProfilePage from './containers/SingleUserProfilePage'
 
 class App extends Component {
 
@@ -67,8 +68,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        {localStorage.jwt ? <Navigation /> : <LoggedOutNavBar />}
+        {localStorage.jwt ? <LoggedInNavBar /> : <LoggedOutNavBar />}
         <Switch>
+
           <Route exact path='/'>
             {!localStorage.jwt ? <div className='mainPage'>< HomePage /></div> : <div className='mainPage'>< UserHomePage /></div>}
           </Route>
@@ -80,14 +82,21 @@ class App extends Component {
           <Route exact strict path='/users'>
             <div className='mainPage'><UsersPage /></div>
           </Route>
+          
           <Route path={`/users/${this.props.currentUser.username}/edit`}>
             <div className='userEditPage'><EditProfilePage /></div>
           </Route>
+
+          <Route exact strict path='/users/:username'>
+            <div className='mainPage'><SingleUserProfilePage/></div>
+          </Route>
+
           <Route exact strict path='/messages'>
             {!localStorage.jwt
               ? <Redirect to='/login'/>
                 : <div className='mainPage'><MessagesContainer /></div>}
           </Route>
+
           <Redirect from='*' to='/' />
         </Switch>
       </div>

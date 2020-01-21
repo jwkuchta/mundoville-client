@@ -12,7 +12,7 @@ class Exchanges extends Component {
         let exchanges = this.props.exchanges
             
             return (
-                <Segment inverted padded='very'>
+                <Segment padded='very'>
                     {exchanges.map(e => <Exchange key ={e.id} exchange={e} /> )}
                 </Segment>
             )
@@ -20,9 +20,9 @@ class Exchanges extends Component {
         } else {
 
             return (
-                <Segment inverted padded='very'>
-                    You have not sent any messages yet. <br/>
-                    Search users to send messages to.
+                <Segment padded='very'>
+                    No messages yet. <br/>
+                    Click on New Message to create a new message.
                 </Segment>
             )
         }

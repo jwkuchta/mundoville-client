@@ -1,42 +1,35 @@
 import React, {Component} from 'react'
 // import {getUsers} from '../redux/actions'
-import {Grid, Card, Image, Button} from 'semantic-ui-react'
+import {Grid} from 'semantic-ui-react'
 import {connect} from 'react-redux'
-import PicUpload from '../components/PicUpload'
-import placeholder from '../photos/profilePicPlaceholder.png'
+import SingleUserProfileCard from '../components/SingleUserProfileCard'
 
 class UsersPage extends Component  {
 
     render() {
 
-        const users = this.props.users
+        // debugger
         const currentUser = this.props.currentUser
-        console.log(users)
-        console.log(currentUser)
-
-        // const pic_url = `http://localhost:3000/${user.profile_pic_url}`
-
+        let allUsers = this.props.users
+        const users = allUsers.filter(user => user.username !== currentUser.username)
+        
         return (
             <div>
-                <h1>You are logged in as {currentUser.username}</h1>
-                {users.map(user => <>
-            <Grid.Column>
-                <Card>
-                    <Card.Content>
-                        <Image src={user.profile_pic_url ? `http://localhost:3000/${user.profile_pic_url}` : placeholder} />
-                        <Card.Header as='h3'>
-                            {user.username}
-                        </Card.Header>
-                        <PicUpload />
-                        <Button className='ui button'>
-                            {/* <Link to={`/users/${user.username}/edit`}>See Profile</Link> */}
-                            <a href={`/users/${user.username}`}>See Profile</a>
-                        </Button>
-                    </Card.Content>
-                </Card>
-            </Grid.Column>
-            </>)}
+                <h1>You are currently logged in as {currentUser.username}</h1>
+                <Grid columns={4} divided>
                 
+                    <Grid.Row>
+                        
+                        {users.map(user => 
+                        <Grid.Column>
+                            <SingleUserProfileCard user={user} />
+                        <Grid.Row></Grid.Row>
+                        </Grid.Column>
+                        )}
+
+                    </Grid.Row>
+                    
+                </Grid>  
             </div>
         )
     } 

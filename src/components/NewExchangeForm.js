@@ -77,14 +77,11 @@ class NewExchangeForm extends Component {
     render() {
         // debugger
         return (
-            <Segment inverted padded='very'>
-                <Form 
-                    inverted
-                    onSubmit={(e) => this.handleSubmit(e, this.state)}
-                >
+            <Segment padded='very'>
+                <Form onSubmit={(e) => this.handleSubmit(e, this.state)}>
                     <Form.Group>
-                        <Form.Select
-                            style={{backgroundColor: '#eeeeee'}}
+                        <Form.Select required
+                            // style={{backgroundColor: '#00FFFF'}}
                             inline
                             label='To: '
                             floating
@@ -94,9 +91,9 @@ class NewExchangeForm extends Component {
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Form.TextArea 
-                            style={{backgroundColor: '#eeeeee'}}
-                            width={16}
+                        <Form.TextArea width={5}
+                            // style={{backgroundColor: '#00FFFF'}}
+                            // width={16}
                             inline
                             id='body'
                             placeholder='Type your message here'

@@ -236,7 +236,7 @@ class EditProfileForm extends Component {
                 >
                     <Header icon='archive' content='Are you sure?' />
                     <Modal.Content>
-                        <p style={{color: 'black'}}>
+                        <p style={{color: 'cyan'}}>
                             If you delete your account, everything will be permanently 
                             deleted and your account cannot be recovered. 
                         </p>

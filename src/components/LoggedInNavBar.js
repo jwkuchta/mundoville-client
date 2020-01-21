@@ -4,7 +4,7 @@ import { Container, Image, Icon, Menu, Popup} from 'semantic-ui-react'
 // import Logo from '../photos/Logo.png'
 import logo_white from '../photos/logo_white.png'
 
-const Navigation = (props) => {
+const LoggedInNavBar = (props) => {
     
     const handleLogOut = () => {
         localStorage.clear()
@@ -32,6 +32,17 @@ const Navigation = (props) => {
                 </Menu.Item>
                 <Menu.Item></Menu.Item>
                 <Menu.Item>
+                <Popup content='back to profile' trigger={<Icon fitted
+                    inverted
+                    name='home' 
+                    size='large' 
+                    className='user outline' 
+                    link
+                    onClick={() => window.location.href = "/"}
+                />}
+                />        
+                </Menu.Item>
+                <Menu.Item>
                 <Popup content='your messages' trigger={<Icon fitted
                     inverted
                     // name='messages' 
@@ -41,24 +52,14 @@ const Navigation = (props) => {
                     onClick={() => window.location.href = "/messages"}/>}
                 />     
                 </Menu.Item>
+                
                 <Menu.Item>
-                <Popup content='back to main page' trigger={<Icon fitted
-                    inverted
-                    name='home' 
-                    size='large' 
-                    className='home-icon' 
-                    link
-                    onClick={() => window.location.href = "/"}
-                />}
-                />        
-                </Menu.Item>
-                <Menu.Item>
-                <Popup content='search destinations' trigger={<Icon fitted
+                <Popup content='browse users' trigger={<Icon fitted
                     inverted
                     link
                     name='search' 
                     size='large' 
-                    className='search icon' 
+                    className='users' 
                     onClick={() => window.location.href = '/users'}
                     />}
                 />       
@@ -90,4 +91,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Navigation)
+export default connect(mapStateToProps)(LoggedInNavBar)
