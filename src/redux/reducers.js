@@ -10,12 +10,17 @@ let initState = {
     selectedUser: [],
     search: {
         input: '',
-        output: []
+        outputs: []
     },
     verifications: [],
     exchanges: [],
-    reviews: []
-
+    reviews: [],
+    conditions: {
+        form: 'form',
+        item: 'item',
+        initial: 'initial'
+    },
+    filteredUsers: []
 }
 
 //reducer for getting all users
@@ -106,13 +111,48 @@ let reviewsReducer = (state=initState.reviews, action) => {
     }
 }
 
+let searchReducer = (state=initState.search, action) => {
+    switch (action.type) {
+        case 'SET_QUERY':
+            return {
+                input: action.query,
+                outputs: initState.users.filter(
+                    user => user.username.includes(action.query)
+                )
+            }
+        default:
+            return state
+    }
+}
+
+let conditionReducer = (state = initState.conditions.initial, action) => {
+    switch(action.type) {
+        case "SET_CONDITION":
+            return action.condition;
+        default:
+            return state;
+    }
+}
+
+let filteredUsersReducer = (state = initState.filteredUsers, action) => {
+    switch(action.type) {
+        case 'DISPLAY_FILTERED':
+            return action.filtered
+        default:
+            return state
+    }
+}
+
 let rootReducer = combineReducers({
     users: usersReducer,
     options: optionsReducer,
     currentUser: currentUserReducer,
     exchanges: exchangesReducer,
     reviews: reviewsReducer,
-    selectedUser: selectedUserReducer
+    selectedUser: selectedUserReducer,
+    search: searchReducer,
+    condition: conditionReducer,
+    filteredUsers: filteredUsersReducer
 })
 
 export default rootReducer

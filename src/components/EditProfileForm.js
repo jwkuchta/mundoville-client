@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {Form, Button, Header, Modal, Icon} from 'semantic-ui-react'
-// import PictureUpload from './PictureUpload'
-// import PicUpload from './PicUpload'
-// import LanguageForm from './LanguageForm'
-// import DropdownExample from './DropdownExample'
-import {languageOptions1, languageOptions2, countryList} from './dropdown'
+import {languageOptions1, languageOptions2, countries} from './dropdown'
 // import _ from 'lodash'
-// import { COUNTRY_OPTIONS } from './countriesData.js';
+import { COUNTRY_OPTIONS } from './countriesData.js'
 
 const usersUrl = 'http://localhost:3000/api/v1/users/'
 
@@ -177,7 +173,9 @@ class EditProfileForm extends Component {
                     placeholder='Country'
                     fluid
                     selection
-                    options={countryList}
+                    // options={countryList}
+                    // options={COUNTRY_OPTIONS}
+                    options={countries}
                     onChange = {(e, { id, value }) => this.setState({ [id]: value })}
                 />
                 <Form.Input

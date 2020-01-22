@@ -18,53 +18,30 @@ class App extends Component {
     if (localStorage.jwt) {
       this.props.fetchProfile()
       this.props.fetchUsers()  
-      // this.props.fetchExchanges(this.props.currentUser) 
-      // this.fetchExchanges()
-      
-      // later add:
-      // this.props.fetchReviews()
     } else {
       localStorage.clear()
     }
   }
 
-  // fetchExchanges = () => {
-  //   debugger
-  //   fetch('http://localhost:3000/api/v1/exchanges', {
-  //         method: 'POST',
-  //         headers: {
-  //             'Authorization': `Bearer ${localStorage.jwt}`,
-  //             'Content-Type': 'application/json',
-  //             'Accept': 'application/json'
-  //         },
-  //         body: JSON.stringify({id: this.props.currentUser.id})
-  //     })
-  //     .then(r => r.json())
-  //     .then(data => {
-  //         this.props.getExchanges(data)
-  //     })
-  // }
+  fetchExchanges = () => {
+    fetch('http://localhost:3000/api/v1/findExchanges', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${localStorage.jwt}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({id: this.props.currentUser.id})
+    })
+    .then(resp => resp.json())
+    .then(data => this.props.getExchanges(data))
+  }
   
   render() {
     
     if (this.props.currentUser.username) {
-      // debugger
-      fetch('http://localhost:3000/api/v1/findExchanges', {
-          method: 'POST',
-          headers: {
-              'Authorization': `Bearer ${localStorage.jwt}`,
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-          },
-          body: JSON.stringify({id: this.props.currentUser.id})
-      })
-      .then(resp => resp.json())
-      .then(data => this.props.getExchanges(data))
+      this.fetchExchanges()
     }
-
-    // if(this.props.currentUser.username) {
-    //   this.props.fetchExchanges(this.props.currentUser)
-    // }
 
     return (
       <div className="App">
@@ -91,8 +68,9 @@ class App extends Component {
             <div className='mainPage'><SingleUserProfilePage/></div>
           </Route> */}
 
-          <Route exact strict path='/users/:username' component={SingleUserProfilePage}/>
+          {/* had to be changed to this, because state was lost in SingleUserProfilePage otherwise: */}
 
+          <Route exact strict path='/users/:username' component={SingleUserProfilePage}/>
 
           <Route exact strict path='/messages'>
             {!localStorage.jwt

@@ -1,17 +1,14 @@
 import React, {Component} from 'react'
-import {Link, Redirect, Route} from 'react-router-dom'
-// import {getUsers} from '../redux/actions'
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {Card, Image, Button} from 'semantic-ui-react'
 // import {connect} from 'react-redux'
 import placeholder from '../photos/profilePicPlaceholder.png'
-import SingleUserProfilePage from '../containers/SingleUserProfilePage'
 import {selectedUser} from '../redux/actions'
 
 class SingleUserProfileCard extends Component {
 
     render() {
-
         // debugger
     
         return (
