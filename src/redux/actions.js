@@ -1,6 +1,4 @@
 
-// ** Async Actions ** //
-// ** FETCHES ** //
 
 export const fetchProfile = () => {
   return dispatch => {
@@ -52,20 +50,13 @@ export const setQuery = query => {
   return {type: 'SET_QUERY', query: query}
 }
 
-// export const handleSearchBarResultSelect = (e, results) => {
-//   return (dispatch) => {
-//       dispatch({ type: 'SET_ITEM', item: results.item });
-//       dispatch({ type: 'SET_CONDITION', condition: results.condition });
-//   }
-// }
-
 export const filterUsers = filtered => {
   return {type: 'DISPLAY_FILTERED', filtered: filtered}
 }
 
-// export const addExchange = exchange => {
-//   return {type: 'ADD_EXCHANGE', exchange: exchange}
-// }
+export const setCountry = country => {
+  return {type: 'SET_COUNTRY', country: country}
+}
 
 
   

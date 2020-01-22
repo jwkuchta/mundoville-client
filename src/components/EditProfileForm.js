@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {Form, Button, Header, Modal, Icon} from 'semantic-ui-react'
 import {languageOptions1, languageOptions2, countries} from './dropdown'
 // import _ from 'lodash'
-import { COUNTRY_OPTIONS } from './countriesData.js'
+
 
 const usersUrl = 'http://localhost:3000/api/v1/users/'
 
@@ -173,8 +173,6 @@ class EditProfileForm extends Component {
                     placeholder='Country'
                     fluid
                     selection
-                    // options={countryList}
-                    // options={COUNTRY_OPTIONS}
                     options={countries}
                     onChange = {(e, { id, value }) => this.setState({ [id]: value })}
                 />

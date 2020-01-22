@@ -20,7 +20,8 @@ let initState = {
         item: 'item',
         initial: 'initial'
     },
-    filteredUsers: []
+    filteredUsers: [],
+    selectedCountry: ''
 }
 
 //reducer for getting all users
@@ -143,6 +144,14 @@ let filteredUsersReducer = (state = initState.filteredUsers, action) => {
     }
 }
 
+let countrySelectionReducer = (state=initState.selectedCountry, action) => {
+    switch(action.type) {
+        case 'SET_COUNTRY':
+            return action.country
+        default: return state
+    }
+}
+
 let rootReducer = combineReducers({
     users: usersReducer,
     options: optionsReducer,
@@ -152,7 +161,8 @@ let rootReducer = combineReducers({
     selectedUser: selectedUserReducer,
     search: searchReducer,
     condition: conditionReducer,
-    filteredUsers: filteredUsersReducer
+    filteredUsers: filteredUsersReducer,
+    countrySelection: countrySelectionReducer
 })
 
 export default rootReducer
