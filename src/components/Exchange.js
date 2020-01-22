@@ -26,10 +26,15 @@ class Exchange extends Component {
                 message = otherUser.username + ' --  ' + unread.length + ' unread messages'
             }
 
+            const otherUserPic = `http://localhost:3000/${otherUser.profile_pic_url}`
+
             return (
                 <Segment secondary padded='very'>
                     <Header as='h2' textAlign='left'>
-                        <Image size='small' floated='left' src={otherUser.profile_pic ? otherUser.profile_pic : placeholder} /> 
+                        <Image 
+                        size='small' 
+                        floated='left' 
+                        src={otherUser.profile_pic_url ? otherUserPic : placeholder} /> 
                         <a href={`/users/${otherUser.username}`}>{message}</a>
                         <Modal 
                             closeIcon

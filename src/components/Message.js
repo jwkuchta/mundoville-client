@@ -48,9 +48,12 @@ class Message extends Component {
             .then(resp => resp.json())
             .then(console.log)
         }
+
+        const senderPicUrl = `http://localhost:3000/${sender.profile_pic_url}`
+
         return (
             <Comment>
-                <Comment.Avatar src={sender.profile_pic ? sender.profile_pic : placeholder} />
+                <Comment.Avatar src={sender.profile_pic_url ? senderPicUrl : placeholder} />
                 <Comment.Content>
                     <Comment.Author 
                         as='a' 
