@@ -124,6 +124,12 @@ body {
   color: white;
 }
 
+.teal-background {
+  color: white;
+  background-color: #246a92;
+
+}
+
 .teal-font {
   font-family: sans-serif;
   font-size: 12px;

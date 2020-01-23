@@ -60,9 +60,9 @@ class App extends Component {
             <div className='mainPage'><UsersPage /></div>
           </Route>
           
-          <Route path={`/users/${this.props.currentUser.username}/edit`}>
+          {/* <Route path={`/users/${this.props.currentUser.username}/edit`}>
             <div className='userEditPage'><EditProfilePage /></div>
-          </Route>
+          </Route> */}
 
           {/* <Route exact strict path='/users/:username'>
             <div className='mainPage'><SingleUserProfilePage/></div>

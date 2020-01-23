@@ -12,12 +12,14 @@ class SingleUserProfilePage extends Component {
     // }
 
     componentDidMount() {
-        this.props.fetchUsers()
-
-    }
+        if (localStorage.jwt) {
+          this.props.fetchUsers()  
+        } else {
+          localStorage.clear()
+        }
+      }
 
     render() {
-
         // this.getUsers()
 
         // this.props.fetchUsers()
@@ -41,9 +43,9 @@ class SingleUserProfilePage extends Component {
                                     <Card.Header as='h3'> {user.username} </Card.Header>
                                 </Card.Content>
                             </Card>
-                            </Grid.Column>
-                            <Grid.Column width={12}>
-                                <UserInfo user={user} />
+                        </Grid.Column>
+                        <Grid.Column width={12}>
+                            <UserInfo user={user} />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
@@ -54,9 +56,7 @@ class SingleUserProfilePage extends Component {
 
 const mapSTP = state => {
     // debugger
-    return {
-        users: state.users
-    }
+    return {users: state.users}
 }
 
 const mapDTP = dispatch => {

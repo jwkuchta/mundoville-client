@@ -6,7 +6,6 @@ import placeholder from '../photos/profilePicPlaceholder.png'
 class Message extends Component {
     
     render() {
-        debugger
         let created = this.props.message.created_at
         
         let date = created.split('T')[0]

@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
-import { Container, Grid, Divider} from 'semantic-ui-react'
+import { Container, Grid, Divider, Icon} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 // import sakura from '../photos/sakura.jpg'
+import SocialMediaIcons from '../components/SocialMediaIcons'
 
 class UserInfo extends Component {
 
@@ -28,6 +29,9 @@ class UserInfo extends Component {
                 <Grid.Row>Languages: &nbsp; {user.language1}, {user.language2}, {user.language3} </Grid.Row>
                 <Divider></Divider>
                 <Grid.Row>Bio: &nbsp; {bio} </Grid.Row>
+                <Grid.Row className='teal-background'>
+                    <SocialMediaIcons />
+                </Grid.Row>
             </Container>
         )
     }
