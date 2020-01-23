@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Segment, Header, Button} from 'semantic-ui-react'
+import {Segment, Header, Button, Container} from 'semantic-ui-react'
 import EditProfileForm from '../components/EditProfileForm'
 
 class EditProfilePage extends Component {
@@ -9,20 +9,23 @@ class EditProfilePage extends Component {
         // debugger
 
         return (
-            <Segment secondary padded='very'>
-                <Header as='h1'>
+            <Container >
+                <Segment secondary padded='very' className='teal-font'>
+                <Header as='h1' >
                     <Button 
                             basic 
                             floated='left' 
                             content='Back to Profile' 
                             onClick={() => window.location.href='/profile'}
                         />
-                        <div style={{marginRight: 140}}>Edit Profile for {this.props.currentUser.username}</div> 
-                </Header><br/>
+                        {/* <div style={{marginRight: 140}}>Edit Profile for {this.props.currentUser.username}</div>  */}
+                    </Header><br/>
                     <Segment padded='very'>
                         <EditProfileForm/>
                     </Segment>
-            </Segment>
+                </Segment>
+            </Container>
+            
         )
     }
 }

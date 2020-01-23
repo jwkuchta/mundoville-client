@@ -47,6 +47,7 @@ class EditProfileForm extends Component {
     }
 
     handleSubmit = (e, values, user) => {
+        debugger
         e.preventDefault()
         let updates = {}
         
@@ -103,6 +104,8 @@ class EditProfileForm extends Component {
     }
 
     render() {
+
+        console.log(this.state)
 
         return (
             <Form 
@@ -164,7 +167,6 @@ class EditProfileForm extends Component {
                 </Form.Group><br/> 
 
             {/* COUNTRY */}
-            {/* put it in DropdownExample cause it was not working */}
  
             <Form.Group widths='equal'>
                 <Form.Dropdown
@@ -174,7 +176,10 @@ class EditProfileForm extends Component {
                     fluid
                     selection
                     options={countries}
-                    onChange = {(e, { id, value }) => this.setState({ [id]: value })}
+                    onChange = {(e, { id, value }) => {
+                        console.log(e)
+                        this.setState({ [id]: value })}
+                    } 
                 />
                 <Form.Input
                     id='city'

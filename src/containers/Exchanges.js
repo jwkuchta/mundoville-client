@@ -12,7 +12,7 @@ class Exchanges extends Component {
         let exchanges = this.props.exchanges
             
             return (
-                <Segment padded='very'>
+                <Segment padded='very' style={{backgroundColor: '#528FBB'}}>
                     {exchanges.map(e => <Exchange key ={e.id} exchange={e} /> )}
                 </Segment>
             )

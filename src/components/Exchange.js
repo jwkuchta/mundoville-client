@@ -32,7 +32,7 @@ class Exchange extends Component {
                 <Segment secondary padded='very'>
                     <Header as='h2' textAlign='left'>
                         <Image 
-                        size='small' 
+                        size='large' 
                         floated='left' 
                         src={otherUser.profile_pic_url ? otherUserPic : placeholder} /> 
                         <a href={`/users/${otherUser.username}`}>{message}</a>

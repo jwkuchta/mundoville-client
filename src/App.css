@@ -1,6 +1,12 @@
 .App {
   text-align: center;
   background-color: #246a92;
+  background-image: url("sakura.jpg") no-repeat fixed center;
+}
+
+body {
+  background-color: #246a92;
+  background-image: url("sakura.jpg");
 }
 
 .app-logo {
@@ -92,17 +98,36 @@
   overflow: scroll;
 }
 
-/* .profile-pic {
-  height: 300px;
-  width: 400px;
-} */
-
 #sakura {
   size: 60px, 100px;
 }
 
 .logged-out-nav-bar-container {
   margin: 0px;
+}
+
+.text-custom {
+  font-family: sans-serif;
+  font-style: Verdana;
+  font-weight: normal;
+  font-size: 14px;
+  color: #246a92;
+  background-color: white;
+  text-align: left;
+  font-style: bold;
+  padding: 50px;
+}
+
+.teal-text {
+  font-family: sans-serif;
+  font-size: 20px;
+  color: white;
+}
+
+.teal-font {
+  font-family: sans-serif;
+  font-size: 12px;
+  color: #246a92;
 }
 
 /* teal: #246a92 */

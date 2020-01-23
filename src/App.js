@@ -44,7 +44,7 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
+      <div className="App" >
         {localStorage.jwt ? <LoggedInNavBar /> : <LoggedOutNavBar />}
         <Switch>
 
@@ -70,7 +70,8 @@ class App extends Component {
 
           {/* had to be changed to this, because state was lost in SingleUserProfilePage otherwise: */}
 
-          <Route exact strict path='/users/:username' component={SingleUserProfilePage}/>
+          <Route exact path='/users/:username' 
+          component={SingleUserProfilePage}/>
 
           <Route exact strict path='/messages'>
             {!localStorage.jwt

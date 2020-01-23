@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import { Search, Grid, Segment, Header } from 'semantic-ui-react'
+import { Search, Grid } from 'semantic-ui-react'
 import { countries } from './dropdown'
 import { connect } from 'react-redux'
 import {setCountry} from '../redux/actions'
@@ -30,7 +30,7 @@ class SearchBar extends Component {
     }
 
     handleResultSelect = (e, { result }) => {
-        this.props.setCountry(result.key)
+        this.props.setCountry(result.value)
         this.setState({ 
             value: '', 
             selected: '', 
@@ -62,9 +62,11 @@ class SearchBar extends Component {
         const { isLoading, value, results } = this.state
 
         return (
-            <Grid>
+            <Grid >
             <Grid.Column width={15}>
-                <h4>Search users by destination</h4>
+                <br></br>
+                <h4 className='teal-text'>Search users by destination</h4>
+                <br></br>
                 <Search
                 fluid
                 placeholder='Country'
@@ -77,6 +79,7 @@ class SearchBar extends Component {
                 resultRenderer={this.display}
                 value={value}
                 />
+                <br></br>
             </Grid.Column>
             <Grid.Column width={1}>
             </Grid.Column>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Segment, Form, Button, Header } from 'semantic-ui-react'
+import { Segment, Form, Button, Header, Modal } from 'semantic-ui-react'
 import {connect} from 'react-redux'
 // import {submitNewExchange} from '../redux/actions'
 
@@ -11,9 +11,21 @@ class NewExchangeForm extends Component {
         this.state = {
             body: '',
             receiver_id: null,
-            users: []
+            users: [],
+            open: false,
         }
     }
+
+    resetState = () => {
+        this.setState({
+            body: '',
+            receiver_id: null,
+            users: []
+        })
+    }
+
+    open = () => this.setState({ open: true })
+    close = () => this.setState({ open: false })
 
     componentDidMount() {
         // debugger
@@ -44,14 +56,34 @@ class NewExchangeForm extends Component {
     handleSubmit = (e, entries) => {
         e.preventDefault()
         this.postNewExchange()
-
-        this.setState({
-            body: '',
-            receiver_id: null,
-            users: []
-        })
+        this.renderModal()
+        this.resetState()  
         alert('Message sent successfully')
-        window.location.href='/messages'
+        // window.location.href='/messages'
+    }
+
+    renderModal = () => {
+        this.open()
+        return (
+            <div>
+                <Modal size='small' open={this.state} onClose={window.location.href='/messages'}>
+                <Modal.Header>Delete Your Account</Modal.Header>
+                <Modal.Content>
+                <p>Are you sure you want to delete your account</p>
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button negative>No</Button>
+                    <Button
+                    positive
+                    icon='checkmark'
+                    labelPosition='right'
+                    content='Yes'
+                    />
+                </Modal.Actions>
+            </Modal>
+            </div>
+            
+        )
     }
 
     postNewExchange = () => {
@@ -74,24 +106,34 @@ class NewExchangeForm extends Component {
         .then(data => console.log(data))
     }
 
+    display = user => {
+        return (
+            <div>
+                <i className={user.username} ></i>
+                {user.username}
+            </div>
+        )
+    }
+
     render() {
+
         // debugger
         return (
-            <Segment padded='very'>
+            <Segment padded='very' style={{backgroundColor: '#528FBB'}}>
                 <Form onSubmit={(e) => this.handleSubmit(e, this.state)}>
                     <Form.Group>
                         <Form.Select required
-                            // style={{backgroundColor: '#00FFFF'}}
                             inline
                             label='To: '
                             floating
                             options={this.state.users}
                             placeholder='Select User'
+                            resultRenderer={this.display}
                             onChange={(e) => this.handleChange(e)}
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Form.TextArea width={5}
+                        <Form.TextArea width={15}
                             // style={{backgroundColor: '#00FFFF'}}
                             // width={16}
                             inline
@@ -100,7 +142,7 @@ class NewExchangeForm extends Component {
                             onChange={(e) => this.handleChange(e)}
                         />
                     </Form.Group>
-                    <Button floated='right' type='submit' content='Send' />
+                    <Button type='submit' content='Send' />
                     <Header size='tiny' color='red'>
                         {this.state.exchange
                             ? this.state.exchange

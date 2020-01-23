@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import {Card, Image, Button} from 'semantic-ui-react'
+import {Card, Image, Button, Container} from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
 import {connect} from 'react-redux'
 import PicUpload from './PicUpload'
@@ -15,7 +15,8 @@ class ProfileCard extends Component {
 
         return (
             <>
-                <Card>
+            <Container>
+            <Card>
                     <Card.Content>
                         <Image src={this.props.currentUser.profile_pic_url ? pic_url : placeholder} />
                         <Card.Header as='h3'>
@@ -27,6 +28,8 @@ class ProfileCard extends Component {
                         </Button>
                     </Card.Content>
                 </Card>
+            </Container>
+                
             </>
         )
     }

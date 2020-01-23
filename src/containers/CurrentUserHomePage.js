@@ -3,8 +3,9 @@ import {connect} from 'react-redux'
 // import Avatar from './Avatar'
 // import SemanticGoodies from '../components/SemanticGoodies'
 import CurrentUserProfileCard from '../components/CurrentUserProfileCard'
-import { Grid } from 'semantic-ui-react'
+import { Grid, Container } from 'semantic-ui-react'
 // import {Button, Link} from 'semantic-ui-react'
+import UserInfo from '../components/UserInfo'
 
 
 class CurrentUserHomePage extends Component {
@@ -13,14 +14,19 @@ class CurrentUserHomePage extends Component {
 
         // console.log(this.props)
         return (
-            <div>
-            <h1>Hello, {this.props.currentUser.username}</h1>
-            <Grid.Column>
+            <Container>
+                <Grid>
+                <br></br>
                 <Grid.Row>
-                <CurrentUserProfileCard /> 
+                <Grid.Column width={4}>
+                        <CurrentUserProfileCard /> 
+                    </Grid.Column>
+                    <Grid.Column width={12}>
+                        <UserInfo user={this.props.currentUser} />
+                    </Grid.Column>
                 </Grid.Row>
-            </Grid.Column>    
-            </div>
+                </Grid>
+            </Container>
         )
     }  
 }

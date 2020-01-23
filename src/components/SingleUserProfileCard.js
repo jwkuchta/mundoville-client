@@ -10,11 +10,13 @@ class SingleUserProfileCard extends Component {
 
     render() {
         // debugger
+
+        let profilePicUrl = `http://localhost:3000/${this.props.user.profile_pic_url}`
     
         return (
             <Card>
                 <Card.Content>
-                    <Image src={this.props.user.profile_pic_url ? `http://localhost:3000/${this.props.user.profile_pic_url}` : placeholder} />
+                    <Image src={this.props.user.profile_pic_url ? profilePicUrl : placeholder} />
                         <Card.Header as='h3'> {this.props.user.username} </Card.Header>
                         <Button className='ui button'>
                             <Link to={`/users/${this.props.user.username}`} >See profile</Link>

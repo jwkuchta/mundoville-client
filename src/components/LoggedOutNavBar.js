@@ -15,8 +15,8 @@ const LoggedOutNavBar = () => {
             pointing 
             secondary 
             size ='huge' 
-            widths={7}>
-                <Menu.Item link size='medium'>
+            widths={6}>
+                <Menu.Item link size='medium'> 
                     <Image 
                     inverted='true'
                     name='white-logo'
@@ -25,19 +25,13 @@ const LoggedOutNavBar = () => {
                     className='white-logo'
                     onClick={() => window.location.href = '/'}/>
                 </Menu.Item>
-                <Menu.Item
+                <Menu.Item></Menu.Item>
+                <Menu.Item header
                 name='How this works'
                 size='medium'
                 active={activeItem === 'about'}
                 onClick={() => window.location.href = '/about'}
                 />
-                <Menu.Item link
-                name='Safety'
-                size='medium'
-                active={activeItem === 'safety'}
-                onClick={() => window.location.href = '/safety'}
-                />
-                <Menu.Item></Menu.Item>
                 <Menu.Item></Menu.Item>
                 <Menu.Item></Menu.Item>
                 <Menu.Item></Menu.Item>

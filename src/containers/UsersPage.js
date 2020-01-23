@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 // import {getUsers} from '../redux/actions'
-import {Grid} from 'semantic-ui-react'
+import {Grid, Container} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import SingleUserProfileCard from '../components/SingleUserProfileCard'
 import SearchBar from '../components/SearchBar'
@@ -18,11 +18,9 @@ class UsersPage extends Component  {
         const filtered = all.filter(u => u.country === selectedCountry)
 
         return (
-            <div>
-                <h1>You are currently logged in as {currentUser.username}</h1>
+            <Container maxwidth={10}>
                 <SearchBar />
                 <Grid columns={4} divided>
-                
                     <Grid.Row>
                         {filtered.map(user => <>
                             <Grid.Column key={user.id}>
@@ -33,7 +31,7 @@ class UsersPage extends Component  {
                         )}
                     </Grid.Row>
                 </Grid>  
-            </div>
+            </Container>     
         )
     } 
 }

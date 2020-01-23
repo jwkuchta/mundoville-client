@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Menu, Grid} from 'semantic-ui-react'
+import {Menu, Grid, Container} from 'semantic-ui-react'
 import Exchanges from './Exchanges'
 import NewExchangeForm from '../components/NewExchangeForm'
 
@@ -26,10 +26,10 @@ class MessagesContainer extends Component {
                                     />
 
             return (
-                <>
+                <Container >
                 <br></br>
-                <Grid stretched>
-                    <Menu tabular  widths={2} size='huge'>
+                <Grid stretched >
+                    <Menu tabular  widths={2} size='huge' >
                         <Menu.Item 
                             header
                             name='Messages'
@@ -48,7 +48,8 @@ class MessagesContainer extends Component {
                         {currentPage}
                     </Grid.Column>
                 </Grid>
-                </>
+                </Container>
+                
             )
         } else {
             return null
