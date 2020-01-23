@@ -47,7 +47,6 @@ class EditProfileForm extends Component {
     }
 
     handleSubmit = (e, values, user) => {
-        debugger
         e.preventDefault()
         let updates = {}
         

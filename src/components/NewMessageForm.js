@@ -13,9 +13,10 @@ class NewMessageForm extends Component {
     }
 
     handleSubmit = (e, body) => {
+        // debugger
         e.preventDefault()
 
-        let otherUserId = this.props.exchange.second_user_id !== this.props.currentUser.user.id
+        let otherUserId = this.props.exchange.second_user_id !== this.props.currentUser.id
             ? this.props.exchange.second_user_id : this.props.exchange.first_user_id
 
         fetch('http://localhost:3000/api/v1/exchanges',{
@@ -33,6 +34,7 @@ class NewMessageForm extends Component {
         })
         .then(r => r.json())
         .then(data => {
+            // debugger
             let message = document.createElement('div')
             message.innerText = 'Message sent'
             message.style = 'color: black'

@@ -72,8 +72,8 @@ class AboutPage extends Component {
                     alt='world' 
                     href='/'
                     />      */}
-                </Grid.Row>
-                <Grid.Row>{!localStorage.jwt ? <LoginModal /> : null}
+                {/* </Grid.Row> */}
+                {/* <Grid.Row>{!localStorage.jwt ? <LoginModal /> : null} */}
                 </Grid.Row>
             </Container>
         )

@@ -24,6 +24,7 @@ class LoginForm extends Component {
     }
 
     fetchLogin = () => {
+        debugger
         fetch('http://localhost:3000/api/v1/login', {
             method: 'POST',
             headers: {
@@ -37,6 +38,7 @@ class LoginForm extends Component {
         })
         .then(response => response.json())
         .then(data => {
+            // debugger
             if (data.user){
                 localStorage.setItem('jwt', data.jwt)
                 this.setState({
