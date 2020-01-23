@@ -27,7 +27,7 @@ const LoggedOutNavBar = () => {
                 </Menu.Item>
                 <Menu.Item></Menu.Item>
                 <Menu.Item header
-                name='How this works'
+                name='About'
                 size='medium'
                 active={activeItem === 'about'}
                 onClick={() => window.location.href = '/about'}

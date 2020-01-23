@@ -11,6 +11,7 @@ import {fetchProfile, fetchUsers, getExchanges} from './redux/actions'
 import EditProfilePage from './containers/EditProfilePage'
 import MessagesContainer from './containers/MessagesContainer'
 import SingleUserProfilePage from './containers/SingleUserProfilePage'
+import AboutPage from './components/AboutPage'
 
 class App extends Component {
 
@@ -59,10 +60,14 @@ class App extends Component {
           <Route exact strict path='/users'>
             <div className='mainPage'><UsersPage /></div>
           </Route>
+
+          <Route exact strict path='/about'>
+            <div className='mainPage'><AboutPage /></div>
+          </Route>
           
-          {/* <Route path={`/users/${this.props.currentUser.username}/edit`}>
+          <Route path={`/users/${this.props.currentUser.username}/edit`}>
             <div className='userEditPage'><EditProfilePage /></div>
-          </Route> */}
+          </Route>
 
           {/* <Route exact strict path='/users/:username'>
             <div className='mainPage'><SingleUserProfilePage/></div>

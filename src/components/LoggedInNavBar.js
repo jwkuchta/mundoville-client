@@ -71,7 +71,7 @@ const LoggedInNavBar = (props) => {
                     name='question circle outline' 
                     size='large' 
                     className='iquestion circle outline' 
-                    onClick={() => window.location.href = '/users'}
+                    onClick={() => window.location.href = '/about'}
                     />}
                 />     
                 </Menu.Item>
