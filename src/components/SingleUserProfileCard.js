@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
-import {connect} from 'react-redux'
-import {Card, Image, Button} from 'semantic-ui-react'
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Card, Image, Button } from 'semantic-ui-react'
 // import {connect} from 'react-redux'
 import placeholder from '../photos/profilePicPlaceholder.png'
-import {selectedUser} from '../redux/actions'
+import { selectedUser } from '../redux/actions'
 
 class SingleUserProfileCard extends Component {
 

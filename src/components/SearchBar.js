@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Search, Grid } from 'semantic-ui-react'
 import { countries } from './dropdown'
 import { connect } from 'react-redux'
-import {setCountry} from '../redux/actions'
+import { setCountry } from '../redux/actions'
 // import faker from 'faker'
 
 class SearchBar extends Component {

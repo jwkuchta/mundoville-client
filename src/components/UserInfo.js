@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Container, Grid, Divider, Icon} from 'semantic-ui-react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 // import sakura from '../photos/sakura.jpg'
 import SocialMediaIcons from '../components/SocialMediaIcons'
 

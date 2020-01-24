@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
-import {Card, Image, Button, Container} from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Card, Image, Button, Container } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import PicUpload from './PicUpload'
-// import EditProfilePage from '../containers/EditProfilePage'
 
 class ProfileCard extends Component {
 
@@ -28,8 +27,7 @@ class ProfileCard extends Component {
                         </Button>
                     </Card.Content>
                 </Card>
-            </Container>
-                
+            </Container>   
             </>
         )
     }

@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Segment } from 'semantic-ui-react'
 import Exchange from '../components/Exchange'
@@ -7,9 +7,9 @@ class Exchanges extends Component {
 
     render() {
         // debugger
-    if (this.props.exchanges.length > 0) {
+        if (this.props.exchanges.length > 0) {
 
-        let exchanges = this.props.exchanges
+            let exchanges = this.props.exchanges
             
             return (
                 <Segment padded='very' style={{backgroundColor: '#528FBB'}}>

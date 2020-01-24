@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
-// import {getUsers} from '../redux/actions'
-import {Grid, Container} from 'semantic-ui-react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+// import { getUsers } from '../redux/actions'
+import { Grid, Container } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 import SingleUserProfileCard from '../components/SingleUserProfileCard'
 import SearchBar from '../components/SearchBar'
-import {filterUsers} from '../redux/actions'
+import { filterUsers } from '../redux/actions'
 
 class UsersPage extends Component  {
 

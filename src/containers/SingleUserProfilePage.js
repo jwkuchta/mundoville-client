@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Card, Image, Container, Grid } from 'semantic-ui-react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import placeholder from '../photos/profilePicPlaceholder.png'
-import {fetchUsers} from '../redux/actions'
+import { fetchUsers } from '../redux/actions'
 import UserInfo from '../components/UserInfo'
 
 class SingleUserProfilePage extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Segment, Form, Button, Header, Modal } from 'semantic-ui-react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 // import {submitNewExchange} from '../redux/actions'
 
 class NewExchangeForm extends Component {
@@ -63,6 +63,7 @@ class NewExchangeForm extends Component {
     }
 
     renderModal = () => {
+        
         this.open()
         return (
             <div>
@@ -81,8 +82,7 @@ class NewExchangeForm extends Component {
                     />
                 </Modal.Actions>
             </Modal>
-            </div>
-            
+            </div>   
         )
     }
 
@@ -134,8 +134,6 @@ class NewExchangeForm extends Component {
                     </Form.Group>
                     <Form.Group>
                         <Form.TextArea width={15}
-                            // style={{backgroundColor: '#00FFFF'}}
-                            // width={16}
                             inline
                             id='body'
                             placeholder='Type your message here'

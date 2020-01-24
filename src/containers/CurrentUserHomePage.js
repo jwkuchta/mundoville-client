@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 // import Avatar from './Avatar'
 // import SemanticGoodies from '../components/SemanticGoodies'
 import CurrentUserProfileCard from '../components/CurrentUserProfileCard'
 import { Grid, Container } from 'semantic-ui-react'
-// import {Button, Link} from 'semantic-ui-react'
+// import { Button, Link } from 'semantic-ui-react'
 import UserInfo from '../components/UserInfo'
 
 

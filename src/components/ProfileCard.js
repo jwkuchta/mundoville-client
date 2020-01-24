@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
-import {Grid, Card, Image, Button} from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Card, Image, Button } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import PicUpload from './PicUpload'
 // import EditProfilePage from '../containers/EditProfilePage'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 // import { connect } from 'react-redux'
-import {Image, Menu, Container} from 'semantic-ui-react'
+import { Image, Menu, Container } from 'semantic-ui-react'
 import logo_white from '../photos/logo_white.png'
 
 const LoggedOutNavBar = () => {

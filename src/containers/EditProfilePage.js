@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {Segment, Header, Button, Container} from 'semantic-ui-react'
+import React, { Component } from 'react'
+import  { connect } from 'react-redux'
+import { Segment, Header, Button, Container } from 'semantic-ui-react'
 import EditProfileForm from '../components/EditProfileForm'
 
 class EditProfilePage extends Component {

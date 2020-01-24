@@ -1,33 +1,34 @@
-import React, {Component} from 'react'
-// import {connect} from 'react-redux'
-import {Comment, Divider} from 'semantic-ui-react'
+import React, { Component } from 'react'
+// import { connect } from 'react-redux'
+import { Comment, Divider } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
 
 class Message extends Component {
     
     render() {
-        let created = this.props.message.created_at
+
+        let messageTimestamp = this.props.message.created_at
         
-        let date = created.split('T')[0]
+        let date = messageTimestamp.split('T')[0]
         let splitDate = date.split('-')
         let formattedDate = splitDate[1] + '-' + splitDate[2] + '-' + splitDate[0]
 
-        let time = created.split('T')[1].split('.')[0]
+        let time = messageTimestamp.split('T')[1].split('.')[0]
         let splitTime = time.split(':')
         let hour
-        let meridiem
+        let amPm
 
         if (parseInt(splitTime[0]) > 12 ) {
             hour = parseInt(splitTime[0]) - 12 
-            meridiem = ' PM'
+            amPm = ' PM'
         } else if (parseInt(splitTime[0]) === 0) {
             hour = 12
-            meridiem = ' AM'
+            amPm = ' AM'
         } else {
             hour = parseInt(splitTime[0])
-            meridiem = ' AM'
+            amPm = ' AM'
         }
-        let formattedTime = hour + ':' + splitTime[1] + meridiem
+        let formattedTime = hour + ':' + splitTime[1] + amPm
 
         let sender = this.props.message.user_id === this.props.user.id ? this.props.user : this.props.currentUser
 

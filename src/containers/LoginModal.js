@@ -11,10 +11,13 @@ class LoginModal extends Component {
     render() {
         
         switch(this.state.option) {
+
             case 'login':
                 return <LoginForm />
+
             case 'signup':
                 return <SignupForm />
+
             default: 
                 return (
                     <Container fluid className='main-page-buttons'>

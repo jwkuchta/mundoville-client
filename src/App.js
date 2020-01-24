@@ -1,13 +1,13 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import './App.css'
-import {Route, Switch, Redirect} from "react-router-dom"
+import { Route, Switch, Redirect } from "react-router-dom"
 import LoggedInNavBar from './components/LoggedInNavBar'
 import LoggedOutNavBar from './components/LoggedOutNavBar'
 import CurrentUserHomePage from './containers/CurrentUserHomePage'
 import HomePage from './containers/HomePage'
 import UsersPage from './containers/UsersPage'
-import {fetchProfile, fetchUsers, getExchanges} from './redux/actions'
+import { fetchProfile, fetchUsers, getExchanges } from './redux/actions'
 import EditProfilePage from './containers/EditProfilePage'
 import MessagesContainer from './containers/MessagesContainer'
 import SingleUserProfilePage from './containers/SingleUserProfilePage'
@@ -69,14 +69,14 @@ class App extends Component {
             <div className='userEditPage'><EditProfilePage /></div>
           </Route>
 
-          {/* <Route exact strict path='/users/:username'>
+          <Route exact strict path='/users/:username'>
             <div className='mainPage'><SingleUserProfilePage/></div>
-          </Route> */}
+          </Route>
 
           {/* had to be changed to this, because state was lost in SingleUserProfilePage otherwise: */}
 
-          <Route exact path='/users/:username' 
-          component={SingleUserProfilePage}/>
+          {/* <Route exact path='/users/:username' 
+          component={SingleUserProfilePage}/> */}
 
           <Route exact strict path='/messages'>
             {!localStorage.jwt

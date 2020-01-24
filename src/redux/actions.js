@@ -25,7 +25,10 @@ export const fetchUsers = () => {
       }
     })
     .then(resp => resp.json())
-    .then(data => dispatch(getUsers(data)))
+    .then(data => {
+      // debugger
+      dispatch(getUsers(data))
+    })
   }
 }
 

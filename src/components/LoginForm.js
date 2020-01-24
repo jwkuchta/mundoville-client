@@ -24,7 +24,7 @@ class LoginForm extends Component {
     }
 
     fetchLogin = () => {
-        debugger
+        // debugger
         fetch('http://localhost:3000/api/v1/login', {
             method: 'POST',
             headers: {
@@ -82,7 +82,6 @@ class LoginForm extends Component {
                             <Button fluid type='submit'>Sign In</Button>
                         </Form.Group>
                     </Form>
-                    
                 </Segment>
             )
         }

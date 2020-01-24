@@ -1,7 +1,8 @@
-import React, {Component} from 'react'
-import {Menu, Popup, Icon} from 'semantic-ui-react'
+import React, { Component } from 'react'
+import { Menu, Popup, Icon } from 'semantic-ui-react'
 
 class SocialMediaIcons extends Component {
+    
     render() {
         return (
             <Menu 

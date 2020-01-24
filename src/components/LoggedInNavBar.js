@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Container, Image, Icon, Menu, Popup} from 'semantic-ui-react'
-// import Logo from '../photos/Logo.png'
+import { Container, Image, Icon, Menu, Popup } from 'semantic-ui-react'
 import logo_white from '../photos/logo_white.png'
 
 const LoggedInNavBar = (props) => {

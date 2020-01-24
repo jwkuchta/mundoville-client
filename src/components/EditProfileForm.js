@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {Form, Button, Header, Modal, Icon} from 'semantic-ui-react'
-import {languageOptions1, languageOptions2, countries} from './dropdown'
+import { Form, Button, Header, Modal, Icon } from 'semantic-ui-react'
+import { languageOptions1, languageOptions2, countries } from './dropdown'
 // import _ from 'lodash'
 
 
@@ -103,7 +103,6 @@ class EditProfileForm extends Component {
     }
 
     render() {
-
         console.log(this.state)
 
         return (
@@ -111,7 +110,8 @@ class EditProfileForm extends Component {
                 size='small' 
                 // onChange={(e) => this.handleChange(e)}
                 onSubmit={(e) => this.handleSubmit(e, this.state, this.props.currentUser)}
-            >    
+            >   
+             
             {/* PHOTO */}
 
                 <Form.Group width={12}>

@@ -14,12 +14,12 @@ class SignupForm extends Component {
         }
     }
 
-    handleChange = (e) => {
+    handleChange = e => {
         this.setState({[e.target.id]: e.target.value})
         console.log(this.state)
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = e => {
         // debugger
         e.preventDefault()
 
@@ -63,12 +63,13 @@ class SignupForm extends Component {
     }
 
     render() {
+
         if (this.state.user) {
             return window.location.href = "/"
         } else {
             return (
                 <Segment padded='very' className='main-page-forms'>
-                    <Form onSubmit={(e) => this.handleSubmit(e)}>
+                    <Form onSubmit={e => this.handleSubmit(e)}>
                         <Form.Group>
                             <Form.Input 
                                 id='username'
@@ -77,7 +78,7 @@ class SignupForm extends Component {
                                 type='text' 
                                 placeholder='Username'
                                 value={this.state.username}
-                                onChange={(e) => this.handleChange(e)}
+                                onChange={e => this.handleChange(e)}
                             />
                             <Form.Input 
                                 id='email'
@@ -86,7 +87,7 @@ class SignupForm extends Component {
                                 type='text' 
                                 placeholder='Email'
                                 value={this.state.email}
-                                onChange={(e) => this.handleChange(e)}
+                                onChange={e => this.handleChange(e)}
                             />
                         </Form.Group>
                         <Form.Group>
@@ -97,7 +98,7 @@ class SignupForm extends Component {
                                 type='password' 
                                 placeholder='Password'
                                 value={this.state.password}
-                                onChange={(e) => this.handleChange(e)}
+                                onChange={e => this.handleChange(e)}
                             />
                             <Form.Input 
                                 id='passwordConfirmation'
@@ -106,7 +107,7 @@ class SignupForm extends Component {
                                 type='passwordConfirmation' 
                                 placeholder='Confirm Password'
                                 value={this.state.passwordConfirmation}
-                                onChange={(e) => this.handleChange(e)}
+                                onChange={e => this.handleChange(e)}
                             />
                         </Form.Group>
                         <Form.Group widths='equal'>
