@@ -48,7 +48,7 @@ class Exchange extends Component {
                                 </Header>
                                 <Segment basic>
                                     <Comment.Group>
-                                        <div id='commentGroup'>
+                                        <div id='messages'>
                                             {this.props.exchange.messages.map(message => 
                                                 <Message 
                                                     key={message.id} 

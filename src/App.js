@@ -38,6 +38,20 @@ class App extends Component {
     .then(data => this.props.getExchanges(data))
   }
   
+  fetchReviews = () => {
+    fetch('http://localhost3000/api/v1/reviews', {
+      headers: {
+        'Authorization': `Bearer ${localStorage.jwt}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then(resp => resp.json())
+    .then(data => {
+        this.props.getReviews(data)
+    })
+  }
+  
   render() {
     
     if (this.props.currentUser.username) {
@@ -75,7 +89,7 @@ class App extends Component {
 
           {/* had to be changed to this, because state was lost in SingleUserProfilePage otherwise: */}
 
-          {/* <Route exact path='/users/:username' 
+          {/* <Route exact strict path='/users/:username' 
           component={SingleUserProfilePage}/> */}
 
           <Route exact strict path='/messages'>

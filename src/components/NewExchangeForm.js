@@ -59,7 +59,7 @@ class NewExchangeForm extends Component {
         this.renderModal()
         this.resetState()  
         alert('Message sent successfully')
-        // window.location.href='/messages'
+        window.location.href='/messages'
     }
 
     renderModal = () => {

@@ -38,7 +38,9 @@ class NewMessageForm extends Component {
             let message = document.createElement('div')
             message.innerText = 'Message sent'
             message.style = 'color: black'
-            document.querySelector('#commentGroup').appendChild(message)
+            document.querySelector('#messages').appendChild(message)
+            alert('your message was sent')
+            window.location.href='/messages'
         })
         this.setState({
             body: ''

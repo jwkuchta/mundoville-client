@@ -1,7 +1,7 @@
 import React from 'react'
 import { Segment, Header, Rating } from 'semantic-ui-react'
 
-const Review = (props) => {
+const Review = props => {
 
     let timestamp = props.review.created_at
     let date = timestamp.split('T')[0]
@@ -10,7 +10,7 @@ const Review = (props) => {
 
     return (
         <div>
-            <Header as='h5' attached='top'>
+            <Header as='h4' attached='top'>
                 <Rating defaultRating={props.review.rating} maxRating={5} disabled />
                 <div style={{textAlign: 'left', float: 'left'}}>{formattedDate}</div>
             </Header>

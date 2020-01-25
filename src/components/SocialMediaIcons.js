@@ -15,7 +15,7 @@ class SocialMediaIcons extends Component {
                 <Menu.Item></Menu.Item>
                 <Menu.Item>
                 <Popup content='open messenger' trigger={<Icon fitted
-                    inverte
+                    inverted
                     name='home' 
                     size='large' 
                     className='facebook messenger' 
