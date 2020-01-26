@@ -6,45 +6,17 @@ import { fetchUsers } from '../redux/actions'
 import UserInfo from '../components/UserInfo'
 import SideBar from '../components/SideBar'
 
-class SingleUserProfilePage extends Component {
-
-    constructor() {
-        super()
-        this.state = {users: []}
-    }
-
-    fetchUsers = () => {
-        fetch('http://localhost:3000/api/v1/users', {
-      headers: {
-        'Authorization': `Bearer ${localStorage.jwt}`,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    })
-    .then(resp => resp.json())
-    .then(data => this.setState({users: data}))
-    }
+class UserProfilePage extends Component {
 
     render() {
-
         console.log(this.props)
 
         let allUsers
         let username = window.location.pathname.split('/')[2]
-
-        if (this.props.users) {
-            allUsers = this.props.users
-        } else {
-            this.fetchUsers()
-            // allUsers = this.state.users
-        }
-        
         allUsers = this.props.users ? this.props.users : this.state.users
         let user = allUsers.filter(user => user.username === username)[0]
 
         let profile_pic_url = `http://localhost:3000/${user.profile_pic_url}`
-
-        // debugger
         
         return (
             <Container>
@@ -77,11 +49,14 @@ class SingleUserProfilePage extends Component {
 
 const mapSTP = state => {
     // debugger
-    return {users: state.users}
+    return {
+        users: state.users,
+        selectedUser: state.selectedUser
+    }
 }
 
 // const mapDTP = dispatch => {
 //     return {fetchUsers: users => dispatch(fetchUsers(users))}
 // }
 
-export default connect(mapSTP)(SingleUserProfilePage)
+export default connect(mapSTP)(UserProfilePage)

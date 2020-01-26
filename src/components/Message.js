@@ -7,13 +7,15 @@ class Message extends Component {
     
     render() {
 
-        let messageTimestamp = this.props.message.created_at
+        const { message, user, currentUser } = this.props
+
+        let timestamp = message.created_at
         
-        let date = messageTimestamp.split('T')[0]
+        let date = timestamp.split('T')[0]
         let splitDate = date.split('-')
         let formattedDate = splitDate[1] + '-' + splitDate[2] + '-' + splitDate[0]
 
-        let time = messageTimestamp.split('T')[1].split('.')[0]
+        let time = timestamp.split('T')[1].split('.')[0]
         let splitTime = time.split(':')
         let hour
         let amPm
@@ -30,13 +32,12 @@ class Message extends Component {
         }
         let formattedTime = hour + ':' + splitTime[1] + amPm
 
-        let sender = this.props.message.user_id === this.props.user.id ? this.props.user : this.props.currentUser
+        let sender = message.user_id === user.id ? user : currentUser
 
-        let url = sender.username === this.props.currentUser.username ? '/profile' : `/users/${sender.username}`
-
+        let url = sender.username === currentUser.username ? '/profile' : `/users/${sender.username}`
         
-        if (this.props.message.user_id !== this.props.currentUser.id && this.props.message.read === false) {
-            fetch(`http://localhost:3000/api/v1/messages/${this.props.message.id}`, {
+        if (message.user_id !== currentUser.id && message.read === false) {
+            fetch(`http://localhost:3000/api/v1/messages/${message.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Authorization': `Bearer ${localStorage.jwt}`,
@@ -58,15 +59,15 @@ class Message extends Component {
                     <Comment.Author 
                         as='a' 
                         onClick={() => window.location.href = url}>
-                        {sender.username === this.props.currentUser.username ? sender.username + ' (you)' : sender.username}
+                        {sender.username === currentUser.username ? sender.username + ' (you)' : sender.username}
                     </Comment.Author>
                     <Comment.Metadata style={{color: 'grey'}}>
                         <div>{formattedDate} at {formattedTime}</div>
                     </Comment.Metadata>
                     <Comment.Text style={{color: 'black'}}>
-                        {this.props.message.body}
+                        {message.body}
                     </Comment.Text>
-                    {this.props.message.user_id === this.props.currentUser.id && this.props.message.read === false
+                    {message.user_id === currentUser.id && message.read === false
                         ? <Comment.Metadata style={{color: 'red'}} content='UNREAD'/>
                             : null}
                 </Comment.Content>

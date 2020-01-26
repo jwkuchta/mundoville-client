@@ -10,7 +10,7 @@ import UsersPage from './containers/UsersPage'
 import { fetchProfile, fetchUsers, getExchanges } from './redux/actions'
 import EditProfilePage from './containers/EditProfilePage'
 import MessagesContainer from './containers/MessagesContainer'
-import SingleUserProfilePage from './containers/SingleUserProfilePage'
+import UserProfilePage from './containers/UserProfilePage'
 import AboutPage from './components/AboutPage'
 
 class App extends Component {
@@ -54,7 +54,7 @@ class App extends Component {
   
   render() {
     
-    if (this.props.currentUser.username) {
+    if (this.props.currentUser) {
       this.fetchExchanges()
     }
 
@@ -84,13 +84,13 @@ class App extends Component {
           </Route>
 
           <Route exact strict path='/users/:username'>
-            <div className='mainPage'><SingleUserProfilePage/></div>
+            <div className='mainPage'><UserProfilePage/></div>
           </Route>
 
-          {/* had to be changed to this, because state was lost in SingleUserProfilePage otherwise: */}
+          {/* had to be changed to this, because state was lost in UserProfilePage otherwise: */}
 
           {/* <Route exact strict path='/users/:username' 
-          component={SingleUserProfilePage}/> */}
+          component={UserProfilePage}/> */}
 
           <Route exact strict path='/messages'>
             {!localStorage.jwt

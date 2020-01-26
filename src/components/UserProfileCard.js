@@ -5,7 +5,7 @@ import { Card, Image, Button } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
 import { selectedUser } from '../redux/actions'
 
-class SingleUserProfileCard extends Component {
+class UserProfileCard extends Component {
 
     render() {
         // debugger
@@ -30,4 +30,4 @@ const mapDTP = dispatch => {
     return {selectedUser: user => dispatch(selectedUser(user))}
 }
 
-export default connect(null, mapDTP)(SingleUserProfileCard)
+export default connect(null, mapDTP)(UserProfileCard)

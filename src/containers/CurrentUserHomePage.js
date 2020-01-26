@@ -132,7 +132,7 @@ class CurrentUserHomePage extends Component {
                     </Grid.Row>    
                     </Grid.Column>
                     <Grid.Column width={11}>
-                        <UserInfo user={this.props.currentUser} potato={this.props.currentUser} />
+                        <UserInfo user={this.props.currentUser} />
                     </Grid.Column>
                 </Grid.Row>
                 </Grid>

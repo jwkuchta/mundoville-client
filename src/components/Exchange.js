@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Segment, Header, Modal, Button, Comment, Icon, Image } from 'semantic-ui-react'
@@ -8,22 +9,19 @@ import placeholder from '../photos/profilePicPlaceholder.png'
 class Exchange extends Component {
 
     render() {
-        if (this.props.users.length > 0) {
 
-            const userId = this.props.exchange.first_user_id === this.props.currentUser.id 
-                ? this.props.exchange.second_user_id : this.props.exchange.first_user_id
+        const { exchange, users, currentUser } = this.props
         
-            const otherUser = this.props.users.filter(user => user.id === userId)[0]
-
-            const unread = this.props.exchange.messages.filter(
-                message => message.user_id === otherUser.id && message.read === false)
+        if (users.length > 0) {
+            const userId = exchange.first_user_id === currentUser.id ? exchange.second_user_id : exchange.first_user_id
+            const otherUser = users.filter(user => user.id === userId)[0]
+            const unread = exchange.messages.filter(m => m.user_id === otherUser.id && m.read === false)
         
-            let message = otherUser.username
-
+            let infoMessage = otherUser.username
             if (unread.length === 1) {
-                message = otherUser.username + ' --  ' + unread.length + ' unread message'
+                infoMessage =  unread.length + ' unread message from ' + otherUser.username
             } else if (unread.length > 1) {
-                message = otherUser.username + ' --  ' + unread.length + ' unread messages'
+                infoMessage = unread.length + ' unread messages from ' + otherUser.username
             }
 
             const otherUserPic = `http://localhost:3000/${otherUser.profile_pic_url}`
@@ -35,7 +33,7 @@ class Exchange extends Component {
                         size='large' 
                         floated='left' 
                         src={otherUser.profile_pic_url ? otherUserPic : placeholder} /> 
-                        <a href={`/users/${otherUser.username}`}>{message}</a>
+                        <a href={`/users/${otherUser.username}`}>{infoMessage}</a>
                         <Modal 
                             closeIcon
                             onClose={() => window.location.reload()}
@@ -49,19 +47,19 @@ class Exchange extends Component {
                                 <Segment basic>
                                     <Comment.Group>
                                         <div id='messages'>
-                                            {this.props.exchange.messages.map(message => 
+                                            {exchange.messages.map(message => 
                                                 <Message 
                                                     key={message.id} 
                                                     message={message} 
                                                     user={otherUser}
-                                                    currentUser={this.props.currentUser}
+                                                    currentUser={currentUser}
                                                 />
                                             )}
                                         </div>
                                         <NewMessageForm 
-                                            exchange={this.props.exchange}
+                                            exchange={exchange}
                                             user={otherUser}
-                                            currentUser={this.props.currentUser}
+                                            currentUser={currentUser}
                                         /><br/>
                                     </Comment.Group>
                                 </Segment>

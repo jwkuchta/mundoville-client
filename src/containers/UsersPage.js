@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 // import { getUsers } from '../redux/actions'
 import { Grid, Container } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import SingleUserProfileCard from '../components/SingleUserProfileCard'
+import UserProfileCard from '../components/UserProfileCard'
 import SearchBar from '../components/SearchBar'
 import { filterUsers } from '../redux/actions'
 
@@ -24,7 +24,7 @@ class UsersPage extends Component  {
                     <Grid.Row>
                         {filtered.map(user => <>
                             <Grid.Column key={user.id}>
-                                <SingleUserProfileCard user={user} />
+                                <UserProfileCard user={user} />
                                 <Grid.Row></Grid.Row>
                             </Grid.Column>
                             </>

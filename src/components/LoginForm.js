@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {Segment, Form, Button} from 'semantic-ui-react'
+import React, { Component } from 'react'
+import { Segment, Form, Button } from 'semantic-ui-react'
 
 class LoginForm extends Component {
 

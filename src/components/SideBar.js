@@ -16,65 +16,53 @@ class SideBar extends Component {
     render() {
 
         // debugger
-        // console.log(this.props)
+        console.log(this.props)
 
-        const { exchanges, currentUser, user, currentUserFromProps } = this.props
-
-        if (user && currentUser && exchanges) {
-            let setUser = currentUser ? currentUser : currentUserFromProps
-    
-            let exchanges = exchanges.filter(e => e.first_user_id === user.id || e.second_user_id === user.id)
-    
-            // debugger
-    
-            return (
-                <Card>
-                    <Card.Content>
-                        <FriendButton 
-                            currentUser={setUser}
-                            user={this.props.user}
-                            handleFriending={this.props.handleFriending}
-                            handleUnfriending={this.props.handleUnfriending}
+        return (
+            <Card>
+                <Card.Content>
+                    {/* <FriendButton 
+                        currentUser={setUser}
+                        user={this.props.user}
+                        handleFriending={this.props.handleFriending}
+                        handleUnfriending={this.props.handleUnfriending}
+                        /> */}
+                </Card.Content>
+                <Card.Content style={{color: 'teal'}}>
+                    {this.props.user.rating
+                        ? <Rating 
+                            icon='star' 
+                            defaultRating={this.props.user.rating} 
+                            maxRating={5} 
+                            disabled
                         />
-                    </Card.Content>
-                    <Card.Content style={{color: 'teal'}}>
-                        {this.props.user.rating
-                            ? <Rating 
-                                icon='star' 
-                                defaultRating={this.props.user.rating} 
-                                maxRating={5} 
-                                disabled
-                            />
-                                : null }<br/>
-                        {this.props.user.rating
-                            ? this.props.user.rating + '/5'
-                                : 'This user has no reviews yet'}<br/><br/>
-                        <Modal 
-                            trigger={<Button basic content='Read All Reviews'/>} 
-                            closeIcon
-                        >
-                            <Modal.Header content={`Reviews for ${this.props.user.username}`} />
-                            <Modal.Content>
-                                {this.props.user.reviews.length < 1 
-                                    ? <p style={{color: 'black'}}>This user has no reviews yet</p>
-                                        : null}
-                                {this.props.user.reviews.reverse().map(review => 
-                                        <Review key={review.id} review={review} />
-                                    )}
-                            </Modal.Content>
-                        </Modal><br/><br/>
-                        {exchanges.length > 0 && this.props.user.id !== setUser.id
-                            ? <ReviewModal 
-                                user={this.props.user}
-                                currentUser={this.props.currentUser}
-                            />
-                                : null}
-                    </Card.Content>
-                </Card>
-            )
-        } else {
-            return null
-        }
+                            : null }<br/>
+                    {this.props.user.rating
+                        ? this.props.user.rating + '/5'
+                            : 'This user has no reviews yet'}<br/><br/>
+                    <Modal 
+                        trigger={<Button basic content='Read All Reviews'/>} 
+                        closeIcon
+                    >
+                        <Modal.Header content={`Reviews for ${this.props.user.username}`} />
+                        <Modal.Content>
+                            {this.props.user.reviews.length < 1 
+                                ? <p style={{color: 'black'}}>This user has no reviews yet</p>
+                                    : null}
+                            {this.props.user.reviews.reverse().map(review => 
+                                <Review key={review.id} review={review} />
+                            )}
+                        </Modal.Content>
+                    </Modal><br/><br/>
+                    {this.props.exchanges.length > 0 && this.props.user.id !== this.props.user.id
+                        ? <ReviewModal 
+                            user={this.props.user}
+                            currentUser={this.props.currentUser}
+                        />
+                            : null}
+                </Card.Content>
+            </Card>
+        )
     }
 }
 
