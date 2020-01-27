@@ -26,10 +26,6 @@ class FriendButton extends Component {
         } else {
             return null
         }
-
-        return (
-            <Button></Button>
-        )
     }
 }
 

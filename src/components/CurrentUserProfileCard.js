@@ -24,18 +24,13 @@ class ProfileCard extends Component {
             <Container>
             <Card>
                     <Card.Content>
-                        <Image src={currentUser.profile_pic_url ? pic_url : placeholder} />
-                        <Card.Header as='h3'>
+                        <Image src={currentUser.profile_pic_url ? pic_url : placeholder} /><br></br>
+                        <Card.Header as='h3'><br></br>
                             {header}
                         </Card.Header>
-                        <PicUpload />
+                        <PicUpload /><br></br>
                         <Button className='ui button'>
                             <Link to={`/users/${currentUser.username}/edit`}>Edit your profile</Link>
-                        </Button>
-                    </Card.Content>
-                    <Card.Content>
-                        <Button className='ui button'>
-                            
                         </Button>
                     </Card.Content>
                     <Card.Content style={{color: 'teal'}}>

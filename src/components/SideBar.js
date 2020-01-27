@@ -4,18 +4,18 @@ import { Card, Modal, Button, Rating, Grid } from 'semantic-ui-react'
 import FriendButton from './FriendButton'
 // import SendMessageButton from './SendMessageButton'
 import Review from './Review'
-import ReviewModal from './ReviewModal'
+import AddReviewModal from './AddReviewModal'
 
 class SideBar extends Component {
 
     render() {
 
-        // debugger
+        debugger
 
         return (
             <Card>
                 <Card.Content style={{color: 'teal'}}>
-                    {this.props.user.rating
+                    {this.props.user.reviews.length > 0
                         ? <Rating 
                             icon='star' 
                             defaultRating={this.props.user.rating} 
@@ -33,19 +33,23 @@ class SideBar extends Component {
                         <Modal.Header content={`Reviews for ${this.props.user.username}`} />
                         <Modal.Content>
                             {this.props.user.reviews.length < 1 
-                                ? <p style={{color: 'black'}}>This user has no reviews yet</p>
+                                ? <h1>This user has no reviews yet</h1>
                                     : null}
                             {this.props.user.reviews.reverse().map(review => 
                                 <Review key={review.id} review={review} />
                             )}
                         </Modal.Content>
                     </Modal><br/><br/>
-                    {this.props.exchanges.length > 0 && this.props.user.id !== this.props.currentUser.id
+                    {/* {this.props.exchanges.length > 0 && this.props.user.id !== this.props.currentUser.id
                         ? <ReviewModal 
                             user={this.props.user}
                             currentUser={this.props.currentUser}
                         />
-                            : null}
+                            : null} */}
+                    <AddReviewModal 
+                        user={this.props.user}
+                        currentUser={this.props.currentUser}
+                    />
                 </Card.Content>
                 <Card.Content>
                     <FriendButton

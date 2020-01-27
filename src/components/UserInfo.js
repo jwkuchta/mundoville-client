@@ -27,8 +27,8 @@ class UserInfo extends Component {
                 <Grid.Row>Occupation: &nbsp; {user.occupation} </Grid.Row> */}
                 <Grid.Row>Location: &nbsp; {user.city}, {user.country} </Grid.Row>
                 <Grid.Row>Languages: &nbsp; {user.language1}, {user.language2}, {user.language3} </Grid.Row>
-                <Divider></Divider>
-                <Grid.Row>Bio: &nbsp; {bio} </Grid.Row>
+                <Divider></Divider><br></br>
+                <Grid.Row>Bio: &nbsp; {bio} </Grid.Row><br></br><br></br>
                 <Grid.Row className='teal-background'>
                     <SocialMediaIcons />
                 </Grid.Row>

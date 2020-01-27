@@ -28,16 +28,21 @@ class UserProfilePage extends Component {
                 <br></br><br></br>
                     <Grid.Row>
                         <Grid.Column width={5}>
+                            
                             <Grid.Row>
                                 <UserProfileCard user={user}/>
                             </Grid.Row>
+
                             <Grid.Row>
                                 <SideBar user={user} />
                             </Grid.Row>
+
                         </Grid.Column>
+
                         <Grid.Column width={11}>
                             <UserInfo user={user} />
                         </Grid.Column>
+                        
                     </Grid.Row>
                 </Grid>
             </Container>

@@ -12,10 +12,12 @@ const Review = props => {
         <div>
             <Header as='h4' attached='top'>
                 <Rating defaultRating={props.review.rating} maxRating={5} disabled />
+                by
+                
                 <div style={{textAlign: 'left', float: 'left'}}>{formattedDate}</div>
             </Header>
-            <Segment attached style={{color: 'white'}}>
-                {props.review.content}
+            <Segment attached style={{color: 'teal'}} >
+                {props.review.body}
             </Segment>
         </div>
     )

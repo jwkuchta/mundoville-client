@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Form } from 'semantic-ui-react'
 
 class PicUpload extends Component {
     constructor(props) {
@@ -56,14 +57,14 @@ class PicUpload extends Component {
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl} alt='preview'/> : null
         console.log(this.state)
         return (
-            <form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit}>
                 <label htmlFor="profile_pic"></label>
-                <button>upload a picture</button>
                 <input type='file' id='profile_pic' 
                 value={this.state.profile_pic} 
                 onChange={e => this.handleFile(e)} />
+                <button>save</button>
                 {preview}
-            </form>
+            </Form>
         )
     }
 }

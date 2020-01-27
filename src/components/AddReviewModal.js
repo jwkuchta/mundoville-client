@@ -16,7 +16,7 @@ class AddReviewModal extends Component {
 
     handleChange = e => {
         this.setState({
-            content: e.target.value
+            body: e.target.value
         })
     }
 
@@ -34,12 +34,12 @@ class AddReviewModal extends Component {
     handleSubmit = (e, values) => {
         e.preventDefault()
 
-        let reviewObj = {
-            reviewedId: values.reviewedId,
-            userId: values.userId,
-            rating: values.rating,
-            content: values.content
-        }
+        // let reviewObj = {
+        //     reviewed_id: values.reviewedId,
+        //     user_id: values.userId,
+        //     rating: values.rating,
+        //     body: values.body
+        // }
 
         if (this.state.rating) {
             fetch('http://localhost:3000/api/v1/reviews', {
@@ -49,10 +49,16 @@ class AddReviewModal extends Component {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify({reviewObj})
+                body: JSON.stringify({
+                    reviewed_id: values.reviewedId,
+                    user_id: values.userId,
+                    rating: values.rating,
+                    body: values.body
+                })
             })
             .then(resp => resp.json())
             .then(() => window.location.reload())
+            alert('Review added successfully')
         } else {
             alert('Rating invalid')
         }
