@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-import {Container, Grid, Image} from 'semantic-ui-react'
-import {signup} from '../photos/signup.png'
-import {explore} from '../photos/explore.png'
-import {world} from '../photos/world.png'
-import LoginModal from '../containers/LoginModal'
+import {Container, Grid } from 'semantic-ui-react'
+// import {signup} from '../photos/signup.png'
+// import {explore} from '../photos/explore.png'
+// import {world} from '../photos/world.png'
+// import LoginModal from '../containers/LoginModal'
 
 class AboutPage extends Component {
 

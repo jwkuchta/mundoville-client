@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { Card, Image, Button } from 'semantic-ui-react'
+// import { Link } from 'react-router-dom'
+import { Card, Image } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
 import { connect } from 'react-redux'
-import PicUpload from './PicUpload'
 // import EditProfilePage from '../containers/EditProfilePage'
 
-class ProfileCard extends Component {
+class UserCard extends Component {
 
     render() {
         
@@ -21,10 +20,6 @@ class ProfileCard extends Component {
                         <Card.Header as='h3'>
                             {this.props.currentUser.username}
                         </Card.Header>
-                        <PicUpload />
-                        <Button className='ui button'>
-                            <Link to={`/users/${this.props.currentUser.username}/edit`}>Edit your profile</Link>
-                        </Button>
                     </Card.Content>
                 </Card>
             </>
@@ -38,5 +33,5 @@ const mapStateToProps = state => {
         users: state.users
     }
 }
-export default connect(mapStateToProps)(ProfileCard)
+export default connect(mapStateToProps)(UserCard)
 

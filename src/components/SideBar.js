@@ -1,33 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Card, Modal, Button, Rating } from 'semantic-ui-react'
+import { Card, Modal, Button, Rating, Grid } from 'semantic-ui-react'
 import FriendButton from './FriendButton'
 // import SendMessageButton from './SendMessageButton'
 import Review from './Review'
 import ReviewModal from './ReviewModal'
-// import placeholder from '../photos/profilePicPlaceholder.png'
 
 class SideBar extends Component {
-
-    constructor(props) {
-        super(props)
-    }
 
     render() {
 
         // debugger
-        console.log(this.props)
 
         return (
             <Card>
-                <Card.Content>
-                    {/* <FriendButton 
-                        currentUser={setUser}
-                        user={this.props.user}
-                        handleFriending={this.props.handleFriending}
-                        handleUnfriending={this.props.handleUnfriending}
-                        /> */}
-                </Card.Content>
                 <Card.Content style={{color: 'teal'}}>
                     {this.props.user.rating
                         ? <Rating 
@@ -54,12 +40,20 @@ class SideBar extends Component {
                             )}
                         </Modal.Content>
                     </Modal><br/><br/>
-                    {this.props.exchanges.length > 0 && this.props.user.id !== this.props.user.id
+                    {this.props.exchanges.length > 0 && this.props.user.id !== this.props.currentUser.id
                         ? <ReviewModal 
                             user={this.props.user}
                             currentUser={this.props.currentUser}
                         />
                             : null}
+                </Card.Content>
+                <Card.Content>
+                    <FriendButton
+                        currentUser={this.props.currentUser}
+                        user={this.props.user}
+                        handleFriending={this.props.handleFriending}
+                        handleUnfriending={this.props.handleUnfriending}
+                        />
                 </Card.Content>
             </Card>
         )
@@ -73,25 +67,6 @@ const mapSTP = state => {
     }
 }
 
-// const mapDTP = dispatch => {
-//     return {
-//         handleFriending: (user, currentUser) => {
-//             currentUser.friends = [...currentUser.friendships, user]
-//             dispatch({
-//                 type: 'FRIEND',
-//                 user: currentUser
-//             })
-//         },
-//         handleUnfriending: (user, currentUser) => {
-//             currentUser.friendships = [...currentUser.friendships.filter(u => u.id !== user.message)]
-//             dispatch({
-//                 type: 'UNFRIEND',
-//                 payload: currentUser
-//             })
-//         }
-//     }
-// }
-
-// export default connect(mapSTP, mapDTP)(SideBar)
 export default connect(mapSTP)(SideBar)
+
 

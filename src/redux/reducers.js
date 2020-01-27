@@ -21,7 +21,8 @@ let initState = {
         initial: 'initial'
     },
     filteredUsers: [],
-    selectedCountry: ''
+    selectedCountry: '',
+    friendships: []
 }
 
 //reducer for getting all users
@@ -152,6 +153,18 @@ let countrySelectionReducer = (state=initState.selectedCountry, action) => {
     }
 }
 
+let friendshipsReducer = (state=initState.friendships, action) => {
+    switch(action.type) {
+        case 'ADD_FRIENDSHIP':
+            return {...state, friendships: [...state.friendships, action.friendship]}
+        case 'REMOVE_FRIENDSHIP':
+            return {friendships: state.friendships.filter(f => f.id !== action.friendship.id)}
+        default:
+            return state
+    }
+}
+
+
 let rootReducer = combineReducers({
     users: usersReducer,
     options: optionsReducer,
@@ -162,7 +175,8 @@ let rootReducer = combineReducers({
     search: searchReducer,
     condition: conditionReducer,
     filteredUsers: filteredUsersReducer,
-    countrySelection: countrySelectionReducer
+    countrySelection: countrySelectionReducer,
+    friendships: friendshipsReducer
 })
 
 export default rootReducer
