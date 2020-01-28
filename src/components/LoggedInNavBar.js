@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Container, Image, Icon, Menu, Popup } from 'semantic-ui-react'
 import logo_white from '../photos/logo_white.png'
 
-const LoggedInNavBar = (props) => {
+const LoggedInNavBar = () => {
     
     const handleLogOut = () => {
         localStorage.clear()

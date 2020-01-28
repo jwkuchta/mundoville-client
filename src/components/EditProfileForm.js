@@ -98,12 +98,8 @@ class EditProfileForm extends Component {
         })
     }
 
-    handleClick = e => {
-        console.log(e.target)
-    }
-
     render() {
-        console.log(this.state)
+        // console.log(this.state)
 
         return (
             <Form 

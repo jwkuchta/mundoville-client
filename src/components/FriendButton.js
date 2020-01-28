@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import AddFriendButton from './AddFriendButton'
 import RemoveFriendButton from './RemoveFriendButton'
-import { Button } from 'semantic-ui-react'
+// import { Button } from 'semantic-ui-react'
 
 class FriendButton extends Component {
 
     render() {
-
         // debugger
         
         const f1 = this.props.currentUser.friendships.filter(f => f.friend_id === this.props.user.id)
@@ -19,8 +18,8 @@ class FriendButton extends Component {
             return (
                 <div>
                     {friends.length < 1
-                        ?  (<AddFriendButton user={this.props.user} currentUser={this.props.currentUser} /> )
-                        :  (<RemoveFriendButton user={this.props.user} currentUser={this.props.currentUser} />)}
+                        ?  <AddFriendButton user={this.props.user} currentUser={this.props.currentUser} /> 
+                        :  <RemoveFriendButton user={this.props.user} currentUser={this.props.currentUser} />}
                 </div>
             )
         } else {

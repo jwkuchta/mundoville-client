@@ -3,17 +3,14 @@ import { Modal, Button, Form, Rating } from 'semantic-ui-react'
 
 class AddReviewModal extends Component {
     
-    constructor() {
-        super()
 
-        this.state = {
-            rating: '',
-            body: '',
-            userId: '',
-            reviewedId: ''
-        }
+    state = {
+        rating: '',
+        body: '',
+        userId: '',
+        reviewedId: ''
     }
-
+ 
     handleChange = e => {
         this.setState({
             body: e.target.value
@@ -33,13 +30,6 @@ class AddReviewModal extends Component {
 
     handleSubmit = (e, values) => {
         e.preventDefault()
-
-        // let reviewObj = {
-        //     reviewed_id: values.reviewedId,
-        //     user_id: values.userId,
-        //     rating: values.rating,
-        //     body: values.body
-        // }
 
         if (this.state.rating) {
             fetch('http://localhost:3000/api/v1/reviews', {

@@ -1,17 +1,18 @@
-import React from 'react'
-import { Container, Image} from 'semantic-ui-react'
+import React  from 'react'
+import { Container, Image } from 'semantic-ui-react'
 import sakura from '../photos/sakura.jpg'
+import sakura2 from '../photos/sakura2.gif'
 import logo2 from '../photos/logo2.png'
 import LoginModal from './LoginModal'
 
 const HomePage = () => {
     
     return (
-        <Container fluid>
+        <Container fluid className="home">
             <Image className='background-img'
                 fluid 
                 // fluid - can take up the whole container
-                src={sakura}
+                src={sakura2}
             />
             <Container fluid className='app-logo'>
                 <Image 
@@ -20,7 +21,7 @@ const HomePage = () => {
                     src={logo2} 
                     alt='logo' 
                     href='/'
-                />
+                /><br></br>
             </Container>
             <Container fluid className='main-page-description'>
                 <h3>It's just like couch surfing</h3>

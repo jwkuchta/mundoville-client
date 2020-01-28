@@ -4,7 +4,6 @@ import { Card, Image, Button, Container, Rating } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
 import { connect } from 'react-redux'
 import PicUpload from './PicUpload'
-// import Review from './Review'
 
 class ProfileCard extends Component {
 

@@ -13,32 +13,6 @@ export const languageOptions2 = [
     {key: 'Other', text: 'Other', value: 'Other'}
 ]
 
-export const countryList = [
-    { key: 'af', value: 'Afghanistan', flag: 'af', text: 'Afghanistan' },
-    { key: 'ax', value: 'Aland Islands', flag: 'ax', text: 'Aland Islands' },
-    { key: 'al', value: 'Albania', flag: 'al', text: 'Albania' },
-    { key: 'dz', value: 'Algeria', flag: 'dz', text: 'Algeria' },
-    { key: 'as', value: 'American Samoa', flag: 'as', text: 'American Samoa' },
-    { key: 'ad', value: 'Andorra', flag: 'ad', text: 'Andorra' },
-    { key: 'ao', value: 'Angola', flag: 'ao', text: 'Angola' },
-    { key: 'ai', value: 'Anguilla', flag: 'ai', text: 'Anguilla' },
-    { key: 'ag', value: 'Antigua', flag: 'ag', text: 'Antigua' },
-    { key: 'ar', value: 'Argentina', flag: 'ar', text: 'Argentina' },
-    { key: 'am', value: 'Armenia', flag: 'am', text: 'Armenia' },
-    { key: 'aw', value: 'Aruba', flag: 'aw', text: 'Aruba' },
-    { key: 'au', value: 'Australia', flag: 'au', text: 'Australia' },
-    { key: 'at', value: 'Austria', flag: 'at', text: 'Austria' },
-    { key: 'az', value: 'Azerbaijan', flag: 'az', text: 'Azerbaijan' },
-    { key: 'bs', value: 'Bahamas', flag: 'bs', text: 'Bahamas' },
-    { key: 'bh', value: 'Bahrain', flag: 'bh', text: 'Bahrain' },
-    { key: 'bd', value: 'Bangladesh', flag: 'bd', text: 'Bangladesh' },
-    { key: 'bb', value: 'Barbados', flag: 'bb', text: 'Barbados' },
-    { key: 'by', value: 'Belarus', flag: 'by', text: 'Belarus' },
-    { key: 'be', value: 'Belgium', flag: 'be', text: 'Belgium' },
-    { key: 'bz', value: 'Belize', flag: 'bz', text: 'Belize' },
-    { key: 'bj', value: 'Benin', flag: 'bj', text: 'Benin' },
-  ]
-
   export const countries = [
     {"text":"Afghanistan","key":"AF","value":"Afghanistan","flag":"af"},
     {"text":"Åland Islands","key":"AX","value":"Åland Islands","flag":"ax"},

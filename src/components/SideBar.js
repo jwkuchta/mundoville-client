@@ -10,7 +10,7 @@ class SideBar extends Component {
 
     render() {
 
-        debugger
+        // debugger
 
         return (
             <Card>

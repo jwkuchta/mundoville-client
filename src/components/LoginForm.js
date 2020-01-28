@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Segment, Form, Button } from 'semantic-ui-react'
+import { Segment, Form, Button, Message } from 'semantic-ui-react'
 
 class LoginForm extends Component {
 
@@ -8,7 +8,8 @@ class LoginForm extends Component {
         this.state = {
             username: '',
             password: '',
-            user: false
+            user: false,
+            errorMessage: false
         }
     }
 
@@ -46,7 +47,8 @@ class LoginForm extends Component {
                     user: true
                 })
             } else {
-                alert('Invalid Username or Password')
+                // alert('Invalid Username or Password')
+                this.setState({errorMessage: true})
             }
         })
     }
@@ -66,7 +68,7 @@ class LoginForm extends Component {
                                 placeholder='Username'
                                 value={this.state.username}
                                 onChange={(e) => this.handleChange(e)}
-                            />
+                                />
                         </Form.Group>
                         <Form.Group>
                             <Form.Input 
@@ -76,8 +78,16 @@ class LoginForm extends Component {
                                 placeholder='Password'
                                 value={this.state.password}
                                 onChange={(e) => this.handleChange(e)}
-                            />
+                            /><br></br>  
                         </Form.Group><br/>
+                            {this.state.errorMessage ? 
+                                <Form.Group>
+                                    <Form error>
+                                        <Message error content='incorrect username or password'/>
+                                    </Form>
+                                </Form.Group> 
+                            :
+                            null}
                         <Form.Group >
                             <Button fluid type='submit'>Sign In</Button>
                         </Form.Group>

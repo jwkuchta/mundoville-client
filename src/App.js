@@ -4,7 +4,7 @@ import './App.css'
 import { Route, Switch, Redirect } from "react-router-dom"
 import LoggedInNavBar from './components/LoggedInNavBar'
 import LoggedOutNavBar from './components/LoggedOutNavBar'
-import CurrentUserHomePage from './containers/CurrentUserHomePage'
+import CurrentUserProfilePage from './containers/CurrentUserProfilePage'
 import HomePage from './containers/HomePage'
 import UsersPage from './containers/UsersPage'
 import { fetchProfile, fetchUsers, getExchanges } from './redux/actions'
@@ -64,7 +64,8 @@ class App extends Component {
         <Switch>
 
           <Route exact path='/'>
-            {!localStorage.jwt ? <div className='mainPage'>< HomePage /></div> : <div className='mainPage'>< CurrentUserHomePage /></div>}
+            {!localStorage.jwt ? 
+            <div className='mainPage'>< HomePage /></div> : <div className='mainPage'>< CurrentUserProfilePage /></div>}
           </Route>
 
           <Route exact path='/login'>

@@ -57,7 +57,7 @@ class SearchBar extends Component {
     render() {
 
         // debugger
-        console.log(this.state.results)
+        // console.log(this.state.results)
 
         const { isLoading, value, results } = this.state
 

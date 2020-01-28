@@ -12,40 +12,8 @@ class UserCard extends Component {
 
         let profilePicUrl = `http://localhost:3000/${this.props.user.profile_pic_url}`
 
-    
-        // return (
-        //     <Card>
-        //         <Card.Content>
-        //             <Image src={this.props.user.profile_pic_url ? profilePicUrl : placeholder} />
-        //                 <Card.Header as='h3'> {this.props.user.username} </Card.Header>
-        //                 <Button className='ui button'>
-        //                     {window.location.pathname === 'http://localhost:3001/users' ?
-        //                     <Link to={`/users/${this.props.user.username}`} >See profile</Link>
-        //                     :
-        //                     <Link to={`/users/`} >Back to search</Link>
-        //                     }
-        //                     {/* <Link to={`/users/${this.props.user.username}`} >See profile</Link> */}
-        //                 </Button>
-        //         </Card.Content>
-        //     </Card>
-        // )
-
-        // return (
-        //     <Card>
-        //         <Card.Content>
-        //             <Image src={this.props.user.profile_pic_url ? profilePicUrl : placeholder} />
-        //                 <Card.Header as='h3'> {this.props.user.username} </Card.Header>
-        //                 {window.location.pathname === `http://localhost:3001/${this.props.user.username}` ?
-        //                 <Button><Link to={'/users'}></Link>Back to search</Button>
-        //                 :
-        //                 <Button><Link to={`/users/${this.props.user.username}`}></Link>See profile</Button>
-        //                 }
-        //         </Card.Content>
-        //     </Card>
-        // )
-
         return (
-            <Card>
+            <Card link style={{marginBottom: 25, padding: 10, backgroundColor: '#eeeeee'}}>
                 <Card.Content>
                     <Image src={this.props.user.profile_pic_url ? profilePicUrl : placeholder} />
                         <Card.Header as='h3'> {this.props.user.username} </Card.Header>
@@ -63,3 +31,5 @@ const mapDTP = dispatch => {
 }
 
 export default connect(null, mapDTP)(UserCard)
+
+{/* <Card link style={{marginBottom: 25, padding: 10, backgroundColor: '#eeeeee'}}> */}

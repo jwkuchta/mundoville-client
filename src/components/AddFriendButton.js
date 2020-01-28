@@ -2,14 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
 
-const AddFriendButton = (props) => {
+const AddFriendButton = props => {
 
     let currentPage = window.location.pathname
     let userId = props.currentUser.id 
     let friendId = props.user.id
     
     const addFriendFetch = (userId, friendId) => {
-
         fetch('http://localhost:3000/api/v1/friendships', {
             method: 'POST',
             headers: {
@@ -19,9 +18,9 @@ const AddFriendButton = (props) => {
             },
             body: JSON.stringify({user_id: userId, friend_id: friendId})
             })
-            .then(resp => resp.json())
-            .then(data => console.log(data))
-            window.location.href = currentPage
+        .then(resp => resp.json())
+        .then(data => console.log(data))
+        window.location.href = currentPage
     }
 
     return (
