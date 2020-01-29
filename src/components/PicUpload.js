@@ -1,101 +1,39 @@
-// import React, { Component } from 'react'
-// import { connect } from 'react-redux'
-// import { Form } from 'semantic-ui-react'
-
-// class PicUpload extends Component {
-//     constructor(props) {
-//         super(props)
-//         this.state = {
-//             photoFile: null,
-//             photoUrl: null
-//         }
-//     }
-
-//     handleInput = e => {
-//         this.setState({profile_pic: e.currentTarget.value})
-//     }
-
-//     handleSubmit = e => {
-//         e.preventDefault()
-//         const user = this.props.currentUser
-//         const formData = new FormData()
-        
-//         formData.append('user[id]', user.id)
-//         formData.append('user[profile_pic]', this.state.photoFile)
-
-//         this.addPhotoToUser(user, formData)
-//     }
-
-//     addPhotoToUser = (user, data) => {
-//         fetch(`http://localhost:3000/api/v1/users/${user.id}`, {
-//             method: 'PATCH',
-//             headers: {
-//                 'Authorization': `Bearer ${localStorage.jwt}`,
-//             },
-//             body: data
-//         })
-//         .then(resp => resp.text())
-//         .then(text => console.log('success!', text))
-//         .then(window.location.href = "/profile")
-//         .catch(error => console.log('Error:', error))
-//     }
-
-//     handleFile = e => {
-//         const file = e.target.files[0]
-//         const fileReader = new FileReader()
-//         fileReader.onloadend = () => {
-//             this.setState({photoFile: file, photoUrl: fileReader.result})
-//         }   
-
-//         if(file) {
-//             fileReader.readAsDataURL(file)
-//         }
-//     }
-
-//     render() {
-
-//         const preview = this.state.photoUrl ? <img src={this.state.photoUrl} alt='preview'/> : null
-//         console.log(this.state)
-//         return (
-//             <Form onSubmit={this.handleSubmit}>
-//                 <label htmlFor="profile_pic"></label>
-//                 <input type='file' id='profile_pic' 
-//                 value={this.state.profile_pic} 
-//                 onChange={e => this.handleFile(e)} />
-//                 <button>save</button>
-//                 {preview}
-//             </Form>
-//         )
-//     }
-// }
-
-// const mapSTP = state => {
-//     return {currentUser: state.currentUser}
-// }
-// export default connect(mapSTP)(PicUpload)
-
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Form } from 'semantic-ui-react'
-import Slider from '@material-ui/lab/Slider'
-import Cropper from 'react-easy-crop'
+import ReactCrop from "react-image-crop";
+import "react-image-crop/dist/ReactCrop.css";
 
 class PicUpload extends Component {
     constructor(props) {
         super(props)
         this.state = {
             photoFile: null,
-            photoUrl: null,
-            imageSrc: null,
-            crop: { x: 0, y: 0 },
-            zoom: 1,
-            aspect: 1 / 1,
+            src: null,
+            crop: {
+                unit: "%",
+                width: 30,
+                aspect: 1 / 1
+            },
+            croppedImageUrl: null,
+            croppedFileUrl: null
         }
     }
 
-    handleInput = e => {
-        this.setState({profile_pic: e.currentTarget.value})
-    }
+    onSelectFile = e => {
+        if (e.target.files && e.target.files.length > 0) {
+          const reader = new FileReader();
+          reader.addEventListener("load", () =>
+            this.setState({ src: reader.result })
+          );
+          reader.readAsDataURL(e.target.files[0]);
+        }
+        this.setState({photoFile: e.target.files[0]})
+    };
+
+    onImageLoaded = image => {
+        this.imageRef = image;
+    };
 
     handleSubmit = e => {
         e.preventDefault()
@@ -103,7 +41,7 @@ class PicUpload extends Component {
         const formData = new FormData()
         
         formData.append('user[id]', user.id)
-        formData.append('user[profile_pic]', this.state.photoFile)
+        formData.append('user[profile_pic]', this.state.croppedImage)
 
         this.addPhotoToUser(user, formData)
     }
@@ -117,84 +55,99 @@ class PicUpload extends Component {
             body: data
         })
         .then(resp => resp.text())
-        .then(text => console.log('success!', text))
         .then(window.location.href = "/profile")
         .catch(error => console.log('Error:', error))
     }
-
-    onCropChange = crop => {
-        this.setState({ crop })
-    }
     
-    onCropComplete = (croppedArea, croppedAreaPixels) => {
-        console.log(croppedArea, croppedAreaPixels)
-    }
+    onCropComplete = crop => {
+        this.makeClientCrop(crop);
+    };
     
-    onZoomChange = zoom => {
-        this.setState({ zoom })
-    }
-
-    onFileChange = async e => {
-        const file = e.target.files[0]
-        if (e.target.files && e.target.files.length > 0) {
-          const imageDataUrl = await this.readFile(e.target.files[0])
-          this.setState({
-            imageSrc: imageDataUrl,
-            crop: { x: 0, y: 0 },
-            zoom: 1,
-            photoFile: file, 
-            photoUrl: imageDataUrl
-          })
+    onCropChange = (crop) => {
+        this.setState({ crop });
+    };
+    
+    async makeClientCrop(crop) {
+        if (this.imageRef && crop.width && crop.height) {
+            const croppedImageUrl = await this.getCroppedImg(this.imageRef, crop, "newFile.jpeg");
+            this.setState({ croppedImageUrl });
         }
     }
+    
+    getCroppedImg(image, crop) {
+        const canvas = document.createElement("canvas");
+        const scaleX = image.naturalWidth / image.width;
+        const scaleY = image.naturalHeight / image.height;
+        canvas.width = crop.width;
+        canvas.height = crop.height;
+        const ctx = canvas.getContext("2d");
+    
+        ctx.drawImage(
+            image,
+            crop.x * scaleX,
+            crop.y * scaleY,
+            crop.width * scaleX,
+            crop.height * scaleY,
+            0,
+            0,
+            crop.width,
+            crop.height
+        );
 
-    readFile(file) {
-        return new Promise(resolve => {
-          const reader = new FileReader()
-          reader.addEventListener('load', () => resolve(reader.result), false)
-          reader.readAsDataURL(file)
+
+        return new Promise(() => {
+            const reader = new FileReader()
+            canvas.toBlob(blob => {
+                reader.readAsDataURL(blob)
+                reader.onloadend = () => {
+                    let base64 = reader.result
+                    this.dataURLtoFile(base64, 'cropped.jpg')
+                    this.setState({croppedFileUrl: base64})
+                }
+            })
         })
-      }
+    }
+
+    dataURLtoFile(dataurl, filename) {
+        var arr = dataurl.split(','),
+            mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]), 
+            n = bstr.length, 
+            u8arr = new Uint8Array(n);
+            
+        while(n--){
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        let croppedImage = new File([u8arr], filename, {type:mime});
+        this.setState({croppedImage: croppedImage }) 
+    }
 
     render() {
 
-        const preview = this.state.photoUrl ? <img src={this.state.photoUrl} alt='preview'/> : null
-        console.log(this.state)
+        const { crop, croppedImageUrl, src } = this.state;
+        // console.log(this.state)
         return (
             <Form onSubmit={this.handleSubmit}>
                 <label htmlFor="profile_pic"></label>
                 <input type='file' id='profile_pic' 
-                onChange={this.onFileChange}
-                value={this.state.profile_pic} 
-                onChange={e => this.handleFile(e)} />
-                {this.state.imageSrc && (
-                <React.Fragment>
-                    <div className="crop-container">
-                        <Cropper
-                            image={this.state.imageSrc}
-                            crop={this.state.crop}
-                            zoom={this.state.zoom}
-                            aspect={this.state.aspect}
-                            onCropChange={this.onCropChange}
-                            onCropComplete={this.onCropComplete}
-                            onZoomChange={this.onZoomChange}
-                        />
-                    </div>
-                    <div className="controls">
-                        <Slider
-                            value={this.state.zoom}
-                            min={1}
-                            max={3}
-                            step={0.1}
-                            aria-labelledby="Zoom"
-                            onChange={(e, zoom) => this.onZoomChange(zoom)}
-                            classes={{ container: 'slider' }}
-                        />
-                    </div>
-                </React.Fragment>
+                accept='image/*'
+                onChange={this.onSelectFile}
+                // value={this.state.profile_pic} 
+                />
+                {src && (
+                    <ReactCrop
+                      src={src}
+                      crop={crop}
+                      ruleOfThirds
+                      onImageLoaded={this.onImageLoaded}
+                      onComplete={this.onCropComplete}
+                      onChange={this.onCropChange}
+                    />
+                )}
+                {croppedImageUrl && (
+                    <img alt="Crop" style={{ maxWidth: "100%" }} src={croppedImageUrl} />
                 )}
                 <button>save</button>
-                {preview}
             </Form>
         )
     }

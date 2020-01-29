@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Card, Modal, Button, Rating, Grid } from 'semantic-ui-react'
+import { Card, Modal, Button, Rating } from 'semantic-ui-react'
 import FriendButton from './FriendButton'
 // import SendMessageButton from './SendMessageButton'
 import Review from './Review'

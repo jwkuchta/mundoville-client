@@ -32,4 +32,3 @@ const mapDTP = dispatch => {
 
 export default connect(null, mapDTP)(UserCard)
 
-{/* <Card link style={{marginBottom: 25, padding: 10, backgroundColor: '#eeeeee'}}> */}

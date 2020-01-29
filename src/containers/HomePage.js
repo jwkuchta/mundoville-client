@@ -1,6 +1,6 @@
 import React  from 'react'
 import { Container, Image } from 'semantic-ui-react'
-import sakura from '../photos/sakura.jpg'
+// import sakura from '../photos/sakura.jpg'
 import sakura2 from '../photos/sakura2.gif'
 import logo2 from '../photos/logo2.png'
 import LoginModal from './LoginModal'

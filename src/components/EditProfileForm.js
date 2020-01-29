@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Form, Button, Header, Modal, Icon } from 'semantic-ui-react'
 import { languageOptions1, languageOptions2, countries } from './dropdown'
 // import _ from 'lodash'
+// import PicUpload from './PicUpload'
 
 
 const usersUrl = 'http://localhost:3000/api/v1/users/'

@@ -136,4 +136,22 @@ body {
   color: #246a92;
 }
 
+.crop-container {
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+
+.controls {
+  margin: auto;
+  width: 50%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  padding: 22px 0px;
+}
+
 /* teal: #246a92 */

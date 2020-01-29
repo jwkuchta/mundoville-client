@@ -6,6 +6,7 @@ import CurrentUserProfileCard from '../components/CurrentUserProfileCard'
 import { Grid, Container } from 'semantic-ui-react'
 // import { Button, Link } from 'semantic-ui-react'
 import UserInfo from '../components/UserInfo'
+// import PicUpload from '../components/PicUpload'
 
 class CurrentUserProfilePage extends Component {
 
@@ -28,6 +29,9 @@ class CurrentUserProfilePage extends Component {
                     <Grid.Column width={11}>
                         <UserInfo user={this.props.currentUser} />
                     </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                    {/* <PicUpload /><br></br> */}
                 </Grid.Row>
                 </Grid>
             </Container>
