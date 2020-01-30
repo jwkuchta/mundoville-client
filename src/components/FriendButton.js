@@ -4,27 +4,23 @@ import AddFriendButton from './AddFriendButton'
 import RemoveFriendButton from './RemoveFriendButton'
 // import { Button } from 'semantic-ui-react'
 
-class FriendButton extends Component {
+const FriendButton = props => {
 
-    render() {
-        // debugger
+    const f1 = props.currentUser.friendships.filter(f => f.friend_id === props.user.id)
+    const f2 = props.user.friendships.filter(f => f.friend_id === props.currentUser.id)
         
-        const f1 = this.props.currentUser.friendships.filter(f => f.friend_id === this.props.user.id)
-        const f2 = this.props.user.friendships.filter(f => f.friend_id === this.props.currentUser.id)
-        
-        const friends = f1 || f2
+    const friends = f1 || f2
 
-        if (this.props.user && this.props.currentUser) {
-            return (
-                <div>
-                    {friends.length < 1
-                        ?  <AddFriendButton user={this.props.user} currentUser={this.props.currentUser} /> 
-                        :  <RemoveFriendButton user={this.props.user} currentUser={this.props.currentUser} />}
-                </div>
-            )
-        } else {
-            return null
-        }
+    if (props.user && props.currentUser) {
+        return (
+            <div>
+                {friends.length < 1
+                    ?  <AddFriendButton user={props.user} currentUser={props.currentUser} /> 
+                    :  <RemoveFriendButton user={props.user} currentUser={props.currentUser} />}
+            </div>
+        )
+    } else {
+        return null
     }
 }
 

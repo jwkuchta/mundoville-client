@@ -5,7 +5,7 @@ import placeholder from '../photos/profilePicPlaceholder.png'
 import { connect } from 'react-redux'
 import PicUpload from './PicUpload'
 
-class ProfileCard extends Component {
+class CurrentUserProfileCard extends Component {
 
     render() {
         
@@ -57,4 +57,4 @@ const mapStateToProps = state => {
         users: state.users
     }
 }
-export default connect(mapStateToProps)(ProfileCard)
+export default connect(mapStateToProps)(CurrentUserProfileCard)

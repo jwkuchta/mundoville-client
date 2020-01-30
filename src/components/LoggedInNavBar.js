@@ -48,7 +48,10 @@ const LoggedInNavBar = () => {
                     size='large' 
                     className='envelope outline icon' 
                     link
-                    onClick={() => window.location.href = "/messages"}/>}
+                    onClick={() => window.location.href = "/messages"}
+                    />
+                }
+                    
                 />     
                 </Menu.Item>
                 

@@ -3,7 +3,6 @@ import { Modal, Button, Form, Rating } from 'semantic-ui-react'
 
 class AddReviewModal extends Component {
     
-
     state = {
         rating: '',
         body: '',

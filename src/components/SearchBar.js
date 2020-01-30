@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import { Search, Grid } from 'semantic-ui-react'
+import { Search, Grid, Header, Icon } from 'semantic-ui-react'
 import { countries } from './dropdown'
 import { connect } from 'react-redux'
 import { setCountry } from '../redux/actions'
@@ -62,8 +62,12 @@ class SearchBar extends Component {
         const { isLoading, value, results } = this.state
 
         return (
-            <Grid >
+            <Grid ><br></br>
             <Grid.Column width={15}>
+            <Grid.Row></Grid.Row>
+                <Header icon>
+                    <Icon inverted name='search' />
+                </Header>
                 <br></br>
                 <h4 className='teal-text'>Search users by destination</h4>
                 <br></br>

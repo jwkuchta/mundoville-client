@@ -7,6 +7,8 @@ class Message extends Component {
     
     render() {
 
+        // debugger
+
         const { message, user, currentUser } = this.props
 
         let timestamp = message.created_at

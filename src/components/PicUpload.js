@@ -55,7 +55,9 @@ class PicUpload extends Component {
             body: data
         })
         .then(resp => resp.text())
-        .then(window.location.href = "/profile")
+        .then(data => {
+            window.location.href = "/profile"
+        })
         .catch(error => console.log('Error:', error))
     }
     
@@ -157,5 +159,3 @@ const mapSTP = state => {
     return {currentUser: state.currentUser}
 }
 export default connect(mapSTP)(PicUpload)
-
-

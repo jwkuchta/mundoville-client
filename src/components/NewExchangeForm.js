@@ -34,7 +34,13 @@ class NewExchangeForm extends Component {
         let users = []
         
         sortedUsers.map(user => {
-            let userInstance = {id: user.id, text: user.username, value: user.id}
+            // let userInstance = {id: user.id, text: user.username, value: user.id}
+            let userInstance = {
+                key: user.id, 
+                id: user.id, 
+                text: user.username, 
+                value: user.id, 
+                image: {avatar: true, src: `http://localhost:3000/${user.profile_pic_url}` }}
             users.push(userInstance)
             return users
         })
@@ -42,51 +48,31 @@ class NewExchangeForm extends Component {
     }
 
     handleChange = e => {
+        // debugger
         if (e.target.id === 'body') {
             this.setState({
                 body: e.target.value
             })
         } else {
+            // user.id was not always showing so I changed to innerText
+            let receiver = this.state.users.find(u => u.text === e.target.innerText)
             this.setState({
-                receiver_id: e.target.id
+                receiver_id: receiver.id
             })
         }
     }
 
-    handleSubmit = (e, entries) => {
+    handleSubmit = e => {
         e.preventDefault()
         this.postNewExchange()
-        this.renderModal()
         this.resetState()  
-        alert('Message sent successfully')
-        window.location.href='/messages'
-    }
-
-    renderModal = () => {
-        
-        this.open()
-        return (
-            <div>
-                <Modal size='small' open={this.state} onClose={window.location.href='/messages'}>
-                <Modal.Header>Delete Your Account</Modal.Header>
-                <Modal.Content>
-                <p>Are you sure you want to delete your account</p>
-                </Modal.Content>
-                <Modal.Actions>
-                    <Button negative>No</Button>
-                    <Button
-                    positive
-                    icon='checkmark'
-                    labelPosition='right'
-                    content='Yes'
-                    />
-                </Modal.Actions>
-            </Modal>
-            </div>   
-        )
+        alert('Message sent')
+        // window.location.href='/messages'
+        window.location.reload()
     }
 
     postNewExchange = () => {
+        // debugger
         let currentUser = this.props.currentUser
 
         fetch('http://localhost:3000/api/v1/exchanges', {
@@ -103,17 +89,22 @@ class NewExchangeForm extends Component {
             })
         })
         .then(resp => resp.json())
-        .then(data => console.log(data))
+        .then(data => {
+            // debugger
+            console.log(data)
+            // window.location.href = '/messages'
+            window.location.reload()
+        })
     }
 
-    display = user => {
-        return (
-            <div>
-                <i className={user.username} ></i>
-                {user.username}
-            </div>
-        )
-    }
+    // display = user => {
+    //     return (
+    //         <div>
+    //             <i className={user.username} ></i>
+    //             {user.username}
+    //         </div>
+    //     )
+    // }
 
     render() {
 
@@ -128,7 +119,7 @@ class NewExchangeForm extends Component {
                             floating
                             options={this.state.users}
                             placeholder='Select User'
-                            resultRenderer={this.display}
+                            // resultrenderer={this.display}
                             onChange={(e) => this.handleChange(e)}
                         />
                     </Form.Group>

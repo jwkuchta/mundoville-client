@@ -35,10 +35,10 @@ class NewMessageForm extends Component {
         .then(r => r.json())
         .then(data => {
             // debugger
-            let message = document.createElement('div')
-            message.innerText = 'Message sent'
-            message.style = 'color: black'
-            document.querySelector('#messages').appendChild(message)
+            // let message = document.createElement('div')
+            // message.innerText = 'Message sent'
+            // message.style = 'color: black'
+            // document.querySelector('#messages').appendChild(message)
             alert('your message was sent')
             window.location.href='/messages'
         })
@@ -48,6 +48,8 @@ class NewMessageForm extends Component {
     }
 
     render() {
+
+        // debugger
         return (
             <Form onSubmit={(e) => this.handleSubmit(e, this.state.body)}>
                 <Form.TextArea 

@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Segment, Header, Modal, Button, Comment, Icon, Image } from 'semantic-ui-react'
