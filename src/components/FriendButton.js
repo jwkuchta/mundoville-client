@@ -12,6 +12,7 @@ const FriendButton = props => {
     const friends = f1 || f2
 
     if (props.user && props.currentUser) {
+        debugger
         return (
             <div>
                 {friends.length < 1

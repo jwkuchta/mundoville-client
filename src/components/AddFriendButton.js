@@ -9,6 +9,7 @@ const AddFriendButton = props => {
     let friendId = props.user.id
     
     const addFriendFetch = (userId, friendId) => {
+        debugger
         fetch('http://localhost:3000/api/v1/friendships', {
             method: 'POST',
             headers: {

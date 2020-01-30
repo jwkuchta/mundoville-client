@@ -9,6 +9,7 @@ const RemoveFriendButton = (props) => {
     let friendId = props.user.id 
 
     const removeFriendFetch = (userId, friendId) => {
+        debugger
         fetch('http://localhost:3000/api/v1/unfriend', {
             method: 'POST',
             headers: {
