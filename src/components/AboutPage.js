@@ -12,14 +12,14 @@ const AboutPage = () => {
         <Container className='text-custom'> 
             <Grid.Row>
                 <h1>How Mundoville Works</h1>
-                <h2></h2>
+                <br></br>
                 <h2>You have friends all over the world, you just haven't met them yet.</h2>
                 <p><h3>Mundoville is a service that connects members to a global community of travelers. 
                    Use Mundoville to connect with hosts around the world or share your hometown with travelers.
                    Mundovillagers organize regular events in cities around the world. 
                    There's always something to do and new friends to meet.</h3></p>
             </Grid.Row>
-            <h2></h2>
+            <br></br><br></br>
             <Grid.Row>
                 <h2>Create a profile</h2>
                 <p><h3>First step? Completely fill out your Mundoville profile! 
@@ -38,7 +38,7 @@ const AboutPage = () => {
                 href='/'
             /> */}
             </Container>
-            <h2></h2>
+            <br></br><br></br>
             <Grid.Row>
                 <h2>Explore your city</h2>
                 <p><h3>Next up, explore your city! Getting in touch with experienced Mundovillagers 
@@ -55,7 +55,7 @@ const AboutPage = () => {
                 href='/'
                 />      */}
             </Grid.Row>
-            <h2></h2>
+            <br></br><br></br>
             <Grid.Row>
             <h2>See the world</h2>
                 <p><h3>If you’re ready to embark on an adventure, search for the city (or cities!) 

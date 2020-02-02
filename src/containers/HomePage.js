@@ -4,6 +4,7 @@ import { Container, Image } from 'semantic-ui-react'
 import sakura2 from '../photos/sakura2.gif'
 import logo2 from '../photos/logo2.png'
 import LoginModal from './LoginModal'
+// import { Redirect } from 'react-router'
 
 const HomePage = () => {
     
@@ -17,10 +18,11 @@ const HomePage = () => {
             <Container fluid className='app-logo'>
                 <Image 
                     centered 
+                    link
                     size='medium' 
                     src={logo2} 
                     alt='logo' 
-                    href='/'
+                    href='/about'
                 /><br></br>
             </Container>
             <Container fluid className='main-page-description'>
@@ -33,7 +35,10 @@ const HomePage = () => {
             <LoginModal />
         </Container>
     )
+                
 }
+
+
 
 export default HomePage
 

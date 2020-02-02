@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import AddFriendButton from './AddFriendButton'
 import RemoveFriendButton from './RemoveFriendButton'
@@ -12,7 +12,7 @@ const FriendButton = props => {
     const friends = f1 || f2
 
     if (props.user && props.currentUser) {
-        debugger
+        // debugger
         return (
             <div>
                 {friends.length < 1

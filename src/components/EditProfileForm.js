@@ -113,7 +113,6 @@ class EditProfileForm extends Component {
 
                 <Form.Group width={12}>
                     {/* <PicUpload /> */}
-                    {/* <PictureUpload currentUser={this.props.currentUser} /><br/> */}
                 </Form.Group>
 
             {/* MAIN INFO */}

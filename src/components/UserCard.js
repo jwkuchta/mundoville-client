@@ -18,7 +18,7 @@ class UserCard extends Component {
                     <Image src={this.props.user.profile_pic_url ? profilePicUrl : placeholder} />
                         <Card.Header as='h3'> {this.props.user.username} </Card.Header>
                         <Button className='ui button'>
-                            <Link to={`/users/${this.props.user.username}`} >See profile</Link>
+                            <Link to={`/users/${this.props.user.username}`}>See profile</Link>
                         </Button>
                 </Card.Content>
             </Card>

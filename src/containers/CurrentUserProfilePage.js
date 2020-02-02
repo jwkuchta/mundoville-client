@@ -7,7 +7,6 @@ import { Grid, Container } from 'semantic-ui-react'
 // import { Button, Link } from 'semantic-ui-react'
 import UserInfo from '../components/UserInfo'
 // import PicUpload from '../components/PicUpload'
-import SemanticGoodies from '../components/SemanticGoodies'
 
 class CurrentUserProfilePage extends Component {
 

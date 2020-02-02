@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Segment, Form, Button, Header, Modal } from 'semantic-ui-react'
+import { Segment, Form, Button, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 // import {submitNewExchange} from '../redux/actions'
 
