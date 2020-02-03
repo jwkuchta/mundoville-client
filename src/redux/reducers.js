@@ -35,8 +35,6 @@ let usersReducer = (state = initState.users, action) => {
             return action.users
         case 'GET_USERS_SUCCESS':
             return action.users
-        // case 'LOG_IN':
-        //     return action.user
         default: 
             return state
     }

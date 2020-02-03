@@ -56,6 +56,7 @@ class App extends Component {
     
     if (this.props.currentUser) {
       this.fetchExchanges()
+      this.fetchReviews()
     }
 
     return (
@@ -114,9 +115,9 @@ const mapDTP = dispatch => {
   return {
     fetchProfile: user => dispatch(fetchProfile(user)),
     fetchUsers: users => dispatch(fetchUsers(users)),
-    getExchanges: exchanges => dispatch(getExchanges(exchanges))
+    getExchanges: exchanges => dispatch(getExchanges(exchanges)),
     // later add and write an action for:
-    // getReviews: reviews => dispatch({type: 'GET_REVIEWS',payload: reviews})
+    getReviews: reviews => dispatch({type: 'GET_REVIEWS',payload: reviews})
   }
 }
 

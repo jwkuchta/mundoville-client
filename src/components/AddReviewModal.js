@@ -63,6 +63,7 @@ class AddReviewModal extends Component {
                 <Modal.Header>
                     Add a Review for: {this.props.user.username}
                 </Modal.Header>
+
                 <Modal.Content>
                     <Form onSubmit={e => this.handleSubmit(e, this.state)}>
                         <Form.TextArea 
@@ -76,6 +77,7 @@ class AddReviewModal extends Component {
                         <Button type='submit' content='Submit'/>
                     </Form>
                 </Modal.Content>
+                
             </Modal>
         )
     }

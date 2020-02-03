@@ -105,7 +105,6 @@ class EditProfileForm extends Component {
         return (
             <Form 
                 size='small' 
-                // onChange={(e) => this.handleChange(e)}
                 onSubmit={(e) => this.handleSubmit(e, this.state, this.props.currentUser)}
             >   
              

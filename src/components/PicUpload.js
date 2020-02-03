@@ -134,7 +134,6 @@ class PicUpload extends Component {
                 <input type='file' id='profile_pic' 
                 accept='image/*'
                 onChange={this.onSelectFile}
-                // value={this.state.profile_pic} 
                 />
                 {src && (
                     <ReactCrop

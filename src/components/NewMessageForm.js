@@ -34,11 +34,6 @@ class NewMessageForm extends Component {
         })
         .then(r => r.json())
         .then(data => {
-            // debugger
-            // let message = document.createElement('div')
-            // message.innerText = 'Message sent'
-            // message.style = 'color: black'
-            // document.querySelector('#messages').appendChild(message)
             alert('your message was sent')
             window.location.href='/messages'
         })

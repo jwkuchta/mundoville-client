@@ -22,28 +22,35 @@ class CurrentUserProfileCard extends Component {
             <>
             <Container>
             <Card>
-                    <Card.Content>
-                        <Image src={currentUser.profile_pic_url ? pic_url : placeholder} /><br></br>
-                        <Card.Header as='h3'><br></br>
-                            {header}
-                        </Card.Header>
-                        <PicUpload /><br></br>
-                        <Button className='ui button'>
-                            <Link to={`/users/${currentUser.username}/edit`}>Edit your profile</Link>
-                        </Button>
+                <Card.Content>
+                    
+                    <Image src={currentUser.profile_pic_url ? pic_url : placeholder} /><br></br>
+                    
+                    <Card.Header as='h3'><br></br>
+                        {header}
+                    </Card.Header>
+                    
+                    <PicUpload /><br></br>
+                    
+                    <Button className='ui button'>
+                        <Link to={`/users/${currentUser.username}/edit`}>Edit your profile</Link>
+                    </Button>
+
+                </Card.Content>
+               
+                <Card.Content style={{color: 'teal'}}>
+                    {currentUser.rating 
+                    ? 
+                    <Rating 
+                        icon='star' 
+                        defaultRating={currentUser.rating} 
+                        maxRating={5} 
+                        disabled
+                    />
+                    : null }<br/>
+                    {currentUser.rating ? currentUser.rating + '/5' : 'No reviews yet'}<br/><br/>
                     </Card.Content>
-                    <Card.Content style={{color: 'teal'}}>
-                        {currentUser.rating 
-                        ? 
-                        <Rating 
-                            icon='star' 
-                            defaultRating={currentUser.rating} 
-                            maxRating={5} 
-                            disabled
-                        />
-                        : null }<br/>
-                        {currentUser.rating ? currentUser.rating + '/5' : 'No reviews yet'}<br/><br/>
-                    </Card.Content>
+                    
                 </Card>
             </Container>   
             </>

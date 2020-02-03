@@ -47,7 +47,7 @@ class LoginForm extends Component {
                     user: true
                 })
             } else {
-                // alert('Invalid Username or Password')
+                alert('Invalid Username or Password')
                 this.setState({errorMessage: true})
             }
         })
