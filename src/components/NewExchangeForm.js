@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Segment, Form, Button, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import {withRouter} from 'react-router-dom'
 // import {submitNewExchange} from '../redux/actions'
 
 class NewExchangeForm extends Component {
@@ -66,9 +67,10 @@ class NewExchangeForm extends Component {
         e.preventDefault()
         this.postNewExchange()
         this.resetState()  
-        alert('Message sent')
+        // alert('Message sent')
         // window.location.href='/messages'
-        window.location.reload()
+        console.log(this.props)
+        this.props.setPageMessages()
     }
 
     postNewExchange = () => {
@@ -93,7 +95,8 @@ class NewExchangeForm extends Component {
             // debugger
             console.log(data)
             // window.location.href = '/messages'
-            window.location.reload()
+            //window.location.reload()
+            this.props.history.push('/messages')
         })
     }
 
@@ -157,4 +160,4 @@ const mapSTP = state => {
 // }
 
 // export default connect(mapSTP, mapDTP)(NewExchangeForm)
-export default connect(mapSTP)(NewExchangeForm)
+export default withRouter(connect(mapSTP)(NewExchangeForm))

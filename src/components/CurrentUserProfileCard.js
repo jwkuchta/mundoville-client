@@ -4,6 +4,7 @@ import { Card, Image, Button, Container, Rating } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
 import { connect } from 'react-redux'
 import PicUpload from './PicUpload'
+// import PicUploadNoCrop from './PicUploadNoCrop'
 
 class CurrentUserProfileCard extends Component {
 
@@ -31,6 +32,7 @@ class CurrentUserProfileCard extends Component {
                     </Card.Header>
                     
                     <PicUpload /><br></br>
+                    {/* <PicUploadNoCrop /><br></br> */}
                     
                     <Button className='ui button'>
                         <Link to={`/users/${currentUser.username}/edit`}>Edit your profile</Link>

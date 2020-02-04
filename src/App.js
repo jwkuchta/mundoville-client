@@ -25,6 +25,7 @@ class App extends Component {
   }
 
   fetchExchanges = () => {
+    console.log('a')
     fetch('http://localhost:3000/api/v1/findExchanges', {
       method: 'POST',
       headers: {
@@ -34,8 +35,37 @@ class App extends Component {
       },
       body: JSON.stringify({id: this.props.currentUser.id})
     })
-    .then(resp => resp.json())
-    .then(data => this.props.getExchanges(data))
+    .then(resp => {
+      console.log('b')
+      return resp.json()
+    })
+    .then(data => {
+      console.log('c', data)
+      this.props.getExchanges(data)
+    })
+    .catch(e => console.log('d', e))
+    console.log('e')
+    console.log('e')
+    console.log('e')
+    console.log('e')
+    console.log('e')
+    console.log('e')
+    console.log('e')
+    console.log('e')
+    console.log('e')
+    console.log('e')
+    console.log('e')
+    console.log('e')
+    console.log('e')
+    console.log('e')
+    console.log('e')
+    console.log('e')
+    console.log('e')
+    console.log('e')
+    console.log('e')
+    console.log('e')
+ 
+    // a e b c
   }
   
   fetchReviews = () => {

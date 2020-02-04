@@ -7,6 +7,22 @@ import placeholder from '../photos/profilePicPlaceholder.png'
 
 class Exchange extends Component {
 
+    constructor() {
+        super()
+        this.state = {count: 0}
+    }
+
+    changeCount = e => {
+        if(e.target.innerText === 'increment') {
+            this.setState({count: this.state.count + 1})
+        }
+        if(e.target.innerText === 'decrement') {
+            if(this.state.count !== 0) {
+                this.setState({count: this.state.count - 1})
+            }
+        }
+    }
+
     render() {
 
         const { exchange, users, currentUser } = this.props
@@ -33,12 +49,18 @@ class Exchange extends Component {
                         floated='left' 
                         src={otherUser.profile_pic_url ? otherUserPic : placeholder} /> 
                         <a href={`/users/${otherUser.username}`}>{infoMessage}</a>
+                        <Button 
+                        floated='left' 
+                        onClick={this.changeCount}>increment</Button>
+                        {this.state.count}
+                        <Button floated="left" onClick={this.changeCount}>decrement</Button>
                         <Modal 
                             closeIcon
                             onClose={() => window.location.reload()}
                             size='small' 
                             trigger={<Button floated='right'>Open Message Exchange</Button>}
                         >
+
                             <Modal.Content>
                                 <Header as='h3' dividing>
                                     Message Exchange with {otherUser.username}

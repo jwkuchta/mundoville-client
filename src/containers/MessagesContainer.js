@@ -14,7 +14,6 @@ class MessagesContainer extends Component {
     }
 
     render() {
-
         // debugger
         if (this.props.currentUser.username) {
             let currentPage
@@ -23,6 +22,7 @@ class MessagesContainer extends Component {
                     : currentPage = <NewExchangeForm 
                                         currentUser={this.props.currentUser} 
                                         users={this.props.users} 
+                                        setPageMessages={() => this.setState({page: 'exchanges'})}
                                     />
 
             return (
@@ -42,6 +42,7 @@ class MessagesContainer extends Component {
                             name='New Message'
                             active={this.state.page === 'new'}
                             onClick={() => this.setState({page: 'new'})}
+                            
                         />
                     </Menu>
                     <Grid.Column width={16}>
