@@ -50,11 +50,9 @@ const LoggedInNavBar = () => {
                     link
                     onClick={() => window.location.href = "/messages"}
                     />
-                }
-                    
+                }    
                 />     
-                </Menu.Item>
-                
+                </Menu.Item>  
                 <Menu.Item>
                 <Popup content='browse users' trigger={<Icon fitted
                     inverted

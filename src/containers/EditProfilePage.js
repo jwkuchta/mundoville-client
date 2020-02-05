@@ -18,7 +18,6 @@ class EditProfilePage extends Component {
                             content='Back to Profile' 
                             onClick={() => window.location.href='/profile'}
                         />
-                        {/* <div style={{marginRight: 140}}>Edit Profile for {this.props.currentUser.username}</div>  */}
                     </Header><br/>
                     <Segment padded='very'>
                         <EditProfileForm/>

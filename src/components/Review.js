@@ -8,8 +8,6 @@ const Review = props => {
 
     let timestamp = props.review.created_at
     let reviewer = props.allUsers.filter(user => user.id === props.review.user_id)[0].username
-    // let avatar = {avatar: true, src: `http://localhost:3000/${reviewer.profile_pic_url}` }
-
     // debugger
 
     return (

@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import { Form } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import { addPhotoToUser } from './helpers.js'
 
 class PicUploadNoCrop extends Component {
 
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             photoFile: null,
             photoUrl: null
@@ -25,44 +27,23 @@ class PicUploadNoCrop extends Component {
     }
 
     handleSubmit = e => {
-        debugger
         e.preventDefault()
-        const user = this.props.currentUser
         const formData = new FormData()
-        
-        formData.append('user[id]', user.id)
+        formData.append('user[id]', this.props.currentUser.id)
         formData.append('user[profile_pic]', this.state.photoFile)
-
-        this.addPhotoToUser(user, formData)
-    }
-
-    addPhotoToUser = (user, data) => {
-        fetch(`http://localhost:3000/api/v1/users/${user.id}`, {
-            method: 'PATCH',
-            headers: {
-                'Authorization': `Bearer ${localStorage.jwt}`,
-            },
-            body: data
-        })
-        .then(resp => resp.text())
-        .then(data => {
-            window.location.href = "/profile"
-        })
-        .catch(error => console.log('Error:', error))
+        addPhotoToUser(this.props.currentUser, formData)
     }
 
     render() {
-
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl} alt='preview'/> : null
-        console.log(this.state)
+    
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input type='file' id='profile_pic' 
-                value={this.state.profile_pic} 
-                onChange={e => this.handleFile(e)} />
+            <Form onSubmit={this.handleSubmit}>
+                <input type='file' id='profile_pic' value={this.state.profile_pic} 
+                onChange={this.handleFile} />
                 {preview}
                 <button>save</button>
-            </form>
+            </Form>
         )
     }
 }

@@ -25,7 +25,6 @@ class App extends Component {
   }
 
   fetchExchanges = () => {
-    console.log('a')
     fetch('http://localhost:3000/api/v1/findExchanges', {
       method: 'POST',
       headers: {
@@ -36,36 +35,12 @@ class App extends Component {
       body: JSON.stringify({id: this.props.currentUser.id})
     })
     .then(resp => {
-      console.log('b')
       return resp.json()
     })
     .then(data => {
-      console.log('c', data)
       this.props.getExchanges(data)
     })
-    .catch(e => console.log('d', e))
-    console.log('e')
-    console.log('e')
-    console.log('e')
-    console.log('e')
-    console.log('e')
-    console.log('e')
-    console.log('e')
-    console.log('e')
-    console.log('e')
-    console.log('e')
-    console.log('e')
-    console.log('e')
-    console.log('e')
-    console.log('e')
-    console.log('e')
-    console.log('e')
-    console.log('e')
-    console.log('e')
-    console.log('e')
-    console.log('e')
- 
-    // a e b c
+    .catch(e => console.log(e))
   }
   
   fetchReviews = () => {
@@ -119,11 +94,6 @@ class App extends Component {
             <div className='mainPage'><UserProfilePage/></div>
           </Route>
 
-          {/* had to be changed to this, because state was lost in UserProfilePage otherwise: */}
-
-          {/* <Route exact strict path='/users/:username' 
-          component={UserProfilePage}/> */}
-
           <Route exact strict path='/messages'>
             {!localStorage.jwt
               ? <Redirect to='/login'/>
@@ -147,7 +117,7 @@ const mapDTP = dispatch => {
     fetchUsers: users => dispatch(fetchUsers(users)),
     getExchanges: exchanges => dispatch(getExchanges(exchanges)),
     // later add and write an action for:
-    getReviews: reviews => dispatch({type: 'GET_REVIEWS',payload: reviews})
+    getReviews: reviews => dispatch({type: 'GET_REVIEWS', payload: reviews})
   }
 }
 

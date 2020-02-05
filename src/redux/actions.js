@@ -30,6 +30,19 @@ export const fetchUsers = () => {
   }
 }
 
+
+export const fetchReviews = () => {
+  fetch('http://localhost3000/api/v1/reviews', {
+    headers: {
+      'Authorization': `Bearer ${localStorage.jwt}`,
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  })
+  .then(resp => resp.json())
+  .then(data => getReviews(data))
+}
+
 export const loggedIn = user => {
   return {type: 'LOGGED_IN', user: user}
 }
@@ -57,6 +70,10 @@ export const filterUsers = filtered => {
 
 export const setCountry = country => {
   return {type: 'SET_COUNTRY', country: country}
+}
+
+export const getReviews = reviews => {
+  return {type: 'GET_REVIEWS', payload: reviews}
 }
 
 

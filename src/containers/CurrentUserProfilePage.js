@@ -32,12 +32,10 @@ class CurrentUserProfilePage extends Component {
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
-                    {/* <PicUpload /><br></br> */}
                 </Grid.Row>
                 </Grid>
             </Container>
             <Container>
-                {/* <SemanticGoodies /> */}
             </Container>
             </>
         )

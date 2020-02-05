@@ -16,10 +16,6 @@ class UserProfilePage extends Component {
         let username = window.location.pathname.split('/')[2]
         let allUsers = this.props.users 
         let user = allUsers.filter(user => user.username === username)[0]
-
-        // debugger
-
-        // let profile_pic_url = `http://localhost:3000/${user.profile_pic_url}`
         
         return (
             <Container>
@@ -57,9 +53,5 @@ const mapSTP = state => {
         selectedUser: state.selectedUser
     }
 }
-
-// const mapDTP = dispatch => {
-//     return {fetchUsers: users => dispatch(fetchUsers(users))}
-// }
 
 export default connect(mapSTP)(UserProfilePage)

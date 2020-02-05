@@ -21,7 +21,6 @@ class LoginModal extends Component {
             default: 
                 return (
                     <Container fluid className='main-page-buttons'>
-                        {/* <Button.Group> */}
                         <Button className='ui pink button' 
                             // basic 
                             size='huge' 
@@ -34,7 +33,6 @@ class LoginModal extends Component {
                             content='Sign Up' 
                             onClick={() => this.setState({option: 'signup'})}
                         />
-                        {/* </Button.Group>  */}
                     </Container>
                 )
         }

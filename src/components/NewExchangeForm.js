@@ -68,7 +68,7 @@ class NewExchangeForm extends Component {
         this.postNewExchange()
         this.resetState()  
         // alert('Message sent')
-        // window.location.href='/messages'
+        window.location.href='/messages'
         console.log(this.props)
         this.props.setPageMessages()
     }
@@ -99,15 +99,6 @@ class NewExchangeForm extends Component {
             this.props.history.push('/messages')
         })
     }
-
-    // display = user => {
-    //     return (
-    //         <div>
-    //             <i className={user.username} ></i>
-    //             {user.username}
-    //         </div>
-    //     )
-    // }
 
     render() {
 
@@ -153,11 +144,4 @@ const mapSTP = state => {
     }
 }
 
-// const mapDTP = dispatch => {
-//     return {
-//         submitNewExchange: (sender_id, receiver_id, body) => dispatch(submitNewExchange(sender_id, receiver_id, body))
-//     }
-// }
-
-// export default connect(mapSTP, mapDTP)(NewExchangeForm)
 export default withRouter(connect(mapSTP)(NewExchangeForm))

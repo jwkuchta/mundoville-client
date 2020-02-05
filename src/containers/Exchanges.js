@@ -7,18 +7,15 @@ class Exchanges extends Component {
 
     render() {
         // debugger
+        
         if (this.props.exchanges.length > 0) {
-
             let exchanges = this.props.exchanges
-            
             return (
                 <Segment padded='very' style={{backgroundColor: '#528FBB'}}>
                     {exchanges.map(e => <Exchange key ={e.id} exchange={e} /> )}
                 </Segment>
-            )
-            
+            ) 
         } else {
-
             return (
                 <Segment padded='very'>
                     No messages yet. <br/>

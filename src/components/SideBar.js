@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Card, Modal, Button, Rating } from 'semantic-ui-react'
 import FriendButton from './FriendButton'
-// import SendMessageButton from './SendMessageButton'
 import Review from './Review'
 import AddReviewModal from './AddReviewModal'
 
@@ -11,7 +10,6 @@ class SideBar extends Component {
     render() {
 
         // debugger
-
         return (
             <Card>
                 <Card.Content style={{color: 'teal'}}>
@@ -40,12 +38,6 @@ class SideBar extends Component {
                             )}
                         </Modal.Content>
                     </Modal><br/><br/>
-                    {/* {this.props.exchanges.length > 0 && this.props.user.id !== this.props.currentUser.id
-                        ? <ReviewModal 
-                            user={this.props.user}
-                            currentUser={this.props.currentUser}
-                        />
-                            : null} */}
                     <AddReviewModal 
                         user={this.props.user}
                         currentUser={this.props.currentUser}

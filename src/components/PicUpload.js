@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { addPhotoToUser } from './helpers.js'
 import { Form } from 'semantic-ui-react'
-import ReactCrop from "react-image-crop";
-import "react-image-crop/dist/ReactCrop.css";
+import ReactCrop from "react-image-crop"
+import "react-image-crop/dist/ReactCrop.css"
 
 class PicUpload extends Component {
-    constructor(props) {
-        super(props)
+    
+    constructor() {
+        super()
         this.state = {
-            photoFile: null,
             src: null,
             crop: {
                 unit: "%",
@@ -16,24 +17,17 @@ class PicUpload extends Component {
                 aspect: 1 / 1
             },
             croppedImageUrl: null,
-            croppedFileUrl: null
+            croppedImage: null
         }
     }
 
-    onSelectFile = e => {
-        if (e.target.files && e.target.files.length > 0) {
-          const reader = new FileReader();
-          reader.addEventListener("load", () =>
-            this.setState({ src: reader.result })
-          );
-          reader.readAsDataURL(e.target.files[0]);
-        }
-        this.setState({photoFile: e.target.files[0]})
-    };
-
-    onImageLoaded = image => {
-        this.imageRef = image;
-    };
+    handleFile = e => {
+        const fileReader = new FileReader()
+        fileReader.onloadend = () => {
+            this.setState({src: fileReader.result })
+        }   
+        fileReader.readAsDataURL(e.target.files[0]);
+    }
 
     handleSubmit = e => {
         e.preventDefault()
@@ -43,36 +37,21 @@ class PicUpload extends Component {
         formData.append('user[id]', user.id)
         formData.append('user[profile_pic]', this.state.croppedImage)
 
-        this.addPhotoToUser(user, formData)
+        addPhotoToUser(user, formData)
     }
 
-    addPhotoToUser = (user, data) => {
-        fetch(`http://localhost:3000/api/v1/users/${user.id}`, {
-            method: 'PATCH',
-            headers: {
-                'Authorization': `Bearer ${localStorage.jwt}`,
-            },
-            body: data
-        })
-        .then(resp => resp.text())
-        .then(data => {
-            window.location.href = "/profile"
-        })
-        .catch(error => console.log('Error:', error))
+    onImageLoaded = image => {
+        this.imageRef = image
+    }
+
+    onCropChange = (crop) => {
+        this.setState({ crop });
     }
     
     onCropComplete = crop => {
-        this.makeClientCrop(crop);
-    };
-    
-    onCropChange = (crop) => {
-        this.setState({ crop });
-    };
-    
-    async makeClientCrop(crop) {
         if (this.imageRef && crop.width && crop.height) {
-            const croppedImageUrl = await this.getCroppedImg(this.imageRef, crop, "newFile.jpeg");
-            this.setState({ croppedImageUrl });
+            const croppedImageUrl = this.getCroppedImg(this.imageRef, crop)
+            this.setState({ croppedImageUrl })
         }
     }
     
@@ -96,22 +75,17 @@ class PicUpload extends Component {
             crop.height
         );
 
-
-        return new Promise(() => {
-            const reader = new FileReader()
-            canvas.toBlob(blob => {
-                reader.readAsDataURL(blob)
-                reader.onloadend = () => {
-                    let base64 = reader.result
-                    this.dataURLtoFile(base64, 'cropped.jpg')
-                    this.setState({croppedFileUrl: base64})
-                }
-            })
+        const reader = new FileReader()
+        canvas.toBlob(blob => {
+            reader.readAsDataURL(blob)
+            reader.onloadend = () => {
+                this.dataURLtoFile(reader.result, 'cropped.jpg')
+            }
         })
     }
 
     dataURLtoFile(dataurl, filename) {
-        var arr = dataurl.split(','),
+        let arr = dataurl.split(','),
             mime = arr[0].match(/:(.*?);/)[1],
             bstr = atob(arr[1]), 
             n = bstr.length, 
@@ -125,28 +99,21 @@ class PicUpload extends Component {
     }
 
     render() {
+        const { crop, profile_pic, src } = this.state
 
-        const { crop, croppedImageUrl, src } = this.state;
-        // console.log(this.state)
         return (
             <Form onSubmit={this.handleSubmit}>
                 <label htmlFor="profile_pic"></label>
-                <input type='file' id='profile_pic' 
-                accept='image/*'
-                onChange={this.onSelectFile}
-                />
+                <input type='file' id='profile_pic' value={profile_pic} 
+                onChange={this.handleFile} />
                 {src && (
                     <ReactCrop
                       src={src}
                       crop={crop}
-                      ruleOfThirds
                       onImageLoaded={this.onImageLoaded}
                       onComplete={this.onCropComplete}
                       onChange={this.onCropChange}
-                    />
-                )}
-                {croppedImageUrl && (
-                    <img alt="Crop" style={{ maxWidth: "100%" }} src={croppedImageUrl} />
+                    /> 
                 )}
                 <button>save</button>
             </Form>

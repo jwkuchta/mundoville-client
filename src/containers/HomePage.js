@@ -12,7 +12,6 @@ const HomePage = () => {
         <Container fluid className="home">
             <Image className='background-img'
                 fluid 
-                // fluid - can take up the whole container
                 src={sakura2}
             />
             <Container fluid className='app-logo'>
