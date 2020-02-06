@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Form, Button, Header, Modal, Icon } from 'semantic-ui-react'
-import { languageOptions1, languageOptions2, countries } from './dropdown'
+import { languages, countries } from './dropdown'
 // import _ from 'lodash'
 // import PicUpload from './PicUpload'
 
@@ -31,10 +31,11 @@ class EditProfileForm extends Component {
         }
     }
 
-    filterObj(obj, entry) {
+    // filter fields and exclude 'passConfirmation' from the final object
+    filterObj(obj) {
         const newObj = {};
         Object.keys(obj).forEach(key => {
-          if (key !== entry) {
+          if (key !== 'passConfirmation') {
             newObj[key] = obj[key];
           }
         });
@@ -51,6 +52,7 @@ class EditProfileForm extends Component {
         e.preventDefault()
         let updates = {}
         
+        // only include values that have been updated/changed
         for (let [key, value] of Object.entries(values)) {
             if (values[key] !== '') {
                 updates[key] = value
@@ -58,13 +60,15 @@ class EditProfileForm extends Component {
         }
 
         if (updates.password === updates.passConfirmation) {
-            const filtered = this.filterObj(updates, 'passConfirmation')
+            const filtered = this.filterObj(updates)
             this.updateUser(user, filtered)
         } else {
+            // make it into a modal or inline error message when time permits
             alert("Something went wrong")
         }
     }
-
+    
+    // updates user profile info in the backend
     updateUser = (user, data) => {
         fetch(`${usersUrl}${user.id}`, {
             method: 'PATCH',
@@ -168,6 +172,7 @@ class EditProfileForm extends Component {
                     label='Country'
                     placeholder='Country'
                     fluid
+                    search
                     selection
                     options={countries}
                     onChange = {(e, { id, value }) => {
@@ -191,8 +196,9 @@ class EditProfileForm extends Component {
                     label='Primary Language'
                     placeholder='Select your primary language'
                     fluid
+                    search
                     selection
-                    options={languageOptions1}
+                    options={languages}
                     onChange = {(e, { id, value }) => this.setState({ [id]: value })}
                 />
                 <Form.Dropdown
@@ -200,8 +206,9 @@ class EditProfileForm extends Component {
                     label='Secondary Language'
                     placeholder='Select your secondary language'
                     fluid
+                    search
                     selection
-                    options={languageOptions1}
+                    options={languages}
                     onChange = {(e, { id, value }) => this.setState({ [id]: value })}
                 />
                 <Form.Dropdown
@@ -209,8 +216,9 @@ class EditProfileForm extends Component {
                     label='Another Language'
                     placeholder='Wow a third language?'
                     fluid
+                    search
                     selection
-                    options={languageOptions2}
+                    options={languages}
                     onChange = {(e, { id, value }) => this.setState({ [id]: value })}
                 />
             </Form.Group>
@@ -231,7 +239,7 @@ class EditProfileForm extends Component {
                 >
                     <Header icon='archive' content='Are you sure?' />
                     <Modal.Content>
-                        <p style={{color: 'cyan'}}>
+                        <p style={{color: 'teal'}}>
                             If you delete your account, everything will be permanently 
                             deleted and your account cannot be recovered. 
                         </p>

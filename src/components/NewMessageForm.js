@@ -34,8 +34,9 @@ class NewMessageForm extends Component {
         })
         .then(r => r.json())
         .then(data => {
-            alert('your message was sent')
+            // alert('your message was sent')
             window.location.href='/messages'
+            // this.props.setPageMessages()
         })
         this.setState({
             body: ''

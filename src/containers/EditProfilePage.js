@@ -23,8 +23,7 @@ class EditProfilePage extends Component {
                         <EditProfileForm/>
                     </Segment>
                 </Segment>
-            </Container>
-            
+            </Container> 
         )
     }
 }

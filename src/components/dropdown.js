@@ -1,16 +1,15 @@
-export const languageOptions1 = [
-    {key: 'English', text: 'English', value: 'English' },
-    {key: 'Spanish', text: 'Spanish', value: 'Spanish' },
-    {key: 'German', text: 'German', value: 'German' },
-    {key: 'French', text: 'French', value: 'French' },
-]
 
-export const languageOptions2 = [
+export const languages = [
     {key: 'English', text: 'English', value: 'English' },
     {key: 'Spanish', text: 'Spanish', value: 'Spanish' },
     {key: 'German', text: 'German', value: 'German' },
     {key: 'French', text: 'French', value: 'French' },
-    {key: 'Other', text: 'Other', value: 'Other'}
+    {key: 'Mandarin', text: 'Mandarin', value: 'Mandarin'},
+    {key: 'Hindustani', text: 'Hindustani', value: 'Hindustani'},
+    {key: 'Arabic', text: 'Arabic', value: 'Arabic'},
+    {key: 'Russian', text: 'Russian', value: 'Russian'},
+    {key: 'Portugese', text: 'Portugese', value: 'Portugese'},
+    {key: 'Other', text: 'Other', value: 'Other'},
 ]
 
   export const countries = [

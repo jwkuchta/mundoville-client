@@ -8,6 +8,7 @@ const AddFriendButton = props => {
     let userId = props.currentUser.id 
     let friendId = props.user.id
     
+    // creates a new friendship in the backend
     const addFriendFetch = (userId, friendId) => {
         // debugger
         fetch('http://localhost:3000/api/v1/friendships', {

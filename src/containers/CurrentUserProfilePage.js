@@ -19,13 +19,12 @@ class CurrentUserProfilePage extends Component {
                 <Grid>
                 <br></br>
                 <Grid.Row>
-                <Grid.Column width={5}>
-                    <Grid.Row>
-                        <CurrentUserProfileCard /> 
-                    </Grid.Row>
-                    <Grid.Row>
-
-                    </Grid.Row>    
+                    <Grid.Column width={5}>
+                        <Grid.Row>
+                            <CurrentUserProfileCard /> 
+                        </Grid.Row>
+                        <Grid.Row>
+                        </Grid.Row>    
                     </Grid.Column>
                     <Grid.Column width={11}>
                         <UserInfo user={this.props.currentUser} />

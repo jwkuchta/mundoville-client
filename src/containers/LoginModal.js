@@ -11,10 +11,8 @@ class LoginModal extends Component {
     render() {
         
         switch(this.state.option) {
-
             case 'login':
                 return <LoginForm />
-
             case 'signup':
                 return <SignupForm />
 

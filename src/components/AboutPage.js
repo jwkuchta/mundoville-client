@@ -1,15 +1,13 @@
 import React from 'react'
 import {Container, Grid } from 'semantic-ui-react'
-// import {signup} from '../photos/signup.png'
-// import {explore} from '../photos/explore.png'
-// import {world} from '../photos/world.png'
 import LoginModal from '../containers/LoginModal'
-// import SemanticGoodies from './SemanticGoodies'
 
+// brief page description and tips
 const AboutPage = () => {
 
     return (
         <Container className='text-custom'> 
+
             <Grid.Row>
                 <h1>How Mundoville Works</h1>
                 <br></br>
@@ -30,13 +28,6 @@ const AboutPage = () => {
                     Be sure to include a profile picture and links to your social media profiles.</h3></p>
             </Grid.Row>
             <Container fluid className='about-images'>
-            {/* <Image 
-                centered 
-                size='medium' 
-                src={signup} 
-                alt='signup' 
-                href='/'
-            /> */}
             </Container>
             <br></br><br></br>
             <Grid.Row>
@@ -46,14 +37,6 @@ const AboutPage = () => {
                     Most cities have a weekly event that is usually held at a bar or coffee shop. 
                     Just head to your city's Place Page and look at the Events happening near you. 
                     Click "Join," show up and you're on your way!</h3></p>
-
-                {/* <Image 
-                centered 
-                size='medium' 
-                src={explore} 
-                alt='explore' 
-                href='/'
-                />      */}
             </Grid.Row>
             <br></br><br></br>
             <Grid.Row>
@@ -64,19 +47,9 @@ const AboutPage = () => {
                     When you find a few interesting potential hosts, carefully review their 
                     profile and send a message specifying the dates you’ll be there.
                     Make sure to personalize your messages and tell your host why you want to meet!</h3></p>
-
-                {/* <Image 
-                centered 
-                size='medium' 
-                src={world} 
-                alt='world' 
-                href='/'
-                />      */}
             </Grid.Row>
             <Grid.Row>{!localStorage.jwt ? <LoginModal className='about-page-buttons' /> : null}
             </Grid.Row>
-
-            {/* <SemanticGoodies /> */}
 
         </Container>
     )

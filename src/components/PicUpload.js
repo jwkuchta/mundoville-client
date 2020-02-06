@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addPhotoToUser } from './helpers.js'
 import { Form } from 'semantic-ui-react'
 import ReactCrop from "react-image-crop"
 import "react-image-crop/dist/ReactCrop.css"
@@ -37,7 +36,7 @@ class PicUpload extends Component {
         formData.append('user[id]', user.id)
         formData.append('user[profile_pic]', this.state.croppedImage)
 
-        addPhotoToUser(user, formData)
+        this.addPhotoToUser(user, formData)
     }
 
     onImageLoaded = image => {
@@ -96,6 +95,21 @@ class PicUpload extends Component {
         }
         let croppedImage = new File([u8arr], filename, {type:mime});
         this.setState({croppedImage: croppedImage }) 
+    }
+
+    addPhotoToUser = (user, data) => {
+        fetch(`http://localhost:3000/api/v1/users/${user.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Authorization': `Bearer ${localStorage.jwt}`,
+            },
+            body: data
+        })
+        .then(resp => resp.text())
+        .then(data => {
+            window.location.href = "/profile"
+        })
+        .catch(error => console.log('Error:', error))
     }
 
     render() {

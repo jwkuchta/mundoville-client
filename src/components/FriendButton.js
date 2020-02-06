@@ -6,6 +6,7 @@ import RemoveFriendButton from './RemoveFriendButton'
 
 const FriendButton = props => {
 
+    // check for friendship to determine which button will be displayed (friend/unfriend)
     const f1 = props.currentUser.friendships.filter(f => f.friend_id === props.user.id)
     const f2 = props.user.friendships.filter(f => f.friend_id === props.currentUser.id)
         

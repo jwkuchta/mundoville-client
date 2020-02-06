@@ -32,6 +32,8 @@ class CurrentUserProfileCard extends Component {
                     </Card.Header>
                     
                     <PicUpload /><br></br>
+
+                    {/* pic upload element without cropping functionality */}
                     {/* <PicUploadNoCrop /><br></br> */}
                     
                     <Button className='ui button'>

@@ -43,7 +43,7 @@ export const fetchReviews = () => {
   .then(data => getReviews(data))
 }
 
-export const loggedIn = user => {
+const loggedIn = user => {
   return {type: 'LOGGED_IN', user: user}
 }
 

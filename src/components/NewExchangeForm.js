@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Segment, Form, Button, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 // import {submitNewExchange} from '../redux/actions'
 
 class NewExchangeForm extends Component {
@@ -13,7 +13,6 @@ class NewExchangeForm extends Component {
             body: '',
             receiver_id: null,
             users: [],
-            open: false,
         }
     }
 
@@ -24,9 +23,6 @@ class NewExchangeForm extends Component {
             users: []
         })
     }
-
-    open = () => this.setState({ open: true })
-    close = () => this.setState({ open: false })
 
     componentDidMount() {
         // debugger
@@ -70,6 +66,7 @@ class NewExchangeForm extends Component {
         // alert('Message sent')
         window.location.href='/messages'
         console.log(this.props)
+        // goes back to '/messeges' without reload
         this.props.setPageMessages()
     }
 
@@ -113,7 +110,6 @@ class NewExchangeForm extends Component {
                             floating
                             options={this.state.users}
                             placeholder='Select User'
-                            // resultrenderer={this.display}
                             onChange={(e) => this.handleChange(e)}
                         />
                     </Form.Group>

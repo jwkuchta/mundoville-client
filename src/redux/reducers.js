@@ -44,26 +44,14 @@ let usersReducer = (state = initState.users, action) => {
 let currentUserReducer = (state=initState.currentUser, action) => {
     switch (action.type) {
         case 'LOGGED_IN':
-            // debugger
             return {...action.user}
-            //later add:
-            // frienders: action.user.frienders,
-            // friendeds: action.user.friendeds,
-            // messages: action.user.following,
-            // reviews: action.user.reviews,
         case 'FRIEND':
             return {
                 user: action.user,
-                // friended: action.payload.friended,
-                // messages: action.payload.following,
-                // reviews: action.payload.reviews,
             }
         case 'UNFRIEND':
             return {
                 user: action.user,
-                // friended: action.payload.friended,
-                // messages: action.payload.following,
-                // reviews: action.payload.reviews,
             }
         default:
             return state
