@@ -11,7 +11,7 @@ const AddFriendButton = props => {
     // creates a new friendship in the backend
     const addFriendFetch = (userId, friendId) => {
         // debugger
-        fetch('https://mundoville-api.herokuapp.com/api/v1/friendships', {
+        fetch('/api/v1/friendships', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,

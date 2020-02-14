@@ -1,6 +1,6 @@
 export const fetchProfile = () => {
   return dispatch => {
-    return fetch('https://mundoville-api.herokuapp.com/api/v1/profile', {
+    return fetch('/api/v1/profile', {
       headers: {
           'Authorization': `Bearer ${localStorage.jwt}`,
           'Content-Type': 'application/json',
@@ -15,7 +15,7 @@ export const fetchProfile = () => {
 
 export const fetchUsers = () => {
   return dispatch => {
-    return fetch('https://mundoville-api.herokuapp.com/api/v1/users', {
+    return fetch('/api/v1/users', {
       headers: {
         'Authorization': `Bearer ${localStorage.jwt}`,
         'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ export const fetchUsers = () => {
 
 
 export const fetchReviews = () => {
-  fetch('https://mundoville-api.herokuapp.com/api/v1/reviews', {
+  fetch('/api/v1/reviews', {
     headers: {
       'Authorization': `Bearer ${localStorage.jwt}`,
       'Content-Type': 'application/json',

@@ -44,7 +44,7 @@ class App extends Component {
   }
   
   fetchReviews = () => {
-    fetch('https://mundoville-api.herokuapp.com/api/v1/reviews', {
+    fetch('/api/v1/reviews', {
       headers: {
         'Authorization': `Bearer ${localStorage.jwt}`,
         'Content-Type': 'application/json',
