@@ -6,7 +6,7 @@ import { languages, countries } from './dropdown'
 // import PicUpload from './PicUpload'
 
 
-const usersUrl = '/api/v1/users/'
+const usersUrl = 'api/v1/users/'
 
 class EditProfileForm extends Component {
     

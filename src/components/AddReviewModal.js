@@ -32,7 +32,7 @@ class AddReviewModal extends Component {
 
         // create a new Review instance in the backend
         if (this.state.rating) {
-            fetch('/api/v1/reviews', {
+            fetch('api/v1/reviews', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${localStorage.jwt}`,

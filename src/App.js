@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   fetchExchanges = () => {
-    fetch('/api/v1/findExchanges', {
+    fetch('api/v1/findExchanges', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${localStorage.jwt}`,
@@ -44,7 +44,7 @@ class App extends Component {
   }
   
   fetchReviews = () => {
-    fetch('/api/v1/reviews', {
+    fetch('api/v1/reviews', {
       headers: {
         'Authorization': `Bearer ${localStorage.jwt}`,
         'Content-Type': 'application/json',

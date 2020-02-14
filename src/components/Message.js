@@ -15,7 +15,7 @@ class Message extends Component {
         let url = sender.username === currentUser.username ? '/profile' : `/users/${sender.username}`
         
         if (message.user_id !== currentUser.id && message.read === false) {
-            fetch(`/api/v1/messages/${message.id}`, {
+            fetch(`api/v1/messages/${message.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Authorization': `Bearer ${localStorage.jwt}`,

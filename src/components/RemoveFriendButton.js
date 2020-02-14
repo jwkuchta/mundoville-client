@@ -10,7 +10,7 @@ const RemoveFriendButton = (props) => {
 
     const removeFriendFetch = (userId, friendId) => {
         // debugger
-        fetch('/api/v1/unfriend', {
+        fetch('api/v1/unfriend', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,

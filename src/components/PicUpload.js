@@ -98,7 +98,7 @@ class PicUpload extends Component {
     }
 
     addPhotoToUser = (user, data) => {
-        fetch(`/api/v1/users/${user.id}`, {
+        fetch(`api/v1/users/${user.id}`, {
             method: 'PATCH',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,

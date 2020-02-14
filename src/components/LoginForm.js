@@ -26,7 +26,7 @@ class LoginForm extends Component {
 
     fetchLogin = () => {
         // debugger
-        fetch('/api/v1/login', {
+        fetch('api/v1/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
