@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   fetchExchanges = () => {
-    fetch('https://mundoville-api.herokuapp.com/api/v1/findExchanges', {
+    fetch('/api/v1/findExchanges', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${localStorage.jwt}`,
