@@ -74,7 +74,7 @@ class NewExchangeForm extends Component {
         // debugger
         let currentUser = this.props.currentUser
 
-        fetch('api/v1/exchanges', {
+        fetch('https://mundoville-api.herokuapp.com/api/v1/exchanges', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,
