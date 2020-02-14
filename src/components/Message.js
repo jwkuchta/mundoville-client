@@ -15,7 +15,7 @@ class Message extends Component {
         let url = sender.username === currentUser.username ? '/profile' : `/users/${sender.username}`
         
         if (message.user_id !== currentUser.id && message.read === false) {
-            fetch(`/api/v1/messages/${message.id}`, {
+            fetch(`https://mundoville-api.herokuapp.com/api/v1/messages/${message.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Authorization': `Bearer ${localStorage.jwt}`,
@@ -28,7 +28,7 @@ class Message extends Component {
             .then(console.log)
         }
 
-        const senderPicUrl = `http://localhost:3000/${sender.profile_pic_url}`
+        const senderPicUrl = `/${sender.profile_pic_url}`
 
         return (
 

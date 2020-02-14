@@ -9,7 +9,7 @@ class UserCard extends Component {
     render() {
         // debugger
 
-        let profilePicUrl = `http://localhost:3000/${this.props.user.profile_pic_url}`
+        let profilePicUrl = `/${this.props.user.profile_pic_url}`
 
         return (
             <Card>

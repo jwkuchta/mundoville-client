@@ -32,7 +32,7 @@ class AddReviewModal extends Component {
 
         // create a new Review instance in the backend
         if (this.state.rating) {
-            fetch('http://localhost:3000/api/v1/reviews', {
+            fetch('https://mundoville-api.herokuapp.com/api/v1/reviews', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${localStorage.jwt}`,

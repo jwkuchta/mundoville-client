@@ -37,7 +37,7 @@ class NewExchangeForm extends Component {
                 id: user.id, 
                 text: user.username, 
                 value: user.id, 
-                image: {avatar: true, src: `http://localhost:3000/${user.profile_pic_url}` }}
+                image: {avatar: true, src: `/${user.profile_pic_url}` }}
             users.push(userInstance)
             return users
         })
@@ -74,7 +74,7 @@ class NewExchangeForm extends Component {
         // debugger
         let currentUser = this.props.currentUser
 
-        fetch('http://localhost:3000/api/v1/exchanges', {
+        fetch('https://mundoville-api.herokuapp.com/api/v1/exchanges', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,

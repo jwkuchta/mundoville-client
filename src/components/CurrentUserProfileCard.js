@@ -11,7 +11,7 @@ class CurrentUserProfileCard extends Component {
     render() {
         
         // debugger
-        let pic_url = `http://localhost:3000/${this.props.currentUser.profile_pic_url}`
+        let pic_url = `/${this.props.currentUser.profile_pic_url}`
         let first_name = this.props.currentUser.first_name
         let last_name = this.props.currentUser.last_name
         let username = this.props.currentUser.username

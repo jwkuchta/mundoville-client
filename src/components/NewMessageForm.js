@@ -19,7 +19,7 @@ class NewMessageForm extends Component {
         let otherUserId = this.props.exchange.second_user_id !== this.props.currentUser.id
             ? this.props.exchange.second_user_id : this.props.exchange.first_user_id
 
-        fetch('http://localhost:3000/api/v1/exchanges',{
+        fetch('https://mundoville-api.herokuapp.com/api/v1/exchanges',{
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,

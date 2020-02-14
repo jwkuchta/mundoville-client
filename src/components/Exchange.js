@@ -110,7 +110,7 @@ class Exchange extends Component {
                 infoMessage = unread.length + ' unread messages from ' + otherUser.username
             }
 
-            const otherUserPic = `http://localhost:3000/${otherUser.profile_pic_url}`
+            const otherUserPic = `/${otherUser.profile_pic_url}`
 
             return (
                 <Segment secondary padded='very'>

@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   fetchExchanges = () => {
-    fetch('http://localhost:3000/api/v1/findExchanges', {
+    fetch('https://mundoville-api.herokuapp.com/api/v1/findExchanges', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${localStorage.jwt}`,
@@ -44,7 +44,7 @@ class App extends Component {
   }
   
   fetchReviews = () => {
-    fetch('http://localhost3000/api/v1/reviews', {
+    fetch('https://mundoville-api.herokuapp.com/api/v1/reviews', {
       headers: {
         'Authorization': `Bearer ${localStorage.jwt}`,
         'Content-Type': 'application/json',

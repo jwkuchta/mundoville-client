@@ -1,7 +1,8 @@
 {
-  "name": "travel_app_client",
+  "name": "mundoville-client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "@material-ui/core": "^3.5.0",
     "@material-ui/lab": "^3.0.0-alpha.00",

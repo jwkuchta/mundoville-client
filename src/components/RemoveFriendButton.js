@@ -10,7 +10,7 @@ const RemoveFriendButton = (props) => {
 
     const removeFriendFetch = (userId, friendId) => {
         // debugger
-        fetch('http://localhost:3000/api/v1/unfriend', {
+        fetch('https://mundoville-api.herokuapp.com/api/v1/unfriend', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,
