@@ -1,6 +1,5 @@
 import React from 'react'
 import {Container, Grid } from 'semantic-ui-react'
-import LoginModal from '../containers/LoginModal'
 
 // brief page description and tips
 const AboutPage = () => {
@@ -47,8 +46,6 @@ const AboutPage = () => {
                     When you find a few interesting potential hosts, carefully review their 
                     profile and send a message specifying the dates you’ll be there.
                     Make sure to personalize your messages and tell your host why you want to meet!</h3></p>
-            </Grid.Row>
-            <Grid.Row>{!localStorage.jwt ? <LoginModal className='about-page-buttons' /> : null}
             </Grid.Row>
 
         </Container>

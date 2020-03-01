@@ -1,9 +1,8 @@
 import React  from 'react'
 import { Container, Image } from 'semantic-ui-react'
 // import sakura from '../photos/sakura.jpg'
-import sakura2 from '../photos/sakura2.gif'
+import plane from '../photos/plane.gif'
 import logo2 from '../photos/logo2.png'
-import LoginModal from './LoginModal'
 // import { Redirect } from 'react-router'
 // import NavBar from '../components/NavBar'
 
@@ -13,7 +12,7 @@ const HomePage = () => {
         <Container fluid className="home">
             <Image className='background-img'
                 fluid 
-                src={sakura2}
+                src={plane}
             />
             {/* <NavBar /> */}
             <Container fluid className='app-logo'>
@@ -33,7 +32,6 @@ const HomePage = () => {
                 <h3>don't just be a tourist</h3>
                 <h3>hang out with locals while you travel</h3>
             </Container>
-            {/* <LoginModal /> */}
         </Container>
     )
                 

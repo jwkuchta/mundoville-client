@@ -1,43 +1,35 @@
-import React from 'react'
-// import { connect } from 'react-redux'
-import { Image, Menu, Container } from 'semantic-ui-react'
+import React, { Component } from 'react'
 import logo_white from '../photos/logo_white.png'
+import LoginForm from './LoginForm'
+import SignupForm from './SignupForm'
 
-const LoggedOutNavBar = () => {
+class LoggedOutNavBar extends Component {
 
-    let activeItem
-    
-    return (
-        <Container fluid> 
-            <Menu
-            fluid 
-            inverted='true'
-            pointing 
-            secondary 
-            size ='huge' 
-            widths={6}>
-                <Menu.Item link size='medium'> 
-                    <Image 
-                    inverted='true'
-                    name='white-logo'
-                    src={logo_white} 
-                    size ='huge' 
-                    className='white-logo'
-                    onClick={() => window.location.href = '/'}/>
-                </Menu.Item>
-                <Menu.Item></Menu.Item>
-                <Menu.Item header
-                name='About'
-                size='medium'
-                active={activeItem === 'about'}
-                onClick={() => window.location.href = '/about'}
-                />
-                <Menu.Item></Menu.Item>
-                <Menu.Item></Menu.Item>
-                <Menu.Item></Menu.Item>
-            </Menu>
-        </Container>
-    )
+    state = {option: ''}
+
+    render() {
+
+        switch(this.state.option) {
+            case 'login':
+                return <LoginForm />
+            case 'signup':
+                return <SignupForm />
+            default:
+                return (
+                    <div>
+                        <a href="/" ><img src={logo_white} alt="logo white"></img></a>
+                        <nav>
+                            <ul> 
+                                <li><a href="/about">About</a></li>
+                                <li><a onClick={() => this.setState({option: 'login'})}>Log In</a></li>
+                                <li><a onClick={() => this.setState({option: 'signup'})}>Sign Up</a></li>
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                )
+        }
+    }
 }  
 
 export default LoggedOutNavBar

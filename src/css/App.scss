@@ -1,11 +1,12 @@
 .App {
   text-align: center;
-  background-color: #246a92;
+  background-color: #608586;
   background-image: url("../photos/plane.gif") no-repeat fixed center;
+  // display: flex;
 }
 
 body {
-  background-color: #246a92;
+  background-color: #608586;
   // background-image: url("../photos/sakura.jpg");
 }
 
@@ -19,24 +20,26 @@ body {
 }
 
 .main-page {
+  position: relative;
   margin-top: 0px;
   margin-bottom: 100px;
   margin-right: 10px;
   margin-left: 10px;
+  display: flex;
 }
 
 .main-page-question {
   position: absolute;
   top: 30%;
   left: 24%;
-  color: teal;
+  color: #608586;
 }
 
 .main-page-description {
   position: absolute;
   top: 30%;
   left: 24%;
-  color: #246a92;
+  color: #608586;
 }
 
 // .main-page-buttons {
@@ -48,7 +51,7 @@ body {
 // }
 
 .button {
-  color: teal;
+  color: #608586;
 }
 
 /* .ui-teal-basic-button {
@@ -60,8 +63,8 @@ body {
 .main-page-forms {
   position: absolute;
   display: inline-block;
-  left: 350px;
-  top: -620px;
+  // left: 35%;
+  // top: -80%;
 }
 
 .navigation-container {
@@ -116,7 +119,7 @@ body {
   font-style: Verdana;
   font-weight: normal;
   font-size: 16px;
-  color: #246a92;
+  color: #608586;
   background-color: white;
   text-align: left;
   font-style: bold;
@@ -131,14 +134,14 @@ body {
 
 .teal-background {
   color: white;
-  background-color: #246a92;
+  background-color: #608586;
 
 }
 
 .teal-font {
   font-family: sans-serif;
   font-size: 16px;
-  color: #246a92;
+  color: #608586;
 }
 
 .crop-container {
@@ -186,12 +189,12 @@ body {
       position: absolute;
       top: 30%;
       left: 24%;
-      color: teal;
+      color: #608586;
     }
     .main-page-buttons {
     
       display: inline-block;
-      background-color: #246a92;
+      background-color: #608586;
       /* color: white; */
     }
     .main-page-forms {
@@ -239,3 +242,10 @@ body {
     }
   }
 }
+
+a { 
+  color: white; 
+  cursor: pointer;
+}
+
+a:hover { color: rgb(94, 202, 245); }
