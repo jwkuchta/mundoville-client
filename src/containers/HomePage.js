@@ -5,6 +5,7 @@ import sakura2 from '../photos/sakura2.gif'
 import logo2 from '../photos/logo2.png'
 import LoginModal from './LoginModal'
 // import { Redirect } from 'react-router'
+// import NavBar from '../components/NavBar'
 
 const HomePage = () => {
     
@@ -14,6 +15,7 @@ const HomePage = () => {
                 fluid 
                 src={sakura2}
             />
+            {/* <NavBar /> */}
             <Container fluid className='app-logo'>
                 <Image 
                     centered 
@@ -31,7 +33,7 @@ const HomePage = () => {
                 <h3>don't just be a tourist</h3>
                 <h3>hang out with locals while you travel</h3>
             </Container>
-            <LoginModal />
+            {/* <LoginModal /> */}
         </Container>
     )
                 
@@ -40,5 +42,3 @@ const HomePage = () => {
 
 
 export default HomePage
-
-

@@ -41,4 +41,3 @@ const LoggedOutNavBar = () => {
 }  
 
 export default LoggedOutNavBar
-

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import './App.css'
+import './css/NavBar.scss'
 import { Route, Switch, Redirect } from "react-router-dom"
 import LoggedInNavBar from './components/LoggedInNavBar'
 import LoggedOutNavBar from './components/LoggedOutNavBar'
@@ -12,6 +12,7 @@ import EditProfilePage from './containers/EditProfilePage'
 import MessagesContainer from './containers/MessagesContainer'
 import UserProfilePage from './containers/UserProfilePage'
 import AboutPage from './components/AboutPage'
+import NavBar from './components/NavBar'
 
 class App extends Component {
 
@@ -44,6 +45,7 @@ class App extends Component {
   }
   
   fetchReviews = () => {
+    // debugger
     fetch('http://localhost3000/api/v1/reviews', {
       headers: {
         'Authorization': `Bearer ${localStorage.jwt}`,
@@ -51,10 +53,11 @@ class App extends Component {
         'Accept': 'application/json'
       }
     })
-    .then(resp => resp.json())
-    .then(data => {
-        this.props.getReviews(data)
-    })
+    // .then(resp => resp.json())
+    // .then(data => {
+    //     this.props.getReviews(data)
+    // })
+    .then(resp => console.log(resp))
   }
   
   render() {
@@ -66,9 +69,9 @@ class App extends Component {
 
     return (
       <div className="App" >
-        {localStorage.jwt ? <LoggedInNavBar /> : <LoggedOutNavBar />}
+        {/* {localStorage.jwt ? <LoggedInNavBar /> : <LoggedOutNavBar />} */}
+        <NavBar />
         <Switch>
-
           <Route exact path='/'>
             {!localStorage.jwt ? 
             <div className='mainPage'>< HomePage /></div> : <div className='mainPage'>< CurrentUserProfilePage /></div>}
