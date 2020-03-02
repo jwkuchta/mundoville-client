@@ -69,7 +69,7 @@ class App extends Component {
     }
 
     return (
-      <div className="App" ref={this.contextRef} style={{ backgroundColor: 'white'}}>
+      <div className="App" ref={this.contextRef}>
         {/* <div ref={this.contextRef}> */}
           <Sticky context={this.contextRef}>
           {!localStorage.jwt && 

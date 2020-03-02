@@ -25,7 +25,7 @@ class LoginForm extends Component {
     }
 
     fetchLogin = () => {
-        debugger
+        // debugger
         fetch('http://localhost:3000/api/v1/login', {
             method: 'POST',
             headers: {

@@ -36,9 +36,9 @@ class CurrentUserProfileCard extends Component {
                     {/* pic upload element without cropping functionality */}
                     {/* <PicUploadNoCrop /><br></br> */}
                     
-                    <Button className='ui button'>
+                    {/* <Button className='ui button'> */}
                         <Link to={`/users/${currentUser.username}/edit`}>Edit your profile</Link>
-                    </Button>
+                    {/* </Button> */}
 
                 </Card.Content>
                

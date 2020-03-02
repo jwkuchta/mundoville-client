@@ -84,6 +84,7 @@ const LoggedInNavBar = () => {
 
             </ul>   
             </nav>
+            <br></br>
         </div>
     )
 }

@@ -58,32 +58,36 @@ class SearchBar extends Component {
         const { isLoading, value, results } = this.state
 
         return (
-            <Grid ><br></br>
-            <Grid.Column width={15}>
-            <Grid.Row></Grid.Row>
-                <Header icon>
-                    <Icon inverted name='search' />
-                </Header>
+            <div>
                 <br></br>
-                <h4 className='teal-text'>Search users by destination</h4>
-                <br></br>
-                <Search
-                fluid
-                placeholder='Country'
-                loading={isLoading}
-                onResultSelect={this.handleResultSelect}
-                onSearchChange={_.debounce(this.handleSearchChange, 500, {
-                    leading: true,
-                })}
-                results={results}
-                resultRenderer={this.display}
-                value={value}
-                />
-                <br></br>
+                <Grid style={{"background-color": "#2C8EA7"}}><br></br>
+                    <Grid.Column width={15}>
+                        <Grid.Row></Grid.Row>
+                            <Header icon>
+                                <Icon inverted name='search' />
+                            </Header>
+                            <br></br>
+                            <h4 className='teal-text'>Search users by destination</h4>
+                            <br></br>
+                            <Search
+                            fluid
+                            placeholder='Country'
+                            loading={isLoading}
+                            onResultSelect={this.handleResultSelect}
+                            onSearchChange={_.debounce(this.handleSearchChange, 500, {
+                                leading: true,
+                            })}
+                            results={results}
+                            resultRenderer={this.display}
+                            value={value}
+                            />
+                            <br></br>
+                    </Grid.Column>
+                <Grid.Column width={1}>
             </Grid.Column>
-            <Grid.Column width={1}>
-            </Grid.Column>
-            </Grid>
+        </Grid>
+        </div>
+            
         )
     }
 }

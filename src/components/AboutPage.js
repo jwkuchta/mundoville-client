@@ -1,11 +1,15 @@
 import React from 'react'
 import {Container, Grid } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import LoginForm from './LoginForm'
+import SignupForm from './SignupForm'
 
-const AboutPage = () => {
+const AboutPage = (props) => {
 
     return (
-        <Container className='text-custom'> 
-
+        
+        <Container fluid className='text-custom'> 
+            <Container>
             <Grid.Row>
                 <h1>How Mundoville Works</h1>
                 <br></br>
@@ -25,8 +29,8 @@ const AboutPage = () => {
                     Here you can tell people if you're traveling or would like to host. 
                     Be sure to include a profile picture and links to your social media profiles.</h3></p>
             </Grid.Row>
-            <Container fluid className='about-images'>
-            </Container>
+            {/* <Container fluid className='about-images'> */}
+            {/* </Container> */}
             <br></br><br></br>
             <Grid.Row>
                 <h2>Explore your city</h2>
@@ -46,9 +50,18 @@ const AboutPage = () => {
                     profile and send a message specifying the dates you’ll be there.
                     Make sure to personalize your messages and tell your host why you want to meet!</h3></p>
             </Grid.Row>
-
+            <br></br>
+            </Container>
+            {!localStorage.jwt && props.option === 'login' && <Container fluid className='login-form'><LoginForm /></Container>}
+            {!localStorage.jwt && props.option === 'signup' && <Container fluid className='signup-form'><SignupForm /></Container>} 
+           
         </Container>
     )
 }
 
-export default AboutPage
+const mapSTP = state => {
+    // debugger
+    return {option: state.options.option}
+}
+
+export default connect(mapSTP)(AboutPage)

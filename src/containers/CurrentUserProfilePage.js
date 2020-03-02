@@ -12,8 +12,8 @@ class CurrentUserProfilePage extends Component {
 
         // console.log(this.props)
         return (
-            <>
-            <Container>
+            <div className='profilePage'>
+            <Container >
                 <Grid>
                 <br></br>
                 <Grid.Row>
@@ -32,9 +32,7 @@ class CurrentUserProfilePage extends Component {
                 </Grid.Row>
                 </Grid>
             </Container>
-            <Container>
-            </Container>
-            </>
+            </div>
         )
     }  
 }
