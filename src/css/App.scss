@@ -1,70 +1,46 @@
 .App {
   text-align: center;
-  background-color: #608586;
+  background-color: white;
   background-image: url("../photos/plane.gif") no-repeat fixed center;
   // display: flex;
 }
 
 body {
-  background-color: #608586;
-  // background-image: url("../photos/sakura.jpg");
+  background-color: #013435;
 }
 
-.app-logo {
-  position: absolute;
-  top: 1%;
-  left: 25%;
-  display: inline-block;
-  height: 20px;
-  width: 100px;
-}
-
-.main-page {
-  position: relative;
-  margin-top: 0px;
-  margin-bottom: 100px;
-  margin-right: 10px;
-  margin-left: 10px;
+.mainPage {
+  // position: absolute;
   display: flex;
-}
-
-.main-page-question {
-  position: absolute;
-  top: 30%;
-  left: 24%;
-  color: #608586;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-right: 2px;
+  margin-left: 2px;
+  display: flex;
 }
 
 .main-page-description {
   position: absolute;
-  top: 30%;
-  left: 24%;
-  color: #608586;
+  top: 55%;
+  right: 1%;
+  color: #1C4E68;
 }
-
-// .main-page-buttons {
-//   position: absolute;
-//   top: 18px;
-//   left: 570px;
-//   display: inline-block;
-//   /* color: white; */
-// }
 
 .button {
-  color: #608586;
+  color: #013435;
 }
 
-/* .ui-teal-basic-button {
-  position: absolute;
-  top: 10%;
-  display: inline-block;
-} */
-
-.main-page-forms {
+.login-form {
   position: absolute;
   display: inline-block;
   // left: 35%;
-  // top: -80%;
+  top: 50%;
+}
+
+.signup-form {
+  position: absolute;
+  display: inline-block;
+  top: 50%;
 }
 
 .navigation-container {
@@ -73,13 +49,14 @@ body {
 }
 
 .logo {
-  margin-top: 50px;
-  margin-bottom: 25px;
+  height: 80px;
+  float: left;
+  // width: 400px;
 }
 
-.white-logo {
-  height: 30px;
-  width: 150px;
+.logo-in {
+  height: 100px;
+  // width: 400px;
 }
 
 .profile-icon {
@@ -106,10 +83,6 @@ body {
   overflow: scroll;
 }
 
-#sakura {
-  size: 60px, 100px;
-}
-
 .logged-out-nav-bar-container {
   margin: 0px;
 }
@@ -119,7 +92,7 @@ body {
   font-style: Verdana;
   font-weight: normal;
   font-size: 16px;
-  color: #608586;
+  color: #013435;
   background-color: white;
   text-align: left;
   font-style: bold;
@@ -134,14 +107,14 @@ body {
 
 .teal-background {
   color: white;
-  background-color: #608586;
+  background-color: #2C8EA7;
 
 }
 
 .teal-font {
   font-family: sans-serif;
   font-size: 16px;
-  color: #608586;
+  color: #013435;
 }
 
 .crop-container {
@@ -189,12 +162,12 @@ body {
       position: absolute;
       top: 30%;
       left: 24%;
-      color: #608586;
+      color: #013435;
     }
     .main-page-buttons {
     
       display: inline-block;
-      background-color: #608586;
+      background-color: #1C4E68;
       /* color: white; */
     }
     .main-page-forms {
@@ -244,8 +217,16 @@ body {
 }
 
 a { 
-  color: white; 
+  color: #1C4E68; 
   cursor: pointer;
 }
 
-a:hover { color: rgb(94, 202, 245); }
+a:hover { color: #2C8EA7; }
+
+// COLORS
+
+$darkTeal: #1C4E68;
+$darkGreen: #013435;
+$creamy: #FFFFED;
+$lightTeal: #2C8EA7;
+$gray:	#98B3BF;

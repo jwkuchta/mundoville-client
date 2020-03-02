@@ -72,6 +72,10 @@ export const setCountry = country => {
   return {type: 'SET_COUNTRY', country: country}
 }
 
+export const setOption = option => {
+  return {type: 'SET_OPTION', option: option}
+}
+
 export const getReviews = reviews => {
   return {type: 'GET_REVIEWS', payload: reviews}
 }

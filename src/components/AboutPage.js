@@ -1,7 +1,6 @@
 import React from 'react'
 import {Container, Grid } from 'semantic-ui-react'
 
-// brief page description and tips
 const AboutPage = () => {
 
     return (

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Container, Image, Icon, Menu, Popup } from 'semantic-ui-react'
-import logo_white from '../photos/logo_white.png'
+import { Icon, Popup } from 'semantic-ui-react'
+import logo from '../photos/logo_teal_cropped.png'
 import '../css/App.scss'
 
 const LoggedInNavBar = () => {
@@ -12,12 +12,12 @@ const LoggedInNavBar = () => {
     }
     
     return (
-        <div>
-
+        <div style={{ backgroundColor: 'white'}}>
             <a href="/" onClick={() => window.location.href = '/'}>
             <Popup content='back to main page' trigger={<img 
-                src={logo_white} 
-                alt="logo white"
+                src={logo} 
+                alt="logo"
+                className='logo-in'
                 ></img>}
                 />
             </a>
@@ -27,7 +27,7 @@ const LoggedInNavBar = () => {
                 <li>
                     <a href="/" onClick={() => window.location.href = '/'}>
                         <Popup content='back to main page' trigger={<Icon fitted
-                            inverted
+                            // inverted
                             name='home' 
                             size='large' 
                             className='user outline' 
@@ -41,7 +41,7 @@ const LoggedInNavBar = () => {
                 <li>
                     <a href="/messages" onClick={() => window.location.href = "/messages"}>
                         <Popup content='see your messages' trigger={<Icon fitted
-                            inverted
+                            // inverted
                             name='messages' 
                             size='large' 
                             className='envelope outline icon' 
@@ -55,7 +55,7 @@ const LoggedInNavBar = () => {
                 <li>
                     <a href="/users" onClick={() => window.location.href = '/users'}>
                         <Popup content='meet other users' trigger={<Icon fitted
-                            inverted
+                            // inverted
                             link
                             name='search' 
                             size='large' 
@@ -69,7 +69,7 @@ const LoggedInNavBar = () => {
                 <li>
                     <a href="/about" onClick={() => window.location.href = '/about'}>
                         <Popup content='find out more' trigger={<Icon fitted
-                            inverted
+                            // inverted
                             link
                             name='question circle outline' 
                             size='large' 

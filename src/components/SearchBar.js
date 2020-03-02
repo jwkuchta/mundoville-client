@@ -4,7 +4,6 @@ import { Search, Grid, Header, Icon } from 'semantic-ui-react'
 import { countries } from './dropdown'
 import { connect } from 'react-redux'
 import { setCountry } from '../redux/actions'
-// import faker from 'faker'
 
 class SearchBar extends Component {
 
@@ -55,9 +54,6 @@ class SearchBar extends Component {
     }
 
     render() {
-
-        // debugger
-        // console.log(this.state.results)
 
         const { isLoading, value, results } = this.state
 

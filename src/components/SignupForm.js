@@ -68,7 +68,7 @@ class SignupForm extends Component {
             return window.location.href = "/"
         } else {
             return (
-                <Segment padded='very' className='main-page-forms'>
+                <Segment padded='very' className='signup-form'>
                     <Form onSubmit={e => this.handleSubmit(e)}>
                         <Form.Group>
                             <Form.Input 

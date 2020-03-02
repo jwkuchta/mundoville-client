@@ -9,10 +9,8 @@ import LoggedInNavBar from './LoggedInNavBar'
 
 const NavBar = () => {
 
-    
-
     return(
-        <div style={{ backgroundColor: '#608586'}}>
+        <div style={{ backgroundColor: 'white'}}>
         {!localStorage.jwt && <LoggedOutNavBar />}
         {localStorage.jwt && <LoggedInNavBar />}
         </div>

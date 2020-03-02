@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Form, Button, Header, Modal, Icon } from 'semantic-ui-react'
 import { languages, countries } from './dropdown'
-// import _ from 'lodash'
-// import PicUpload from './PicUpload'
-
 
 const usersUrl = 'http://localhost:3000/api/v1/users/'
 
@@ -104,7 +101,6 @@ class EditProfileForm extends Component {
     }
 
     render() {
-        // console.log(this.state)
 
         return (
             <Form 
@@ -113,13 +109,11 @@ class EditProfileForm extends Component {
             >   
              
             {/* PHOTO */}
-
                 <Form.Group width={12}>
                     {/* <PicUpload /> */}
                 </Form.Group>
 
             {/* MAIN INFO */}
-
                 <Form.Group widths='equal'>
                     <Form.Input
                         id='first_name'
@@ -142,7 +136,6 @@ class EditProfileForm extends Component {
                 />
 
             {/* EMAIL AND PASSWORD */}
-
                 <Form.Input
                     id='email'
                     label='Email' 
@@ -165,7 +158,6 @@ class EditProfileForm extends Component {
                 </Form.Group><br/> 
 
             {/* COUNTRY */}
- 
             <Form.Group widths='equal'>
                 <Form.Dropdown
                     id='country'
@@ -189,7 +181,6 @@ class EditProfileForm extends Component {
             </Form.Group><br/>
  
             {/* LANGUAGES */}
-
             <Form.Group widths='equal'>
                 <Form.Dropdown
                     id='language1'
@@ -224,7 +215,6 @@ class EditProfileForm extends Component {
             </Form.Group>
 
             {/* DELETE ACCOUNT MODAL*/}
-
                 <Button basic type='submit' content='Update'/>
                 <br/><br/>
                 <Modal 
