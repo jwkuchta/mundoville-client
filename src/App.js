@@ -71,7 +71,7 @@ class App extends Component {
     return (
       <div className="App" ref={this.contextRef}>
         {/* <div ref={this.contextRef}> */}
-          <Sticky context={this.contextRef}>
+          <Sticky context={this.contextRef} fluid>
           {!localStorage.jwt && 
           <LoggedOutNavBar attached='top' 
             tabular 

@@ -20,6 +20,8 @@ class UserCard extends Component {
             </div>
         )
 
+    
+
         // return (
         //     <div style={{'backgroundColor': '#276890', 'padding': '2px'}}>
         //         <div style={{'backgroundColor': 'white', 'padding': '2px'}}>

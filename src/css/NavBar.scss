@@ -11,16 +11,18 @@ li {
 
 a {
     // display: block;
-    padding-right: 35px;
+    padding-right: 10px;
+    padding-left: 27px;
     background-color: white;
-    font-size: 27px;
-    color: #276890;
+    font-size: 25px;
+    color: #1C4E68;
 }
 
 nav {
     width: 100%;
     overflow: hidden;
     background-color: white;
+    color: #1C4E68;
   }
   
   #navbar a {
@@ -30,7 +32,7 @@ nav {
     text-align: center;
     padding: 10px 10px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 16px;
   }
   
   // nav a:hover {
@@ -42,6 +44,17 @@ nav {
     background-color: #4CAF50;
     color: #1C4E68;
   }
+
+  .logo {
+    height: 80px;
+    float: left;
+    // width: 400px;
+  }
+  
+  // .logo-in {
+  //   height: 100px;
+  //   // width: 400px;
+  // }
   
   
   

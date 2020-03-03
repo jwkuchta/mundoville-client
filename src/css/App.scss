@@ -108,8 +108,8 @@ body {
 .social-icons {
   width: 95%;
   position: relative;
-  color: #276890;
-  background-color: white;
+  color: #eec231;
+  background-color: #d5d5d8;
   margin: 10px;
   border: none;
   padding: 5px;
@@ -165,7 +165,7 @@ body {
     height: 3653.59px;
     min-height: 3653.59px;
     min-width: 333px;
-   .app-logo {
+   .logo {
       height: 15vw;
       right: 32px;
       top: 15px;
@@ -201,7 +201,7 @@ body {
 @media screen and (max-width: 480px) {
   .App{
     margin: 60px 20px 70px 20px;
-    .app-logo {
+    .logo {
       height: 15vw;
       top: 11px;
       right: 26px;
@@ -247,4 +247,4 @@ $darkTeal: #1C4E68;
 $darkGreen: #013435;
 $creamy: #FFFFED;
 $lightTeal: #2C8EA7;
-$gray:	#98B3BF;
+$gray:	#d5d5d8;

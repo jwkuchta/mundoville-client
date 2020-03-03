@@ -23,16 +23,41 @@ class LoggedOutNavBar extends Component {
                     </Container>
             default:
                 return (
-                    <div style={{ backgroundColor: 'white'}}>
-                        <a href="/" ><img src={logo} alt="logo white" className='logo'></img></a>
-                        <nav>
+                    <div style={{ backgroundColor: 'white', position: 'relative'}}>
+                        {/* <a href="/" ><img src={logo} alt="logo white" className='logo'></img></a> */}
+                        <div style={{display: 'inline-block', backgroundColor: 'white', float:'left'}}>
+                        <a href="/" onClick={() => window.location.href = '/'}>
+                        <img 
+                            src={logo} 
+                            alt="logo"
+                            className='logo'
+                            ></img>
+                        </a><br></br>
+                        </div>
+
+                        {/* <nav>
                             <ul> 
                                 <li><a href="/about">About</a></li>
                                 <li><a onClick={() => this.props.setOption('login')}>Log In</a></li>
                                 <li><a onClick={() => this.props.setOption('signup')}>Sign Up</a></li>
                                 
                             </ul>
+                        </nav> */}
+                    
+                    <div style={{display: 'inline-block', backgroundColor: 'white'}}>
+                        <nav>
+                            <ul><li style={{color: 'white'}}>nothing to see here</li></ul>
+                            <ul><li style={{color: 'white'}}>nothing to see here either</li></ul>
+                            <ul><li style={{color: 'white'}}>still nothing to see</li></ul>
+                            <ul> 
+                                <li><a href="/about">About</a></li>
+                                <li><a onClick={() => this.props.setOption('login')}>Log In</a></li>
+                                <li><a onClick={() => this.props.setOption('signup')}>Sign Up</a></li>
+                                <li style={{color: 'white'}}>nothing to see here</li>
+                                
+                            </ul>
                         </nav>
+                    </div>
                     </div>
                 )
         }

@@ -14,19 +14,21 @@ class CurrentUserProfilePage extends Component {
         return (
             <Container className='profilePage'>
                 <Grid >
-                {/* <br></br> */}
-                <Grid.Row>
-                    <Grid.Column width={5}>
-                        <Grid.Row>
-                            <CurrentUserProfileCard /> 
-                        </Grid.Row>
-                    </Grid.Column>
-                    <Grid.Column width={11} style={{'backgroundColor': 'white', 'padding': '1px'}}>
-                        <Grid.Row>
-                            <UserInfo user={this.props.currentUser} />
-                        </Grid.Row>
-                    </Grid.Column>
-                </Grid.Row>
+                    <Grid.Row>
+
+                        <Grid.Column width={5}>
+                            <Grid.Row>
+                                <CurrentUserProfileCard /> 
+                            </Grid.Row>
+                        </Grid.Column>
+
+                        <Grid.Column width={11} style={{'backgroundColor': '#276890', 'padding': '1px'}}>
+                            <Grid.Row>
+                                <UserInfo user={this.props.currentUser} />
+                            </Grid.Row>
+                        </Grid.Column>
+                        
+                    </Grid.Row>
                 </Grid>
             </Container>
         )
