@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Container, Grid, Divider } from 'semantic-ui-react'
+import { Grid, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import SocialMediaIcons from '../components/SocialMediaIcons'
 
@@ -8,25 +8,62 @@ class UserInfo extends Component {
     render() {
 
         const {user} = this.props
-
-        let bio = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-
+        let bio = 'Write a little about yourself so other can get to know you better! What do you like to do in your free time? Are you a cat person or a dog person (or a bird person?). What activities would you enjoy sharing with other travellers? What do you expect out of this experience?'
         return (
-            <Container className='text-custom'>
-                <Grid.Row>Username: &nbsp; {user.username} </Grid.Row>
-                <Grid.Row>Full Name: &nbsp; {user.first_name} {user.last_name} </Grid.Row>
-                <Grid.Row>Email: &nbsp; {user.email} </Grid.Row>
-                {/* <Grid.Row>Facebook: &nbsp; {user.facebook} </Grid.Row>
-                <Grid.Row>Instagram: &nbsp; {user.instagram} </Grid.Row>
-                <Grid.Row>Occupation: &nbsp; {user.occupation} </Grid.Row> */}
-                <Grid.Row>Location: &nbsp; {user.city}, {user.country} </Grid.Row>
-                <Grid.Row>Languages: &nbsp; {user.language1}, {user.language2}, {user.language3} </Grid.Row>
-                <Divider></Divider><br></br>
-                {user.bio ? <Grid.Row>Bio: &nbsp; {user.bio}</Grid.Row> : <Grid.Row>Bio: &nbsp; {bio}</Grid.Row> }
-                <Grid.Row className='teal-background'>
+            <div style={{'backgroundColor': '#276890', padding: '10px'}} className='user-info'>
+                <div style={{'backgroundColor': 'white', 'padding': '25px', 'color': '#276890'}}>
+                    <Grid.Row>
+                        <Icon name='check' size='large'></Icon>Username
+                    </Grid.Row>
+                    <Grid.Row> &nbsp; &nbsp; {user.username} </Grid.Row>
+                    <Grid.Row>
+                        <Icon name='check' size='large'></Icon>Full Name
+                    </Grid.Row>
+                    <Grid.Row>&nbsp; &nbsp; {user.first_name} {user.last_name} </Grid.Row>
+                    <Grid.Row>
+                        <Icon name='at' size='large'></Icon>Email
+                    </Grid.Row>
+                    <Grid.Row>&nbsp; &nbsp; {user.email} </Grid.Row>
+                    <Grid.Row>
+                        <Icon name='map marker alternate' size='large'></Icon>Location
+                    </Grid.Row>
+                    <Grid.Row>&nbsp; &nbsp; {user.city}, {user.country} </Grid.Row>
+                    <Grid.Row>
+                        <Icon name='comment' size='large'></Icon>Languages
+                    </Grid.Row>
+                    <Grid.Row>&nbsp; &nbsp; {user.language1}, {user.language2}, {user.language3} </Grid.Row>
+                    <Grid.Row>
+                        <Icon name='heart outline' size='large'></Icon>Interests
+                    </Grid.Row>
+                    <Grid.Row>&nbsp; &nbsp;
+                        {user.interests ? 
+                        user.interests : 
+                        "Tell us what things and activities you love so others can get to know you better!"}
+                    </Grid.Row>
+                </div><br></br>
+
+                <div style={{'backgroundColor': 'white', 'padding': '25px', 'color': '#276890'}}>
+                    {user.bio ? 
+                    <>
+                    <Grid.Row>
+                        <h3>About me</h3>
+                    </Grid.Row><br></br>
+                    <Grid.Row>{bio}</Grid.Row> 
+                    </>
+                    :
+                    <>
+                    <Grid.Row>
+                        <Icon name='bio'></Icon>About me
+                    </Grid.Row>
+                    <Grid.Row>{bio}</Grid.Row> 
+                    </>}
+                </div><br></br>
+                <div style={{'backgroundColor': 'white', 'padding': '2px', 'color': '276890'}}>
+                <Grid.Row className='social-icons'>
                     <SocialMediaIcons />
                 </Grid.Row>
-            </Container>
+                </div>
+        </div>
         )
     }
 }

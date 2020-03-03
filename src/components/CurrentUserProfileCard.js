@@ -1,3 +1,5 @@
+
+
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, Image, Button, Container, Rating } from 'semantic-ui-react'
@@ -17,34 +19,19 @@ class CurrentUserProfileCard extends Component {
         let username = this.props.currentUser.username
         let currentUser = this.props.currentUser
 
-        let header = (first_name && last_name) ? `${first_name} ${last_name}` : username
-
         return (
-            <>
-            <Container>
-            <Card>
-                <Card.Content>
-                    
-                    <Image src={currentUser.profile_pic_url ? pic_url : placeholder} /><br></br>
-                    
-                    <Card.Header as='h3'><br></br>
-                        {header}
-                    </Card.Header>
-                    
+            <div style={{'backgroundColor': '#276890', 'padding': '2px'}}>
+                <div style={{'backgroundColor': 'white', 'padding': '2px'}}>
+                    <Image src={currentUser.profile_pic_url ? pic_url : placeholder}></Image>
+                </div>
+                <br></br>
+                <div style={{'backgroundColor': 'white', 'padding': '2px'}}>
+                    <h3>to change your profile picture click "Choose File" and then "save"</h3>
                     <PicUpload /><br></br>
-
-                    {/* pic upload element without cropping functionality */}
-                    {/* <PicUploadNoCrop /><br></br> */}
-                    
-                    {/* <Button className='ui button'> */}
-                        <Link to={`/users/${currentUser.username}/edit`}>Edit your profile</Link>
-                    {/* </Button> */}
-
-                </Card.Content>
-               
-                <Card.Content style={{color: 'teal'}}>
-                    {currentUser.rating 
-                    ? 
+                </div>
+                <br></br>
+                <div style={{'backgroundColor': 'white', 'padding': '2px'}}><br></br>
+                {currentUser.rating ? 
                     <Rating 
                         icon='star' 
                         defaultRating={currentUser.rating} 
@@ -53,11 +40,8 @@ class CurrentUserProfileCard extends Component {
                     />
                     : null }<br/>
                     {currentUser.rating ? currentUser.rating + '/5' : 'No reviews yet'}<br/><br/>
-                    </Card.Content>
-                    
-                </Card>
-            </Container>   
-            </>
+                </div>
+            </div>
         )
     }
 }
@@ -69,3 +53,4 @@ const mapStateToProps = state => {
     }
 }
 export default connect(mapStateToProps)(CurrentUserProfileCard)
+

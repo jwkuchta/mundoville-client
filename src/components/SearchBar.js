@@ -67,7 +67,7 @@ class SearchBar extends Component {
                                 <Icon inverted name='search' />
                             </Header>
                             <br></br>
-                            <h4 className='teal-text'>Search users by destination</h4>
+                            <h2 style={{'color': 'white'}}>Search users by destination</h2>
                             <br></br>
                             <Search
                             fluid
@@ -86,6 +86,7 @@ class SearchBar extends Component {
                 <Grid.Column width={1}>
             </Grid.Column>
         </Grid>
+        <br></br><br></br>
         </div>
             
         )

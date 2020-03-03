@@ -15,14 +15,21 @@ class UserCard extends Component {
         return (
             <Card link style={{marginBottom: 25, padding: 10, backgroundColor: '#eeeeee'}}>
                 <Card.Content>
+                    <div>
                     <Image src={this.props.user.profile_pic_url ? profilePicUrl : placeholder} />
-                        <Card.Header as='h3'> {this.props.user.username} </Card.Header>
-                        <Button className='ui button'>
-                            <Link to={`/users/${this.props.user.username}`}>See profile</Link>
-                        </Button>
+                    </div>
+                    <div>
+                    <h3>{this.props.user.first_name}  {this.props.user.last_name}</h3>
+                    <h3>{this.props.user.city}, {this.props.user.country}</h3>
+                    <Button className='ui button'>
+                        <Link to={`/users/${this.props.user.username}`} style={{'font-size': '20px', 'backgroundColor': 'white'}}>Full profile</Link>
+                    </Button>
+                    </div>
                 </Card.Content>
             </Card>
         )
+
+        
     }
 }
 
@@ -31,3 +38,5 @@ const mapDTP = dispatch => {
 }
 
 export default connect(null, mapDTP)(UserCard)
+
+

@@ -12,27 +12,23 @@ class CurrentUserProfilePage extends Component {
 
         // console.log(this.props)
         return (
-            <div className='profilePage'>
-            <Container >
-                <Grid>
-                <br></br>
+            <Container className='profilePage'>
+                <Grid >
+                {/* <br></br> */}
                 <Grid.Row>
                     <Grid.Column width={5}>
                         <Grid.Row>
                             <CurrentUserProfileCard /> 
                         </Grid.Row>
+                    </Grid.Column>
+                    <Grid.Column width={11} style={{'backgroundColor': 'white', 'padding': '1px'}}>
                         <Grid.Row>
-                        </Grid.Row>    
+                            <UserInfo user={this.props.currentUser} />
+                        </Grid.Row>
                     </Grid.Column>
-                    <Grid.Column width={11}>
-                        <UserInfo user={this.props.currentUser} />
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
                 </Grid.Row>
                 </Grid>
             </Container>
-            </div>
         )
     }  
 }
@@ -46,3 +42,6 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(CurrentUserProfilePage)
+
+
+

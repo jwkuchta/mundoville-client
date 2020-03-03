@@ -20,7 +20,7 @@ const LoggedInNavBar = () => {
                 className='logo-in'
                 ></img>}
                 />
-            </a>
+            </a><br></br>
 
             <nav>
             <ul>
@@ -29,7 +29,7 @@ const LoggedInNavBar = () => {
                         <Popup content='back to main page' trigger={<Icon fitted
                             // inverted
                             name='home' 
-                            size='large' 
+                            size='small' 
                             className='user outline' 
                             link
                             onClick={() => window.location.href = "/"}
@@ -43,7 +43,7 @@ const LoggedInNavBar = () => {
                         <Popup content='see your messages' trigger={<Icon fitted
                             // inverted
                             name='messages' 
-                            size='large' 
+                            size='small' 
                             className='envelope outline icon' 
                             link
                             onClick={() => window.location.href = "/messages"}
@@ -58,7 +58,7 @@ const LoggedInNavBar = () => {
                             // inverted
                             link
                             name='search' 
-                            size='large' 
+                            size='small' 
                             className='users' 
                             onClick={() => window.location.href = '/users'}
                             />}
@@ -72,7 +72,7 @@ const LoggedInNavBar = () => {
                             // inverted
                             link
                             name='question circle outline' 
-                            size='large' 
+                            size='small' 
                             className='iquestion circle outline' 
                             onClick={() => window.location.href = '/about'}
                             />}
@@ -84,7 +84,7 @@ const LoggedInNavBar = () => {
 
             </ul>   
             </nav>
-            <br></br>
+            {/* <br></br> */}
         </div>
     )
 }

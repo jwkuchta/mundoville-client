@@ -87,16 +87,16 @@ body {
   margin: 0px;
 }
 
-.text-custom {
+.user-info {
   font-family: sans-serif;
   font-style: Verdana;
   font-weight: normal;
   font-size: 16px;
-  color: white;
-  background-color: #1C4E68;
-  // text-align: justify;
+  color: #1C4E68;
+  background-color: white;
+  text-align: justify;
   font-style: bold;
-  // padding: 50px;
+  padding: 50px;
 }
 
 // .teal-text {
@@ -105,9 +105,19 @@ body {
 //   color: white;
 // }
 
-.teal-background {
-  color: white;
-  background-color: #2C8EA7;
+.social-icons {
+  width: 95%;
+  position: relative;
+  color: #276890;
+  background-color: white;
+  margin: 10px;
+  border: none;
+  padding: 5px;
+  align-content: center;
+  #popup {
+    width: 100%;
+    text-align: center;
+  }
 
 }
 
