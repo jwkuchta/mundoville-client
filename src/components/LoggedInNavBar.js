@@ -8,12 +8,12 @@ const LoggedInNavBar = () => {
     
     const handleLogOut = () => {
         localStorage.clear()
-        window.location.href = "/login"
+        // window.location.href = "/login"
     }
 
     return (
-        <div style={{display: 'inline-block', width: '79vw', backgroundColor: '#1C4E68', paddingLeft: '10px'}}>
-            <div style={{display: 'inline-block', backgroundColor: 'white', float:'left'}}>
+        <div style={{display: 'inline-block', width: '100vw', backgroundColor: 'white'}}>
+            <div style={{display: 'inline-block', backgroundColor: 'white', float:'left', paddingLeft: '10px'}}>
             <a href="/" onClick={() => window.location.href = '/'}>
             <Popup content='back to main page' trigger={<img 
                 src={logo} 
@@ -24,7 +24,7 @@ const LoggedInNavBar = () => {
             </a><br></br>
             </div>
 
-            <div style={{display: 'inline-block', backgroundColor: 'white', display: 'flex'}}>
+            <div style={{backgroundColor: 'white', display: 'flex'}}>
             <nav>
                 <ul><li style={{color: 'white'}}>nothing to see here</li></ul>
                 <ul><li style={{color: 'white'}}>nothing to see here either</li></ul>
@@ -35,7 +35,6 @@ const LoggedInNavBar = () => {
                         <Popup content='back to main page' trigger={<Icon fitted
                             // inverted
                             name='home' 
-                            size='small' 
                             className='user outline' 
                             link
                             onClick={() => window.location.href = "/"}
@@ -49,7 +48,6 @@ const LoggedInNavBar = () => {
                         <Popup content='see your messages' trigger={<Icon fitted
                             // inverted
                             name='messages' 
-                            size='small' 
                             className='envelope outline icon' 
                             link
                             onClick={() => window.location.href = "/messages"}
@@ -64,7 +62,6 @@ const LoggedInNavBar = () => {
                             // inverted
                             link
                             name='search' 
-                            size='small' 
                             className='users' 
                             onClick={() => window.location.href = '/users'}
                             />}
@@ -78,7 +75,6 @@ const LoggedInNavBar = () => {
                             // inverted
                             link
                             name='question circle outline' 
-                            size='small' 
                             className='iquestion circle outline' 
                             onClick={() => window.location.href = '/about'}
                             />}
@@ -86,7 +82,9 @@ const LoggedInNavBar = () => {
                     </a>
                 </li>
 
-                <li><a onClick={() => handleLogOut()}>Log Out</a></li>
+                <li><a href='/login' onClick={() => handleLogOut()}>Log Out</a></li>
+                <li style={{color: 'white'}}>nothing to see here</li>
+                <li style={{color: 'white'}}>nothing to see here</li>
                 <li style={{color: 'white'}}>nothing to see here</li>
 
             </ul>   

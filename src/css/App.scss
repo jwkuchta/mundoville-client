@@ -108,8 +108,8 @@ body {
 .social-icons {
   width: 95%;
   position: relative;
-  color: #eec231;
-  background-color: #d5d5d8;
+  color: #e9981e;
+  background-color: #eeeef0;
   margin: 10px;
   border: none;
   padding: 5px;
@@ -148,10 +148,10 @@ body {
 .profilePage {
   // position: absolute;
   // padding: 10px;
-  background-color: #2C8EA7;
+  background-color: #1C4E68;
   display: inline-block; 
   margin: 0 auto;
-  padding: 3px;
+  padding: 1px;
 }
 /* teal: #246a92 */
 
@@ -243,8 +243,13 @@ a:hover { color: #2C8EA7; }
 
 // COLORS
 
+#messages {
+  color: #528FBB;
+}
+
 $darkTeal: #1C4E68;
 $darkGreen: #013435;
 $creamy: #FFFFED;
 $lightTeal: #2C8EA7;
-$gray:	#d5d5d8;
+$gray:	#eeeef0;
+$white: #ffffff

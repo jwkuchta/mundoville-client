@@ -2,7 +2,6 @@
 import React  from 'react'
 import { Container, Image } from 'semantic-ui-react'
 import plane from '../photos/plane.gif'
-import logo2 from '../photos/logo2.png'
 import LoginForm from '../components/LoginForm'
 import { connect } from 'react-redux'
 import SignupForm from '../components/SignupForm'

@@ -65,7 +65,7 @@
 // export default SocialMediaIcons
 
 import React, { Component } from 'react'
-import { Menu, Popup, Icon } from 'semantic-ui-react'
+import { Popup, Icon } from 'semantic-ui-react'
 
 class SocialMediaIcons extends Component {
     

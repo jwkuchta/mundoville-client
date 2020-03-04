@@ -10,8 +10,8 @@ class UserInfo extends Component {
         const {user} = this.props
         let bio = 'Write a little about yourself so other can get to know you better! What do you like to do in your free time? Are you a cat person or a dog person (or a bird person?). What activities would you enjoy sharing with other travellers? What do you expect out of this experience?'
         return (
-            <div style={{'backgroundColor': '#276890', padding: '10px'}} className='user-info'>
-                <div style={{'backgroundColor': '#d5d5d8', 'padding': '25px', 'color': '#1C4E68'}}>
+            <div style={{'backgroundColor': '#276890', padding: '0px'}} className='user-info'>
+                <div style={{'backgroundColor': '#eeeef0', 'padding': '30px', 'color': '#1C4E68'}}>
                     <Grid.Row>
                         <Icon name='check' size='large'></Icon>Username
                     </Grid.Row>
@@ -42,13 +42,13 @@ class UserInfo extends Component {
                     </Grid.Row>
                 </div><br></br>
 
-                <div style={{'backgroundColor': '#d5d5d8', 'padding': '25px', 'color': '#1C4E68'}}>
+                <div style={{'backgroundColor': '#eeeef0', 'padding': '25px', 'color': '#1C4E68'}}>
                     {user.bio ? 
                     <>
                     <Grid.Row>
                         <h3>About me</h3>
                     </Grid.Row><br></br>
-                    <Grid.Row>{bio}</Grid.Row> 
+                    <Grid.Row>{bio}<br></br></Grid.Row> 
                     </>
                     :
                     <>
@@ -58,7 +58,7 @@ class UserInfo extends Component {
                     <Grid.Row>{bio}<br></br></Grid.Row> 
                     </>}
                 </div><br></br>
-                <div style={{'backgroundColor': 'd5d5d8', 'padding': '0px', 'color': '1C4E68'}}>
+                <div style={{'backgroundColor': '#eeeef0', 'padding': '0px', 'color': '1C4E68'}}>
                 <Grid.Row className='social-icons'>
                     <SocialMediaIcons />
                 </Grid.Row>

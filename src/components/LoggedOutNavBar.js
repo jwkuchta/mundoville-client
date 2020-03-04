@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Container } from 'semantic-ui-react'
-import logo from '../photos/cropped_teal.png'
+import logo from '../photos/logo_teal_cropped.png'
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
 import { connect } from 'react-redux'
@@ -34,15 +34,6 @@ class LoggedOutNavBar extends Component {
                             ></img>
                         </a><br></br>
                         </div>
-
-                        {/* <nav>
-                            <ul> 
-                                <li><a href="/about">About</a></li>
-                                <li><a onClick={() => this.props.setOption('login')}>Log In</a></li>
-                                <li><a onClick={() => this.props.setOption('signup')}>Sign Up</a></li>
-                                
-                            </ul>
-                        </nav> */}
                     
                     <div style={{display: 'inline-block', backgroundColor: 'white'}}>
                         <nav>
@@ -51,8 +42,9 @@ class LoggedOutNavBar extends Component {
                             <ul><li style={{color: 'white'}}>still nothing to see</li></ul>
                             <ul> 
                                 <li><a href="/about">About</a></li>
-                                <li><a onClick={() => this.props.setOption('login')}>Log In</a></li>
-                                <li><a onClick={() => this.props.setOption('signup')}>Sign Up</a></li>
+                                <li><a href="#" onClick={() => this.props.setOption('login')}>Log In</a></li>
+                                <li><a href="#" onClick={() => this.props.setOption('signup')}>Sign Up</a></li>
+                                <li style={{color: 'white'}}>nothing to see here</li>
                                 <li style={{color: 'white'}}>nothing to see here</li>
                                 
                             </ul>

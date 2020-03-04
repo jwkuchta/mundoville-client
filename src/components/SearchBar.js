@@ -59,7 +59,7 @@ class SearchBar extends Component {
 
         return (
             <div>
-                <br></br>
+                <br></br><br></br>
                 <Grid style={{"background-color": "#2C8EA7"}}><br></br>
                     <Grid.Column width={15}>
                         <Grid.Row></Grid.Row>

@@ -15,7 +15,7 @@ import AboutPage from './components/AboutPage'
 import LoggedOutNavBar from './components/LoggedOutNavBar'
 import LoggedInNavBar from './components/LoggedInNavBar'
 import { Sticky } from 'semantic-ui-react'
-import _ from 'lodash'
+// import _ from 'lodash'
 
 class App extends Component {
 

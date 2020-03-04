@@ -40,3 +40,5 @@ const mapDTP = dispatch => {
 export default connect(null, mapDTP)(UserCard)
 
 
+
+
