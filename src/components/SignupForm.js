@@ -23,25 +23,28 @@ class SignupForm extends Component {
 
     validateInput = () => {
         for(let field of Object.values(this.state)) {
-            debugger
+            // debugger
             if(field === '') {
-                debugger
+                // debugger
                 console.log('this is empty')
                 return false
             }
         }
+        return true
+        // debugger
     }
 
     handleSubmit = e => {
         // debugger
         e.preventDefault()
 
-        const validated = this.validateInput()
+        const valid = this.validateInput()
+        // debugger
 
-        if (!validated === false) {
-            debugger
+        if (valid === true) {
+            // debugger
             if (this.state.password === this.state.passwordConfirm ) {
-                debugger
+                // debugger
                 let user = {
                     first_name: this.state.firstName,
                     last_name: this.state.lastName,
@@ -55,12 +58,14 @@ class SignupForm extends Component {
             } else {
                 alert("passwords don't match")
             }
+        } else {
+            alert("one or more fields were missing") 
+            window.location.href='/'
         }
-        alert("one or more fields were missing") 
-        window.location.href='/'
     }
 
     addNewUser = user => {
+        // debugger
         fetch('http://localhost:3000/api/v1/users', {
             method: 'POST',
             headers: {

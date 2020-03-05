@@ -9,14 +9,14 @@ class Reviews extends Component {
     users = this.props.allUsers
    
     render () {
-        debugger
+        // debugger
         return (
             <Container>
                 <h3>Here is what others had to say about you</h3>
-                {this.reviews.length > 0 
+                {(this.reviews && this.reviews.length) > 0 
                 ?
                 this.reviews.map(review => {
-                    debugger
+                    // debugger
                     let reviewer = this.users.find(user => user.id === review.user_id)
                     return <h3>
                         <div>"<i>{review.body}</i>" - <strong><Link to={`/users/${reviewer.username}`}>{reviewer.username}</Link></strong></div>

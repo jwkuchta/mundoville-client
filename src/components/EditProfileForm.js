@@ -42,6 +42,7 @@ class EditProfileForm extends Component {
     }
     
     handleChange = (e) => {
+        debugger
         this.setState({
             [e.target.id]: e.target.value
         })
@@ -69,6 +70,7 @@ class EditProfileForm extends Component {
     
     // updates user profile info in the backend
     updateUser = (user, data) => {
+        debugger
         fetch(`${usersUrl}${user.id}`, {
             method: 'PATCH',
             headers: {
@@ -138,8 +140,8 @@ class EditProfileForm extends Component {
                         placeholder={this.props.currentUser.yob}
                         onChange={(e) => this.handleChange(e)}
                     /> */}
-                    <Form.Input id='yob' label='Year you were born' onChange={(e) => this.handleChange(e)}>
-                    <select name="birth-year">
+                    {/* <Form.Input id='yob' label='Year you were born' onChange={(e) => this.handleChange(e)}> */}
+                    <select id='yob' label='Year you were born' onChange={(e) => this.handleChange(e)} name="birth-year">
                         <option value="2020">2020</option>
                         <option value="2019">2019</option>
                         <option value="2018">2018</option>
@@ -258,7 +260,7 @@ class EditProfileForm extends Component {
                         <option value="1905">1905</option>
                     </select>
 
-                    </Form.Input>
+                    {/* </Form.Input> */}
                     
                 </Form.Group>  
                 <Form.TextArea 

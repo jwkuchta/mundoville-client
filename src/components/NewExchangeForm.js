@@ -36,7 +36,8 @@ class NewExchangeForm extends Component {
             let userInstance = {
                 key: user.id, 
                 id: user.id, 
-                text: user.username, 
+                // text: user.username, 
+                text: `${user.first_name} ${user.last_name}`,
                 value: user.id, 
                 image: {avatar: true, src: user.profile_pic_url ? `http://localhost:3000/${user.profile_pic_url}` : placeholder}
             }
@@ -111,6 +112,8 @@ class NewExchangeForm extends Component {
                 <Form onSubmit={(e) => this.handleSubmit(e, this.state)}>
                     <Form.Group>
                         <Form.Select required
+                            search
+                            options
                             inline
                             label='To: '
                             floating
