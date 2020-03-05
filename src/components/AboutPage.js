@@ -124,7 +124,6 @@ const AboutPage = (props) => {
                         </Grid.Column>
                     </Grid.Row>
 
-                    <br></br><br></br>
                     <Grid.Row>
                     <Grid.Column width={4}>
                             <Image src={explore}></Image>
@@ -141,7 +140,6 @@ const AboutPage = (props) => {
                     
                 
                     </Grid.Row>
-                    <br></br><br></br>
                     <Grid.Row>
                         <Grid.Column width={12} style={{textAlign: 'left'}}>
                             <h2>See the world</h2>
@@ -159,7 +157,6 @@ const AboutPage = (props) => {
                         </Grid.Column>
                     </Grid.Row> 
                 </Grid>
-            <br></br>
             </Container>
             {!localStorage.jwt && props.option === 'login' && <Container fluid className='login-form'><LoginForm /></Container>}
             {!localStorage.jwt && props.option === 'signup' && <Container fluid className='signup-form'><SignupForm /></Container>} 

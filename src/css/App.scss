@@ -15,13 +15,12 @@ body {
   display: flex;
   margin: 2px;
   width: 100%;
-  text-align: center;
-  
+  text-align: center; 
 }
 
 .main-page-description {
   position: absolute;
-  top: 55%;
+  top: 35%;
   right: 1%;
   color: #1C4E68;
 }
@@ -34,13 +33,13 @@ body {
   position: absolute;
   display: inline-block;
   // left: 35%;
-  top: 50%;
+  top: 25%;
 }
 
 .signup-form {
   position: absolute;
   display: inline-block;
-  top: 50%;
+  top: 25%;
 }
 
 .navigation-container {

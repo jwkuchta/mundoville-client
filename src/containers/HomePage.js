@@ -9,12 +9,13 @@ import SignupForm from '../components/SignupForm'
 const HomePage = (props) => {
     // debugger
     return (
-        <Container fluid className="home">
+        // <>
+        <Container fluid className="mainPage" style={{position: 'relative'}}>
             <Image className='background-img'
                 fluid 
                 src={plane}
             />
-            <Container fluid className='main-page-description'>
+            <Container fluid className='main-page-description' >
                 <h3>It's just like couch surfing</h3>
                 <h3>except for the creepy factor</h3>
                 <h3>'cause no couches are involved</h3>
@@ -24,6 +25,7 @@ const HomePage = (props) => {
             {props.option === 'login' && <Container fluid className='login-form'><LoginForm /></Container>}
             {props.option === 'signup' && <Container fluid className='signup-form'><SignupForm /></Container>} 
         </Container>
+        // </>
     )            
 }
 

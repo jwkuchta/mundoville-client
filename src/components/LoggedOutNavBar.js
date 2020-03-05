@@ -25,7 +25,7 @@ class LoggedOutNavBar extends Component {
                 return (
                     <div style={{ backgroundColor: 'white', position: 'relative'}}>
                         {/* <a href="/" ><img src={logo} alt="logo white" className='logo'></img></a> */}
-                        <div style={{display: 'inline-block', backgroundColor: 'white', float:'left'}}>
+                        <div style={{display: 'inline-block', backgroundColor: 'white', float:'left', paddingLeft: '10px'}}>
                         <a href="/" onClick={() => window.location.href = '/'}>
                         <img 
                             src={logo} 

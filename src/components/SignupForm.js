@@ -21,24 +21,43 @@ class SignupForm extends Component {
         console.log(this.state)
     }
 
+    validateInput = () => {
+        for(let field of Object.values(this.state)) {
+            debugger
+            if(field === '') {
+                debugger
+                console.log('this is empty')
+                return false
+            }
+        }
+    }
+
     handleSubmit = e => {
         // debugger
         e.preventDefault()
 
-        if ( this.state.password === this.state.passwordConfirm ) {
-            let user = {
-                first_name: this.state.firstName,
-                last_name: this.state.lastName,
-                username: this.state.username, 
-                password: this.state.password, 
-                email: this.state.email,
+        const validated = this.validateInput()
+
+        if (!validated === false) {
+            debugger
+            if (this.state.password === this.state.passwordConfirm ) {
+                debugger
+                let user = {
+                    first_name: this.state.firstName,
+                    last_name: this.state.lastName,
+                    username: this.state.username, 
+                    password: this.state.password, 
+                    email: this.state.email,
+                }
+    
+                this.addNewUser(user)
+    
+            } else {
+                alert("passwords don't match")
             }
-
-            this.addNewUser(user)
-
-        } else {
-            alert("passwords don't match")
         }
+        alert("one or more fields were missing") 
+        window.location.href='/'
     }
 
     addNewUser = user => {

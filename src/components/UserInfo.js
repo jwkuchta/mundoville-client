@@ -15,27 +15,27 @@ class UserInfo extends Component {
                     <Grid.Row>
                         <Icon name='check' size='large'></Icon>Username
                     </Grid.Row>
-                    <Grid.Row> &nbsp; &nbsp; {user.username} </Grid.Row>
+                    <Grid.Row> &nbsp; &nbsp; &nbsp; &nbsp;{user.username} </Grid.Row>
                     <Grid.Row>
                         <Icon name='check' size='large'></Icon>Full Name
                     </Grid.Row>
-                    <Grid.Row>&nbsp; &nbsp; {user.first_name} {user.last_name} </Grid.Row>
+                    <Grid.Row>&nbsp; &nbsp; &nbsp; &nbsp; {user.first_name} {user.last_name} </Grid.Row>
                     <Grid.Row>
                         <Icon name='at' size='large'></Icon>Email
                     </Grid.Row>
-                    <Grid.Row>&nbsp; &nbsp; {user.email} </Grid.Row>
+                    <Grid.Row>&nbsp; &nbsp; &nbsp; &nbsp; {user.email} </Grid.Row>
                     <Grid.Row>
                         <Icon name='map marker alternate' size='large'></Icon>Location
                     </Grid.Row>
-                    <Grid.Row>&nbsp; &nbsp; {user.city}, {user.country} </Grid.Row>
+                    <Grid.Row>&nbsp; &nbsp; &nbsp; &nbsp; {user.city}, {user.country} </Grid.Row>
                     <Grid.Row>
                         <Icon name='comment' size='large'></Icon>Languages
                     </Grid.Row>
-                    <Grid.Row>&nbsp; &nbsp; {user.language1}, {user.language2}, {user.language3} </Grid.Row>
+                    <Grid.Row>&nbsp; &nbsp; &nbsp; &nbsp; {user.language1}, {user.language2}, {user.language3} </Grid.Row>
                     <Grid.Row>
                         <Icon name='heart outline' size='large'></Icon>Interests
                     </Grid.Row>
-                    <Grid.Row>&nbsp; &nbsp;
+                    <Grid.Row>&nbsp; &nbsp; &nbsp; &nbsp;
                         {user.interests ? 
                         user.interests : 
                         "Tell us what things and activities you love so others can get to know you better!"}

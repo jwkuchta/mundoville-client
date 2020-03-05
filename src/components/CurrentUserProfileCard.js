@@ -17,17 +17,19 @@ class CurrentUserProfileCard extends Component {
         let currentUser = this.props.currentUser
 
         return (
-            <div style={{'backgroundColor': '#eeeef0', 'padding': '2px'}}>
-                <div style={{'backgroundColor': 'rgb(249, 249, 252)', 'padding': '2px'}}>
-                    <Image src={currentUser.profile_pic_url ? pic_url : placeholder}></Image>
+            <div style={{'backgroundColor': '#eeeef0', 'padding': '1px'}}>
+                <div style={{'backgroundColor': 'rgb(249, 249, 252)', 'padding': '1px', marginLeft: 'auto', display: 'block'}}>
+                    <Image src={currentUser.profile_pic_url ? pic_url : placeholder}
+                    style={{margin: 'auto', display: 'block', width: '22vw'}}
+                    ></Image>
                 </div>
                 <br></br>
-                <div style={{'backgroundColor': '#eeeef0', 'padding': '2px'}}>
+                <div style={{'backgroundColor': '#eeeef0', 'padding': '1px'}}>
                     <h3>to change your profile picture click "Choose File" and then "save"</h3>
                     <PicUpload /><br></br>
                 </div>
                 <br></br>
-                <div style={{'backgroundColor': '#eeeef0', 'padding': '2px'}}>
+                <div style={{'backgroundColor': '#eeeef0', 'padding': '1px'}}>
                 <Button className='ui button'>
                         <Link 
                         to={`/users/${currentUser.username}/edit`}
@@ -36,7 +38,7 @@ class CurrentUserProfileCard extends Component {
                 </Button>
                 </div><br></br>
                 
-                <div style={{'backgroundColor': '#eeeef0', 'padding': '2px'}}><br></br>
+                <div style={{'backgroundColor': '#eeeef0', 'padding': '1px'}}><br></br>
                 {currentUser.rating ? 
                     <Rating 
                         icon='star' 

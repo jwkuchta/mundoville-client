@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Segment, Form, Button, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { placeholder } from '../photos/profilePicPlaceholder2.jpg'
+import { placeholder } from '../photos/round_placeholder.png'
 // import {submitNewExchange} from '../redux/actions'
 
 class NewExchangeForm extends Component {
@@ -38,10 +38,8 @@ class NewExchangeForm extends Component {
                 id: user.id, 
                 text: user.username, 
                 value: user.id, 
-                image: {avatar: true, src: user.profile_pic_url 
-                    ? 
-                    `http://localhost:3000/${user.profile_pic_url}` 
-                    : '../photos/profilePicPlaceholder2.jpg' }}
+                image: {avatar: true, src: user.profile_pic_url ? `http://localhost:3000/${user.profile_pic_url}` : placeholder}
+            }
             users.push(userInstance)
             return users
         })
@@ -57,9 +55,13 @@ class NewExchangeForm extends Component {
         } else {
             // user.id was not always showing so I changed to innerText
             let receiver = this.state.users.find(u => u.text === e.target.innerText)
-            this.setState({
-                receiver_id: receiver.id
-            })
+            if(receiver !== undefined) {
+                this.setState({
+                    receiver_id: receiver.id
+                })
+            } else {
+                return 
+            }  
         }
     }
 
