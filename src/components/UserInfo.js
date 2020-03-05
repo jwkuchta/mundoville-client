@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Grid, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import SocialMediaIcons from '../components/SocialMediaIcons'
+import Reviews from '../components/Reviews'
 
 class UserInfo extends Component {
 
@@ -60,7 +61,13 @@ class UserInfo extends Component {
                 </div><br></br>
                 <div style={{'backgroundColor': '#eeeef0', 'padding': '0px', 'color': '1C4E68'}}>
                 <Grid.Row className='social-icons'>
-                    <SocialMediaIcons />
+                    {this.props.user === this.props.currentUser 
+                    ? 
+                    <Reviews />
+                    :
+                    <SocialMediaIcons /> 
+                }
+
                 </Grid.Row>
                 </div>
         </div>
@@ -71,7 +78,7 @@ class UserInfo extends Component {
 const mapSTP = state => {
     return {
         currentUser: state.currentUser,
-        allUsers: state.allUsers
+        allUsers: state.users
     }
 }
 
