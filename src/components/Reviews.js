@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 class Reviews extends Component {
@@ -17,7 +18,9 @@ class Reviews extends Component {
                 this.reviews.map(review => {
                     debugger
                     let reviewer = this.users.find(user => user.id === review.user_id)
-                    return <div>"{review.body}" by {reviewer.username}</div>
+                    return <h3>
+                        <div>"<i>{review.body}</i>" - <strong><Link to={`/users/${reviewer.username}`}>{reviewer.username}</Link></strong></div>
+                    </h3>
                 })
                 :
                 <h3>You don't have any reviews yet</h3>
@@ -35,3 +38,4 @@ const mapSTP = state => {
 }
 
 export default connect(mapSTP)(Reviews)
+
