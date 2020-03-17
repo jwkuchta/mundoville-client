@@ -13,7 +13,6 @@ class MessagesContainer extends Component {
         }
     }
 
-
     render() {
         // debugger
         if (this.props.currentUser.username) {

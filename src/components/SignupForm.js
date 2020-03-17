@@ -65,7 +65,7 @@ class SignupForm extends Component {
     }
 
     addNewUser = user => {
-        // debugger
+        debugger
         fetch('http://localhost:3000/api/v1/users', {
             method: 'POST',
             headers: {
@@ -82,6 +82,7 @@ class SignupForm extends Component {
         }))
         .then(r => r.json())
         .then(data => {
+            debugger
             localStorage.setItem('jwt', data.jwt)
             this.setState({
                 ...this.state,

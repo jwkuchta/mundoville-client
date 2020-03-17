@@ -72,12 +72,12 @@ class App extends Component {
       <div className="App" ref={this.contextRef}>
         {/* <div ref={this.contextRef}> */}
           <Sticky context={this.contextRef} fluid>
-          {!localStorage.jwt && 
+          {!localStorage.jwt ? 
           <LoggedOutNavBar attached='top' 
             tabular 
             style={{ backgroundColor: '#246a92', 
-            paddingTop: '1em' }} />}
-          {localStorage.jwt && 
+            paddingTop: '1em' }} /> 
+            :
           <LoggedInNavBar attached='top' 
             tabular 
             style={{ backgroundColor: '#246a92', paddingTop: '1em' }} />}
