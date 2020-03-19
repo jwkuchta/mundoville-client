@@ -29,11 +29,12 @@ class PicUpload extends Component {
     }
 
     handleSubmit = e => {
+        debugger
         e.preventDefault()
-        const user = this.props.currentUser
+        const user = this.props.currentUser.user
         const formData = new FormData()
         
-        formData.append('user[id]', user.id)
+        formData.append('user[sub]', user.sub)
         formData.append('user[profile_pic]', this.state.croppedImage)
 
         this.addPhotoToUser(user, formData)
@@ -98,8 +99,8 @@ class PicUpload extends Component {
     }
 
     addPhotoToUser = (user, data) => {
-        fetch(`http://localhost:4000/api/v1/users/${user.id}`, {
-            method: 'PATCH',
+        fetch(`http://localhost:4000/api/v1/users/${user.sub}`, {
+            method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,
             },

@@ -8,13 +8,15 @@ import PicUpload from './PicUpload'
 
 const CurrentUserProfileCard = props => {
 
-    let pic_url = `http://localhost:4000/${props.currentUser.profile_pic_url}`
+    debugger
+
+    let pic_url = `http://localhost:4000/${props.currentUser.user.profile_pic_url}`
     let currentUser = props.currentUser
 
         return (
             <div style={{'backgroundColor': '#eeeef0', 'padding': '1px'}}>
                 <div style={{'backgroundColor': 'rgb(249, 249, 252)', 'padding': '1px', marginLeft: 'auto', display: 'block'}}>
-                    <Image src={currentUser.profile_pic_url ? pic_url : placeholder}
+                    <Image src={currentUser.user.profile_pic_url ? pic_url : placeholder}
                     style={{margin: 'auto', display: 'block', width: '22vw'}}
                     ></Image>
                 </div>
