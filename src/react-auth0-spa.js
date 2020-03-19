@@ -71,6 +71,7 @@ export const Auth0Provider = ({children, onRedirectCallback = DEFAULT_REDIRECT_C
         popupOpen,
         loginWithPopup,
         handleRedirectCallback,
+        getUser: (...p) => auth0Client.getUser(...p),
         getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
         loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
         getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),

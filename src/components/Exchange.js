@@ -1,15 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Segment, Header, Modal, Button, Comment, Icon, Image } from 'semantic-ui-react'
 import Message from './Message'
 import NewMessageForm from './NewMessageForm'
 import placeholder from '../photos/profilePicPlaceholder.png'
 
-class Exchange extends Component {
+const Exchange = () => {
 
-    render() {
-
-        const { exchange, users, currentUser } = this.props
+    const { exchange, users, currentUser } = this.props
         
         if (users.length > 0) {
             const userId = exchange.first_user_id === currentUser.id ? exchange.second_user_id : exchange.first_user_id
@@ -73,7 +71,6 @@ class Exchange extends Component {
         } else {
             return null
         }
-    }  
 }    
 
 const mapStateToProps = state => {

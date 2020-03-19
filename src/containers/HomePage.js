@@ -8,7 +8,6 @@ const HomePage = (props) => {
 
     // debugger
     return (
-        // <>
         <Container fluid className="mainPage" style={{position: 'relative'}} >
             <Image className='background-img'
                 fluid 
@@ -22,7 +21,6 @@ const HomePage = (props) => {
                 <h3>hang out with locals while you travel</h3>
             </Container>
         </Container>
-        // </>
     )            
 }
 

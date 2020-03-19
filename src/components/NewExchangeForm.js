@@ -26,7 +26,7 @@ class NewExchangeForm extends Component {
     }
 
     componentDidMount() {
-        debugger
+        // debugger
         let filteredUsers = this.props.users.filter(user => user.id !== this.props.currentUser.id)
         let sortedUsers = filteredUsers.sort((a, b) => a.username - b.username)
         let users = []

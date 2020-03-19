@@ -44,7 +44,7 @@ let usersReducer = (state = initState.users, action) => {
 let currentUserReducer = (state=initState.currentUser, action) => {
     switch (action.type) {
         case 'LOGGED_IN':
-            debugger
+            // debugger
             return {
                 user: action.payload
             }

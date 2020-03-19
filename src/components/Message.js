@@ -1,15 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 // import { connect } from 'react-redux'
 import Moment from 'react-moment'
 import { Comment, Divider } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
 
-class Message extends Component {
+const Message = (props) => {
     
-    render() {
-
-        // debugger
-        const { message, user, currentUser } = this.props
+    const { message, user, currentUser } = props
         let timestamp = message.created_at
         let sender = message.user_id === user.id ? user : currentUser
         let url = sender.username === currentUser.username ? '/profile' : `/users/${sender.username}`
@@ -55,7 +52,6 @@ class Message extends Component {
                 <Divider />
             </Comment>
         )
-    }
 }
 
 export default Message

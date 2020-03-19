@@ -4,14 +4,9 @@ import logo from '../photos/logo_teal_cropped.png'
 import { connect } from 'react-redux'
 import { useAuth0 } from "../react-auth0-spa";
 
-
 const LoggedOutNavBar = () => {
 
-  const { loginWithRedirect, getUser } = useAuth0();
-
-  const handleLogin = () => {
-    loginWithRedirect()
-  }
+  const { loginWithRedirect, getUser } = useAuth0()
 
   return (
     <div style={{ backgroundColor: 'white', position: 'relative'}}>
@@ -32,8 +27,8 @@ const LoggedOutNavBar = () => {
                         <li><a href="/about">About</a></li>
                         {/* <li><a onClick={() => loginWithRedirect()}>Log in</a></li>
                         <li><a onClick={() => loginWithRedirect()}>Sign up</a></li> */}
-                            <li><a onClick={() => handleLogin()}>Log in</a></li>
-                        <li><a onClick={() => handleLogin()}>Sign up</a></li>
+                            <li><a onClick={() => loginWithRedirect()}>Log in</a></li>
+                        <li><a onClick={() => loginWithRedirect()}>Sign up</a></li>
                         <li style={{color: 'white'}}>nothing to see here</li>
                         <li style={{color: 'white'}}>nothing to see here</li>    
                     </ul>

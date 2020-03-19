@@ -7,7 +7,7 @@ import profile from '../photos/profile.jpg'
 // import vacant from '../photos/vacant.jpg'
 import explore from '../photos/explore.jpg'
 
-const AboutPage = (props) => {
+const AboutPage = () => {
 
     return (
         

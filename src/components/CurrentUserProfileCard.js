@@ -1,5 +1,3 @@
-
-
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Image, Button, Rating } from 'semantic-ui-react'
@@ -8,13 +6,10 @@ import { connect } from 'react-redux'
 import PicUpload from './PicUpload'
 // import PicUploadNoCrop from './PicUploadNoCrop'
 
-class CurrentUserProfileCard extends Component {
+const CurrentUserProfileCard = props => {
 
-    render() {
-        
-        // debugger
-        let pic_url = `http://localhost:4000/${this.props.currentUser.profile_pic_url}`
-        let currentUser = this.props.currentUser
+    let pic_url = `http://localhost:4000/${props.currentUser.profile_pic_url}`
+    let currentUser = props.currentUser
 
         return (
             <div style={{'backgroundColor': '#eeeef0', 'padding': '1px'}}>
@@ -32,7 +27,7 @@ class CurrentUserProfileCard extends Component {
                 <div style={{'backgroundColor': '#eeeef0', 'padding': '1px'}}>
                 <Button className='ui button'>
                         <Link 
-                        to={`/users/${currentUser.username}/edit`}
+                        to={`/users/${currentUser.user.sub}/edit`}
                         style={{fontSize: '2vh', textAlign: 'justify'}}
                         >Edit your profile</Link>
                 </Button>
@@ -51,7 +46,6 @@ class CurrentUserProfileCard extends Component {
                 </div>
             </div>
         )
-    }
 }
 
 const mapStateToProps = state => {

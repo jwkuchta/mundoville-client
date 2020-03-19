@@ -15,8 +15,6 @@ class EditProfileForm extends Component {
             last_name: '',
             bio: '',
             email: '',
-            password: '',
-            passConfirmation: '',
             country: '',
             city: '',
             language1: '',
@@ -42,7 +40,7 @@ class EditProfileForm extends Component {
     }
     
     handleChange = (e) => {
-        debugger
+        // debugger
         this.setState({
             [e.target.id]: e.target.value
         })
@@ -59,30 +57,27 @@ class EditProfileForm extends Component {
                 updates[key] = value
             }
         }
-
-        if (updates.password === updates.passConfirmation) {
-            const filtered = this.filterObj(updates)
-            this.updateUser(user, filtered)
-        } else {
-            // make it into a modal or inline error message when time permits
-            alert("Something went wrong")
-        }
+        const filtered = this.filterObj(updates)
+        this.updateUser(user, filtered)
     }
     
     // updates user profile info in the backend
     updateUser = (user, data) => {
         debugger
-        fetch(`${usersUrl}${user.id}`, {
-            method: 'PATCH',
+        fetch(`${usersUrl}${user.user.sub}`, {
+            method: 'POST',
             headers: {
-            'Authorization': `Bearer ${localStorage.jwt}`,
+            // 'Authorization': `Bearer ${localStorage.jwt}`,
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
             body: JSON.stringify(data)
         })
-        .then(resp => resp.json())
-        .then(window.location.href = "/profile")
+        .then(resp => {
+            debugger
+            resp.json()
+        } )
+        .then(window.location.href = "/")
     }
 
     handleDelete = user => {
@@ -93,7 +88,7 @@ class EditProfileForm extends Component {
         fetch(`${usersUrl}${user.id}`, {
             method: 'DELETE',
             headers: {
-                'Authorization': `Bearer ${localStorage.jwt}`,
+                // 'Authorization': `Bearer ${localStorage.jwt}`,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
@@ -278,20 +273,6 @@ class EditProfileForm extends Component {
                     placeholder={this.props.currentUser.email}
                     onChange={(e) => this.handleChange(e)}
                 /> 
-                <Form.Group widths='equal'>
-                    <Form.Input
-                        id='password'
-                        label='Password' 
-                        placeholder='Password'
-                        onChange={(e) => this.handleChange(e)}
-                    />
-                    <Form.Input
-                        id='passConfirmation'
-                        label='Confirm Password' 
-                        placeholder='Confirm Password'
-                        onChange={(e) => this.handleChange(e)}
-                    />
-                </Form.Group><br/> 
 
             {/* COUNTRY */}
             <Form.Group widths='equal'>

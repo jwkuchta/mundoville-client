@@ -5,9 +5,10 @@ import logo from '../photos/logo_teal_cropped.png'
 import '../css/App.scss'
 import '../css/NavBar.scss'
 import { useAuth0 } from "../react-auth0-spa";
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 const LoggedInNavBar = () => {
+
   const { logout, isAuthenticated } = useAuth0();
 
   return (

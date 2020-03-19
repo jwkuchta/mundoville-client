@@ -1,21 +1,20 @@
-import React, {Component} from 'react'
+import React from 'react'
 import { Grid, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import SocialMediaIcons from '../components/SocialMediaIcons'
 import Reviews from '../components/Reviews'
 
-class UserInfo extends Component {
+const UserInfo = (props) => {
 
-    render() {
+    // debugger
 
-        const {user} = this.props
+    let user = props.user.user
+    let currentYear =  new Date().getFullYear()
+    let userYob = parseInt(user.yob)
+    let age = currentYear - userYob
+    let noData = 'No info provided yet'
 
-        let currentYear =  new Date().getFullYear()
-        let userYob = parseInt(user.yob)
-        let age = currentYear - userYob
-        let noData = 'No info provided yet'
-
-        let bio = 'Write a little about yourself so other can get to know you better! What do you like to do in your free time? Are you a cat person or a dog person (or a bird person?). What activities would you enjoy sharing with other travellers? What do you expect out of this experience?'
+    let bio = 'Write a little about yourself so other can get to know you better! What do you like to do in your free time? Are you a cat person or a dog person (or a bird person?). What activities would you enjoy sharing with other travellers? What do you expect out of this experience?'
         return (
             <div style={{'backgroundColor': '#276890', padding: '0px'}} className='user-info'>
                 <div style={{'backgroundColor': '#eeeef0', 'padding': '30px', 'color': '#1C4E68'}}>
@@ -71,7 +70,7 @@ class UserInfo extends Component {
                 </div><br></br>
                 <div style={{'backgroundColor': '#eeeef0', 'padding': '0px', 'color': '1C4E68'}}>
                 <Grid.Row className='social-icons'>
-                    {this.props.user === this.props.currentUser 
+                    {user === props.currentUser 
                     ? 
                     <Reviews />
                     :
@@ -82,7 +81,6 @@ class UserInfo extends Component {
                 </div>
         </div>
         )
-    }
 }
 
 const mapSTP = state => {
