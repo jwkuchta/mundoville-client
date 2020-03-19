@@ -1,31 +1,25 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Menu, Grid, Container } from 'semantic-ui-react'
 import Exchanges from './Exchanges'
 import NewExchangeForm from '../components/NewExchangeForm'
+import { useAuth0 } from "../react-auth0-spa"
 
-class MessagesContainer extends Component {
-    
-    constructor() {
-        super()
-        this.state = {
-            page: 'exchanges',
-        }
-    }
+const MessagesContainer = (props) => {
+   
+    const [option, setOption] = useState('exchanges')
+    const { user, isAuthenticated } = useAuth0()
 
-
-    render() {
-        // debugger
-        if (this.props.currentUser.username) {
-            debugger
-            let currentPage = this.state.page === 'exchanges' 
+        if (user) {
+            // debugger
+            let currentPage = option === 'exchanges' 
             ? 
-            <Exchanges currentUser={this.props.currentUser} />
+            <Exchanges currentUser={props.currentUser ? props.currentUser : user} />
             :  
             <NewExchangeForm 
-                currentUser={this.props.currentUser} 
-                users={this.props.users} 
-                setPageMessages={() => this.setState({page: 'exchanges'})}
+                currentUser={props.currentUser ? props.currentUser : user} 
+                users={props.users} 
+                setPageMessages={() => setOption('exchanges')}
             />
 
             return (
@@ -37,23 +31,18 @@ class MessagesContainer extends Component {
                         <Menu.Item 
                             id='messages'
                             header
-                            ref={this.messagesRef}
                             name='Messages'
-                            active={this.state.page === 'exchanges'}
-                            // onClick={() => this.setState({page: 'exchanges'})}
-                            onClick={() => this.setState({page: 'exchanges'})}
-                            color={this.state.messagesColor}
+                            active={option === 'exchanges'}
+                            // onClick={() => setState({page: 'exchanges'})}
+                            onClick={() => setOption('exchanges')}
                         />
                         <Menu.Item 
                             id='messages'
                             header
-                            ref={this.newMessageRef}
                             position='right'
                             name='New Message'
-                            active={this.state.page === 'new'}
-                            onClick={() => this.setState({page: 'new'})}
-                            color={this.state.newMessageColor} 
-                            // color={this.state.color}
+                            active={option === 'new'}
+                            onClick={() => setOption('new')}
                         />
                     </Menu>
                     <Grid.Column width={16}>
@@ -65,7 +54,6 @@ class MessagesContainer extends Component {
         } else {
             return null
         }
-    }
 }
 
 const mapSTP = state => {

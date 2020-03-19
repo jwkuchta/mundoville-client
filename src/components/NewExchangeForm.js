@@ -26,7 +26,7 @@ class NewExchangeForm extends Component {
     }
 
     componentDidMount() {
-        // debugger
+        debugger
         let filteredUsers = this.props.users.filter(user => user.id !== this.props.currentUser.id)
         let sortedUsers = filteredUsers.sort((a, b) => a.username - b.username)
         let users = []
@@ -37,7 +37,8 @@ class NewExchangeForm extends Component {
                 key: user.id, 
                 id: user.id, 
                 // text: user.username, 
-                text: `${user.first_name} ${user.last_name}`,
+                // text: `${user.first_name} ${user.last_name}`,
+                text: `${user.email}`,
                 value: user.id, 
                 image: {avatar: true, src: user.profile_pic_url ? `http://localhost:4000/${user.profile_pic_url}` : placeholder}
             }
@@ -67,6 +68,7 @@ class NewExchangeForm extends Component {
     }
 
     handleSubmit = e => {
+        debugger
         e.preventDefault()
         this.postNewExchange()
         this.resetState()  
@@ -78,7 +80,7 @@ class NewExchangeForm extends Component {
     }
 
     postNewExchange = () => {
-        // debugger
+        debugger
         let currentUser = this.props.currentUser
 
         fetch('http://localhost:4000/api/v1/exchanges', {
@@ -106,7 +108,7 @@ class NewExchangeForm extends Component {
 
     render() {
 
-        // debugger
+        debugger
         return (
             <Segment padded='very' style={{backgroundColor: '#528FBB'}}>
                 <Form onSubmit={(e) => this.handleSubmit(e, this.state)}>

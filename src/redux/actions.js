@@ -29,11 +29,6 @@ export const fetchReviews = () => {
   .then(data => getReviews(data))
 }
 
-// const loggedIn = user => {
-//   // debugger
-//   return {type: 'LOGGED_IN', user: user}
-// }
-
 export const getUsers = users => {
   return {type: 'ADD_USERS', users: users}
 }

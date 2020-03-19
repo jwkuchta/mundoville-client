@@ -45,7 +45,9 @@ let currentUserReducer = (state=initState.currentUser, action) => {
     switch (action.type) {
         case 'LOGGED_IN':
             debugger
-            return {...action.user}
+            return {
+                user: action.payload
+            }
         case 'FRIEND':
             return {
                 user: action.user,
