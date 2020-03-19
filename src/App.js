@@ -1,4 +1,4 @@
-import React, { createRef, Component } from "react";
+import React, { createRef, useEffect } from "react";
 import { connect } from 'react-redux'
 import './css/NavBar.scss'
 import './css/App.scss'
@@ -14,17 +14,33 @@ import LoggedOutNavBar from './components/LoggedOutNavBar'
 import LoggedInNavBar from './components/LoggedInNavBar'
 import { Sticky } from 'semantic-ui-react'
 import { useAuth0 } from "./react-auth0-spa";
-// import { fetchUsers, getExchanges } from './redux/actions'
+import { fetchUsers } from './redux/actions'
 
 const App = (props) => {
+
+  
   
   const { loading, isAuthenticated } = useAuth0()
+
+  useEffect(() => {
+    props.fetchUsers()
+  }, [])
 
   const contextRef = createRef()
 
   if (loading) {
     return <div>Loading...</div>
   }
+
+  
+
+//   useEffect(() => {
+//     createNewUser(user)
+//     fetchExchanges()
+//     fetchReviews()
+//     props.setUser(user)
+
+// }, []) 
 
   // shorted way to secure the route using a ternary expression. No need for PrivateRoute
   return (
@@ -54,8 +70,8 @@ const App = (props) => {
               <div className='mainPage'><AboutPage /></div>
             </Route>
             
-            <Route path={`/users/${props.currentUser.user.sub}/edit`}>
-              {isAuthenticated === true ? <div className='userEditPage'><EditProfilePage /></div> : <Redirect to='/' /> }
+            <Route path={`/users/${props.currentUser.user.sub.split('|')}/edit`}>
+              {isAuthenticated ? <div className='userEditPage'><EditProfilePage /></div> : <AboutPage /> }
             </Route>
   
             <Route exact strict path='/users/:sub'>
@@ -76,4 +92,10 @@ const mapSTP = state => {
   return {currentUser: state.currentUser}
 }
 
-export default connect(mapSTP)(App)
+const mapDTP = dispatch => {
+  return {
+    fetchUsers: users => dispatch(fetchUsers(users))
+  }
+}
+
+export default connect(mapSTP, mapDTP)(App)

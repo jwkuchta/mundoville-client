@@ -47,7 +47,7 @@ class EditProfileForm extends Component {
     }
 
     handleSubmit = (e, values, user) => {
-        debugger
+        // debugger
         e.preventDefault()
         let updates = {}
         
@@ -63,8 +63,8 @@ class EditProfileForm extends Component {
     
     // updates user profile info in the backend
     updateUser = (user, data) => {
-        debugger
-        fetch(`${usersUrl}${user.user.sub}`, {
+        // debugger
+        fetch(`${usersUrl}${user.user.sub.split('|')[1]}`, {
             method: 'POST',
             headers: {
             // 'Authorization': `Bearer ${localStorage.jwt}`,
@@ -74,7 +74,7 @@ class EditProfileForm extends Component {
             body: JSON.stringify(data)
         })
         .then(resp => {
-            debugger
+            // debugger
             resp.json()
         } )
         .then(window.location.href = "/")

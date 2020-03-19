@@ -5,10 +5,10 @@ import UserProfileCard from '../components/UserProfileCard'
 import UserInfo from '../components/UserInfo'
 import SideBar from '../components/SideBar'
 
-const UserProfilePage = () => {
+const UserProfilePage = (props) => {
 
     let username = window.location.pathname.split('/')[2]
-    let allUsers = this.props.users 
+    let allUsers = props.users 
     let user = allUsers.filter(user => user.username === username)[0]
 
     return (

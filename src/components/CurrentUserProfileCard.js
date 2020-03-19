@@ -8,7 +8,7 @@ import PicUpload from './PicUpload'
 
 const CurrentUserProfileCard = props => {
 
-    debugger
+    // debugger
 
     let pic_url = `http://localhost:4000/${props.currentUser.user.profile_pic_url}`
     let currentUser = props.currentUser
@@ -29,7 +29,7 @@ const CurrentUserProfileCard = props => {
                 <div style={{'backgroundColor': '#eeeef0', 'padding': '1px'}}>
                 <Button className='ui button'>
                         <Link 
-                        to={`/users/${currentUser.user.sub}/edit`}
+                        to={`/users/${currentUser.user.sub.split('|')[1]}/edit`}
                         style={{fontSize: '2vh', textAlign: 'justify'}}
                         >Edit your profile</Link>
                 </Button>

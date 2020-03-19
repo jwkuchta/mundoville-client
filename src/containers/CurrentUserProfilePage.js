@@ -8,20 +8,22 @@ import { useAuth0 } from "../react-auth0-spa"
 
 const CurrentUserProfilePage = (props) => {
 
+  const { loading, user } = useAuth0()
+
     useEffect(() => {
-        addNewUser(user)
+        createNewUser(user)
         fetchExchanges()
         fetchReviews()
+        props.setUser(user)
+
     }, []) 
     // empty array assures it is only used once, getting rid of the re-render loop
-
-    const { loading, user, isAuthenticated } = useAuth0();
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  const addNewUser = user => {
+  const createNewUser = user => {
     // debugger
     fetch('http://localhost:4000/api/v1/users', {
         method: 'POST',
@@ -29,15 +31,15 @@ const CurrentUserProfilePage = (props) => {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: JSON.stringify({user: user})
+        body: JSON.stringify({sub: user.sub.split('|')[1], ...user})
     })
     .then(r => r.json())
     .then(data => {
-        // debugger
-        props.setUser(data[0])
+        debugger
+        console.log(data)
         // localStorage.setItem('jwt', data.jwt)
     })
-}
+  }
 
   const fetchExchanges = () => {
     //   debugger

@@ -25,7 +25,7 @@ const SideBar = (props) => {
                     trigger={<Button basic content='Read All Reviews'/>} 
                     closeIcon
                 >
-                    <Modal.Header content={`Reviews for ${this.props.user.username}`} />
+                    <Modal.Header content={`Reviews for ${props.user.username}`} />
                     <Modal.Content>
                         {props.user.reviews.length < 1 
                             ? <h1>This user has no reviews yet</h1>
