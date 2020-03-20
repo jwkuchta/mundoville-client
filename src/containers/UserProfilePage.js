@@ -7,6 +7,8 @@ import SideBar from '../components/SideBar'
 
 const UserProfilePage = (props) => {
 
+    // debugger
+
     let username = window.location.pathname.split('/')[2]
     let allUsers = props.users 
     let user = allUsers.filter(user => user.username === username)[0]

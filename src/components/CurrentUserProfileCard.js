@@ -29,7 +29,7 @@ const CurrentUserProfileCard = props => {
                 <div style={{'backgroundColor': '#eeeef0', 'padding': '1px'}}>
                 <Button className='ui button'>
                         <Link 
-                        to={`/users/${currentUser.user.sub.split('|')[1]}/edit`}
+                        to={`/users/${currentUser.user.sub}/edit`}
                         style={{fontSize: '2vh', textAlign: 'justify'}}
                         >Edit your profile</Link>
                 </Button>

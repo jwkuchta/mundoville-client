@@ -8,14 +8,18 @@ import { useAuth0 } from "../react-auth0-spa"
 
 const CurrentUserProfilePage = (props) => {
 
+  // debugger
+
   const { loading, user } = useAuth0()
 
     useEffect(() => {
-        createNewUser(user)
-        fetchExchanges()
-        fetchReviews()
-        props.setUser(user)
-
+      let auth0user = user
+      let currentUser = props.allUsers.find(user => user.sub === auth0user.sub.split('|')[1])
+      createNewUser(user)
+      fetchExchanges()
+      fetchReviews()
+      // debugger
+      props.setUser(currentUser)
     }, []) 
     // empty array assures it is only used once, getting rid of the re-render loop
 
@@ -35,9 +39,8 @@ const CurrentUserProfilePage = (props) => {
     })
     .then(r => r.json())
     .then(data => {
-        debugger
-        console.log(data)
         // localStorage.setItem('jwt', data.jwt)
+        // we need a token for that, add later
     })
   }
 
@@ -96,7 +99,7 @@ const CurrentUserProfilePage = (props) => {
 const mapSTP = state => {
     // console.log(state)
     return {
-        users: state.users,
+        allUsers: state.users,
         currentUser: state.currentUser
     }
 }

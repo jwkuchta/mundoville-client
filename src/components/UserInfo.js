@@ -6,9 +6,9 @@ import Reviews from '../components/Reviews'
 
 const UserInfo = (props) => {
 
-    debugger
+    // debugger
 
-    let user = props.user
+    let user = props.user.user
     let currentYear =  new Date().getFullYear()
     let userYob = user.yob ? parseInt(user.yob) : 1980
     let age = currentYear - userYob
