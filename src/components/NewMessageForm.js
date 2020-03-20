@@ -1,21 +1,23 @@
-import React, { useState } from 'react'
+import React, { Component } from 'react'
 import { Form, Button } from 'semantic-ui-react'
 
-const NewMessageForm = (props) => {
-
-    const [body, setBody] = useState('')
-
-    const handleChange = e => {
-        console.log(body)
-        setBody({body: e.target.value})
+class NewMessageForm extends Component {
+    
+    constructor(props) {  
+        super(props)
+        this.state = {body: ''}
     }
 
-    const handleSubmit = (e, body) => {
+    handleChange = e => {
+        this.setState({body: e.target.value})
+    }
+
+    handleSubmit = (e, body) => {
         // debugger
         e.preventDefault()
 
-        let otherUserId = props.exchange.second_user_id !== props.currentUser.id
-            ? props.exchange.second_user_id : props.exchange.first_user_id
+        let otherUserId = this.props.exchange.second_user_id !== this.props.currentUser.user.id
+            ? this.props.exchange.second_user_id : this.props.exchange.first_user_id
 
         fetch('http://localhost:4000/api/v1/exchanges',{
             method: 'POST',
@@ -25,35 +27,41 @@ const NewMessageForm = (props) => {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                first_user_id: props.currentUser.id,
+                first_user_id: this.props.currentUser.user.id,
                 second_user_id: otherUserId,
                 body: body
             })
         })
         .then(r => r.json())
         .then(data => {
-            alert('your message was sent')
+            // alert('your message was sent')
             window.location.href='/messages'
-            //cprops.setPageMessages()
+            // this.props.setPageMessages()
         })
-        setBody('')
+        this.setState({
+            body: ''
+        })
     }
 
-    return (
-        <Form onSubmit={(e) => handleSubmit(e, body)}>
-            <Form.TextArea 
-                value={body}
-                onChange={(e) => handleChange(e)} 
-            />
-            <Button 
-                type='submit' 
-                floated='right' 
-                content='Reply' 
-                labelPosition='right' 
-                icon='pencil' 
-            />
-        </Form>
-    )
+    render() {
+
+        // debugger
+        return (
+            <Form onSubmit={(e) => this.handleSubmit(e, this.state.body)}>
+                <Form.TextArea 
+                    value={this.state.body}
+                    onChange={(e) => this.handleChange(e)} 
+                />
+                <Button 
+                    type='submit' 
+                    floated='right' 
+                    content='Reply' 
+                    labelPosition='right' 
+                    icon='pencil' 
+                />
+            </Form>
+        )
+    }
 }
 
 export default NewMessageForm

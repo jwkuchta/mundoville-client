@@ -5,20 +5,21 @@ import Message from './Message'
 import NewMessageForm from './NewMessageForm'
 import placeholder from '../photos/profilePicPlaceholder.png'
 
-const Exchange = () => {
+const Exchange = (props) => {
 
-    const { exchange, users, currentUser } = this.props
+    const { exchange, users, currentUser } = props
         
         if (users.length > 0) {
             const userId = exchange.first_user_id === currentUser.id ? exchange.second_user_id : exchange.first_user_id
             const otherUser = users.filter(user => user.id === userId)[0]
             const unread = exchange.messages.filter(m => m.user_id === otherUser.id && m.read === false)
-        
+            let from = otherUser.username ? otherUser.username : otherUser.email
+
             let infoMessage = otherUser.username
             if (unread.length === 1) {
-                infoMessage =  unread.length + ' unread message from ' + otherUser.username
+                infoMessage =  unread.length + ' unread message from ' + from
             } else if (unread.length > 1) {
-                infoMessage = unread.length + ' unread messages from ' + otherUser.username
+                infoMessage = unread.length + ' unread messages from ' + from
             }
 
             const otherUserPic = `http://localhost:4000/${otherUser.profile_pic_url}`

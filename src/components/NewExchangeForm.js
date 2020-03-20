@@ -81,7 +81,7 @@ class NewExchangeForm extends Component {
 
     postNewExchange = () => {
         debugger
-        let currentUser = this.props.currentUser
+        let currentUser = this.props.currentUser.user
 
         fetch('http://localhost:4000/api/v1/exchanges', {
             method: 'POST',
@@ -108,7 +108,7 @@ class NewExchangeForm extends Component {
 
     render() {
 
-        debugger
+        // debugger
         return (
             <Segment padded='very' style={{backgroundColor: '#528FBB'}}>
                 <Form onSubmit={(e) => this.handleSubmit(e, this.state)}>
