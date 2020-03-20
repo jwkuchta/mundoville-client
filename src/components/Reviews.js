@@ -7,6 +7,7 @@ const Reviews = (props) => {
 
     let reviews = props.user.reviews
     let users = props.allUsers
+
    
     return (
         <Container>
@@ -17,8 +18,12 @@ const Reviews = (props) => {
                 // debugger
                 let reviewer = users.find(user => user.id === review.user_id)
                 return <h3>
-                    <div>"<i>{review.body}</i>" - <strong><Link to={`/users/${reviewer.username}`}>{reviewer.username}</Link></strong></div>
-                </h3>
+                            <div>"<i>{review.body}</i>" - <strong>
+                                <Link to={`/users/${reviewer.sub}`}>
+                                    {reviewer.name ? reviewer.name : reviewer.email}
+                                </Link>
+                            </strong></div>
+                        </h3>
             })
             :
             <h3>You don't have any reviews yet</h3>

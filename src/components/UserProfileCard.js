@@ -4,7 +4,9 @@ import { Card, Image } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
 import { selectedUser } from '../redux/actions'
 
-const UserCard = (props) => {
+const UserProfileCard = (props) => {
+
+    // debugger
 
     let profilePicUrl = `http://localhost:4000/${props.user.profile_pic_url}`
         let fullName = `${props.user.first_name} ${props.user.last_name}`
@@ -23,4 +25,4 @@ const mapDTP = dispatch => {
     return {selectedUser: user => dispatch(selectedUser(user))}
 }
 
-export default connect(null, mapDTP)(UserCard)
+export default connect(null, mapDTP)(UserProfileCard)

@@ -6,7 +6,7 @@ import Reviews from '../components/Reviews'
 
 const UserInfo = (props) => {
 
-    // debugger
+    debugger
 
     let user = props.user.user
     let currentYear =  new Date().getFullYear()

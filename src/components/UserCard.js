@@ -7,6 +7,11 @@ import { selectedUser } from '../redux/actions'
 
 const UserCard = (props) => {
 
+    debugger
+    // let window = window.location.href
+
+    // let user = props.user ? props.user : window.location.href
+
     let profilePicUrl = `http://localhost:4000/${props.user.profile_pic_url}`
 
     return (
@@ -19,7 +24,7 @@ const UserCard = (props) => {
                 <h3>{props.user.first_name}  {props.user.last_name}</h3>
                 <h3>{props.user.city}, {props.user.country}</h3>
                 <Button className='ui button'>
-                    <Link to={`/users/${props.user.username}`} style={{'font-size': '20px', 'backgroundColor': 'white'}}>Full profile</Link>
+                    <Link to={`/users/${props.user.sub}`} style={{'font-size': '20px', 'backgroundColor': 'white'}}>Full profile</Link>
                 </Button>
                 </div>
             </Card.Content>

@@ -17,7 +17,7 @@ class AddReviewModal extends Component {
     }
 
     handleRate = (e, { rating }) => {
-        let userId = this.props.currentUser.id
+        let userId = this.props.currentUser.user.id
         let reviewedId = this.props.user.id
 
         this.setState({
@@ -56,6 +56,9 @@ class AddReviewModal extends Component {
     }
 
     render() {
+
+        // debugger 
+
         return (
             <Modal 
                 size='small'
