@@ -7,7 +7,7 @@ import { selectedUser } from '../redux/actions'
 
 const UserCard = (props) => {
 
-    debugger
+    // debugger
     // let window = window.location.href
 
     // let user = props.user ? props.user : window.location.href

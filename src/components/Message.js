@@ -5,7 +5,7 @@ import { Comment, Divider } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
 
 const Message = (props) => {
-    
+
     const { message, user, currentUser } = props
         let timestamp = message.created_at
         let sender = message.user_id === user.id ? user : currentUser

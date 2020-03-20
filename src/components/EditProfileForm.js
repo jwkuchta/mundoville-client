@@ -63,7 +63,7 @@ class EditProfileForm extends Component {
     
     // updates user profile info in the backend
     updateUser = (user, data) => {
-        debugger
+        // debugger
         fetch(`${usersUrl}${this.props.currentUser.user.sub}`, {
             method: 'POST',
             headers: {

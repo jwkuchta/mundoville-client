@@ -8,7 +8,7 @@ const UserInfo = (props) => {
 
     debugger
 
-    let user = props.user.user
+    let user = props.user.user === props.currentUser.user ? props.currentUser.user : props.user
     let currentYear =  new Date().getFullYear()
     let userYob = user.yob ? parseInt(user.yob) : 1980
     let age = currentYear - userYob
@@ -86,7 +86,8 @@ const UserInfo = (props) => {
 const mapSTP = state => {
     return {
         currentUser: state.currentUser,
-        allUsers: state.users
+        allUsers: state.users,
+        selectedUser: state.selectedUser
     }
 }
 

@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import logo from '../photos/logo_teal_cropped.png'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import { useAuth0 } from "../react-auth0-spa";
 
 const LoggedOutNavBar = () => {
 
-  const { loginWithRedirect, getUser } = useAuth0()
+  const { loginWithRedirect } = useAuth0()
 
   return (
     <div style={{ backgroundColor: 'white', position: 'relative'}}>

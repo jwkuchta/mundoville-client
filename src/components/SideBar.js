@@ -36,7 +36,7 @@ const SideBar = (props) => {
                             )}
                         </Modal.Content>
                     </Modal>}<br/><br/>
-                {props.user.reviews == 0 && <h4 style={{color: 'teal'}}>Be the first to leave a review</h4>} 
+                {props.user.reviews === 0 && <h4 style={{color: 'teal'}}>Be the first to leave a review</h4>} 
                 <AddReviewModal 
                     user={props.user}
                     currentUser={props.currentUser}

@@ -12,7 +12,10 @@ const CurrentUserProfilePage = (props) => {
 
   const { loading, user } = useAuth0()
 
+  // debugger
+
     useEffect(() => {
+      debugger
       let auth0user = user
       let currentUser = props.allUsers.find(user => user.sub === auth0user.sub.split('|')[1])
       createNewUser(user)

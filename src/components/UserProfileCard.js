@@ -6,7 +6,7 @@ import { selectedUser } from '../redux/actions'
 
 const UserProfileCard = (props) => {
 
-    // debugger
+    debugger
 
     let profilePicUrl = `http://localhost:4000/${props.user.profile_pic_url}`
         let fullName = `${props.user.first_name} ${props.user.last_name}`

@@ -2,6 +2,7 @@ import React, { createRef, useEffect } from "react";
 import { connect } from 'react-redux'
 import './css/NavBar.scss'
 import './css/App.scss'
+// import Loader from './components/Loader'
 import { Route, Switch, Redirect } from "react-router-dom"
 import CurrentUserProfilePage from './containers/CurrentUserProfilePage'
 import HomePage from './containers/HomePage'
@@ -15,7 +16,7 @@ import LoggedInNavBar from './components/LoggedInNavBar'
 import { Sticky } from 'semantic-ui-react'
 import { useAuth0 } from "./react-auth0-spa";
 import { fetchUsers } from './redux/actions'
-import PrivateRoute from './components/PrivateRoute'
+// import PrivateRoute from './components/PrivateRoute'
 
 const App = (props) => {
   
@@ -28,12 +29,16 @@ const App = (props) => {
   const contextRef = createRef()
 
   if (loading) {
+    // debugger
     return <div>Loading...</div>
+    // return <div fluid className='loader'><Loader /></div>
+    // return <Container fluid className='loader'><Loader /></Container>
   }
 
   // shorted way to secure the route using a ternary expression. No need for PrivateRoute
   return (
     <div className="App" ref={contextRef}>
+      {/* {loading && <div className='loader'><Loader /></div>} */}
     <Sticky context={contextRef} fluid>
           {!isAuthenticated && <LoggedOutNavBar attached='top' tabular style={{ backgroundColor: '#246a92', paddingTop: '1em' }}/>}
           {isAuthenticated && <LoggedInNavBar attached='top' tabular style={{ backgroundColor: '#246a92', paddingTop: '1em' }}/>}

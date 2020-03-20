@@ -11,10 +11,6 @@ const MessagesContainer = (props) => {
     const [ option, setOption ] = useState('exchanges')
     const { user } = useAuth0()
 
-    useEffect(() => {
-        fetchExchanges()
-    }, [])
-
     const fetchExchanges = () => {
         fetch('http://localhost:4000/api/v1/findExchanges', {
           method: 'POST',
@@ -34,50 +30,54 @@ const MessagesContainer = (props) => {
         .catch(e => console.log(e))
       }
 
-    if (user) {
-        // debugger
-        let currentPage = option === 'exchanges' 
-        ? 
-        <Exchanges currentUser={props.currentUser ? props.currentUser : user} />
-        :  
-        <NewExchangeForm 
-            currentUser={props.currentUser ? props.currentUser : user} 
-            users={props.users} 
-            setPageMessages={() => setOption('exchanges')}
-        />
+    useEffect(() => {
+      fetchExchanges()
+    }, [])
 
-        return (
-            
-            <Container style={{width: '50%'}}>
-            <br></br>
-            <Grid stretched >
-                <Menu tabular  widths={2}  >
-                    <Menu.Item 
-                        id='messages'
-                        header
-                        name='Messages'
-                        active={option === 'exchanges'}
-                        // onClick={() => setState({page: 'exchanges'})}
-                        onClick={() => setOption('exchanges')}
-                    />
-                    <Menu.Item 
-                        id='messages'
-                        header
-                        position='right'
-                        name='New Message'
-                        active={option === 'new'}
-                        onClick={() => setOption('new')}
-                    />
-                </Menu>
-                <Grid.Column width={16}>
-                    {currentPage}
-                </Grid.Column>
-            </Grid>
-            </Container> 
-        )
+    if (user) {
+      // debugger
+      let currentPage = option === 'exchanges' 
+      ? 
+      <Exchanges currentUser={props.currentUser ? props.currentUser : user} />
+      :  
+      <NewExchangeForm 
+          currentUser={props.currentUser ? props.currentUser : user} 
+          users={props.users} 
+          setPageMessages={() => setOption('exchanges')}
+      />
+
+      return (
+          
+          <Container style={{width: '50%'}}>
+          <br></br>
+          <Grid stretched >
+              <Menu tabular  widths={2}  >
+                  <Menu.Item 
+                      id='messages'
+                      header
+                      name='Messages'
+                      active={option === 'exchanges'}
+                      // onClick={() => setState({page: 'exchanges'})}
+                      onClick={() => setOption('exchanges')}
+                  />
+                  <Menu.Item 
+                      id='messages'
+                      header
+                      position='right'
+                      name='New Message'
+                      active={option === 'new'}
+                      onClick={() => setOption('new')}
+                  />
+              </Menu>
+              <Grid.Column width={16}>
+                  {currentPage}
+              </Grid.Column>
+          </Grid>
+          </Container> 
+      )
     } else {
         return null
-    }
+    }  
 }
 
 const mapSTP = state => {

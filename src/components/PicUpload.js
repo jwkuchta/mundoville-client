@@ -29,7 +29,7 @@ class PicUpload extends Component {
     }
 
     handleSubmit = e => {
-        debugger
+        // debugger
         e.preventDefault()
         const user = this.props.currentUser.user
         const formData = new FormData()

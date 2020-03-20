@@ -68,7 +68,6 @@ class NewExchangeForm extends Component {
     }
 
     handleSubmit = e => {
-        debugger
         e.preventDefault()
         this.postNewExchange()
         this.resetState()  
@@ -80,7 +79,7 @@ class NewExchangeForm extends Component {
     }
 
     postNewExchange = () => {
-        debugger
+        // debugger
         let currentUser = this.props.currentUser.user
 
         fetch('http://localhost:4000/api/v1/exchanges', {

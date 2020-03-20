@@ -5,11 +5,14 @@ import Exchange from '../components/Exchange'
 
 const Exchanges = (props) => {
 
+    // debugger
+
     if (props.exchanges.length > 0) {
         let exchanges = props.exchanges
+        // debugger
         return (
             <Segment padded='very' style={{backgroundColor: '#528FBB'}}>
-                {exchanges.map(e => <Exchange key ={e.id} exchange={e} /> )}
+                {exchanges.map(e => <Exchange key ={e.id} exchange={e} />)}
             </Segment>
         ) 
     } else {

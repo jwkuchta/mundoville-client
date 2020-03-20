@@ -7,15 +7,22 @@ import placeholder from '../photos/profilePicPlaceholder.png'
 
 const Exchange = (props) => {
 
+    // debugger
+
     const { exchange, users, currentUser } = props
+
+    // debugger
         
         if (users.length > 0) {
-            const userId = exchange.first_user_id === currentUser.id ? exchange.second_user_id : exchange.first_user_id
+            const userId = exchange.first_user_id === currentUser.user.id ? exchange.second_user_id : exchange.first_user_id
+            // debugger
             const otherUser = users.filter(user => user.id === userId)[0]
+            // debugger
             const unread = exchange.messages.filter(m => m.user_id === otherUser.id && m.read === false)
             let from = otherUser.username ? otherUser.username : otherUser.email
 
             let infoMessage = otherUser.username
+            // debugger
             if (unread.length === 1) {
                 infoMessage =  unread.length + ' unread message from ' + from
             } else if (unread.length > 1) {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { Image, Button, Rating } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
