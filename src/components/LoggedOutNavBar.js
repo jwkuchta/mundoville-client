@@ -8,6 +8,11 @@ const LoggedOutNavBar = () => {
 
   const { loginWithRedirect } = useAuth0()
 
+  const handleLogin = () => {
+    //   debugger
+      loginWithRedirect()
+  }
+
   return (
     <div style={{ backgroundColor: 'white', position: 'relative'}}>
         {/* <button onClick={() => loginWithRedirect({})}>Log in</button> */}
@@ -27,7 +32,8 @@ const LoggedOutNavBar = () => {
                         <li><a href="/about">About</a></li>
                         {/* <li><a onClick={() => loginWithRedirect()}>Log in</a></li>
                         <li><a onClick={() => loginWithRedirect()}>Sign up</a></li> */}
-                            <li><a onClick={() => loginWithRedirect()}>Log in</a></li>
+                        {/* <li><a onClick={() => loginWithRedirect()}>Log in</a></li> */}
+                        <li><a onClick={() => handleLogin()}>Log in</a></li>
                         <li><a onClick={() => loginWithRedirect()}>Sign up</a></li>
                         <li style={{color: 'white'}}>nothing to see here</li>
                         <li style={{color: 'white'}}>nothing to see here</li>    

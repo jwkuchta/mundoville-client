@@ -20,6 +20,8 @@ import { fetchUsers } from './redux/actions'
 import history from "./utils/history"
 
 const App = (props) => {
+
+  // debugger
   
   const { loading, isAuthenticated } = useAuth0()
 

@@ -12,7 +12,7 @@ const CurrentUserProfilePage = (props) => {
 
   const { loading, user } = useAuth0()
 
-  // debugger
+  debugger
 
     useEffect(() => {
       // debugger
@@ -21,7 +21,7 @@ const CurrentUserProfilePage = (props) => {
       createNewUser(user)
       fetchExchanges()
       fetchReviews()
-      // debugger
+      debugger
       props.setUser(currentUser)
     }, []) 
     // empty array assures it is only used once, getting rid of the re-render loop
@@ -31,14 +31,14 @@ const CurrentUserProfilePage = (props) => {
   }
 
   const createNewUser = user => {
-    // debugger
+    debugger
     fetch('http://localhost:4000/api/v1/users', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: JSON.stringify({sub: user.sub.split('|')[1], ...user})
+        body: JSON.stringify({...user, sub: user.sub.split('|')[1]})
     })
     .then(r => r.json())
     .then(data => {
