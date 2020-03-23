@@ -15,7 +15,7 @@ const CurrentUserProfilePage = (props) => {
   // debugger
 
     useEffect(() => {
-      debugger
+      // debugger
       let auth0user = user
       let currentUser = props.allUsers.find(user => user.sub === auth0user.sub.split('|')[1])
       createNewUser(user)
@@ -42,7 +42,8 @@ const CurrentUserProfilePage = (props) => {
     })
     .then(r => r.json())
     .then(data => {
-        // localStorage.setItem('jwt', data.jwt)
+        localStorage.setItem('jwt', props.currentUser.user)
+        // debugger
         // we need a token for that, add later
     })
   }

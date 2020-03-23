@@ -22,7 +22,7 @@ const onRedirectCallback = appState => {
 };
 
 ReactDOM.render(
-    <Router history={history}>
+    // <Router history={history}>
         <Auth0Provider
             domain={config.domain}
             client_id={config.clientId}
@@ -34,8 +34,8 @@ ReactDOM.render(
                     <App />
                 </PersistGate>
             </Provider>
-        </Auth0Provider>
-    </Router>,
+        </Auth0Provider>,
+    // </Router>,
   document.getElementById("root")
 );
 

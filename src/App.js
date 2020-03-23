@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import './css/NavBar.scss'
 import './css/App.scss'
 // import Loader from './components/Loader'
-import { Route, Switch, Redirect } from "react-router-dom"
+import { Router, Route, Switch, Redirect } from "react-router-dom"
 import CurrentUserProfilePage from './containers/CurrentUserProfilePage'
 import HomePage from './containers/HomePage'
 import UsersPage from './containers/UsersPage'
@@ -17,6 +17,7 @@ import { Sticky } from 'semantic-ui-react'
 import { useAuth0 } from "./react-auth0-spa";
 import { fetchUsers } from './redux/actions'
 // import PrivateRoute from './components/PrivateRoute'
+import history from "./utils/history"
 
 const App = (props) => {
   
@@ -38,7 +39,8 @@ const App = (props) => {
   // shorted way to secure the route using a ternary expression. No need for PrivateRoute
   return (
     <div className="App" ref={contextRef}>
-      {/* {loading && <div className='loader'><Loader /></div>} */}
+      <Router history={history}>
+          {/* {loading && <div className='loader'><Loader /></div>} */}
     <Sticky context={contextRef} fluid>
           {!isAuthenticated && <LoggedOutNavBar attached='top' tabular style={{ backgroundColor: '#246a92', paddingTop: '1em' }}/>}
           {isAuthenticated && <LoggedInNavBar attached='top' tabular style={{ backgroundColor: '#246a92', paddingTop: '1em' }}/>}
@@ -47,14 +49,6 @@ const App = (props) => {
             <Route exact path='/'>
               {!isAuthenticated ? <div className='mainPage'>< HomePage /></div> : <div className='mainPage'>< CurrentUserProfilePage /></div>} 
             </Route>
-  
-            {/* <Route exact path='/login'>
-              {isAuthenticated === true ? <Redirect to='/' />: <LoginPage />}
-            </Route> */}
-  
-            {/* <Route exact path='/signup'>
-              {isAuthenticated === true ? <Redirect to='/' />: <SignupPage />}
-            </Route> */}
   
             <Route exact strict path='/users'>
               {isAuthenticated ? <div className='mainPage'><UsersPage /></div> : <Redirect to='/' /> } 
@@ -75,9 +69,15 @@ const App = (props) => {
             <Route path='/messages'>
               {isAuthenticated ? <div className='mainPage'><MessagesContainer /></div> : <Redirect to='/'/> }
             </Route>
+
+            <Route exact strict path='/logout'>
+              <Redirect to='https://dev-q3adauy2.auth0.com/v2/logout' />
+            </Route>
   
             <Redirect from='*' to='/' />
           </Switch>
+      </Router>
+      
     </div> 
   )
 }

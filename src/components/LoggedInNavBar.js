@@ -1,15 +1,32 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Icon, Popup } from 'semantic-ui-react'
+import { Icon, Popup, Button } from 'semantic-ui-react'
 import logo from '../photos/logo_teal_cropped.png'
 import '../css/App.scss'
 import '../css/NavBar.scss'
 import { useAuth0 } from "../react-auth0-spa";
-// import { Link } from 'react-router-dom'
+import { Link , Redirect} from 'react-router-dom'
 
 const LoggedInNavBar = () => {
 
-  const { logout, isAuthenticated } = useAuth0();
+  const { logout, isAuthenticated } = useAuth0()
+
+  const clearCookies = () => {
+      let cookies = document.cookie.split(";")
+      debugger
+    cookies.forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+  }
+
+//   const handleLogout = () => {
+//       clearCookies()
+//       debugger
+//     window.localStorage.clear()
+//     debugger
+//     window.sessionStorage.clear()
+//     debugger
+//     // debugger
+//     logout()
+//   }
 
   return (
     <div style={{display: 'inline-block', width: '100vw', backgroundColor: 'white'}}>
@@ -87,7 +104,11 @@ const LoggedInNavBar = () => {
                 </a>
             </li>
 
-            <li><a href='/' onClick={() => logout()}>Log Out</a></li>
+            {/* <li><a href='/' onClick={() => logout()}>Log Out</a></li> */}
+            {/* <li><a href='/logout' onClick={() => handleLogout()}>Log Out</a></li> */}
+            {/* <li><a href='/logout' onClick={handleLogout}>Log Out</a></li> */}
+            {/* <li><button onClick={() => logout()}>Log out</button></li> */}
+            <Button onClick={() => logout()}>LOG OUT</Button>
             <li style={{color: 'white'}}>nothing to see here</li>
             <li style={{color: 'white'}}>nothing to see here</li>
             <li style={{color: 'white'}}>nothing to see here</li>
@@ -95,10 +116,6 @@ const LoggedInNavBar = () => {
         </ul>   
         </nav>
         </div>
-        
-        
-        
-        {/* <br></br> */}
     </div>
 )
 };
