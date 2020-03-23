@@ -65,10 +65,13 @@ import placeholder from '../photos/profilePicPlaceholder.png'
 import { connect } from 'react-redux'
 import PicUpload from './PicUpload'
 // import PicUploadNoCrop from './PicUploadNoCrop'
+import { useAuth0 } from "../react-auth0-spa"
 
 const CurrentUserProfileCard = props => {
 
     // debugger
+
+    const { user } = useAuth0()
 
     let currentUser = props.currentUser.user
     let pic_url = `http://localhost:4000/${currentUser.profile_pic_url}`
@@ -82,9 +85,9 @@ const CurrentUserProfileCard = props => {
                     style={{margin: 'auto', display: 'block', width: '22vw'}}
                     ></Image>
                     :
-                    currentUser.picture 
+                    user.picture 
                     ?
-                    <Image src={currentUser.picture}
+                    <Image src={user.picture}
                     style={{margin: 'auto', display: 'block', width: '22vw'}}
                     ></Image> 
                     :

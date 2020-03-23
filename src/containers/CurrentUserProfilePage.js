@@ -10,7 +10,7 @@ const CurrentUserProfilePage = (props) => {
 
   // debugger
 
-  const { loading, user } = useAuth0()
+  const { user } = useAuth0()
 
   debugger
 
@@ -26,10 +26,6 @@ const CurrentUserProfilePage = (props) => {
     }, []) 
     // empty array assures it is only used once, getting rid of the re-render loop
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   const createNewUser = user => {
     debugger
     fetch('http://localhost:4000/api/v1/users', {
@@ -38,7 +34,13 @@ const CurrentUserProfilePage = (props) => {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: JSON.stringify({...user, sub: user.sub.split('|')[1]})
+        body: JSON.stringify(
+          {
+            ...user, 
+            sub: user.sub.split('|')[1], 
+            id_provider: user.sub.split('|')[0]
+          }
+        )
     })
     .then(r => r.json())
     .then(data => {

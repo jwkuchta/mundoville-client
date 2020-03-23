@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import './css/NavBar.scss'
 import './css/App.scss'
 // import Loader from './components/Loader'
+// import ShowDetail from "./components/ShowDetail";
 import { Router, Route, Switch, Redirect } from "react-router-dom"
 import CurrentUserProfilePage from './containers/CurrentUserProfilePage'
 import HomePage from './containers/HomePage'
@@ -18,6 +19,8 @@ import { useAuth0 } from "./react-auth0-spa";
 import { fetchUsers } from './redux/actions'
 // import PrivateRoute from './components/PrivateRoute'
 import history from "./utils/history"
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from 'react-loader-spinner'
 
 const App = (props) => {
 
@@ -33,17 +36,17 @@ const App = (props) => {
 
   if (loading) {
     // debugger
-    return <div>Loading...</div>
-    // return <div fluid className='loader'><Loader /></div>
-    // return <Container fluid className='loader'><Loader /></Container>
+    return <div className="loader center"><Loader type='Puff' color='#1C4E68' height={100} width={100} timeout={3000}/></div>
+    // debugger
   }
 
   // shorted way to secure the route using a ternary expression. No need for PrivateRoute
   return (
     <div className="App" ref={contextRef}>
+      {/* {loading && <Loader />} */}
       <Router history={history}>
-          {/* {loading && <div className='loader'><Loader /></div>} */}
-    <Sticky context={contextRef} fluid>
+          
+          <Sticky context={contextRef} fluid>
           {!isAuthenticated && <LoggedOutNavBar attached='top' tabular style={{ backgroundColor: '#246a92', paddingTop: '1em' }}/>}
           {isAuthenticated && <LoggedInNavBar attached='top' tabular style={{ backgroundColor: '#246a92', paddingTop: '1em' }}/>}
           </Sticky>

@@ -246,6 +246,37 @@ a:hover { color: #2C8EA7; }
   color: #528FBB;
 }
 
+.loader {
+  border-radius: 10%;
+  width: 120px;
+  height: 120px;
+  animation: spin 3s linear infinite;
+}
+
+// @keyframes spin {
+//   0% { transform: rotate(0deg); }
+//   100% { transform: rotate(360deg); }
+// }
+
+.center {
+  margin: auto;
+  width: 50%;
+  max-width: 400px;
+  min-width: 150px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  // transform: translate(-50%, -50%);
+  font-size: 20px;
+}
+
+.loaded {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-right: 50px;
+}
+
 $darkTeal: #1C4E68;
 $darkGreen: #013435;
 $creamy: #FFFFED;
