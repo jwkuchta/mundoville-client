@@ -1,3 +1,4 @@
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -10,14 +11,50 @@ li {
 
 a {
     // display: block;
-    padding: 8px;
-    background-color: #246a92;
-    font-size: 30px;
-    color: white;
+    padding-right: 10px;
+    padding-left: 27px;
+    background-color: white;
+    font-size: 25px;
+    color: #1C4E68;
 }
 
-img {
+nav {
+    width: 100%;
+    overflow: hidden;
+    background-color: white;
+    color: #1C4E68;
+  }
+  
+  #navbar a {
     // float: left;
+    display: block;
+    color: #1C4E68;
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  // nav a:hover {
+  //   background-color: white;
+  //   color: black;
+  // }
+  
+  nav a.active {
+    background-color: #4CAF50;
+    color: #1C4E68;
+  }
+
+  .logo {
     height: 80px;
-    width: 400px;
-}
+    float: left;
+    // width: 400px;
+  }
+  
+  // .logo-in {
+  //   height: 100px;
+  //   // width: 400px;
+  // }
+  
+  
+  

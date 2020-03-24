@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, createRef } from 'react'
 import { connect } from 'react-redux'
 import './css/NavBar.scss'
+import './css/App.scss'
 import { Route, Switch, Redirect } from "react-router-dom"
-import LoggedInNavBar from './components/LoggedInNavBar'
-import LoggedOutNavBar from './components/LoggedOutNavBar'
 import CurrentUserProfilePage from './containers/CurrentUserProfilePage'
 import HomePage from './containers/HomePage'
 import UsersPage from './containers/UsersPage'
@@ -12,10 +11,16 @@ import EditProfilePage from './containers/EditProfilePage'
 import MessagesContainer from './containers/MessagesContainer'
 import UserProfilePage from './containers/UserProfilePage'
 import AboutPage from './components/AboutPage'
-import NavBar from './components/NavBar'
+// import NavBar from './components/NavBar'
+import LoggedOutNavBar from './components/LoggedOutNavBar'
+import LoggedInNavBar from './components/LoggedInNavBar'
+import { Sticky } from 'semantic-ui-react'
+// import _ from 'lodash'
 
 class App extends Component {
 
+  contextRef = createRef()
+  
   componentDidMount() {
     if (localStorage.jwt) {
       this.props.fetchProfile()
@@ -53,10 +58,6 @@ class App extends Component {
         'Accept': 'application/json'
       }
     })
-    // .then(resp => resp.json())
-    // .then(data => {
-    //     this.props.getReviews(data)
-    // })
     .then(resp => console.log(resp))
   }
   
@@ -68,9 +69,19 @@ class App extends Component {
     }
 
     return (
-      <div className="App" >
-        {/* {localStorage.jwt ? <LoggedInNavBar /> : <LoggedOutNavBar />} */}
-        <NavBar />
+      <div className="App" ref={this.contextRef}>
+        {/* <div ref={this.contextRef}> */}
+          <Sticky context={this.contextRef} fluid>
+          {!localStorage.jwt ? 
+          <LoggedOutNavBar attached='top' 
+            tabular 
+            style={{ backgroundColor: '#246a92', 
+            paddingTop: '1em' }} /> 
+            :
+          <LoggedInNavBar attached='top' 
+            tabular 
+            style={{ backgroundColor: '#246a92', paddingTop: '1em' }} />}
+          </Sticky>
         <Switch>
           <Route exact path='/'>
             {!localStorage.jwt ? 
@@ -105,7 +116,9 @@ class App extends Component {
 
           <Redirect from='*' to='/' />
         </Switch>
-      </div>
+      {/* </div> */}
+    </div>
+        
     )
   }
 }

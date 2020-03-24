@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import AddFriendButton from './AddFriendButton'
 import RemoveFriendButton from './RemoveFriendButton'
-// import { Button } from 'semantic-ui-react'
 
 const FriendButton = props => {
 

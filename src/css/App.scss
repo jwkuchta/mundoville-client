@@ -1,67 +1,45 @@
 .App {
   text-align: center;
-  background-color: #246a92;
+  background-color: #1C4E68;
   background-image: url("../photos/plane.gif") no-repeat fixed center;
+  // display: flex;
 }
 
 body {
-  background-color: #246a92;
-  // background-image: url("../photos/sakura.jpg");
+  background-color: #1C4E68;
+  background-image: url("../photos/plane.gif");
 }
 
-.app-logo {
-  position: absolute;
-  top: 1%;
-  left: 25%;
-  display: inline-block;
-  height: 20px;
-  width: 100px;
-}
-
-.main-page {
-  margin-top: 0px;
-  margin-bottom: 100px;
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
-.main-page-question {
-  position: absolute;
-  top: 30%;
-  left: 24%;
-  color: teal;
+.mainPage {
+  position: relative;
+  display: flex;
+  margin: 2px;
+  width: 100%;
+  text-align: center; 
 }
 
 .main-page-description {
   position: absolute;
-  top: 30%;
-  left: 24%;
-  color: #246a92;
+  top: 35%;
+  right: 1%;
+  color: #1C4E68;
 }
-
-// .main-page-buttons {
-//   position: absolute;
-//   top: 18px;
-//   left: 570px;
-//   display: inline-block;
-//   /* color: white; */
-// }
 
 .button {
-  color: teal;
+  color: #013435;
 }
 
-/* .ui-teal-basic-button {
+.login-form {
   position: absolute;
-  top: 10%;
   display: inline-block;
-} */
+  // left: 35%;
+  top: 25%;
+}
 
-.main-page-forms {
+.signup-form {
   position: absolute;
   display: inline-block;
-  left: 350px;
-  top: -620px;
+  top: 25%;
 }
 
 .navigation-container {
@@ -70,13 +48,14 @@ body {
 }
 
 .logo {
-  margin-top: 50px;
-  margin-bottom: 25px;
+  height: 80px;
+  float: left;
+  // width: 400px;
 }
 
-.white-logo {
-  height: 30px;
-  width: 150px;
+.logo-in {
+  height: 100px;
+  // width: 400px;
 }
 
 .profile-icon {
@@ -103,42 +82,48 @@ body {
   overflow: scroll;
 }
 
-#sakura {
-  size: 60px, 100px;
-}
-
 .logged-out-nav-bar-container {
   margin: 0px;
 }
 
-.text-custom {
+.user-info {
   font-family: sans-serif;
   font-style: Verdana;
   font-weight: normal;
   font-size: 16px;
-  color: #246a92;
+  color: #1C4E68;
   background-color: white;
-  text-align: left;
+  text-align: justify;
   font-style: bold;
   padding: 50px;
 }
 
-.teal-text {
-  font-family: sans-serif;
-  font-size: 20px;
-  color: white;
-}
+// .teal-text {
+//   font-family: sans-serif;
+//   font-size: 18px;
+//   color: white;
+// }
 
-.teal-background {
-  color: white;
-  background-color: #246a92;
+.social-icons {
+  width: 95%;
+  position: relative;
+  color: #1C4E68;
+  background-color: #eeeef0;
+  margin: 10px;
+  border: none;
+  padding: 5px;
+  align-content: center;
+  #popup {
+    width: 100%;
+    text-align: center;
+  }
 
 }
 
 .teal-font {
   font-family: sans-serif;
   font-size: 16px;
-  color: #246a92;
+  color: #013435;
 }
 
 .crop-container {
@@ -159,6 +144,14 @@ body {
   padding: 22px 0px;
 }
 
+.profilePage {
+  // position: absolute;
+  // padding: 10px;
+  background-color: #1C4E68;
+  display: inline-block; 
+  margin: 0 auto;
+  padding: 1px;
+}
 /* teal: #246a92 */
 
 /* MEDIA QUERIES */
@@ -171,7 +164,7 @@ body {
     height: 3653.59px;
     min-height: 3653.59px;
     min-width: 333px;
-   .app-logo {
+   .logo {
       height: 15vw;
       right: 32px;
       top: 15px;
@@ -186,12 +179,12 @@ body {
       position: absolute;
       top: 30%;
       left: 24%;
-      color: teal;
+      color: #013435;
     }
     .main-page-buttons {
     
       display: inline-block;
-      background-color: #246a92;
+      background-color: #1C4E68;
       /* color: white; */
     }
     .main-page-forms {
@@ -207,7 +200,7 @@ body {
 @media screen and (max-width: 480px) {
   .App{
     margin: 60px 20px 70px 20px;
-    .app-logo {
+    .logo {
       height: 15vw;
       top: 11px;
       right: 26px;
@@ -239,3 +232,23 @@ body {
     }
   }
 }
+
+a { 
+  color: #1C4E68; 
+  cursor: pointer;
+}
+
+a:hover { color: #2C8EA7; }
+
+// COLORS
+
+#messages {
+  color: #528FBB;
+}
+
+$darkTeal: #1C4E68;
+$darkGreen: #013435;
+$creamy: #FFFFED;
+$lightTeal: #2C8EA7;
+$gray:	#eeeef0;
+$white: #ffffff

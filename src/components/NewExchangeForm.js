@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Segment, Form, Button, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { placeholder } from '../photos/round_placeholder.png'
 // import {submitNewExchange} from '../redux/actions'
 
 class NewExchangeForm extends Component {
@@ -35,9 +36,11 @@ class NewExchangeForm extends Component {
             let userInstance = {
                 key: user.id, 
                 id: user.id, 
-                text: user.username, 
+                // text: user.username, 
+                text: `${user.first_name} ${user.last_name}`,
                 value: user.id, 
-                image: {avatar: true, src: `http://localhost:3000/${user.profile_pic_url}` }}
+                image: {avatar: true, src: user.profile_pic_url ? `http://localhost:3000/${user.profile_pic_url}` : placeholder}
+            }
             users.push(userInstance)
             return users
         })
@@ -53,9 +56,13 @@ class NewExchangeForm extends Component {
         } else {
             // user.id was not always showing so I changed to innerText
             let receiver = this.state.users.find(u => u.text === e.target.innerText)
-            this.setState({
-                receiver_id: receiver.id
-            })
+            if(receiver !== undefined) {
+                this.setState({
+                    receiver_id: receiver.id
+                })
+            } else {
+                return 
+            }  
         }
     }
 
@@ -105,6 +112,8 @@ class NewExchangeForm extends Component {
                 <Form onSubmit={(e) => this.handleSubmit(e, this.state)}>
                     <Form.Group>
                         <Form.Select required
+                            search
+                            options
                             inline
                             label='To: '
                             floating
@@ -122,11 +131,6 @@ class NewExchangeForm extends Component {
                         />
                     </Form.Group>
                     <Button type='submit' content='Send' />
-                    <Header size='tiny' color='red'>
-                        {this.state.exchange
-                            ? this.state.exchange
-                                : null}
-                    </Header>
                 </Form>
             </Segment>
         )

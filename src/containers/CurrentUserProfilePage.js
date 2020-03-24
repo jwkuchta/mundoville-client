@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import Avatar from './Avatar'
-// import SemanticGoodies from '../components/SemanticGoodies'
 import CurrentUserProfileCard from '../components/CurrentUserProfileCard'
 import { Grid, Container } from 'semantic-ui-react'
 // import { Button, Link } from 'semantic-ui-react'
@@ -14,29 +12,25 @@ class CurrentUserProfilePage extends Component {
 
         // console.log(this.props)
         return (
-            <>
-            <Container>
-                <Grid>
-                <br></br>
-                <Grid.Row>
-                    <Grid.Column width={5}>
-                        <Grid.Row>
-                            <CurrentUserProfileCard /> 
-                        </Grid.Row>
-                        <Grid.Row>
-                        </Grid.Row>    
-                    </Grid.Column>
-                    <Grid.Column width={11}>
-                        <UserInfo user={this.props.currentUser} />
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                </Grid.Row>
+            <Container className='profilePage'>
+                <Grid >
+                    <Grid.Row>
+
+                        <Grid.Column width={5}>
+                            <Grid.Row>
+                                <CurrentUserProfileCard /> 
+                            </Grid.Row>
+                        </Grid.Column>
+
+                        <Grid.Column width={11} style={{'backgroundColor': '#276890', 'padding': '1px'}}>
+                            <Grid.Row>
+                                <UserInfo user={this.props.currentUser} />
+                            </Grid.Row>
+                        </Grid.Column>
+                        
+                    </Grid.Row>
                 </Grid>
             </Container>
-            <Container>
-            </Container>
-            </>
         )
     }  
 }
@@ -50,3 +44,6 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(CurrentUserProfilePage)
+
+
+

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Grid } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-// import placeholder from '../photos/profilePicPlaceholder.png'
 import UserProfileCard from '../components/UserProfileCard'
 import UserInfo from '../components/UserInfo'
 import SideBar from '../components/SideBar'
@@ -9,9 +8,6 @@ import SideBar from '../components/SideBar'
 class UserProfilePage extends Component {
 
     render() {
-
-        // debugger
-        // console.log(this.props)
 
         let username = window.location.pathname.split('/')[2]
         let allUsers = this.props.users 

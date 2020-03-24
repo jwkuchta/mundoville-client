@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import { Container, Grid, Divider } from 'semantic-ui-react'
+import { Grid, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-// import sakura from '../photos/sakura.jpg'
 import SocialMediaIcons from '../components/SocialMediaIcons'
+import Reviews from '../components/Reviews'
 
 class UserInfo extends Component {
 
@@ -10,24 +10,79 @@ class UserInfo extends Component {
 
         const {user} = this.props
 
-        let bio = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        let currentYear =  new Date().getFullYear()
+        let userYob = parseInt(user.yob)
+        let age = currentYear - userYob
 
+
+        debugger
+
+        let bio = 'Write a little about yourself so other can get to know you better! What do you like to do in your free time? Are you a cat person or a dog person (or a bird person?). What activities would you enjoy sharing with other travellers? What do you expect out of this experience?'
         return (
-            <Container className='text-custom'>
-                <Grid.Row>Username: &nbsp; {user.username} </Grid.Row>
-                <Grid.Row>Full Name: &nbsp; {user.first_name} {user.last_name} </Grid.Row>
-                <Grid.Row>Email: &nbsp; {user.email} </Grid.Row>
-                {/* <Grid.Row>Facebook: &nbsp; {user.facebook} </Grid.Row>
-                <Grid.Row>Instagram: &nbsp; {user.instagram} </Grid.Row>
-                <Grid.Row>Occupation: &nbsp; {user.occupation} </Grid.Row> */}
-                <Grid.Row>Location: &nbsp; {user.city}, {user.country} </Grid.Row>
-                <Grid.Row>Languages: &nbsp; {user.language1}, {user.language2}, {user.language3} </Grid.Row>
-                <Divider></Divider><br></br>
-                {user.bio ? <Grid.Row>Bio: &nbsp; {user.bio}</Grid.Row> : <Grid.Row>Bio: &nbsp; {bio}</Grid.Row> }
-                <Grid.Row className='teal-background'>
-                    <SocialMediaIcons />
+            <div style={{'backgroundColor': '#276890', padding: '0px'}} className='user-info'>
+                <div style={{'backgroundColor': '#eeeef0', 'padding': '30px', 'color': '#1C4E68'}}>
+                    <Grid.Row>
+                        <Icon name='check' size='large'></Icon>Occupation
+                    </Grid.Row>
+                    <Grid.Row> &nbsp; &nbsp; &nbsp; &nbsp;{user.occupation} </Grid.Row>
+                    <Grid.Row>
+                        <Icon name='check' size='large'></Icon>Age
+                    </Grid.Row>
+                    <Grid.Row> &nbsp; &nbsp; &nbsp; &nbsp;{age}</Grid.Row>
+                    <Grid.Row>
+                        <Icon name='check' size='large'></Icon>Username
+                    </Grid.Row>
+                    <Grid.Row> &nbsp; &nbsp; &nbsp; &nbsp;{user.username} </Grid.Row>
+                    <Grid.Row>
+                        <Icon name='check' size='large'></Icon>Full Name
+                    </Grid.Row>
+                    <Grid.Row>&nbsp; &nbsp; &nbsp; &nbsp; {user.first_name} {user.last_name} </Grid.Row>
+                    <Grid.Row>
+                        <Icon name='at' size='large'></Icon>Email
+                    </Grid.Row>
+                    <Grid.Row>&nbsp; &nbsp; &nbsp; &nbsp; {user.email} </Grid.Row>
+                    <Grid.Row>
+                        <Icon name='map marker alternate' size='large'></Icon>Location
+                    </Grid.Row>
+                    <Grid.Row>&nbsp; &nbsp; &nbsp; &nbsp; {user.city}, {user.country} </Grid.Row>
+                    <Grid.Row>
+                        <Icon name='comment' size='large'></Icon>Languages
+                    </Grid.Row>
+                    <Grid.Row>&nbsp; &nbsp; &nbsp; &nbsp; {user.language1}, {user.language2}, {user.language3} </Grid.Row>
+                    <Grid.Row>
+                        <Icon name='heart outline' size='large'></Icon>Interests
+                    </Grid.Row>
+                    <Grid.Row>&nbsp; &nbsp; &nbsp; &nbsp;
+                        {user.interests ? 
+                        user.interests : 
+                        "Tell us what things and activities you love so others can get to know you better!"}
+                    </Grid.Row>
+                </div><br></br>
+
+                <div style={{'backgroundColor': '#eeeef0', 'padding': '30px', 'color': '#1C4E68'}}>
+                    {user.bio ? 
+                    <>
+                    <Grid.Row><h3><strong>About me</strong></h3></Grid.Row><br></br>
+                    <Grid.Row>{bio}</Grid.Row> 
+                    </>
+                    :
+                    <>
+                    <Grid.Row><h3><strong>About me</strong></h3></Grid.Row>
+                    <Grid.Row>{bio}</Grid.Row> 
+                    </>}
+                </div><br></br>
+                <div style={{'backgroundColor': '#eeeef0', 'padding': '0px', 'color': '1C4E68'}}>
+                <Grid.Row className='social-icons'>
+                    {this.props.user === this.props.currentUser 
+                    ? 
+                    <Reviews />
+                    :
+                    <SocialMediaIcons /> 
+                }
+
                 </Grid.Row>
-            </Container>
+                </div>
+        </div>
         )
     }
 }
@@ -35,7 +90,7 @@ class UserInfo extends Component {
 const mapSTP = state => {
     return {
         currentUser: state.currentUser,
-        allUsers: state.allUsers
+        allUsers: state.users
     }
 }
 

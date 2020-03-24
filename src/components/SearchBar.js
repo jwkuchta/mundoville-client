@@ -4,7 +4,6 @@ import { Search, Grid, Header, Icon } from 'semantic-ui-react'
 import { countries } from './dropdown'
 import { connect } from 'react-redux'
 import { setCountry } from '../redux/actions'
-// import faker from 'faker'
 
 class SearchBar extends Component {
 
@@ -56,38 +55,40 @@ class SearchBar extends Component {
 
     render() {
 
-        // debugger
-        // console.log(this.state.results)
-
         const { isLoading, value, results } = this.state
 
         return (
-            <Grid ><br></br>
-            <Grid.Column width={15}>
-            <Grid.Row></Grid.Row>
-                <Header icon>
-                    <Icon inverted name='search' />
-                </Header>
-                <br></br>
-                <h4 className='teal-text'>Search users by destination</h4>
-                <br></br>
-                <Search
-                fluid
-                placeholder='Country'
-                loading={isLoading}
-                onResultSelect={this.handleResultSelect}
-                onSearchChange={_.debounce(this.handleSearchChange, 500, {
-                    leading: true,
-                })}
-                results={results}
-                resultRenderer={this.display}
-                value={value}
-                />
-                <br></br>
+            <div>
+                <br></br><br></br>
+                <Grid style={{"background-color": "#2C8EA7"}}><br></br>
+                    <Grid.Column width={15}>
+                        <Grid.Row></Grid.Row>
+                            <Header icon>
+                                <Icon inverted name='search' />
+                            </Header>
+                            <br></br>
+                            <h2 style={{'color': 'white'}}>Search users by destination</h2>
+                            <br></br>
+                            <Search
+                            fluid
+                            placeholder='Country'
+                            loading={isLoading}
+                            onResultSelect={this.handleResultSelect}
+                            onSearchChange={_.debounce(this.handleSearchChange, 500, {
+                                leading: true,
+                            })}
+                            results={results}
+                            resultRenderer={this.display}
+                            value={value}
+                            />
+                            <br></br>
+                    </Grid.Column>
+                <Grid.Column width={1}>
             </Grid.Column>
-            <Grid.Column width={1}>
-            </Grid.Column>
-            </Grid>
+        </Grid>
+        <br></br><br></br>
+        </div>
+            
         )
     }
 }

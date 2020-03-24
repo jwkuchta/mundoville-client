@@ -37,12 +37,12 @@ class SideBar extends Component {
                                 <Review key={review.id} review={review} />
                             )}
                         </Modal.Content>
-                    </Modal><br/><br/>
+                    </Modal><br/><br/><br></br>
                     <AddReviewModal 
                         user={this.props.user}
                         currentUser={this.props.currentUser}
-                    />
-                </Card.Content>
+                    /><br></br>
+                </Card.Content><br></br>
                 <Card.Content>
                     <FriendButton
                         currentUser={this.props.currentUser}

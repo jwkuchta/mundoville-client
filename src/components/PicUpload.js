@@ -12,7 +12,7 @@ class PicUpload extends Component {
             src: null,
             crop: {
                 unit: "%",
-                width: 30,
+                width: 40,
                 aspect: 1 / 1
             },
             croppedImageUrl: null,

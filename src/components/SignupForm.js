@@ -6,10 +6,12 @@ class SignupForm extends Component {
     constructor() {
         super()
         this.state = {
+            firstName: '',
+            lastName: '',
+            email: '',
             username: '',
             password: '',
-            passwordConfirmation: '',
-            email: '',
+            passwordConfirm: '',
             user: false
         }
     }
@@ -19,26 +21,51 @@ class SignupForm extends Component {
         console.log(this.state)
     }
 
+    validateInput = () => {
+        for(let field of Object.values(this.state)) {
+            // debugger
+            if(field === '') {
+                // debugger
+                console.log('this is empty')
+                return false
+            }
+        }
+        return true
+        // debugger
+    }
+
     handleSubmit = e => {
         // debugger
         e.preventDefault()
 
-        if ( this.state.password === this.state.passwordConfirmation ) {
-            let user = {
-                username: this.state.username, 
-                password: this.state.password, 
-                email: this.state.email,
-                user_type: this.state.userType
+        const valid = this.validateInput()
+        // debugger
+
+        if (valid === true) {
+            // debugger
+            if (this.state.password === this.state.passwordConfirm ) {
+                // debugger
+                let user = {
+                    first_name: this.state.firstName,
+                    last_name: this.state.lastName,
+                    username: this.state.username, 
+                    password: this.state.password, 
+                    email: this.state.email,
+                }
+    
+                this.addNewUser(user)
+    
+            } else {
+                alert("passwords don't match")
             }
-
-            this.addNewUser(user)
-
         } else {
-            alert("passwords don't match")
+            alert("one or more fields were missing") 
+            window.location.href='/'
         }
     }
 
     addNewUser = user => {
+        debugger
         fetch('http://localhost:3000/api/v1/users', {
             method: 'POST',
             headers: {
@@ -47,13 +74,15 @@ class SignupForm extends Component {
             },
             body: JSON.stringify({user: user})
         }, this.setState({
+            firstName: '',
+            lastName: '',
             username: '',
             password: '',
-            passwordConfirmation: '',
             email: ''
         }))
         .then(r => r.json())
         .then(data => {
+            debugger
             localStorage.setItem('jwt', data.jwt)
             this.setState({
                 ...this.state,
@@ -68,18 +97,29 @@ class SignupForm extends Component {
             return window.location.href = "/"
         } else {
             return (
-                <Segment padded='very' className='main-page-forms'>
+                <Segment padded='very' className='signup-form'>
                     <Form onSubmit={e => this.handleSubmit(e)}>
                         <Form.Group>
                             <Form.Input 
-                                id='username'
-                                name='username'
-                                label='Username'
-                                type='text' 
-                                placeholder='Username'
-                                value={this.state.username}
+                                id='firstName'
+                                name='firstName'
+                                label='First Name'
+                                type='text'
+                                placeholder='First Name'
+                                value={this.state.firstName}
                                 onChange={e => this.handleChange(e)}
                             />
+                            <Form.Input 
+                                id='lastName'
+                                name='lastName'
+                                label='Last Name'
+                                type='text' 
+                                placeholder='Last Name'
+                                value={this.state.LastName}
+                                onChange={e => this.handleChange(e)}
+                            />
+                        </Form.Group>
+                        <Form.Group>
                             <Form.Input 
                                 id='email'
                                 name='email'
@@ -87,6 +127,15 @@ class SignupForm extends Component {
                                 type='text' 
                                 placeholder='Email'
                                 value={this.state.email}
+                                onChange={e => this.handleChange(e)}
+                            />
+                            <Form.Input 
+                                id='username'
+                                name='username'
+                                label='Username'
+                                type='text' 
+                                placeholder='Username'
+                                value={this.state.username}
                                 onChange={e => this.handleChange(e)}
                             />
                         </Form.Group>
@@ -101,18 +150,16 @@ class SignupForm extends Component {
                                 onChange={e => this.handleChange(e)}
                             />
                             <Form.Input 
-                                id='passwordConfirmation'
-                                name='passwordConfirmation'
-                                label='Confirm Password'
-                                type='passwordConfirmation' 
-                                placeholder='Confirm Password'
-                                value={this.state.passwordConfirmation}
+                                id='passwordConfirm'
+                                name='passwordConfirm'
+                                label='Password Confirmation'
+                                type='password' 
+                                placeholder='Re-enter password'
+                                value={this.state.passwordConfirm}
                                 onChange={e => this.handleChange(e)}
                             />
                         </Form.Group>
-                        <Form.Group widths='equal'>
-                        </Form.Group><br/>
-                        <Button fluid type='submit'>Sign Up</Button>
+                        <Button type='submit'>Sign Up</Button>
                     </Form>
                 </Segment>
             )
@@ -121,3 +168,4 @@ class SignupForm extends Component {
 }
 
 export default SignupForm
+
