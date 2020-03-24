@@ -5,6 +5,13 @@
   // display: flex;
 }
 
+.App-loading {
+  text-align: center;
+  background-color: white;
+  // background-image: url("../photos/plane.gif") no-repeat fixed center;
+  // display: flex;
+}
+
 body {
   background-color: #1C4E68;
   background-image: url("../photos/plane.gif");
@@ -250,13 +257,13 @@ a:hover { color: #2C8EA7; }
   border-radius: 10%;
   width: 120px;
   height: 120px;
-  animation: spin 3s linear infinite;
+  // animation: spin 3s linear infinite;
 }
 
-// @keyframes spin {
-//   0% { transform: rotate(0deg); }
-//   100% { transform: rotate(360deg); }
-// }
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 .center {
   margin: auto;
@@ -266,7 +273,7 @@ a:hover { color: #2C8EA7; }
   position: absolute;
   top: 50%;
   left: 50%;
-  // transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   font-size: 20px;
 }
 

@@ -2,8 +2,6 @@ import React, { createRef, useEffect } from "react";
 import { connect } from 'react-redux'
 import './css/NavBar.scss'
 import './css/App.scss'
-// import Loader from './components/Loader'
-// import ShowDetail from "./components/ShowDetail";
 import { Router, Route, Switch, Redirect } from "react-router-dom"
 import CurrentUserProfilePage from './containers/CurrentUserProfilePage'
 import HomePage from './containers/HomePage'
@@ -14,13 +12,12 @@ import UserProfilePage from './containers/UserProfilePage'
 import AboutPage from './components/AboutPage'
 import LoggedOutNavBar from './components/LoggedOutNavBar'
 import LoggedInNavBar from './components/LoggedInNavBar'
-import { Sticky } from 'semantic-ui-react'
+import { Sticky, Image } from 'semantic-ui-react'
 import { useAuth0 } from "./react-auth0-spa";
 import { fetchUsers } from './redux/actions'
-// import PrivateRoute from './components/PrivateRoute'
 import history from "./utils/history"
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
-import Loader from 'react-loader-spinner'
+import clock from './photos/clock.gif'
 
 const App = (props) => {
 
@@ -35,21 +32,21 @@ const App = (props) => {
   const contextRef = createRef()
 
   if (loading) {
-    // debugger
-    return <div className="loader center"><Loader type='Puff' color='#1C4E68' height={100} width={100} timeout={3000}/></div>
-    // debugger
+    debugger
+    return <div className="loader center" ><Image src={clock} style={{position: 'absolute'}}></Image></div>
   }
 
-  // shorted way to secure the route using a ternary expression. No need for PrivateRoute
   return (
     <div className="App" ref={contextRef}>
-      {/* {loading && <Loader />} */}
+    {/* // <div className={loading ? "App-loading" : 'App'} ref={contextRef}> */}
+    
       <Router history={history}>
           
           <Sticky context={contextRef} fluid>
           {!isAuthenticated && <LoggedOutNavBar attached='top' tabular style={{ backgroundColor: '#246a92', paddingTop: '1em' }}/>}
           {isAuthenticated && <LoggedInNavBar attached='top' tabular style={{ backgroundColor: '#246a92', paddingTop: '1em' }}/>}
           </Sticky>
+          
           <Switch>
             <Route exact path='/'>
               {!isAuthenticated ? <div className='mainPage'>< HomePage /></div> : <div className='mainPage'>< CurrentUserProfilePage /></div>} 

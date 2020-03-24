@@ -12,6 +12,7 @@
     "node-sass": "^4.13.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-image": "^2.4.0",
     "react-loader-spinner": "^3.1.5",
     "react-moment": "^0.9.7",
     "react-redux": "^7.2.0",
@@ -20,7 +21,8 @@
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
-    "semantic-ui-react": "^0.88.1"
+    "semantic-ui-react": "^0.88.1",
+    "styled-components": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

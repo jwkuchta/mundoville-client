@@ -10,9 +10,9 @@ const CurrentUserProfilePage = (props) => {
 
   // debugger
 
-  const { user } = useAuth0()
+  const { user, getTokenSilently } = useAuth0()
 
-  debugger
+  // debugger
 
     useEffect(() => {
       // debugger
@@ -21,10 +21,16 @@ const CurrentUserProfilePage = (props) => {
       createNewUser(user)
       fetchExchanges()
       fetchReviews()
+      getAndSetToken()
       debugger
       props.setUser(currentUser)
     }, []) 
     // empty array assures it is only used once, getting rid of the re-render loop
+
+    const getAndSetToken = () => {
+      getTokenSilently()
+      .then(token => console.log(token))
+    }
 
   const createNewUser = user => {
     debugger
