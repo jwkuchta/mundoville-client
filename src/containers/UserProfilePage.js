@@ -7,7 +7,7 @@ import SideBar from '../components/SideBar'
 
 const UserProfilePage = (props) => {
 
-    debugger
+    // debugger
 
     let username = window.location.pathname.split('/')[2]
     let allUsers = props.users 

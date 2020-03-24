@@ -1,21 +1,61 @@
-import React from 'react'
-// import { connect } from 'react-redux'
-// import AddFriendButton from './AddFriendButton'
-// import RemoveFriendButton from './RemoveFriendButton'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import AddFriendButton from './AddFriendButton'
+import RemoveFriendButton from './RemoveFriendButton'
+// import { Button } from 'semantic-ui-react'
 
 const FriendButton = props => {
 
-    const handleClick = () => {
-        alert('you clicked me!')
+    useEffect(() => {
+        fetchFriendships()
+    }, [])
+
+    const fetchFriendships = () => {
+        fetch('http://localhost:4000/api/v1/friendships', {
+            headers: {
+                'content-type': 'application/json',
+                'accept': 'application/json'
+            }
+        })
+        .then(resp => resp.json())
+        .then(data => props.setFriendships(data))
     }
 
-    return (
-        <div>
-            <button onClick={handleClick}>I am but a simple button</button>
-        </div>
+    // check for friendship to determine which button will be displayed (friend/unfriend)
+    let currentUser = props.currentUser.user
+    let user = props.user
+
+    let f1 = props.friendships.filter(f => f.user_id === currentUser.id && f.friend_id === user.id)
+    let f2 = props.friendships.filter(f => f.friend_id === currentUser.id && f.user_id === user.id)
         
-    ) 
+    const friends = f1 || f2
+
+    if (user && currentUser) {
+        // debugger
+        return (
+            <div>
+                {friends.length < 1
+                    ?  <AddFriendButton user={props.user} currentUser={props.currentUser} /> 
+                    :  <RemoveFriendButton user={props.user} currentUser={props.currentUser} />}
+            </div>
+        )
+    } else {
+        return null
+    }
 }
 
+const mapSTP = state => {
+    return {
+        currentUser: state.currentUser,
+        allUsers: state.users,
+        friendships: state.friendships
+    }
+}
 
-export default FriendButton
+const mapDTP = dispatch => {
+    return {
+        setFriendships: (friendships) => dispatch({type: 'GET_FRIENDSHIPS', friendships: friendships})
+    }
+}
+
+export default connect(mapSTP, mapDTP)(FriendButton)

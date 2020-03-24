@@ -32,7 +32,7 @@ const App = (props) => {
   const contextRef = createRef()
 
   if (loading) {
-    debugger
+    // debugger
     return <div className="loader center" ><Image src={clock} style={{position: 'absolute'}}></Image></div>
   }
 

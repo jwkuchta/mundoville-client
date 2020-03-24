@@ -146,6 +146,9 @@ let countrySelectionReducer = (state=initState.selectedCountry, action) => {
 
 let friendshipsReducer = (state=initState.friendships, action) => {
     switch(action.type) {
+        case 'GET_FRIENDSHIPS':
+            // debugger
+            return action.friendships
         case 'ADD_FRIENDSHIP':
             return {...state, friendships: [...state.friendships, action.friendship]}
         case 'REMOVE_FRIENDSHIP':

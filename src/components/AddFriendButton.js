@@ -5,16 +5,16 @@ import { Button } from 'semantic-ui-react'
 const AddFriendButton = props => {
 
     let currentPage = window.location.pathname
-    let userId = props.currentUser.id 
+    let userId = props.currentUser.user.id 
     let friendId = props.user.id
     
     // creates a new friendship in the backend
     const addFriendFetch = (userId, friendId) => {
-        // debugger
+        debugger
         fetch('http://localhost:4000/api/v1/friendships', {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${localStorage.jwt}`,
+                // 'Authorization': `Bearer ${localStorage.jwt}`,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },

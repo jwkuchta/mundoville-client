@@ -5,7 +5,7 @@ import { Button, Modal, Header, Icon } from 'semantic-ui-react'
 const RemoveFriendButton = (props) => {
 
     let currentPage = window.location.pathname
-    let userId = props.currentUser.id 
+    let userId = props.currentUser.user.id 
     let friendId = props.user.id 
 
     const removeFriendFetch = (userId, friendId) => {
@@ -13,7 +13,7 @@ const RemoveFriendButton = (props) => {
         fetch('http://localhost:4000/api/v1/unfriend', {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${localStorage.jwt}`,
+                // 'Authorization': `Bearer ${localStorage.jwt}`,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
