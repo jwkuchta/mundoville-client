@@ -99,7 +99,7 @@ class PicUpload extends Component {
 
     addPhotoToUser = (user, data) => {
         fetch(`https://mundoville-api.herokuapp.com/api/v1/users/${user.id}`, {
-            method: 'PATCH',
+            method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,
             },
