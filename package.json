@@ -1,7 +1,8 @@
 {
-  "name": "travel_app_client",
+  "name": "mundoville-client",
   "version": "0.1.0",
   "private": true,
+  "main": "app.js",
   "engines": {
     "npm": "6.13.4",
     "node": "13.5.0"
@@ -39,8 +40,9 @@
   "scripts": {
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "postinstall": "react-scripts-build"
   },
   "eslintConfig": {
     "extends": "react-app"
