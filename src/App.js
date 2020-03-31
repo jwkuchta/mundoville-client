@@ -2,6 +2,7 @@ import React, { Component, createRef } from 'react'
 import { connect } from 'react-redux'
 import './css/NavBar.scss'
 import './css/App.scss'
+import './css/mediaqueries.scss'
 import { Route, Switch, Redirect } from "react-router-dom"
 import CurrentUserProfilePage from './containers/CurrentUserProfilePage'
 import HomePage from './containers/HomePage'
