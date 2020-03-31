@@ -10,6 +10,8 @@ class UserInfo extends Component {
 
         const {user} = this.props
 
+        debugger
+
         let currentYear =  new Date().getFullYear()
         let userYob = parseInt(user.yob)
         let age = currentYear - userYob
