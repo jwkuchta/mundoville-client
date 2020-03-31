@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Form, Button, Header, Modal, Icon, Dropdown } from 'semantic-ui-react'
+import { Form, Button, Header, Modal, Icon } from 'semantic-ui-react'
 import { languages, countries, years } from './dropdown'
 
 const usersUrl = 'http://localhost:3000/api/v1/users/'
@@ -41,10 +41,10 @@ class EditProfileForm extends Component {
         return newObj;
     }
     
-    handleChange = (e) => {
-        debugger
+    handleChange = (target) => {
+        // debugger
         this.setState({
-            [e.target.id]: e.target.value
+            [target.id]: target.value
         })
     }
 
@@ -59,13 +59,10 @@ class EditProfileForm extends Component {
             }
         }
 
-        if (updates.password === updates.passConfirmation) {
-            const filtered = this.filterObj(updates)
-            this.updateUser(user, filtered)
-        } else {
-            // make it into a modal or inline error message when time permits
-            alert("Something went wrong")
-        }
+        const filtered = this.filterObj(updates)
+        // debugger
+        this.updateUser(user, filtered)
+    
     }
     
     // updates user profile info in the backend
@@ -123,22 +120,22 @@ class EditProfileForm extends Component {
                         id='first_name'
                         label='First Name' 
                         placeholder={this.props.currentUser.first_name}
-                        onChange={(e) => this.handleChange(e)}
+                        onChange={(e) => this.handleChange(e.target)}
                     />
                     <Form.Input
                         id='last_name'
                         label='Last Name' 
                         placeholder={this.props.currentUser.last_name}
-                        onChange={(e) => this.handleChange(e)}
+                        onChange={(e) => this.handleChange(e.target)}
                     />
-                    <Form.Dropdown style={{color: 'black'}}
+                    <Form.Dropdown
+                        id='yob'
                         search
                         selection
                         options={years}
-                        id='yob'
                         label='Year you were Born' 
-                        placeholder={this.props.currentUser.yob}
-                        onChange={(e) => this.handleChange(e)}
+                        placeholder={this.props.currentUser.yob && this.props.currentUser.yob}
+                        onChange={(e, data) => this.handleChange(data)}
                     />
                     {/* </Form.Input> */}
                     
@@ -147,7 +144,7 @@ class EditProfileForm extends Component {
                     id='bio'
                     label='Bio'
                     placeholder={this.props.currentUser.bio}
-                    onChange={(e) => this.handleChange(e)}
+                    onChange={(e) => this.handleChange(e.target)}
                 />
 
             {/* EMAIL AND PASSWORD */}
@@ -155,20 +152,20 @@ class EditProfileForm extends Component {
                     id='email'
                     label='Email' 
                     placeholder={this.props.currentUser.email}
-                    onChange={(e) => this.handleChange(e)}
+                    onChange={(e) => this.handleChange(e.target)}
                 /> 
                 <Form.Group widths='equal'>
                     <Form.Input
                         id='password'
                         label='Password' 
                         placeholder='Password'
-                        onChange={(e) => this.handleChange(e)}
+                        onChange={(e) => this.handleChange(e.target)}
                     />
                     <Form.Input
                         id='passConfirmation'
                         label='Confirm Password' 
                         placeholder='Confirm Password'
-                        onChange={(e) => this.handleChange(e)}
+                        onChange={(e) => this.handleChange(e.target)}
                     />
                 </Form.Group><br/> 
 
@@ -182,22 +179,19 @@ class EditProfileForm extends Component {
                     search
                     selection
                     options={countries}
-                    onChange = {(e, { id, value }) => {
-                        console.log(e)
-                        this.setState({ [id]: value })}
-                    } 
+                    onChange = {(e, data) => this.handleChange(data)}
                 />
                 <Form.Input
                     id='city'
                     label='City'
                     placeholder='City'
-                    onChange={(e) => this.handleChange(e)}
+                    onChange={(e) => this.handleChange(e.target)}
                 />
                 <Form.Input
                     id='occupation'
                     label='Occupation'
                     placeholder='Occupation'
-                    onChange={(e) => this.handleChange(e)}
+                    onChange={(e) => this.handleChange(e.target)}
                 />
             </Form.Group><br/>
  
@@ -211,7 +205,7 @@ class EditProfileForm extends Component {
                     search
                     selection
                     options={languages}
-                    onChange = {(e, { id, value }) => this.setState({ [id]: value })}
+                    onChange = {(e, data) => this.handleChange(data)}
                 />
                 <Form.Dropdown
                     id='language2'
@@ -221,7 +215,7 @@ class EditProfileForm extends Component {
                     search
                     selection
                     options={languages}
-                    onChange = {(e, { id, value }) => this.setState({ [id]: value })}
+                    onChange = {(e, data) => this.handleChange(data)}
                 />
                 <Form.Dropdown
                     id='language3'
@@ -231,7 +225,7 @@ class EditProfileForm extends Component {
                     search
                     selection
                     options={languages}
-                    onChange = {(e, { id, value }) => this.setState({ [id]: value })}
+                    onChange = {(e, data) => this.handleChange(data)}
                 />
             </Form.Group>
 
