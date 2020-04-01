@@ -4,9 +4,6 @@ import '../css/NavBar.scss'
 import LoggedOutNavBar from './LoggedOutNavBar'
 import LoggedInNavBar from './LoggedInNavBar'
 
-
-
-
 const NavBar = () => {
 
     return(
