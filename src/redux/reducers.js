@@ -45,6 +45,8 @@ let currentUserReducer = (state=initState.currentUser, action) => {
     switch (action.type) {
         case 'LOGGED_IN':
             return {...action.user}
+        case 'LOGGED_OUT':
+            return initState.currentUser
         case 'FRIEND':
             return {
                 user: action.user,
@@ -74,7 +76,11 @@ let selectedUserReducer = (state=initState.selectedUser, action) => {
 let optionsReducer = (state={option: ''}, action) => {
     switch(action.type) {
         case 'SET_OPTION':
-            return {option: action.option}
+            debugger
+            return {option: action.payload}
+        case 'CLEAR_OPTION': 
+            debugger
+            return {option: action.payload}
         default: return state
     }
 }

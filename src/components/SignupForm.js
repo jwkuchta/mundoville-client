@@ -64,38 +64,9 @@ class SignupForm extends Component {
         }
     }
 
-    // addNewUser = user => {
-    //     debugger
-    //     fetch('http://localhost:3000/api/v1/users', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Accept': 'application/json'
-    //         },
-    //         body: JSON.stringify({user: user})
-    //     }, this.setState({
-    //         firstName: '',
-    //         lastName: '',
-    //         username: '',
-    //         password: '',
-    //         email: ''
-    //     }))
-    //     .then(r => r.json())
-    //     .then(data => {
-    //         debugger
-    //         localStorage.setItem('jwt', data.jwt)
-    //         this.setState({
-    //             ...this.state,
-    //             user: true
-    //         })
-    //     })
-    // }
-
-    herokuUsers = "https://mundoville-api.herokuapp.com/api/v1/users"
-
     addNewUser = user => {
         debugger
-        fetch(this.herokuUsers, {
+        fetch('http://localhost:3000/api/v1/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -119,6 +90,35 @@ class SignupForm extends Component {
             })
         })
     }
+
+    // herokuUsers = "https://mundoville-api.herokuapp.com/api/v1/users"
+
+    // addNewUser = user => {
+    //     debugger
+    //     fetch(this.herokuUsers, {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Accept': 'application/json'
+    //         },
+    //         body: JSON.stringify({user: user})
+    //     }, this.setState({
+    //         firstName: '',
+    //         lastName: '',
+    //         username: '',
+    //         password: '',
+    //         email: ''
+    //     }))
+    //     .then(r => r.json())
+    //     .then(data => {
+    //         debugger
+    //         localStorage.setItem('jwt', data.jwt)
+    //         this.setState({
+    //             ...this.state,
+    //             user: true
+    //         })
+    //     })
+    // }
 
     render() {
 

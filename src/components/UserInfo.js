@@ -10,14 +10,14 @@ class UserInfo extends Component {
 
         const {user} = this.props
 
-        debugger
+        // debugger
 
         let currentYear =  new Date().getFullYear()
         let userYob = parseInt(user.yob)
         let age = currentYear - userYob
 
 
-        debugger
+        // debugger
 
         let bio = 'Write a little about yourself so other can get to know you better! What do you like to do in your free time? Are you a cat person or a dog person (or a bird person?). What activities would you enjoy sharing with other travellers? What do you expect out of this experience?'
         return (

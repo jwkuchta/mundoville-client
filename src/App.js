@@ -52,7 +52,7 @@ class App extends Component {
   
   fetchReviews = () => {
     // debugger
-    fetch('http://localhost3000/api/v1/reviews', {
+    fetch('http://localhost:3000/api/v1/reviews', {
       headers: {
         'Authorization': `Bearer ${localStorage.jwt}`,
         'Content-Type': 'application/json',
@@ -89,8 +89,9 @@ class App extends Component {
             <div className='mainPage'>< HomePage /></div> : <div className='mainPage'>< CurrentUserProfilePage /></div>}
           </Route>
 
-          <Route exact path='/login'>
-            {localStorage.jwt ? <Redirect to='/' />: <HomePage />}
+          <Route exact path='/home'>
+            {!localStorage.jwt ? 
+            <div className='mainPage'>< HomePage /></div> : <div className='mainPage'>< CurrentUserProfilePage /></div>}
           </Route>
 
           <Route exact strict path='/users'>
