@@ -1,11 +1,15 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { Segment, Form, Button, Message } from 'semantic-ui-react'
 
-class LoginForm extends Component {
+const LoginForm = () => {
 
-    state = {}
+    // refactored to hooks and functional component for efficiency
 
-    fetchLogin = () => {
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [error, setError] = useState(false)
+
+    const fetchLogin = () => {
         fetch('http://localhost:3000/api/v1/login', {
             method: 'POST',
             headers: {
@@ -13,8 +17,8 @@ class LoginForm extends Component {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({user: { 
-                username: this.state.username, 
-                password: this.state.password 
+                username: username, 
+                password: password 
             }})
         })
         .then(response => response.json())
@@ -22,55 +26,50 @@ class LoginForm extends Component {
             // debugger
             if (data.user){
                 localStorage.setItem('jwt', data.jwt)
-                this.setState({loggedIn: true})
+                window.location.href = '/'
             } else {
-                this.setState({errorMessage: true})
+                setError(true)
             }
         })
     }
 
-    render() {
+    return (
 
-        return (
-            <>
-                {(this.state.loggedIn) && (window.location.href = '/')}
-                <Segment padded='very' className='login-form'>
-                    <Form onSubmit={this.fetchLogin}>
+        <Segment padded='very' className='login-form'>
+            <Form onSubmit={fetchLogin}>
+                <Form.Group>
+                    <Form.Input 
+                        id='username'
+                        label='Username'
+                        type='text' 
+                        placeholder='Username'
+                        value={username}
+                        onChange={e => setUsername(e.target.value)}
+                        />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Input 
+                        id='password'
+                        label='Password'
+                        type='password' 
+                        placeholder='Password'
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                    /><br></br>  
+                </Form.Group><br/>
+                    {error && 
                         <Form.Group>
-                            <Form.Input 
-                                id='username'
-                                label='Username'
-                                type='text' 
-                                placeholder='Username'
-                                value={this.state.username}
-                                onChange={e => this.setState({[e.target.id]: e.target.value})}
-                                />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Input 
-                                id='password'
-                                label='Password'
-                                type='password' 
-                                placeholder='Password'
-                                value={this.state.password}
-                                onChange={e => this.setState({[e.target.id]: e.target.value})}
-                            /><br></br>  
-                        </Form.Group><br/>
-                            {this.state.errorMessage && 
-                                <Form.Group>
-                                    <Form error>
-                                        <Message error content='incorrect username or password'/>
-                                    </Form>
-                                </Form.Group> 
-                            }
-                        <Form.Group >
-                            <Button fluid type='submit'>Sign In</Button>
-                        </Form.Group>
-                    </Form>
-                </Segment>
-            </>
-        )
-    }
+                            <Form error>
+                                <Message error content='incorrect username or password'/>
+                            </Form>
+                        </Form.Group> 
+                    }
+                <Form.Group >
+                    <Button fluid type='submit'>Sign In</Button>
+                </Form.Group>
+            </Form>
+        </Segment>
+    )
 }
 
 export default LoginForm

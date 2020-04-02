@@ -1,25 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Card, Image } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
 import { selectedUser } from '../redux/actions'
 
-class UserCard extends Component {
+const UserCard = ({ user }) => {
 
-    render() {
-        // debugger
+    let profilePicUrl = `http://localhost:3000/${user.profile_pic_url}`
 
-        let profilePicUrl = `http://localhost:3000/${this.props.user.profile_pic_url}`
-
-        return (
-            <Card>
-                <Card.Content>
-                    <Image src={this.props.user.profile_pic_url ? profilePicUrl : placeholder} />
-                        <Card.Header as='h3'> {this.props.user.username} </Card.Header>
-                </Card.Content>
-            </Card>
-        )
-    }
+    return (
+        <Card>
+            <Card.Content>
+                <Image src={user.profile_pic_url ? profilePicUrl : placeholder} />
+                    <Card.Header as='h3'> {user.first_name} {user.last_name} </Card.Header>
+            </Card.Content>
+        </Card>
+    )
 }
 
 const mapDTP = dispatch => {

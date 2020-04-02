@@ -7,28 +7,30 @@ const usersUrl = 'http://localhost:3000/api/v1/users/'
 
 class EditProfileForm extends Component {
     
-    constructor() {
-        super()
+    // constructor() {
+    //     super()
 
-        this.state = {
-            first_name: '',
-            last_name: '',
-            bio: '',
-            email: '',
-            password: '',
-            passConfirmation: '',
-            country: '',
-            city: '',
-            language1: '',
-            language2: '',
-            language3: '',
-            yob: '',
-            occupation: '',
-            isLoading: false,
-            results: [],
-            value: ''
-        }
-    }
+    //     this.state = {
+    //         first_name: '',
+    //         last_name: '',
+    //         bio: '',
+    //         email: '',
+    //         password: '',
+    //         passConfirmation: '',
+    //         country: '',
+    //         city: '',
+    //         language1: '',
+    //         language2: '',
+    //         language3: '',
+    //         yob: '',
+    //         occupation: '',
+    //         isLoading: false,
+    //         results: [],
+    //         value: ''
+    //     }
+    // }
+
+    state = {}
 
     // filter fields and exclude 'passConfirmation' from the final object
     filterObj(obj) {

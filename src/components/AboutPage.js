@@ -6,7 +6,6 @@ import SignupForm from './SignupForm'
 import world from '../photos/world.jpg'
 import friends from '../photos/friends.jpg'
 import profile from '../photos/profile.jpg'
-// import vacant from '../photos/vacant.jpg'
 import explore from '../photos/explore.jpg'
 
 const AboutPage = (props) => {

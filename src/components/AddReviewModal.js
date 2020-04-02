@@ -3,12 +3,14 @@ import { Modal, Button, Form, Rating } from 'semantic-ui-react'
 
 class AddReviewModal extends Component {
     
-    state = {
-        rating: '',
-        body: '',
-        userId: '',
-        reviewedId: ''
-    }
+    // state = {
+    //     rating: '',
+    //     body: '',
+    //     userId: '',
+    //     reviewedId: ''
+    // }
+
+    state = {}
  
     handleChange = e => {
         this.setState({

@@ -1,45 +1,42 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Container, Grid } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import UserProfileCard from '../components/UserProfileCard'
 import UserInfo from '../components/UserInfo'
 import SideBar from '../components/SideBar'
 
-class UserProfilePage extends Component {
+const UserProfilePage = props => {
 
-    render() {
+    const username = window.location.pathname.split('/')[2]
+    const allUsers = props.users 
+    const user = allUsers.filter(user => user.username === username)[0]
 
-        let username = window.location.pathname.split('/')[2]
-        let allUsers = this.props.users 
-        let user = allUsers.filter(user => user.username === username)[0]
-        
-        return (
-            <Container>
-                <br></br>
-                <Grid>
-                <br></br><br></br>
-                    <Grid.Row>
-                        <Grid.Column width={5}>
-                            
-                            <Grid.Row>
-                                <UserProfileCard user={user}/>
-                            </Grid.Row>
-
-                            <Grid.Row>
-                                <SideBar user={user} />
-                            </Grid.Row>
-
-                        </Grid.Column>
-
-                        <Grid.Column width={11}>
-                            <UserInfo user={user} />
-                        </Grid.Column>
+    return (
+        <Container>
+            <br></br>
+            <Grid>
+            <br></br><br></br>
+                <Grid.Row>
+                    <Grid.Column width={5}>
                         
-                    </Grid.Row>
-                </Grid>
-            </Container>
-        )
-    }
+                        <Grid.Row>
+                            <UserProfileCard user={user}/>
+                        </Grid.Row>
+
+                        <Grid.Row>
+                            <SideBar user={user} />
+                        </Grid.Row>
+
+                    </Grid.Column>
+
+                    <Grid.Column width={11}>
+                        <UserInfo user={user} />
+                    </Grid.Column>
+                    
+                </Grid.Row>
+            </Grid>
+        </Container>
+    )   
 }
 
 const mapSTP = state => {

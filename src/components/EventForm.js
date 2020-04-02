@@ -5,17 +5,19 @@ import { connect } from 'react-redux'
 import { addEvent } from '../actions'
 
 class EventForm extends Component {
-  constructor(){
-    super()
+  // constructor(){
+  //   super()
 
-    this.state = {
-      title: '',
-      date: '',
-      description: '',
-      startTime: '',
-      endTime: ''
-    }
-  }
+  //   this.state = {
+  //     title: '',
+  //     date: '',
+  //     description: '',
+  //     startTime: '',
+  //     endTime: ''
+  //   }
+  // }
+
+  state = {}
 
   submitHandler(e){
     e.preventDefault()
