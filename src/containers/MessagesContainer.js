@@ -1,68 +1,56 @@
-import React, { Component, createRef } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Menu, Grid, Container } from 'semantic-ui-react'
 import Exchanges from './Exchanges'
 import NewExchangeForm from '../components/NewExchangeForm'
 
-class MessagesContainer extends Component {
+const MessagesContainer = props => {
     
-    constructor() {
-        super()
-        this.state = {
-            page: 'exchanges',
-        }
-    }
+    const [ page, setPage ] = useState('exchanges')
 
-    render() {
-        // debugger
-        if (this.props.currentUser.username) {
-            let currentPage = this.state.page === 'exchanges' 
-            ? 
-            <Exchanges currentUser={this.props.currentUser} />
-            :  
-            <NewExchangeForm 
-                currentUser={this.props.currentUser} 
-                users={this.props.users} 
-                setPageMessages={() => this.setState({page: 'exchanges'})}
-            />
+    if (props.currentUser) {
+        let currentPage = page === 'exchanges' 
+        ? 
+        <Exchanges currentUser={props.currentUser} />
+        :  
+        <NewExchangeForm 
+            currentUser={props.currentUser} 
+            users={props.users} 
+            setPageMessages={() => setPage('exchanges')}
+        />
 
-            return (
-                
-                <Container style={{width: '50%'}}>
-                <br></br>
-                <Grid stretched >
-                    <Menu tabular  widths={2}  >
-                        <Menu.Item 
-                            id='messages'
-                            header
-                            ref={this.messagesRef}
-                            name='Messages'
-                            active={this.state.page === 'exchanges'}
-                            // onClick={() => this.setState({page: 'exchanges'})}
-                            onClick={() => this.setState({page: 'exchanges'})}
-                            color={this.state.messagesColor}
-                        />
-                        <Menu.Item 
-                            id='messages'
-                            header
-                            ref={this.newMessageRef}
-                            position='right'
-                            name='New Message'
-                            active={this.state.page === 'new'}
-                            onClick={() => this.setState({page: 'new'})}
-                            color={this.state.newMessageColor} 
-                            // color={this.state.color}
-                        />
-                    </Menu>
-                    <Grid.Column width={16}>
-                        {currentPage}
-                    </Grid.Column>
-                </Grid>
-                </Container> 
-            )
-        } else {
-            return null
-        }
+        return (   
+            <Container style={{width: '50%'}}>
+            <br></br>
+            <Grid stretched >
+                <Menu tabular  widths={2}  >
+                    <Menu.Item 
+                        id='messages'
+                        header
+                        // ref={messagesRef}
+                        name='Messages'
+                        active={page === 'exchanges'}
+                        onClick={() => setPage('exchanges')}
+                        // color={this.state.messagesColor}
+                    />
+                    <Menu.Item 
+                        id='messages'
+                        header
+                        // ref={this.newMessageRef}
+                        position='right'
+                        name='New Message'
+                        active={page === 'new'}
+                        onClick={() => setPage('new')}
+                    />
+                </Menu>
+                <Grid.Column width={16}>
+                    {currentPage}
+                </Grid.Column>
+            </Grid>
+            </Container> 
+        )
+    } else {
+        return null
     }
 }
 

@@ -1,6 +1,4 @@
-
-
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { Image, Button, Rating } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
@@ -8,13 +6,10 @@ import { connect } from 'react-redux'
 import PicUpload from './PicUpload'
 // import PicUploadNoCrop from './PicUploadNoCrop'
 
-class CurrentUserProfileCard extends Component {
+const CurrentUserProfileCard = props => {
 
-    render() {
-        
-        // debugger
-        let pic_url = `http://localhost:3000/${this.props.currentUser.profile_pic_url}`
-        let currentUser = this.props.currentUser
+    let pic_url = `http://localhost:3000/${props.currentUser.profile_pic_url}`
+        let currentUser = props.currentUser
 
         return (
             <div style={{'backgroundColor': '#eeeef0', 'padding': '1px'}}>
@@ -39,19 +34,17 @@ class CurrentUserProfileCard extends Component {
                 </div><br></br>
                 
                 <div style={{'backgroundColor': '#eeeef0', 'padding': '1px'}}><br></br>
-                {currentUser.rating ? 
+                {currentUser.rating && 
                     <Rating 
                         icon='star' 
                         defaultRating={currentUser.rating} 
                         maxRating={5} 
                         disabled
-                    />
-                    : null }<br/>
+                    />}<br/>
                     {currentUser.rating ? currentUser.rating + '/5' : 'No reviews yet'}<br/><br/>
                 </div>
             </div>
         )
-    }
 }
 
 const mapStateToProps = state => {

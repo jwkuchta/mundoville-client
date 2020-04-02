@@ -1,33 +1,17 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Segment, Form, Button, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { placeholder } from '../photos/round_placeholder.png'
-// import {submitNewExchange} from '../redux/actions'
 
-class NewExchangeForm extends Component {
+const NewExchangeForm = props => {
     
-    constructor() {
-        super()
+    const [ body, setBody ] = useState()
+    const [ recipientId, setRecipientId ] = useState()
+    const [ users, setUsers ] = useState([])
 
-        this.state = {
-            body: '',
-            receiver_id: null,
-            users: [],
-        }
-    }
-
-    resetState = () => {
-        this.setState({
-            body: '',
-            receiver_id: null,
-            users: []
-        })
-    }
-
-    componentDidMount() {
-        // debugger
-        let filteredUsers = this.props.users.filter(user => user.id !== this.props.currentUser.id)
+    useEffect(() => {
+        let filteredUsers = props.allUsers.filter(user => user.id !== props.currentUser.id)
         let sortedUsers = filteredUsers.sort((a, b) => a.username - b.username)
         let users = []
         
@@ -44,42 +28,32 @@ class NewExchangeForm extends Component {
             users.push(userInstance)
             return users
         })
-        this.setState({users: users})
-    }
+        setUsers(users)
+    }, [])
 
-    handleChange = e => {
-        // debugger
-        if (e.target.id === 'body') {
-            this.setState({
-                body: e.target.value
-            })
-        } else {
-            // user.id was not always showing so I changed to innerText
-            let receiver = this.state.users.find(u => u.text === e.target.innerText)
-            if(receiver !== undefined) {
-                this.setState({
-                    receiver_id: receiver.id
-                })
+    const handleRecipient = e => {
+        debugger
+        let firstName = e.target.innerText.split(' ')[0]
+        let lastName = e.target.innerText.split(' ')[1]
+        let recipient = props.allUsers.find(u => u.first_name === firstName && u.last_name === lastName)
+            if(recipient !== undefined) {
+                setRecipientId(recipient.id)
             } else {
                 return 
             }  
-        }
     }
 
-    handleSubmit = e => {
+    const handleSubmit = e => {
         e.preventDefault()
-        this.postNewExchange()
-        this.resetState()  
-        // alert('Message sent')
+        postNewExchange()
+        // resetState()  
         window.location.href='/messages'
-        console.log(this.props)
-        // goes back to '/messeges' without reload
-        this.props.setPageMessages()
+        props.setPageMessages()
     }
 
-    postNewExchange = () => {
-        // debugger
-        let currentUser = this.props.currentUser
+    const postNewExchange = () => {
+        debugger
+        let currentUser = props.currentUser
 
         fetch('http://localhost:3000/api/v1/exchanges', {
             method: 'POST',
@@ -90,8 +64,8 @@ class NewExchangeForm extends Component {
             },
             body: JSON.stringify({
                 first_user_id: currentUser.id,
-                second_user_id: Number.parseInt(this.state.receiver_id),
-                body: this.state.body
+                second_user_id: Number.parseInt(recipientId),
+                body: body
             })
         })
         .then(resp => resp.json())
@@ -100,48 +74,45 @@ class NewExchangeForm extends Component {
             console.log(data)
             // window.location.href = '/messages'
             //window.location.reload()
-            this.props.history.push('/messages')
+            props.history.push('/messages')
         })
     }
 
-    render() {
-
-        // debugger
-        return (
-            <Segment padded='very' style={{backgroundColor: '#528FBB'}}>
-                <Form onSubmit={(e) => this.handleSubmit(e, this.state)}>
-                    <Form.Group>
-                        <Form.Select required
-                            search
-                            options
-                            inline
-                            label='To: '
-                            floating
-                            options={this.state.users}
-                            placeholder='Select User'
-                            onChange={(e) => this.handleChange(e)}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.TextArea width={15}
-                            inline
-                            id='body'
-                            placeholder='Type your message here'
-                            onChange={(e) => this.handleChange(e)}
-                        />
-                    </Form.Group>
-                    <Button type='submit' content='Send' />
-                </Form>
-            </Segment>
-        )
-    }
+    return (
+        <Segment padded='very' style={{backgroundColor: '#528FBB'}}>
+            <Form onSubmit={(e) => handleSubmit(e)}>
+                <Form.Group>
+                    <Form.Select required
+                        search
+                        options
+                        inline
+                        label='To: '
+                        floating
+                        options={users}
+                        placeholder='Select User'
+                        onChange={(e) => handleRecipient(e)}
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.TextArea width={15}
+                        inline
+                        id='body'
+                        placeholder='Type your message here'
+                        onChange={(e) => setBody(e.target.value)}
+                    />
+                </Form.Group>
+                <Button type='submit' content='Send' />
+            </Form>
+        </Segment>
+    )
 }
 
 const mapSTP = state => {
     return {
-        users: state.users,
+        allUsers: state.users,
         currentUser: state.currentUser
     }
 }
 
 export default withRouter(connect(mapSTP)(NewExchangeForm))
+

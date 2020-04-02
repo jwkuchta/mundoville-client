@@ -3,18 +3,22 @@ import { Segment, Form, Button } from 'semantic-ui-react'
 
 class SignupForm extends Component {
     
-    constructor() {
-        super()
-        this.state = {
-            firstName: '',
-            lastName: '',
-            email: '',
-            username: '',
-            password: '',
-            passwordConfirm: '',
-            user: false
-        }
-    }
+    // constructor() {
+    //     super()
+    //     this.state = {
+    //         firstName: '',
+    //         lastName: '',
+    //         email: '',
+    //         username: '',
+    //         password: '',
+    //         passwordConfirmation: '',
+    //         user: false
+    //     }
+    // }
+
+    // this also works:
+
+    state = {}
 
     handleChange = e => {
         this.setState({[e.target.id]: e.target.value})
@@ -39,25 +43,17 @@ class SignupForm extends Component {
         e.preventDefault()
 
         const valid = this.validateInput()
-        // debugger
 
         if (valid === true) {
-            // debugger
-            if (this.state.password === this.state.passwordConfirm ) {
-                // debugger
-                let user = {
-                    first_name: this.state.firstName,
-                    last_name: this.state.lastName,
-                    username: this.state.username, 
-                    password: this.state.password, 
-                    email: this.state.email,
-                }
-    
-                this.addNewUser(user)
-    
-            } else {
-                alert("passwords don't match")
+            let user = {
+                first_name: this.state.firstName,
+                last_name: this.state.lastName,
+                username: this.state.username, 
+                password: this.state.password, 
+                email: this.state.email,
             }
+
+            this.addNewUser(user)
         } else {
             alert("one or more fields were missing") 
             window.location.href='/'
@@ -133,7 +129,7 @@ class SignupForm extends Component {
                                 id='username'
                                 name='username'
                                 label='Username'
-                                type='text' 
+                                type='username' 
                                 placeholder='Username'
                                 value={this.state.username}
                                 onChange={e => this.handleChange(e)}
@@ -150,12 +146,12 @@ class SignupForm extends Component {
                                 onChange={e => this.handleChange(e)}
                             />
                             <Form.Input 
-                                id='passwordConfirm'
-                                name='passwordConfirm'
+                                id='passwordConfirmation'
+                                name='passwordConfirmation'
                                 label='Password Confirmation'
-                                type='password' 
-                                placeholder='Re-enter password'
-                                value={this.state.passwordConfirm}
+                                type='passwordConfirmation' 
+                                placeholder='Password Confirmation'
+                                value={this.state.passwordConfirmation}
                                 onChange={e => this.handleChange(e)}
                             />
                         </Form.Group>

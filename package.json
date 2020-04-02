@@ -1,9 +1,10 @@
 {
-  "name": "travel_app_client",
+  "name": "mundoville",
   "version": "0.1.0",
   "private": true,
+  "main": "app.js",
   "engines": {
-    "npm": "6.13.4",
+    "npm": "6.13.7",
     "node": "13.5.0"
   },
   "dependencies": {
@@ -15,6 +16,7 @@
     "bulma": "^0.8.0",
     "dotenv": "^8.2.0",
     "faker": "^4.1.0",
+    "history": "^4.10.1",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",
@@ -37,10 +39,11 @@
     "semantic-ui-react": "^0.88.1"
   },
   "scripts": {
-    "start": "PORT=3001 react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "postinstall": "react-scripts-build"
   },
   "eslintConfig": {
     "extends": "react-app"

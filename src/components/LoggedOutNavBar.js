@@ -1,65 +1,61 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Container } from 'semantic-ui-react'
 import logo from '../photos/logo_teal_cropped.png'
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
 import { connect } from 'react-redux'
-import { setOption } from '../redux/actions'
+import { Link } from 'react-router-dom'
 
-class LoggedOutNavBar extends Component {
+const LoggedOutNavBar = props => {
 
-    state = {option: ''}
+    return (
+        <>
+            {props.option === 'login' && <><Container><LoginForm /></Container></>}
 
-    render() {
-
-        switch(this.state.option) {
-            case 'login':
-                return <Container>
-                    <LoginForm />
-                    </Container>
-            case 'signup':
-                return <Container>
-                    <SignupForm />
-                    </Container>
-            default:
-                return (
-                    <div style={{ backgroundColor: 'white', position: 'relative'}}>
-                        {/* <a href="/" ><img src={logo} alt="logo white" className='logo'></img></a> */}
-                        <div style={{display: 'inline-block', backgroundColor: 'white', float:'left', paddingLeft: '10px'}}>
-                        <a href="/" onClick={() => window.location.href = '/'}>
-                        <img 
-                            src={logo} 
-                            alt="logo"
-                            className='logo'
-                            ></img>
-                        </a><br></br>
-                        </div>
-                    
-                    <div style={{display: 'inline-block', backgroundColor: 'white'}}>
-                        <nav>
-                            <ul><li style={{color: 'white'}}>nothing to see here</li></ul>
-                            <ul><li style={{color: 'white'}}>nothing to see here either</li></ul>
-                            <ul><li style={{color: 'white'}}>still nothing to see</li></ul>
-                            <ul> 
-                                <li><a href="/about">About</a></li>
-                                <li><a href="#" onClick={() => this.props.setOption('login')}>Log In</a></li>
-                                <li><a href="#" onClick={() => this.props.setOption('signup')}>Sign Up</a></li>
-                                <li style={{color: 'white'}}>nothing to see here</li>
-                                <li style={{color: 'white'}}>nothing to see here</li>
-                                
-                            </ul>
-                        </nav>
-                    </div>
-                    </div>
-                )
-        }
-    }
+            {props.option === 'signup' && <><Container><SignupForm /></Container></>}
+            
+            <div style={{ backgroundColor: 'white', position: 'relative'}}>
+                <div style={{display: 'inline-block', backgroundColor: 'white', float:'left', paddingLeft: '10px'}}>
+                    <Link to='/' onClick={() => props.clearOption('')}>
+                    <img 
+                        src={logo} 
+                        alt="logo"
+                        className='logo'
+                        ></img>
+                    </Link>
+                    <br></br>
+                </div>
+            <div style={{display: 'inline-block', backgroundColor: 'white'}}>
+                <nav>
+                    <ul><li style={{color: 'white'}}>nothing to see here</li></ul>
+                    <ul><li style={{color: 'white'}}>nothing to see here either</li></ul>
+                    <ul><li style={{color: 'white'}}>still nothing to see</li></ul>
+                    <ul> 
+                        <li><Link to='/about' onClick={() => props.clearOption('')}>About</Link></li>
+                        <li><a href="#" onClick={() => props.setOption('login')}>Log In</a></li>
+                        <li><a href="#" onClick={() => props.setOption('signup')}>Sign Up</a></li>
+                        <li style={{color: 'white'}}>nothing to see here</li>
+                        <li style={{color: 'white'}}>nothing to see here</li>
+                        
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </>
+    )
 }  
 
-const mapDTP = dispatch => {
+const mapSTP = state => {
     return {
-        setOption: (option) => dispatch(setOption(option))
+        option: state.option
     }
 }
 
-export default connect(null, mapDTP)(LoggedOutNavBar)
+const mapDTP = dispatch => {
+    return {
+        setOption: (option) => dispatch({type: 'SET_OPTION', payload: option}),
+        clearOption: (option) => dispatch({type: 'CLEAR_OPTION', payload: option})
+    }
+}
+
+export default connect(mapSTP, mapDTP)(LoggedOutNavBar)

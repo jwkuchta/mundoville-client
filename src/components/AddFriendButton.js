@@ -1,14 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom'
 
 const AddFriendButton = props => {
 
-    let currentPage = window.location.pathname
+    let currentPage = props.history.location.pathname
     let userId = props.currentUser.id 
     let friendId = props.user.id
-    
-    // creates a new friendship in the backend
+
     const addFriendFetch = (userId, friendId) => {
         // debugger
         fetch('http://localhost:3000/api/v1/friendships', {
@@ -41,4 +41,4 @@ const mapDTP = dispatch => {
     }
 }
 
-export default connect(null, mapDTP)(AddFriendButton)
+export default withRouter(connect(null, mapDTP)(AddFriendButton))

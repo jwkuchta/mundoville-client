@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Button, Modal, Header, Icon } from 'semantic-ui-react'
 
-const RemoveFriendButton = (props) => {
+const RemoveFriendButton = props => {
 
     let currentPage = window.location.pathname
     let userId = props.currentUser.id 

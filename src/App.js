@@ -2,6 +2,7 @@ import React, { Component, createRef } from 'react'
 import { connect } from 'react-redux'
 import './css/NavBar.scss'
 import './css/App.scss'
+import './css/mediaqueries.scss'
 import { Route, Switch, Redirect } from "react-router-dom"
 import CurrentUserProfilePage from './containers/CurrentUserProfilePage'
 import HomePage from './containers/HomePage'
@@ -51,7 +52,7 @@ class App extends Component {
   
   fetchReviews = () => {
     // debugger
-    fetch('http://localhost3000/api/v1/reviews', {
+    fetch('http://localhost:3000/api/v1/reviews', {
       headers: {
         'Authorization': `Bearer ${localStorage.jwt}`,
         'Content-Type': 'application/json',
@@ -88,8 +89,9 @@ class App extends Component {
             <div className='mainPage'>< HomePage /></div> : <div className='mainPage'>< CurrentUserProfilePage /></div>}
           </Route>
 
-          <Route exact path='/login'>
-            {localStorage.jwt ? <Redirect to='/' />: <HomePage />}
+          <Route exact path='/home'>
+            {!localStorage.jwt ? 
+            <div className='mainPage'>< HomePage /></div> : <div className='mainPage'>< CurrentUserProfilePage /></div>}
           </Route>
 
           <Route exact strict path='/users'>
