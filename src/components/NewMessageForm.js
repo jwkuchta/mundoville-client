@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { Form, Button } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom'
 
 class NewMessageForm extends Component {
     
-    constructor(props) {  
-        super(props)
-        this.state = {body: ''}
-    }
+    // constructor(props) {  
+    //     super(props)
+    //     this.state = {body: ''}
+    // }
+
+    state = {}
 
     handleChange = e => {
         this.setState({body: e.target.value})
@@ -33,14 +36,8 @@ class NewMessageForm extends Component {
             })
         })
         .then(r => r.json())
-        .then(data => {
-            // alert('your message was sent')
-            window.location.href='/messages'
-            // this.props.setPageMessages()
-        })
-        this.setState({
-            body: ''
-        })
+        .then(window.location.href='/messages')
+        .catch(e => console.log(e))
     }
 
     render() {
@@ -64,4 +61,4 @@ class NewMessageForm extends Component {
     }
 }
 
-export default NewMessageForm
+export default withRouter(NewMessageForm)

@@ -76,10 +76,8 @@ let selectedUserReducer = (state=initState.selectedUser, action) => {
 let optionsReducer = (state={option: ''}, action) => {
     switch(action.type) {
         case 'SET_OPTION':
-            debugger
             return {option: action.payload}
         case 'CLEAR_OPTION': 
-            debugger
             return {option: action.payload}
         default: return state
     }

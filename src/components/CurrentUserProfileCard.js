@@ -1,5 +1,3 @@
-
-
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Image, Button, Rating } from 'semantic-ui-react'
