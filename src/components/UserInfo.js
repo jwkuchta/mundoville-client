@@ -6,7 +6,7 @@ import Reviews from '../components/Reviews'
 
 const UserInfo = ({ user, currentUser }) => {
 
-    debugger
+    // debugger
     
     let currentYear =  new Date().getFullYear()
     let userYob = parseInt(user.yob)
@@ -51,9 +51,9 @@ const UserInfo = ({ user, currentUser }) => {
                 <Grid.Row>
                     &nbsp; &nbsp; &nbsp; &nbsp; 
                     {!user.language1 && !user.language2 && !user.language3 && noInfo}
-                    {user.language1 && user.language1} 
-                    {user.language2 && user.language2} 
-                    {user.language3 && user.language3} 
+                    {user.language1 && user.language1} &nbsp;
+                    {user.language2 && user.language2} &nbsp; 
+                    {user.language3 && user.language3}
                 </Grid.Row>
                 <Grid.Row>
                     <Icon name='heart outline' size='large'></Icon>Interests

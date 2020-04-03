@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
-import { Segment, Form, Button, Message } from 'semantic-ui-react'
+import React, { useState, useEffect } from 'react'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Segment, Form, Button, Message, Modal, Header } from 'semantic-ui-react'
 
 const LoginForm = () => {
 
-    // refactored to hooks and functional component for efficiency
 
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [error, setError] = useState(false)
-
+    const [ username, setUsername ] = useState('')
+    const [ password, setPassword ] = useState('')
+    const [ error, setError ] = useState(false)
+    
     const fetchLogin = () => {
         fetch('http://localhost:3000/api/v1/login', {
             method: 'POST',
@@ -34,7 +35,6 @@ const LoginForm = () => {
     }
 
     return (
-
         <Segment padded='very' className='login-form'>
             <Form onSubmit={fetchLogin}>
                 <Form.Group>
@@ -72,5 +72,11 @@ const LoginForm = () => {
     )
 }
 
-export default LoginForm
+const mapSTP = state => {
+    return {
+        currentUser: state.currentUser
+    }
+}
+
+export default withRouter(connect(mapSTP)(LoginForm))
 
