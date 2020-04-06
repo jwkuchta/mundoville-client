@@ -9,10 +9,17 @@ const CurrentUserProfilePage = props => {
 
     const [ open, setOpen ] = useState(false)
 
+    // *** this works on initial render after login *** //
     useEffect(() => {
         debugger
-        missingInfo()
-    }, [])
+        missingInfo(props.currentUser)
+    }, [props.currentUser])
+    
+    // *** this does not *** //
+    // useEffect(() => {
+    //     debugger
+    //     missingInfo()
+    // }, [])
 
     // *** checks all user data for missing info (empty strings and null) ***
     // const missingInfo = () => {
@@ -28,9 +35,9 @@ const CurrentUserProfilePage = props => {
     // *** checks if user needs to provide info on: ***
     // *** Occupation/Age/Location/Languages ***
 
-    const missingInfo = () => {
+    const missingInfo = (user) => {
         const relevant = ['occupation', 'yob', 'language1', 'language2', 'language3', 'city', 'country']
-        for( let [key, value] of Object.entries(props.currentUser)) {
+        for( let [key, value] of Object.entries(user)) {
             if(relevant.includes(key)) {
                 if(value === '' || value === null) {
                     setOpen(true)
@@ -39,6 +46,18 @@ const CurrentUserProfilePage = props => {
             }   
         }  
     }
+
+    // const missingInfo = () => {
+    //     const relevant = ['occupation', 'yob', 'language1', 'language2', 'language3', 'city', 'country']
+    //     for( let [key, value] of Object.entries(props.currentUser)) {
+    //         if(relevant.includes(key)) {
+    //             if(value === '' || value === null) {
+    //                 setOpen(true)
+    //                 return
+    //             }
+    //         }   
+    //     }  
+    // }
 
     const InfoRequestModal = () => (
         <Modal 
