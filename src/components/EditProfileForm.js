@@ -5,38 +5,22 @@ import { languages, countries, years } from './dropdown'
 
 const usersUrl = 'http://localhost:3000/api/v1/users/'
 
-class EditProfileForm extends Component {
-    
-    // constructor() {
-    //     super()
+// initially wanted to use createRef, which worked with basic html
+// but did not want to play nice with Semantic UI, so I used getElementById instead
 
-    //     this.state = {
-    //         first_name: '',
-    //         last_name: '',
-    //         bio: '',
-    //         email: '',
-    //         password: '',
-    //         passConfirmation: '',
-    //         country: '',
-    //         city: '',
-    //         language1: '',
-    //         language2: '',
-    //         language3: '',
-    //         yob: '',
-    //         occupation: '',
-    //         isLoading: false,
-    //         results: [],
-    //         value: ''
-    //     }
-    // }
+class EditProfileForm extends Component {
 
     state = {}
 
-    // filter fields and exclude 'passConfirmation' from the final object
+    componentDidMount() {
+        document.getElementById('first_name').focus()
+    }
+
+    // filter fields and exclude 'password_conf' from the final object
     filterObj(obj) {
         const newObj = {};
         Object.keys(obj).forEach(key => {
-          if (key !== 'passConfirmation') {
+          if (key !== 'password_conf') {
             newObj[key] = obj[key];
           }
         });
@@ -44,7 +28,6 @@ class EditProfileForm extends Component {
     }
     
     handleChange = (target) => {
-        // debugger
         this.setState({
             [target.id]: target.value
         })
@@ -54,7 +37,6 @@ class EditProfileForm extends Component {
         e.preventDefault()
         let updates = {}
         
-        // only include values that have been updated/changed
         for (let [key, value] of Object.entries(values)) {
             if (values[key] !== '') {
                 updates[key] = value
@@ -62,14 +44,11 @@ class EditProfileForm extends Component {
         }
 
         const filtered = this.filterObj(updates)
-        // debugger
         this.updateUser(user, filtered)
-    
     }
     
     // updates user profile info in the backend
     updateUser = (user, data) => {
-        debugger
         fetch(`${usersUrl}${user.id}`, {
             method: 'PATCH',
             headers: {
@@ -103,12 +82,64 @@ class EditProfileForm extends Component {
         })
     }
 
+    handleKeyUp = (e, target) => {
+        // if the key is 'Enter'
+        if(e.keyCode === 13) {
+            switch (target) {
+                case 'firstName':
+                    document.getElementById('last_name').focus()
+                    break
+                case 'lastName':
+                    // needed to use 'firstChild' as the parent is a div and was not focusing
+                    document.getElementById('yob').firstChild.focus()
+                    break
+                case 'yob':
+                    document.getElementById('bio').focus()
+                    break
+                case 'bio':
+                    document.getElementById('email').focus()
+                    break
+                case 'email':
+                    document.getElementById('password').focus()
+                    break
+                case 'password':
+                    document.getElementById('password_conf').focus()
+                    break
+                case 'passwordConf':
+                    document.getElementById('country').firstChild.focus()
+                    break
+                case 'country':
+                    document.getElementById('city').focus()
+                    break
+                case 'city':
+                    document.getElementById('occupation').focus()
+                    break
+                case 'occupation':
+                    document.getElementById('language1').firstChild.focus()
+                    break
+                case 'language1':
+                    document.getElementById('language2').firstChild.focus()
+                    break
+                case 'language2':
+                    document.getElementById('language3').firstChild.focus()
+                    break
+                case 'language3':
+                    document.getElementById('submit').focus()
+                    break
+                default:
+                    document.getElementById('first_name').focus()
+                    break
+            }  
+        }
+    }
+
     render() {
 
         return (
+            <>
             <Form 
                 size='small' 
-                onSubmit={(e) => this.handleSubmit(e, this.state, this.props.currentUser)}
+                // onSubmit={(e) => this.handleSubmit(e, this.state, this.props.currentUser)}
             >   
              
             {/* PHOTO */}
@@ -123,12 +154,15 @@ class EditProfileForm extends Component {
                         label='First Name' 
                         placeholder={this.props.currentUser.first_name}
                         onChange={(e) => this.handleChange(e.target)}
+                        onKeyUp={e => this.handleKeyUp(e, 'firstName')}
+
                     />
                     <Form.Input
                         id='last_name'
                         label='Last Name' 
                         placeholder={this.props.currentUser.last_name}
                         onChange={(e) => this.handleChange(e.target)}
+                        onKeyUp={e => this.handleKeyUp(e, 'lastName')}
                     />
                     <Form.Dropdown
                         id='yob'
@@ -138,15 +172,17 @@ class EditProfileForm extends Component {
                         label='Year you were Born' 
                         placeholder={this.props.currentUser.yob && this.props.currentUser.yob}
                         onChange={(e, data) => this.handleChange(data)}
+                        onKeyUp={e => this.handleKeyUp(e, 'yob')}
                     />
                     {/* </Form.Input> */}
                     
-                </Form.Group>  
+                </Form.Group> 
                 <Form.TextArea 
                     id='bio'
                     label='Bio'
                     placeholder={this.props.currentUser.bio}
                     onChange={(e) => this.handleChange(e.target)}
+                    onKeyUp={e => this.handleKeyUp(e, 'bio')}
                 />
 
             {/* EMAIL AND PASSWORD */}
@@ -155,6 +191,7 @@ class EditProfileForm extends Component {
                     label='Email' 
                     placeholder={this.props.currentUser.email}
                     onChange={(e) => this.handleChange(e.target)}
+                    onKeyUp={e => this.handleKeyUp(e, 'email')}
                 /> 
                 <Form.Group widths='equal'>
                     <Form.Input
@@ -162,12 +199,14 @@ class EditProfileForm extends Component {
                         label='Password' 
                         placeholder='Password'
                         onChange={(e) => this.handleChange(e.target)}
+                        onKeyUp={e => this.handleKeyUp(e, 'password')}
                     />
                     <Form.Input
-                        id='passConfirmation'
+                        id='password_conf'
                         label='Confirm Password' 
                         placeholder='Confirm Password'
                         onChange={(e) => this.handleChange(e.target)}
+                        onKeyUp={e => this.handleKeyUp(e, 'passwordConf')}
                     />
                 </Form.Group><br/> 
 
@@ -182,18 +221,21 @@ class EditProfileForm extends Component {
                     selection
                     options={countries}
                     onChange = {(e, data) => this.handleChange(data)}
+                    onKeyUp={e => this.handleKeyUp(e, 'country')}
                 />
                 <Form.Input
                     id='city'
                     label='City'
                     placeholder='City'
                     onChange={(e) => this.handleChange(e.target)}
+                    onKeyUp={e => this.handleKeyUp(e, 'city')}
                 />
                 <Form.Input
                     id='occupation'
                     label='Occupation'
                     placeholder='Occupation'
                     onChange={(e) => this.handleChange(e.target)}
+                    onKeyUp={e => this.handleKeyUp(e, 'occupation')}
                 />
             </Form.Group><br/>
  
@@ -208,6 +250,7 @@ class EditProfileForm extends Component {
                     selection
                     options={languages}
                     onChange = {(e, data) => this.handleChange(data)}
+                    onKeyUp={e => this.handleKeyUp(e, 'language1')}
                 />
                 <Form.Dropdown
                     id='language2'
@@ -218,6 +261,7 @@ class EditProfileForm extends Component {
                     selection
                     options={languages}
                     onChange = {(e, data) => this.handleChange(data)}
+                    onKeyUp={e => this.handleKeyUp(e, 'language2')}
                 />
                 <Form.Dropdown
                     id='language3'
@@ -228,23 +272,27 @@ class EditProfileForm extends Component {
                     selection
                     options={languages}
                     onChange = {(e, data) => this.handleChange(data)}
+                    onKeyUp={e => this.handleKeyUp(e, 'language3')}
                 />
             </Form.Group>
 
+            {/* the buttton was originally here, but it was submitting the form
+            instead of focusing on next field on Enter so I moved it. */}
+        
+            <br/><br/>
+
             {/* DELETE ACCOUNT MODAL*/}
-                <Button basic type='submit' content='Update'/>
-                <br/><br/>
-                <Modal 
-                    trigger={<Header 
-                                href='#'
-                                size='small'
-                                floated='right'
-                                color='blue'
-                                content='Delete Account'
-                            />} 
-                    size='small'
-                >
-                    <Header icon='archive' content='Are you sure?' />
+            <Modal 
+                trigger={<Header 
+                            href='#'
+                            size='small'
+                            floated='right'
+                            color='blue'
+                            content='Delete Account'
+                        />} 
+                size='small'
+            >
+                <Header icon='archive' content='Are you sure?' />
                     <Modal.Content>
                         <p style={{color: 'teal'}}>
                             If you delete your account, everything will be permanently 
@@ -261,6 +309,19 @@ class EditProfileForm extends Component {
                     </Modal.Actions>
                 </Modal>
             </Form>
+
+            {/* I put the button here because it kept submitting the form after each enter 
+            instead of focusing on the next field like I asked it to nicely */}
+
+             <Button 
+                basic 
+                id='submit' 
+                type='submit' 
+                content='Update'
+                onKeyUp={(e) => this.handleSubmit(e, this.state, this.props.currentUser)}
+                onClick={(e) => this.handleSubmit(e, this.state, this.props.currentUser)}
+            />
+            </>
         )
     }
 }

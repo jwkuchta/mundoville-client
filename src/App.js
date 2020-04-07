@@ -17,6 +17,7 @@ import LoggedOutNavBar from './components/LoggedOutNavBar'
 import LoggedInNavBar from './components/LoggedInNavBar'
 import { Sticky } from 'semantic-ui-react'
 // import _ from 'lodash'
+import Refs from './components/Refs'
 
 class App extends Component {
 
@@ -100,6 +101,10 @@ class App extends Component {
 
           <Route exact strict path='/about'>
             <div className='mainPage'><AboutPage /></div>
+          </Route>
+
+          <Route exact strict path='/refs'>
+            <div className='refs'><Refs /></div>
           </Route>
           
           <Route path={`/users/${this.props.currentUser.username}/edit`}>

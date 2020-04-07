@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import CurrentUserProfileCard from '../components/CurrentUserProfileCard'
 import { Grid, Container, Modal, Button, Header, Image, Icon } from 'semantic-ui-react'
 import UserInfo from '../components/UserInfo'
+import { fetchProfile } from '../redux/actions'
 // import PicUpload from '../components/PicUpload'
 
 const CurrentUserProfilePage = props => {
@@ -11,7 +12,8 @@ const CurrentUserProfilePage = props => {
 
     // *** this works on initial render after login *** //
     useEffect(() => {
-        debugger
+        // debugger
+        fetchProfile(props.currentUser)
         missingInfo(props.currentUser)
     }, [props.currentUser])
     
@@ -46,18 +48,6 @@ const CurrentUserProfilePage = props => {
             }   
         }  
     }
-
-    // const missingInfo = () => {
-    //     const relevant = ['occupation', 'yob', 'language1', 'language2', 'language3', 'city', 'country']
-    //     for( let [key, value] of Object.entries(props.currentUser)) {
-    //         if(relevant.includes(key)) {
-    //             if(value === '' || value === null) {
-    //                 setOpen(true)
-    //                 return
-    //             }
-    //         }   
-    //     }  
-    // }
 
     const InfoRequestModal = () => (
         <Modal 
@@ -121,7 +111,13 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(CurrentUserProfilePage)
+const mapDTP = dispatch => {
+    return {
+        fetchProfile: user => dispatch(fetchProfile(user))
+    }
+}
+
+export default connect(mapStateToProps, mapDTP)(CurrentUserProfilePage)
 
 
 
