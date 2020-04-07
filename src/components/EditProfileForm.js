@@ -173,6 +173,7 @@ class EditProfileForm extends Component {
                         placeholder={this.props.currentUser.yob && this.props.currentUser.yob}
                         onChange={(e, data) => this.handleChange(data)}
                         onKeyUp={e => this.handleKeyUp(e, 'yob')}
+                        onFocus={e => e.target.size='6'}
                     />
                     {/* </Form.Input> */}
                     
