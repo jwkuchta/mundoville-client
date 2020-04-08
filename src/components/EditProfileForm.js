@@ -173,7 +173,7 @@ class EditProfileForm extends Component {
                         placeholder={this.props.currentUser.yob && this.props.currentUser.yob}
                         onChange={(e, data) => this.handleChange(data)}
                         onKeyUp={e => this.handleKeyUp(e, 'yob')}
-                        onFocus={e => e.target.size='6'}
+                        onFocus={e => e.target.size='20'}
                     />
                     {/* </Form.Input> */}
                     
@@ -332,3 +332,4 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(EditProfileForm)
+
