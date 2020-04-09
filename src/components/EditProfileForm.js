@@ -1,14 +1,31 @@
-import React, { Component } from 'react'
+import React, { Component, createRef } from 'react'
 import { connect } from 'react-redux'
-import { Form, Button, Header, Modal, Icon } from 'semantic-ui-react'
+import { Form, Button, Header, Modal, Icon, Ref } from 'semantic-ui-react'
 import { languages, countries, years } from './dropdown'
+// import Ref from '@bit/semantic-org.semantic-ui-react.ref'
+import Moment from 'react-moment'
 
 const usersUrl = 'http://localhost:3000/api/v1/users/'
 
-// initially wanted to use createRef, which worked with basic html
-// but did not want to play nice with Semantic UI, so I used getElementById instead
-
 class EditProfileForm extends Component {
+
+    currentYear = new Date().getFullYear()
+
+    firstNameRef = createRef()
+    lastNameRef = createRef()
+    yobRef = createRef()
+    bioRef = createRef()
+    emailRef = createRef()
+    passRef = createRef()
+    passConfRef = createRef()
+    countryRef = createRef()
+    cityRef = createRef()
+    occupationRef = createRef()
+    lang1Ref = createRef()
+    lang2Ref = createRef()
+    lang3Ref = createRef()
+    submitRef = createRef()
+    divRef = createRef()
 
     state = {}
 
@@ -34,11 +51,17 @@ class EditProfileForm extends Component {
     }
 
     handleSubmit = (e, values, user) => {
+        debugger
         e.preventDefault()
         let updates = {}
         
         for (let [key, value] of Object.entries(values)) {
-            if (values[key] !== '') {
+            if (key === 'yob') {
+                if (values[key] !== parseInt(this.props.currentUser.yob) && values[key] !== this.currentYear) {
+                    updates[key] = value
+                }
+            }
+            else if (values[key] !== '') {
                 updates[key] = value
             }
         }
@@ -83,57 +106,58 @@ class EditProfileForm extends Component {
     }
 
     handleKeyUp = (e, target) => {
+        // debugger
         // if the key is 'Enter'
         if(e.keyCode === 13) {
             switch (target) {
                 case 'firstName':
-                    document.getElementById('last_name').focus()
+                    this.lastNameRef.current.lastChild.firstChild.focus()
                     break
                 case 'lastName':
-                    // needed to use 'firstChild' as the parent is a div and was not focusing
-                    document.getElementById('yob').firstChild.focus()
+                    this.yobRef.current.lastChild.firstChild.focus()
                     break
                 case 'yob':
-                    document.getElementById('bio').focus()
+                    this.bioRef.current.lastChild.focus()
                     break
                 case 'bio':
-                    document.getElementById('email').focus()
+                    this.emailRef.current.lastChild.firstChild.focus()
                     break
                 case 'email':
-                    document.getElementById('password').focus()
+                    this.passRef.current.lastChild.firstChild.focus()
                     break
                 case 'password':
-                    document.getElementById('password_conf').focus()
+                    this.passConfRef.current.lastChild.firstChild.focus()
                     break
                 case 'passwordConf':
-                    document.getElementById('country').firstChild.focus()
+                    this.countryRef.current.lastChild.firstChild.focus()
                     break
                 case 'country':
-                    document.getElementById('city').focus()
+                    this.cityRef.current.lastChild.firstChild.focus()
                     break
                 case 'city':
-                    document.getElementById('occupation').focus()
+                    this.occupationRef.current.lastChild.firstChild.focus()
                     break
                 case 'occupation':
-                    document.getElementById('language1').firstChild.focus()
+                    this.lang1Ref.current.lastChild.firstChild.focus()
                     break
                 case 'language1':
-                    document.getElementById('language2').firstChild.focus()
+                    this.lang2Ref.current.lastChild.firstChild.focus()
                     break
                 case 'language2':
-                    document.getElementById('language3').firstChild.focus()
+                    this.lang3Ref.current.lastChild.firstChild.focus()
                     break
                 case 'language3':
-                    document.getElementById('submit').focus()
+                    this.submitRef.current.focus()
                     break
                 default:
-                    document.getElementById('first_name').focus()
+                    this.firstNameRef.current.lastChild.firstChild.focus()
                     break
             }  
         }
     }
 
     render() {
+        // debugger
 
         return (
             <>
@@ -149,6 +173,7 @@ class EditProfileForm extends Component {
 
             {/* MAIN INFO */}
                 <Form.Group widths='equal'>
+                    <Ref innerRef={this.firstNameRef}>
                     <Form.Input
                         id='first_name'
                         label='First Name' 
@@ -157,6 +182,9 @@ class EditProfileForm extends Component {
                         onKeyUp={e => this.handleKeyUp(e, 'firstName')}
 
                     />
+                    </Ref>
+                    
+                    <Ref innerRef={this.lastNameRef}>
                     <Form.Input
                         id='last_name'
                         label='Last Name' 
@@ -164,6 +192,9 @@ class EditProfileForm extends Component {
                         onChange={(e) => this.handleChange(e.target)}
                         onKeyUp={e => this.handleKeyUp(e, 'lastName')}
                     />
+                    </Ref>
+                    
+                    <Ref innerRef={this.yobRef}>
                     <Form.Dropdown
                         id='yob'
                         search
@@ -175,9 +206,12 @@ class EditProfileForm extends Component {
                         onKeyUp={e => this.handleKeyUp(e, 'yob')}
                         onFocus={e => e.target.size='20'}
                     />
+                    </Ref>
+                    
                     {/* </Form.Input> */}
                     
-                </Form.Group> 
+                </Form.Group>
+                <Ref innerRef={this.bioRef}>
                 <Form.TextArea 
                     id='bio'
                     label='Bio'
@@ -185,8 +219,10 @@ class EditProfileForm extends Component {
                     onChange={(e) => this.handleChange(e.target)}
                     onKeyUp={e => this.handleKeyUp(e, 'bio')}
                 />
+                </Ref>    
 
             {/* EMAIL AND PASSWORD */}
+                <Ref innerRef={this.emailRef}>
                 <Form.Input
                     id='email'
                     label='Email' 
@@ -194,7 +230,10 @@ class EditProfileForm extends Component {
                     onChange={(e) => this.handleChange(e.target)}
                     onKeyUp={e => this.handleKeyUp(e, 'email')}
                 /> 
+                </Ref>
+                
                 <Form.Group widths='equal'>
+                    <Ref innerRef={this.passRef}>
                     <Form.Input
                         id='password'
                         label='Password' 
@@ -202,6 +241,9 @@ class EditProfileForm extends Component {
                         onChange={(e) => this.handleChange(e.target)}
                         onKeyUp={e => this.handleKeyUp(e, 'password')}
                     />
+                    </Ref>
+                    
+                    <Ref innerRef={this.passConfRef}>
                     <Form.Input
                         id='password_conf'
                         label='Confirm Password' 
@@ -209,10 +251,12 @@ class EditProfileForm extends Component {
                         onChange={(e) => this.handleChange(e.target)}
                         onKeyUp={e => this.handleKeyUp(e, 'passwordConf')}
                     />
+                    </Ref>    
                 </Form.Group><br/> 
 
             {/* COUNTRY */}
             <Form.Group widths='equal'>
+                <Ref innerRef={this.countryRef}>
                 <Form.Dropdown
                     id='country'
                     label='Country'
@@ -224,6 +268,9 @@ class EditProfileForm extends Component {
                     onChange = {(e, data) => this.handleChange(data)}
                     onKeyUp={e => this.handleKeyUp(e, 'country')}
                 />
+                </Ref>
+                
+                <Ref innerRef={this.cityRef}>
                 <Form.Input
                     id='city'
                     label='City'
@@ -231,6 +278,9 @@ class EditProfileForm extends Component {
                     onChange={(e) => this.handleChange(e.target)}
                     onKeyUp={e => this.handleKeyUp(e, 'city')}
                 />
+                </Ref>
+                
+                <Ref innerRef={this.occupationRef}>
                 <Form.Input
                     id='occupation'
                     label='Occupation'
@@ -238,10 +288,14 @@ class EditProfileForm extends Component {
                     onChange={(e) => this.handleChange(e.target)}
                     onKeyUp={e => this.handleKeyUp(e, 'occupation')}
                 />
+                </Ref>
+                
             </Form.Group><br/>
  
             {/* LANGUAGES */}
             <Form.Group widths='equal'>
+
+                <Ref innerRef={this.lang1Ref}>
                 <Form.Dropdown
                     id='language1'
                     label='Primary Language'
@@ -253,6 +307,9 @@ class EditProfileForm extends Component {
                     onChange = {(e, data) => this.handleChange(data)}
                     onKeyUp={e => this.handleKeyUp(e, 'language1')}
                 />
+                </Ref>
+                
+                <Ref innerRef={this.lang2Ref}>
                 <Form.Dropdown
                     id='language2'
                     label='Secondary Language'
@@ -264,6 +321,9 @@ class EditProfileForm extends Component {
                     onChange = {(e, data) => this.handleChange(data)}
                     onKeyUp={e => this.handleKeyUp(e, 'language2')}
                 />
+                </Ref>
+                
+                <Ref innerRef={this.lang3Ref}>
                 <Form.Dropdown
                     id='language3'
                     label='Another Language'
@@ -275,6 +335,7 @@ class EditProfileForm extends Component {
                     onChange = {(e, data) => this.handleChange(data)}
                     onKeyUp={e => this.handleKeyUp(e, 'language3')}
                 />
+                </Ref>
             </Form.Group>
 
             {/* the buttton was originally here, but it was submitting the form
@@ -313,8 +374,8 @@ class EditProfileForm extends Component {
 
             {/* I put the button here because it kept submitting the form after each enter 
             instead of focusing on the next field like I asked it to nicely */}
-
-             <Button 
+            <Ref innerRef={this.submitRef}>
+            <Button 
                 basic 
                 id='submit' 
                 type='submit' 
@@ -322,6 +383,7 @@ class EditProfileForm extends Component {
                 onKeyUp={(e) => this.handleSubmit(e, this.state, this.props.currentUser)}
                 onClick={(e) => this.handleSubmit(e, this.state, this.props.currentUser)}
             />
+            </Ref>   
             </>
         )
     }

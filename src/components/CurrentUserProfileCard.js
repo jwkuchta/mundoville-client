@@ -41,7 +41,7 @@ const CurrentUserProfileCard = props => {
                         maxRating={5} 
                         disabled
                     />}<br/>
-                    {currentUser.rating ? currentUser.rating + '/5' : 'No reviews yet'}<br/><br/>
+                    {currentUser.rating? + '/5' : 'No reviews yet'}<br/><br/>
                 </div>
             </div>
         )
