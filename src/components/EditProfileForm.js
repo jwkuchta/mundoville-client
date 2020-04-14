@@ -51,7 +51,7 @@ class EditProfileForm extends Component {
     }
 
     handleSubmit = (e, values, user) => {
-        debugger
+        // debugger
         e.preventDefault()
         let updates = {}
         
@@ -82,7 +82,7 @@ class EditProfileForm extends Component {
             body: JSON.stringify(data)
         })
         .then(resp => resp.json())
-        .then(window.location.href = "/profile")
+        .then(this.setState({open: true}))
     }
 
     handleDelete = user => {
@@ -383,7 +383,21 @@ class EditProfileForm extends Component {
                 onKeyUp={(e) => this.handleSubmit(e, this.state, this.props.currentUser)}
                 onClick={(e) => this.handleSubmit(e, this.state, this.props.currentUser)}
             />
-            </Ref>   
+            </Ref>  
+            <Modal open={this.state.open}
+            >
+                <Header icon='archive' content='Your profile has been updated!' />
+                    <Modal.Content>
+                        <p style={{color: 'teal'}}>
+                            You're all set! 
+                        </p>
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <Button color='green' inverted onClick={() => window.location.href='/profile'}>
+                            <Icon name='checkmark' /> ok, thanks
+                        </Button>
+                    </Modal.Actions>
+                </Modal> 
             </>
         )
     }
