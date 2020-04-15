@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Card, Modal, Button, Rating } from 'semantic-ui-react'
 import FriendButton from './FriendButton'
 import Review from './Review'
-import AddReviewModal from './AddReviewModal'
+import AddReview from './AddReview'
 
 const SideBar = props => {
 
@@ -32,7 +32,7 @@ const SideBar = props => {
                         )}
                     </Modal.Content>
                 </Modal><br/><br/><br></br>
-                <AddReviewModal 
+                <AddReview
                     user={props.user}
                     currentUser={props.currentUser}
                 /><br></br>
