@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 // import { getUsers } from '../redux/actions'
 import { Grid, Container } from 'semantic-ui-react'
 import { connect } from 'react-redux'

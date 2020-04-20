@@ -24,6 +24,7 @@ const SearchBar = props => {
     } 
 
     const handleSearchChange = (e, { value }) => {
+        // debugger
         setLoading(true)
         setValue(value)
 
@@ -38,6 +39,7 @@ const SearchBar = props => {
 
             setLoading(false)
             setResults(_.filter(countries, isMatch))
+            console.log(results, re, isMatch)
         }, 300)
     }
 

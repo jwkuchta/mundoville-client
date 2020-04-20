@@ -6,8 +6,11 @@ import { withRouter } from 'react-router-dom'
 const AddFriendButton = props => {
 
     let currentPage = props.history.location.pathname
+    let page = window.location.pathname
     let userId = props.currentUser.id 
     let friendId = props.user.id
+
+    debugger
 
     const addFriendFetch = (userId, friendId) => {
         // debugger

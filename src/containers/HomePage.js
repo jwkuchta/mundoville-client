@@ -1,4 +1,3 @@
-
 import React  from 'react'
 import { Container, Image } from 'semantic-ui-react'
 import plane from '../photos/plane.gif'

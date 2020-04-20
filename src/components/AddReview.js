@@ -42,8 +42,6 @@ const AddReview = (props) => {
                 })
             })
             .then(resp => resp.json())
-            .then(() => window.location.reload())
-            // change alert to a modal when time permits
             setSuccess(true)
         } else {
             setInvalid(true)
@@ -93,12 +91,12 @@ const AddReview = (props) => {
         <Modal open={invalid}>
         <Header icon='archive' content='We were unable to submit your review!' />
             <Modal.Content>
-                <p style={{color: 'teal'}}>
-                    Sorry about that! Please try again later. 
+                <p style={{color: 'red'}}>
+                    Please make sure you fill out all the fields before submitting. 
                 </p>
             </Modal.Content>
             <Modal.Actions>
-                <Button color='green' inverted onClick={() => window.location.href=currentPage}>
+                <Button color='red' inverted onClick={() => window.location.href=currentPage}>
                     <Icon name='checkmark' /> ok, thanks
                 </Button>
             </Modal.Actions>

@@ -7,11 +7,13 @@ import { withRouter, Link, Redirect } from 'react-router-dom'
 
 const LoggedInNavBar = props => {
 
+    // debugger
+
     const handleLogOut = () => {
+        // debugger
         localStorage.clear()
         props.clearUser()
         props.clearOption('')
-        props.history.push('/')
     }
 
     if (!localStorage.jwt){

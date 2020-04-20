@@ -2,21 +2,6 @@ import React, { Component } from 'react'
 import { Segment, Form, Button } from 'semantic-ui-react'
 
 class SignupForm extends Component {
-    
-    // constructor() {
-    //     super()
-    //     this.state = {
-    //         firstName: '',
-    //         lastName: '',
-    //         email: '',
-    //         username: '',
-    //         password: '',
-    //         passwordConfirmation: '',
-    //         user: false
-    //     }
-    // }
-
-    // this also works:
 
     state = {}
 
@@ -55,7 +40,6 @@ class SignupForm extends Component {
 
             this.addNewUser(user)
         } else {
-            alert("one or more fields were missing") 
             window.location.href='/'
         }
     }

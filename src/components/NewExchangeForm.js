@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Segment, Form, Button, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 import { placeholder } from '../photos/round_placeholder.png'
 
 const NewExchangeForm = props => {
@@ -32,7 +31,7 @@ const NewExchangeForm = props => {
     }, [])
 
     const handleRecipient = e => {
-        debugger
+        // debugger
         let firstName = e.target.innerText.split(' ')[0]
         let lastName = e.target.innerText.split(' ')[1]
         let recipient = props.allUsers.find(u => u.first_name === firstName && u.last_name === lastName)
@@ -52,9 +51,6 @@ const NewExchangeForm = props => {
     }
 
     const postNewExchange = () => {
-        debugger
-        let currentUser = props.currentUser
-
         fetch('http://localhost:3000/api/v1/exchanges', {
             method: 'POST',
             headers: {
@@ -63,19 +59,12 @@ const NewExchangeForm = props => {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                first_user_id: currentUser.id,
+                first_user_id: props.currentUser.id,
                 second_user_id: Number.parseInt(recipientId),
                 body: body
             })
         })
-        .then(resp => resp.json())
-        .then(data => {
-            // debugger
-            console.log(data)
-            // window.location.href = '/messages'
-            //window.location.reload()
-            props.history.push('/messages')
-        })
+        .then(resp => console.log(resp))
     }
 
     return (
@@ -114,5 +103,5 @@ const mapSTP = state => {
     }
 }
 
-export default withRouter(connect(mapSTP)(NewExchangeForm))
+export default connect(mapSTP)(NewExchangeForm)
 

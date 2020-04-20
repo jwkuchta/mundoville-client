@@ -5,7 +5,6 @@ import { Segment, Form, Button, Message, Modal, Header } from 'semantic-ui-react
 
 const LoginForm = () => {
 
-
     const [ username, setUsername ] = useState('')
     const [ password, setPassword ] = useState('')
     const [ error, setError ] = useState(false)
@@ -24,7 +23,7 @@ const LoginForm = () => {
         })
         .then(response => response.json())
         .then(data => {
-            // debugger
+            debugger
             if (data.user){
                 localStorage.setItem('jwt', data.jwt)
                 window.location.href = '/'
