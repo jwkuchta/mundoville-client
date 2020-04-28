@@ -21,7 +21,7 @@ const UserInfo = ({ user, currentUser }) => {
                     <Icon name='check' size='large'></Icon>Occupation
                 </Grid.Row>
                 <Grid.Row> 
-                    &nbsp; &nbsp; &nbsp; &nbsp;{user.occupation ? user.occupation : noInfo} 
+                    &nbsp; &nbsp; &nbsp; &nbsp;{user.occupation || noInfo} 
                 </Grid.Row>
                 <Grid.Row>
                     <Icon name='check' size='large'></Icon>Age
@@ -59,9 +59,7 @@ const UserInfo = ({ user, currentUser }) => {
                     <Icon name='heart outline' size='large'></Icon>Interests
                 </Grid.Row>
                 <Grid.Row>&nbsp; &nbsp; &nbsp; &nbsp;
-                    {user.interests ? 
-                    user.interests : 
-                    "Tell us what things and activities you love so others can get to know you better!"}
+                    {user.interests || "Tell us what things and activities you love so others can get to know you better!"}
                 </Grid.Row>
             </div><br></br>
 

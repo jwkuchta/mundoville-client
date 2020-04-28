@@ -36,7 +36,8 @@
     "redux-mock-store": "^1.2.2",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
-    "semantic-ui-react": "^0.88.1"
+    "semantic-ui-react": "^0.88.1",
+    "styled-components": "^5.1.0"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",

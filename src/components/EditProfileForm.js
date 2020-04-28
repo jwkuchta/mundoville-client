@@ -200,8 +200,8 @@ class EditProfileForm extends Component {
                         search
                         selection
                         options={years}
-                        label='Year you were Born' 
-                        placeholder={this.props.currentUser.yob && this.props.currentUser.yob}
+                        label='Year you were Born'
+                        placeholder={this.props.currentUser.yob ? this.props.currentUser.yob : this.currentYear}
                         onChange={(e, data) => this.handleChange(data)}
                         onKeyUp={e => this.handleKeyUp(e, 'yob')}
                         onFocus={e => e.target.size='20'}
