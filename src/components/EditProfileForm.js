@@ -223,7 +223,7 @@ class EditProfileForm extends Component {
             'language2': this.lang3Ref.current.lastChild.firstChild,
             'language3': this.submitRef.current
         } 
-        if(e.keyCode === 13) cases[target].focus()
+        e.keyCode === 13 && cases[target].focus() 
     }
   
     render() {
