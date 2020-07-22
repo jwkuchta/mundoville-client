@@ -7,6 +7,7 @@ import Moment from 'react-moment'
 
 const usersUrl = 'http://localhost:3000/api/v1/users/'
 
+// I left it as a class because of handleChange method. I would have to use useState() 13 times otherwise
 class EditProfileForm extends Component {
 
     currentYear = new Date().getFullYear()
@@ -51,7 +52,7 @@ class EditProfileForm extends Component {
     }
 
     handleSubmit = (e, values, user) => {
-        // debugger
+        debugger
         e.preventDefault()
         let updates = {}
         
@@ -65,7 +66,6 @@ class EditProfileForm extends Component {
                 updates[key] = value
             }
         }
-
         const filtered = this.filterObj(updates)
         this.updateUser(user, filtered)
     }
@@ -125,7 +125,6 @@ class EditProfileForm extends Component {
     }
   
     render() {
-        // debugger
 
         return (
             <>
@@ -372,7 +371,7 @@ class EditProfileForm extends Component {
 }
 
 const mapStateToProps = state => {
-    return {currentUser: state.currentUser}
+    return { currentUser: state.currentUser }
 }
 
 export default connect(mapStateToProps)(EditProfileForm)

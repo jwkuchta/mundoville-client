@@ -1,3 +1,5 @@
+// NOT IN USE AT THE MOMENT
+
 import React, { Component } from 'react'
 import EventForm from './EventForm'
 import EventList from './EventList'

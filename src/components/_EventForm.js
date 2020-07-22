@@ -1,3 +1,5 @@
+// NOT IN USE AT THE MOMENT
+
 import React, { Component } from 'react'
 import { Button, Icon, Input } from 'react-materialize'
 import { bindActionCreators } from 'redux'
@@ -5,17 +7,6 @@ import { connect } from 'react-redux'
 import { addEvent } from '../actions'
 
 class EventForm extends Component {
-  // constructor(){
-  //   super()
-
-  //   this.state = {
-  //     title: '',
-  //     date: '',
-  //     description: '',
-  //     startTime: '',
-  //     endTime: ''
-  //   }
-  // }
 
   state = {}
 

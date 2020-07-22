@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Modal, Button, Form, Rating, Header, Icon } from 'semantic-ui-react'
 
-const AddReview = (props) => {
+const AddReview = ({ currentUser, user }) => {
 
     const currentPage = window.location.pathname
-    const userId = props.currentUser.id
-    const reviewedId = props.user.id
+    const userId = currentUser.id
+    const reviewedId = user.id
 
     const [ rating, setRating ] = useState('')
     const [ body, setBody ] = useState('')
@@ -47,138 +47,76 @@ const AddReview = (props) => {
         }
     }
 
-    return (
-        <>
-        <Modal 
+    const addReviewModal = () => {
+        return (
+            <Modal 
             size='small'
             trigger={<Button >Add a Review</Button>}
             closeIcon
-        >
-            <Modal.Header>
-                Add a Review for: {props.user.username}
-            </Modal.Header>
+            >
+                <Modal.Header>
+                    Add a Review for: {user.username}
+                </Modal.Header>
 
-            <Modal.Content>
-                <Form onSubmit={handleSubmit}>
-                    <Form.TextArea 
-                        onChange={handleChange}
-                    />
-                    <Rating 
-                        onRate={handleRate} 
-                        defaultRating={1}
-                        maxRating={5} 
-                    />
-                    <Button type='submit' content='Submit'/>
-                </Form>
-            </Modal.Content> 
-        </Modal>
+                <Modal.Content>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.TextArea 
+                            onChange={handleChange}
+                        />
+                        <Rating 
+                            onRate={handleRate} 
+                            defaultRating={1}
+                            maxRating={5} 
+                        />
+                        <Button type='submit' content='Submit'/>
+                    </Form>
+                </Modal.Content> 
+            </Modal>
+        )
+    }
 
-        <Modal open={success}>
-        <Header icon='checkmark' content='Your review has been submitted!' />
-            <Modal.Content>
-                <p style={{color: 'teal'}}>
-                    You're all set! 
-                </p>
-            </Modal.Content>
-            <Modal.Actions>
-                <Button color='green' inverted onClick={() => window.location.href=currentPage}>
-                    <Icon name='checkmark' /> ok, thanks
-                </Button>
-            </Modal.Actions>
-        </Modal>
+    const successModal = () => {
+        return (
+            <Modal open={success}>
+                <Header icon='checkmark' content='Your review has been submitted!' />
+                <Modal.Content>
+                    <p style={{color: 'teal'}}>You're all set! </p>
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button color='green' inverted onClick={() => window.location.href=currentPage}>
+                        <Icon name='checkmark' /> ok, thanks
+                    </Button>
+                </Modal.Actions>
+            </Modal>
+        )
+    }
 
-        <Modal open={invalid}>
-        <Header icon='frown outline' content='We were unable to submit your review!' />
-            <Modal.Content>
-                <p style={{color: 'red'}}>
+    const errorModal = () => {
+        return (
+            <Modal open={invalid}>
+                <Header icon='frown outline' content='We were unable to submit your review!' />
+                <Modal.Content>
+                    <p style={{color: 'red'}}>
                     Please make sure you fill out all the fields before submitting. 
-                </p>
-            </Modal.Content>
-            <Modal.Actions>
-                <Button color='red' inverted onClick={() => window.location.href=currentPage}>
-                    <Icon name='checkmark' /> ok, thanks
-                </Button>
-            </Modal.Actions>
-        </Modal>
+                    </p>
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button color='red' inverted onClick={() => window.location.href=currentPage}>
+                        <Icon name='checkmark' /> ok, thanks
+                    </Button>
+                </Modal.Actions>
+            </Modal>
+        )
+    }
+
+    return (
+        <>
+        {addReviewModal()}
+        {success && successModal()}
+        {invalid && errorModal()}
         </>
     )
 }
 
 export default AddReview
 
-// import React, { Component } from 'react'
-// import { Modal, Button, Form, Rating } from 'semantic-ui-react'
-
-// class AddReviewModal extends Component {
-    
-//     state = {}
- 
-//     handleChange = e => this.setState({ body: e.target.value })
-
-//     handleRate = (e, { rating }) => {
-//         let userId = this.props.currentUser.id
-//         let reviewedId = this.props.user.id
-
-//         this.setState({
-//             rating,
-//             userId,
-//             reviewedId
-//         })
-//     }
-
-//     handleSubmit = (e) => {
-//         e.preventDefault()
-
-//         if (this.state.rating) {
-//             fetch('http://localhost:3000/api/v1/reviews', {
-//                 method: 'POST',
-//                 headers: {
-//                     'Authorization': `Bearer ${localStorage.jwt}`,
-//                     'Content-Type': 'application/json',
-//                     'Accept': 'application/json'
-//                 },
-//                 body: JSON.stringify({
-//                     reviewed_id: this.state.reviewedId,
-//                     user_id: this.state.userId,
-//                     rating: this.state.rating,
-//                     body: this.state.body
-//                 })
-//             })
-//             .then(resp => resp.json())
-//             .then(() => window.location.reload())
-//             alert('Review added successfully')
-//         } else {
-//             alert('Rating invalid')
-//         }
-//     }
-
-//     render() {
-//         return (
-//             <Modal 
-//                 size='small'
-//                 trigger={<Button >Add a Review</Button>}
-//                 closeIcon
-//             >
-//                 <Modal.Header>
-//                     Add a Review for: {this.props.user.username}
-//                 </Modal.Header>
-
-//                 <Modal.Content>
-//                     <Form onSubmit={this.handleSubmit}>
-//                         <Form.TextArea 
-//                             onChange={e => this.handleChange(e)}
-//                         />
-//                         <Rating 
-//                             onRate={this.handleRate} 
-//                             defaultRating={0}
-//                             maxRating={5} 
-//                         />
-//                         <Button type='submit' content='Submit'/>
-//                     </Form>
-//                 </Modal.Content>
-//             </Modal>
-//         )
-//     }
-// }
-
-// export default AddReviewModal

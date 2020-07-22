@@ -5,70 +5,65 @@ import Message from './Message'
 import NewMessageForm from './NewMessageForm'
 import placeholder from '../photos/profilePicPlaceholder.png'
 
-const Exchange = props => {
-
-    const { exchange, users, currentUser } = props
+const Exchange = ({ exchange, users, currentUser }) => {
         
-        if (users.length > 0 && currentUser) {
-            const userId = exchange.first_user_id === currentUser.id ? exchange.second_user_id : exchange.first_user_id
-            const otherUser = users.filter(user => user.id === userId)[0]
-            const unread = exchange.messages.filter(m => m.user_id === otherUser.id && m.read === false)
+    if (users.length > 0 && currentUser) {
+        const userId = exchange.first_user_id === currentUser.id ? exchange.second_user_id : exchange.first_user_id
+        const otherUser = users.filter(user => user.id === userId)[0]
+        const unread = exchange.messages.filter(m => m.user_id === otherUser.id && m.read === false)
+        const otherUserPic = `http://localhost:3000/${otherUser.profile_pic_url}`
         
-            let infoMessage = otherUser.username
-            if (unread.length === 1) {
-                infoMessage =  unread.length + ' unread message from ' + otherUser.username
-            } else if (unread.length > 1) {
-                infoMessage = unread.length + ' unread messages from ' + otherUser.username
-            }
+        let infoMessage
+        if (unread.length === 1) {
+            infoMessage =  '1 unread message from ' + otherUser.username
+        } else if (unread.length > 1) {
+            infoMessage = unread.length + ' unread messages from ' + otherUser.username
+        }
 
-            const otherUserPic = `http://localhost:3000/${otherUser.profile_pic_url}`
+        return (
+            <Segment secondary padded='very'>
+                <Header as='h2' textAlign='left'>
+                    <Image 
+                    size='large' 
+                    floated='left' 
+                    src={otherUser.profile_pic_url ? otherUserPic : placeholder} /> 
+                    <a href={`/users/${otherUser.username}`}>{infoMessage}</a>
+                    <Modal 
+                        closeIcon
+                        onClose={() => window.location.reload()}
+                        size='small' 
+                        trigger={<Button floated='right'>Open Message Exchange</Button>}
+                    >
 
-            return (
-                <Segment secondary padded='very'>
-                    <Header as='h2' textAlign='left'>
-                        <Image 
-                        size='large' 
-                        floated='left' 
-                        src={otherUser.profile_pic_url ? otherUserPic : placeholder} /> 
-                        <a href={`/users/${otherUser.username}`}>{infoMessage}</a>
-                        <Modal 
-                            closeIcon
-                            onClose={() => window.location.reload()}
-                            size='small' 
-                            trigger={<Button floated='right'>Open Message Exchange</Button>}
-                        >
-
-                            <Modal.Content>
-                                <Header as='h3' dividing>
-                                    Message Exchange with {otherUser.username}
-                                </Header>
-                                <Segment basic>
-                                    <Comment.Group>
-                                        <div id='messages'>
-                                            {exchange.messages.map(message => 
-                                                <Message 
-                                                    key={message.id} 
-                                                    message={message} 
-                                                    user={otherUser}
-                                                    currentUser={currentUser}
-                                                />
-                                            )}
-                                        </div>
-                                        <NewMessageForm 
-                                            exchange={exchange}
-                                            user={otherUser}
-                                            currentUser={currentUser}
-                                        /><br/>
-                                    </Comment.Group>
-                                </Segment>
-                            </Modal.Content>
-                        </Modal>
-                        {unread.length > 0
-                            ? <Icon color='grey' name='mail outline' size ='big'/> : null}
-                    </Header>
-                </Segment>
-            )
-        } else {
+                        <Modal.Content>
+                            <Header as='h3' dividing>
+                                Message Exchange with {otherUser.username}
+                            </Header>
+                            <Segment basic>
+                                <Comment.Group>
+                                    <div id='messages'>
+                                        {exchange.messages.map(message => 
+                                            <Message 
+                                                key={message.id} 
+                                                message={message} 
+                                                user={otherUser}
+                                                currentUser={currentUser}
+                                            />
+                                        )}
+                                    </div>
+                                    <NewMessageForm 
+                                        exchange={exchange}
+                                        user={otherUser}
+                                        currentUser={currentUser}
+                                    /><br/>
+                                </Comment.Group>
+                            </Segment>
+                        </Modal.Content>
+                    </Modal>
+                    {unread.length > 0 ? <Icon color='grey' name='mail outline' size ='big'/> : null}
+                </Header>
+            </Segment>
+        )} else {
             return null
         }
 }    
