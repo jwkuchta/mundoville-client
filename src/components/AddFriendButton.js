@@ -10,10 +10,7 @@ const AddFriendButton = props => {
     let userId = props.currentUser.id 
     let friendId = props.user.id
 
-    debugger
-
-    const addFriendFetch = (userId, friendId) => {
-        // debugger
+    const addFriendFetch = () => {
         fetch('http://localhost:3000/api/v1/friendships', {
             method: 'POST',
             headers: {
@@ -32,7 +29,7 @@ const AddFriendButton = props => {
         <Button 
             color='green' 
             inverted 
-            onClick={e => addFriendFetch(userId, friendId)} 
+            onClick={addFriendFetch} 
             content='Add Friend' 
         />
     )

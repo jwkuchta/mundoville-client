@@ -4,20 +4,19 @@ import { Modal, Button, Form, Rating, Header, Icon } from 'semantic-ui-react'
 const AddReview = (props) => {
 
     const currentPage = window.location.pathname
+    const userId = props.currentUser.id
+    const reviewedId = props.user.id
 
     const [ rating, setRating ] = useState('')
     const [ body, setBody ] = useState('')
     const [ success, setSuccess ] = useState(false)
-    const [ invalid, setInvalid ] = useState(false)
-
-    const userId = props.currentUser.id
-    const reviewedId = props.user.id
-    
+    const [ invalid, setInvalid ] = useState(false)  
  
     const handleChange = e => {
       setBody(e.target.value)
     }
 
+    // it doesn't work without the "e" even though it is not used. Semantic quirk?
     const handleRate = (e, { rating }) => {
         setRating(rating)
     }

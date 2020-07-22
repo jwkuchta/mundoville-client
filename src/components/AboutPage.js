@@ -17,8 +17,7 @@ const AboutPage = (props) => {
         <h1>How Mundoville Works</h1>
         <br></br>
             <Container>
-                <Grid>
-                    
+                <Grid>  
                     <Grid.Row>
                         <Grid.Column width={4}>
                             <Image src={friends}></Image>
@@ -85,15 +84,13 @@ const AboutPage = (props) => {
             </Container>
             {!localStorage.jwt && props.option === 'login' && <Container fluid className='login-form'><LoginForm /></Container>}
             {!localStorage.jwt && props.option === 'signup' && <Container fluid className='signup-form'><SignupForm /></Container>} 
-           
         </Container>
     )
 }
 
-const mapSTP = state => {
-    // debugger
+const mapStateToProps = state => {
     return {option: state.options.option}
 }
 
-export default connect(mapSTP)(AboutPage)
+export default connect(mapStateToProps)(AboutPage)
 
