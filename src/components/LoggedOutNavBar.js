@@ -10,21 +10,20 @@ const LoggedOutNavBar = props => {
 
     return (
         <>
-            {props.option === 'login' && <><Container><LoginForm /></Container></>}
-
-            {props.option === 'signup' && <><Container><SignupForm /></Container></>}
+        {props.option === 'login' && <><Container><LoginForm /></Container></>}
+        {props.option === 'signup' && <><Container><SignupForm /></Container></>}
             
-            <div style={{ backgroundColor: 'white', position: 'relative'}}>
-                <div style={{display: 'inline-block', backgroundColor: 'white', float:'left', paddingLeft: '10px'}}>
-                    <Link to='/' onClick={() => props.clearOption('')}>
+        <div style={{ backgroundColor: 'white', position: 'relative'}}>
+            <div style={{display: 'inline-block', backgroundColor: 'white', float:'left', paddingLeft: '10px'}}>
+                <Link to='/' onClick={() => props.clearOption('')}>
                     <img 
-                        src={logo} 
-                        alt="logo"
-                        className='logo'
-                        ></img>
-                    </Link>
-                    <br></br>
-                </div>
+                    src={logo} 
+                    alt="logo"
+                    className='logo'
+                    ></img>
+                </Link>
+                <br></br>
+            </div>
             <div style={{display: 'inline-block', backgroundColor: 'white'}}>
                 <nav>
                     <ul><li style={{color: 'white'}}>nothing to see here</li></ul>
@@ -41,21 +40,21 @@ const LoggedOutNavBar = props => {
                 </nav>
             </div>
         </div>
-    </>
+        </>
     )
 }  
 
-const mapSTP = state => {
+const mapStateToProps = state => {
     return {
         option: state.option
     }
 }
 
-const mapDTP = dispatch => {
+const mapDispatchToProps = dispatch => {
     return {
         setOption: (option) => dispatch({type: 'SET_OPTION', payload: option}),
         clearOption: (option) => dispatch({type: 'CLEAR_OPTION', payload: option})
     }
 }
 
-export default connect(mapSTP, mapDTP)(LoggedOutNavBar)
+export default connect(mapStateToProps, mapDispatchToProps)(LoggedOutNavBar)

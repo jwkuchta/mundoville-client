@@ -7,10 +7,7 @@ import { withRouter, Link, Redirect } from 'react-router-dom'
 
 const LoggedInNavBar = props => {
 
-    // debugger
-
     const handleLogOut = () => {
-        // debugger
         localStorage.clear()
         props.clearUser()
         props.clearOption('')
@@ -88,7 +85,6 @@ const LoggedInNavBar = props => {
             </ul>   
             </nav>
             </div>  
-            {/* <br></br> */}
         </div>
     )
 }

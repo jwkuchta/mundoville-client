@@ -16,7 +16,6 @@ import AboutPage from './components/AboutPage'
 import LoggedOutNavBar from './components/LoggedOutNavBar'
 import LoggedInNavBar from './components/LoggedInNavBar'
 import { Sticky } from 'semantic-ui-react'
-import { Konami } from './components/Konami'
 // import _ from 'lodash'
 
 class App extends Component {
@@ -118,12 +117,7 @@ class App extends Component {
               ? <Redirect to='/login'/>
                 : <div className='mainPage'><MessagesContainer /></div>}
           </Route>
-
           <Redirect from='*' to='/' />
-
-          <Route exact string path='/konami'>
-            <div><Konami /></div>
-          </Route>
         </Switch>
       {/* </div> */}
     </div>
