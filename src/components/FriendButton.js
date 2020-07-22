@@ -3,21 +3,20 @@ import { connect } from 'react-redux'
 import AddFriendButton from './AddFriendButton'
 import RemoveFriendButton from './RemoveFriendButton'
 
-const FriendButton = props => {
+const FriendButton = ({ user, currentUser }) => {
 
-    // check for friendship to determine which button will be displayed (friend/unfriend)
-    const f1 = props.currentUser.friendships.filter(f => f.friend_id === props.user.id)
-    const f2 = props.user.friendships.filter(f => f.friend_id === props.currentUser.id)
+    // check for existing friendship to determine which button will be displayed (friend/unfriend)
+    const f1 = currentUser.friendships.filter(f => f.friend_id === user.id)
+    const f2 = user.friendships.filter(f => f.friend_id === currentUser.id)
         
     const friends = f1 || f2
 
-    if (props.user && props.currentUser) {
-        // debugger
+    if (user && currentUser) {
         return (
             <div>
                 {friends.length < 1
-                    ?  <AddFriendButton user={props.user} currentUser={props.currentUser} /> 
-                    :  <RemoveFriendButton user={props.user} currentUser={props.currentUser} />}
+                    ?  <AddFriendButton user={user} currentUser={currentUser} /> 
+                    :  <RemoveFriendButton user={user} currentUser={currentUser} />}
             </div>
         )
     } else {
@@ -25,11 +24,11 @@ const FriendButton = props => {
     }
 }
 
-const mapSTP = state => {
+const mapStateToProps = state => {
     return {
         currentUser: state.currentUser,
         allUsers: state.users
     }
 }
 
-export default connect(mapSTP)(FriendButton)
+export default connect(mapStateToProps)(FriendButton)
