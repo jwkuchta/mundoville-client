@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Segment, Form, Button } from 'semantic-ui-react'
 
+// left as a class component because if multiple form fields
 class SignupForm extends Component {
 
     state = {}
@@ -12,24 +13,18 @@ class SignupForm extends Component {
 
     validateInput = () => {
         for(let field of Object.values(this.state)) {
-            // debugger
             if(field === '') {
-                // debugger
-                console.log('this is empty')
                 return false
             }
         }
         return true
-        // debugger
     }
 
     handleSubmit = e => {
-        // debugger
         e.preventDefault()
-
         const valid = this.validateInput()
 
-        if (valid === true) {
+        if (valid) {
             let user = {
                 first_name: this.state.firstName,
                 last_name: this.state.lastName,
@@ -45,7 +40,6 @@ class SignupForm extends Component {
     }
 
     addNewUser = user => {
-        debugger
         fetch('http://localhost:3000/api/v1/users', {
             method: 'POST',
             headers: {
@@ -62,7 +56,6 @@ class SignupForm extends Component {
         }))
         .then(r => r.json())
         .then(data => {
-            debugger
             localStorage.setItem('jwt', data.jwt)
             this.setState({
                 ...this.state,

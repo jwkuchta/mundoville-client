@@ -23,7 +23,6 @@ const LoginForm = () => {
         })
         .then(response => response.json())
         .then(data => {
-            debugger
             if (data.user){
                 localStorage.setItem('jwt', data.jwt)
                 window.location.href = '/'

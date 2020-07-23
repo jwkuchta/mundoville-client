@@ -1,8 +1,6 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Card, Image } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
-import { selectedUser } from '../redux/actions'
 
 const UserCard = ({ user }) => {
 
@@ -18,8 +16,5 @@ const UserCard = ({ user }) => {
     )
 }
 
-const mapDTP = dispatch => {
-    return {selectedUser: user => dispatch(selectedUser(user))}
-}
+export default UserCard
 
-export default connect(null, mapDTP)(UserCard)

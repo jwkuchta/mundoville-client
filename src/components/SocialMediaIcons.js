@@ -7,7 +7,6 @@ const SocialMediaIcons = () => {
         <div className='social-icons'>
             <div id='popup'> 
             <Popup content='open messenger' trigger={<Icon fitted
-                // inverted
                 style={{'padding-left': '10px'}}
                 name='home' 
                 size='large' 
@@ -18,8 +17,6 @@ const SocialMediaIcons = () => {
             />        
     
             <Popup content='go to instagram' trigger={<Icon fitted
-                // inverted
-                // name='messages' 
                 style={{'padding-left': '10px'}}
                 size='large' 
                 className='instagram' 
@@ -28,7 +25,6 @@ const SocialMediaIcons = () => {
             />     
 
             <Popup content='go to twitter users' trigger={<Icon fitted
-                // inverted
                 style={{'padding-left': '10px'}}
                 link
                 name='search' 
@@ -38,7 +34,6 @@ const SocialMediaIcons = () => {
                 />}
             />       
             <Popup content='open whatsapp' trigger={<Icon fitted
-                // inverted
                 style={{'padding-left': '5px', 'padding-right': '5px'}}
                 link
                 size='large' 

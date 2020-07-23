@@ -3,12 +3,9 @@ import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 
-const AddFriendButton = props => {
+const AddFriendButton = ({ user, currentUser, history }) => {
 
-    let currentPage = props.history.location.pathname
-    let page = window.location.pathname
-    let userId = props.currentUser.id 
-    let friendId = props.user.id
+    let currentPage = history.location.pathname
 
     const addFriendFetch = () => {
         fetch('http://localhost:3000/api/v1/friendships', {
@@ -18,7 +15,7 @@ const AddFriendButton = props => {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify({user_id: userId, friend_id: friendId})
+            body: JSON.stringify({user_id: currentUser.id, friend_id: user.id})
             })
         .then(resp => resp.json())
         .then(data => console.log(data))

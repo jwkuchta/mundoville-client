@@ -2,13 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Button, Modal, Header, Icon } from 'semantic-ui-react'
 
-const RemoveFriendButton = props => {
+const RemoveFriendButton = ({ user, currentUser }) => {
 
     let currentPage = window.location.pathname
-    let userId = props.currentUser.id 
-    let friendId = props.user.id 
 
-    const removeFriendFetch = (userId, friendId) => {
+    const removeFriendFetch = () => {
         fetch('http://localhost:3000/api/v1/unfriend', {
             method: 'POST',
             headers: {
@@ -18,8 +16,8 @@ const RemoveFriendButton = props => {
             },
             body: JSON.stringify(
                 {
-                    user_id: userId, 
-                    friend_id: friendId
+                    user_id: currentUser.id, 
+                    friend_id: user.id
                 })
         })
         .then(resp => resp.json())

@@ -14,7 +14,7 @@ const SearchBar = props => {
     let display = country => {
         return (
             <div>
-                <i className={country.flag + " flag"} ></i>{country.text}   
+                <i className={`${country.flag} flag`} ></i>{country.text}   
             </div>
         )
     }
@@ -24,7 +24,6 @@ const SearchBar = props => {
     } 
 
     const handleSearchChange = (e, { value }) => {
-        // debugger
         setLoading(true)
         setValue(value)
 
@@ -77,15 +76,15 @@ const SearchBar = props => {
     )
 }
 
-const mapSTP = state => {
+const mapStateToProps = state => {
     return {allUsers: state.users}
 }
 
-const mapDTP = dispatch => {
+const mapDispatchToProps = dispatch => {
     return {
         setCountry: country => dispatch(setCountry(country) )
     }
 }
 
-export default connect(mapSTP, mapDTP)(SearchBar)
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)
 

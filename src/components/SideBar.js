@@ -5,57 +5,55 @@ import FriendButton from './FriendButton'
 import Review from './Review'
 import AddReview from './AddReview'
 
-const SideBar = props => {
+const SideBar = ({ user, currentUser }) => {
 
     return (
         <Card>
             <Card.Content style={{color: 'teal'}}>
-                {props.user.reviews.length > 0 &&
+                {user.reviews.length > 0 &&
                     <Rating 
                         icon='star' 
-                        defaultRating={props.user.rating} 
+                        defaultRating={user.rating} 
                         maxRating={5} 
                         disabled
                     />
                 }<br/>
-                {props.user.rating ? props.user.rating + '/5' : 'This user has no reviews yet'}
+                {user.rating ? user.rating + '/5' : 'This user has no reviews yet'}
                 <br/><br/>
                 <Modal 
                     trigger={<Button basic content='Read All Reviews'/>} 
                     closeIcon
                 >
-                    <Modal.Header content={`Reviews for ${props.user.username}`} />
+                    <Modal.Header content={`Reviews for ${user.username}`} />
                     <Modal.Content>
-                        {props.user.reviews.length < 1 && <h1>This user has no reviews yet</h1>}
-                        {props.user.reviews.reverse().map(review => 
+                        {user.reviews.length < 1 && <h1>This user has no reviews yet</h1>}
+                        {user.reviews.reverse().map(review => 
                             <Review key={review.id} review={review} />
                         )}
                     </Modal.Content>
                 </Modal><br/><br/><br></br>
                 <AddReview
-                    user={props.user}
-                    currentUser={props.currentUser}
+                    user={user}
+                    currentUser={currentUser}
                 /><br></br>
             </Card.Content><br></br>
             <Card.Content>
                 <FriendButton
-                    currentUser={props.currentUser}
-                    user={props.user}
-                    handleFriending={props.handleFriending}
-                    handleUnfriending={props.handleUnfriending}
+                    currentUser={currentUser}
+                    user={user}
                     />
             </Card.Content>
         </Card>
     )
 }
 
-const mapSTP = state => {
+const mapStateToProps = state => {
     return {
         currentUser: state.currentUser,
         exchanges: state.exchanges
     }
 }
 
-export default connect(mapSTP)(SideBar)
+export default connect(mapStateToProps)(SideBar)
 
 

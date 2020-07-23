@@ -6,11 +6,8 @@ import Reviews from '../components/Reviews'
 
 const UserInfo = ({ user, currentUser }) => {
 
-    // debugger
-    
     let currentYear =  new Date().getFullYear()
-    let userYob = parseInt(user.yob)
-    let age = currentYear - userYob
+    let age = currentYear - parseInt(user.yob)
     let bio = 'Write a little about yourself so other can get to know you better! What do you like to do in your free time? Are you a cat person or a dog person (or a bird person?). What activities would you enjoy sharing with other travellers? What do you expect out of this experience?'
     let noInfo = 'No info provided'
 
@@ -83,18 +80,17 @@ const UserInfo = ({ user, currentUser }) => {
                 :
                 <SocialMediaIcons /> 
             }
-
             </Grid.Row>
             </div>
-    </div>
+        </div>
     )
 }
 
-const mapSTP = state => {
+const mapStateToProps = state => {
     return {
         currentUser: state.currentUser,
         allUsers: state.users
     }
 }
 
-export default connect(mapSTP)(UserInfo)
+export default connect(mapStateToProps)(UserInfo)
