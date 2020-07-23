@@ -22,9 +22,7 @@ class PicUpload extends Component {
 
     handleFile = e => {
         const fileReader = new FileReader()
-        fileReader.onloadend = () => {
-            this.setState({src: fileReader.result })
-        }   
+        fileReader.onloadend = () => this.setState({src: fileReader.result })  
         fileReader.readAsDataURL(e.target.files[0]);
     }
 
@@ -39,6 +37,7 @@ class PicUpload extends Component {
         this.addPhotoToUser(user, formData)
     }
 
+    // ReactCrop component actions and their functions START
     onImageLoaded = image => {
         this.imageRef = image
     }
@@ -53,6 +52,7 @@ class PicUpload extends Component {
             this.setState({ croppedImageUrl })
         }
     }
+    // ReactCrop component actions and their functions END
     
     getCroppedImg(image, crop) {
         const canvas = document.createElement("canvas");

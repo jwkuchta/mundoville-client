@@ -4,32 +4,31 @@ import Moment from 'react-moment'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-const Review = props => {
+const Review = ({ review, allUsers }) => {
 
-    let timestamp = props.review.created_at
-    let reviewer = props.allUsers.filter(user => user.id === props.review.user_id)[0].username
-    // debugger
+    let timestamp = review.created_at
+    let reviewer = allUsers.filter(user => user.id === review.user_id)[0].username
 
     return (
         <div>
             <Header as='h4' attached='top'>
-            <Rating defaultRating={props.review.rating} maxRating={5} disabled /> &nbsp;
+            <Rating defaultRating={review.rating} maxRating={5} disabled /> &nbsp;
             by &nbsp;
             <Link to={`/users/${reviewer}`}>{reviewer}
             </Link> &nbsp;
                 <Moment format='MMMM Do, YYYY'>{timestamp}</Moment>  
             </Header>
             <Segment attached style={{color: 'teal'}} >
-                {props.review.body}
+                {review.body}
             </Segment>
         </div>
     )
 }
 
-const mapSTP = state => {
+const mapStateToProps = state => {
     return {
         allUsers: state.users
     }
 }
 
-export default connect(mapSTP)(Review)
+export default connect(mapStateToProps)(Review)

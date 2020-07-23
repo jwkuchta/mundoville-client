@@ -1,16 +1,15 @@
 import React from 'react'
-// import { connect } from 'react-redux'
 import Moment from 'react-moment'
 import { Comment, Divider } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
 
-const Message = props => {
+const Message = ({ message, user, currentUser }) => {
     
-    const { message, user, currentUser } = props
     let timestamp = message.created_at
     let sender = message.user_id === user.id ? user : currentUser
     let url = sender.username === currentUser.username ? '/profile' : `/users/${sender.username}`
 
+    // marks message as 'read' when message is open
     if (message.user_id !== currentUser.id && message.read === false) {
         fetch(`/api/v1/messages/${message.id}`, {
             method: 'PATCH',
@@ -28,7 +27,6 @@ const Message = props => {
     const senderPicUrl = `http://localhost:3000/${sender.profile_pic_url}`
 
     return (
-
         <Comment>
             <Comment.Avatar src={sender.profile_pic_url ? senderPicUrl : placeholder} />
             <Comment.Content>
@@ -46,8 +44,8 @@ const Message = props => {
                     {message.body}
                 </Comment.Text>
                 {message.user_id === currentUser.id && message.read === false
-                    ? <Comment.Metadata style={{color: 'red'}} content='UNREAD'/>
-                        : null}
+                ? <Comment.Metadata style={{color: 'red'}} content='UNREAD'/>
+                : null}
             </Comment.Content>
             <Divider />
         </Comment>

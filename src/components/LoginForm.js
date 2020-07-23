@@ -71,11 +71,11 @@ const LoginForm = () => {
     )
 }
 
-const mapSTP = state => {
+const mapStateToProps = state => {
     return {
         currentUser: state.currentUser
     }
 }
 
-export default withRouter(connect(mapSTP)(LoginForm))
+export default withRouter(connect(mapStateToProps)(LoginForm))
 

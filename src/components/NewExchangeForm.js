@@ -3,23 +3,22 @@ import { Segment, Form, Button, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { placeholder } from '../photos/round_placeholder.png'
 
-const NewExchangeForm = props => {
+const NewExchangeForm = ({ allUsers, currentUser, setPageMessages }) => {
     
     const [ body, setBody ] = useState()
     const [ recipientId, setRecipientId ] = useState()
     const [ users, setUsers ] = useState([])
 
+    // returns a list of users expcluding currentUser when component is created
     useEffect(() => {
-        let filteredUsers = props.allUsers.filter(user => user.id !== props.currentUser.id)
+        let filteredUsers = allUsers.filter(user => user.id !== currentUser.id)
         let sortedUsers = filteredUsers.sort((a, b) => a.username - b.username)
         let users = []
         
         sortedUsers.map(user => {
-            // let userInstance = {id: user.id, text: user.username, value: user.id}
             let userInstance = {
                 key: user.id, 
                 id: user.id, 
-                // text: user.username, 
                 text: `${user.first_name} ${user.last_name}`,
                 value: user.id, 
                 image: {avatar: true, src: user.profile_pic_url ? `http://localhost:3000/${user.profile_pic_url}` : placeholder}
@@ -31,23 +30,21 @@ const NewExchangeForm = props => {
     }, [])
 
     const handleRecipient = e => {
-        // debugger
         let firstName = e.target.innerText.split(' ')[0]
         let lastName = e.target.innerText.split(' ')[1]
-        let recipient = props.allUsers.find(u => u.first_name === firstName && u.last_name === lastName)
-            if(recipient !== undefined) {
-                setRecipientId(recipient.id)
-            } else {
-                return 
-            }  
+        let recipient = allUsers.find(u => u.first_name === firstName && u.last_name === lastName)
+        if(recipient !== undefined) {
+            setRecipientId(recipient.id)
+        } else {
+            return 
+        }  
     }
 
     const handleSubmit = e => {
         e.preventDefault()
         postNewExchange()
-        // resetState()  
         window.location.href='/messages'
-        props.setPageMessages()
+        setPageMessages()
     }
 
     const postNewExchange = () => {
@@ -59,7 +56,7 @@ const NewExchangeForm = props => {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                first_user_id: props.currentUser.id,
+                first_user_id: currentUser.id,
                 second_user_id: Number.parseInt(recipientId),
                 body: body
             })
@@ -96,12 +93,12 @@ const NewExchangeForm = props => {
     )
 }
 
-const mapSTP = state => {
+const mapStateToProps = state => {
     return {
         allUsers: state.users,
         currentUser: state.currentUser
     }
 }
 
-export default connect(mapSTP)(NewExchangeForm)
+export default connect(mapStateToProps)(NewExchangeForm)
 

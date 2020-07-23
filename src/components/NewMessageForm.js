@@ -2,20 +2,20 @@ import React, { useState } from 'react'
 import { Form, Button } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 
-const NewMessageForm = props => {
+const NewMessageForm = ({ exchange, currentUser }) => {
     
     const [ body, setBody ] = useState()
-    const { exchange, currentUser } = props
 
     const handleSubmit = (e, body) => {
-        // debugger
+        // e.target.childNodes[1].firstChild.value would also work
         e.preventDefault()
         postNewMessage(body)
     }
 
     const postNewMessage = body => {
         let otherUserId = exchange.second_user_id !== currentUser.id
-            ? exchange.second_user_id : exchange.first_user_id
+        ? exchange.second_user_id 
+        : exchange.first_user_id
 
         fetch('http://localhost:3000/api/v1/exchanges',{
             method: 'POST',

@@ -1,6 +1,5 @@
 // this component is not currently being used and was created for a blog
 
-
 import React, { Component } from 'react'
 import { Form } from 'semantic-ui-react'
 import { connect } from 'react-redux'

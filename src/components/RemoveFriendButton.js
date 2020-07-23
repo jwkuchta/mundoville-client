@@ -9,7 +9,6 @@ const RemoveFriendButton = props => {
     let friendId = props.user.id 
 
     const removeFriendFetch = (userId, friendId) => {
-        // debugger
         fetch('http://localhost:3000/api/v1/unfriend', {
             method: 'POST',
             headers: {
@@ -22,10 +21,10 @@ const RemoveFriendButton = props => {
                     user_id: userId, 
                     friend_id: friendId
                 })
-            })
-            .then(resp => resp.json())
-            .then(data => console.log(data))
-            window.location.href = currentPage
+        })
+        .then(resp => resp.json())
+        .then(data => console.log(data))
+        window.location.href = currentPage
     }
 
     return (
@@ -47,7 +46,7 @@ const RemoveFriendButton = props => {
                     <Button color='red' inverted onClick={() => window.location.href='/profile/edit'}>
                         <Icon name='remove' /> No
                     </Button>
-                    <Button color='green' inverted onClick={e => removeFriendFetch(userId, friendId)}>
+                    <Button color='green' inverted onClick={removeFriendFetch}>
                         <Icon name='checkmark' /> Yes
                     </Button>
                 </Modal.Actions>
@@ -55,16 +54,16 @@ const RemoveFriendButton = props => {
     )
 }
 
-const mapSTP = state => {
+const mapSstateToProps = state => {
     return {
         currentUser: state.currentUser
     }
 }
 
-const mapDTP = dispatch => {
+const mapDispatchToProps = dispatch => {
     return {
         removeFriend: (userId, friendId) => dispatch({type: 'REMOVE_FRIENDSHIP', userId: userId, friendId: friendId})
     }
 }
 
-export default connect(mapSTP, mapDTP)(RemoveFriendButton)
+export default connect(mapSstateToProps, mapDispatchToProps)(RemoveFriendButton)

@@ -3,19 +3,12 @@ import { Container } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-const Reviews = props => {
+const Reviews = ({ user, allUsers }) => {
 
-    let reviews = props.user.reviews
-    let users = props.allUsers
-   
-    return (
-        <Container>
-            <h3>Here is what others had to say about you</h3>
-            {(reviews && reviews.length) > 0 
-            ?
-            reviews.map(review => {
-                // debugger
-                let reviewer = users.find(user => user.id === review.user_id)
+    const userReviews = () => {
+        return (
+            user.reviews.map(review => {
+                let reviewer = allUsers.find(user => user.id === review.user_id)
                 return <h3>
                     <div>
                         "<i>{review.body}</i>" - 
@@ -29,19 +22,23 @@ const Reviews = props => {
                     </div>
                 </h3>
             })
-            :
-            <h3>You don't have any reviews yet</h3>
-            }   
+        )
+    }
+   
+    return (
+        <Container>
+            <h3>Here is what others had to say about you</h3>
+            {(user.reviews && user.reviews.length) > 0} ? {userReviews} : <h3>You don't have any reviews yet</h3>
         </Container>
     )
 }
 
-const mapSTP = state => {
+const mapStateToProps = state => {
     return {
         user: state.currentUser,
         allUsers: state.users
     }
 }
 
-export default connect(mapSTP)(Reviews)
+export default connect(mapStateToProps)(Reviews)
 
