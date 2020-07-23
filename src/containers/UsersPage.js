@@ -7,12 +7,9 @@ import SearchBar from '../components/SearchBar'
 import { filterUsers } from '../redux/actions'
 import { withRouter } from 'react-router-dom'
 
-const UsersPage = props =>  {
+const UsersPage = ({ currentUser, users, selectedCountry}) =>  {
 
-    const currentUser = props.currentUser
-    const allUsers = props.users
-    const selectedCountry = props.selectedCountry
-    const all = allUsers.filter(u => u.username !== currentUser.username)
+    const all = users.filter(u => u.username !== currentUser.username)
     const filtered = all.filter(u => u.country === selectedCountry)
 
     return (
@@ -37,15 +34,14 @@ const mapStateToProps = state => {
     return {
         users: state.users,
         currentUser: state.currentUser,
-        filteredUsers: state.filteredUsers,
         selectedCountry: state.countrySelection
     }
 }
 
-const mapDTP = dispatch => {
+const mapDispatchToProps = dispatch => {
     return {
         filterUsers: filtered => dispatch(filterUsers(filtered))
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDTP)(UsersPage))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UsersPage))

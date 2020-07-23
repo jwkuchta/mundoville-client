@@ -4,18 +4,18 @@ import { Menu, Grid, Container } from 'semantic-ui-react'
 import Exchanges from './Exchanges'
 import NewExchangeForm from '../components/NewExchangeForm'
 
-const MessagesContainer = props => {
+const MessagesContainer = ({ currentUser, users }) => {
     
     const [ page, setPage ] = useState('exchanges')
 
-    if (props.currentUser) {
+    if (currentUser) {
         let currentPage = page === 'exchanges' 
         ? 
-        <Exchanges currentUser={props.currentUser} />
+        <Exchanges currentUser={currentUser} />
         :  
         <NewExchangeForm 
-            currentUser={props.currentUser} 
-            users={props.users} 
+            currentUser={currentUser} 
+            users={users} 
             setPageMessages={() => setPage('exchanges')}
         />
 

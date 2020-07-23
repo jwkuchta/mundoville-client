@@ -2,7 +2,6 @@ import React from 'react'
 import  { connect } from 'react-redux'
 import { Segment, Header, Button, Container } from 'semantic-ui-react'
 import EditProfileForm from '../components/EditProfileForm'
-// import EditProfileForm from '../components/_BetterEditProfileForm'
 
 const EditProfilePage = () => {
 

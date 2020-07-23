@@ -1,41 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import CurrentUserProfileCard from '../components/CurrentUserProfileCard'
-import { Grid, Container, Modal, Button, Header, Image, Icon } from 'semantic-ui-react'
+import { Grid, Container, Modal, Button, Header, Icon } from 'semantic-ui-react'
 import UserInfo from '../components/UserInfo'
 import { fetchProfile } from '../redux/actions'
 // import PicUpload from '../components/PicUpload'
 
-const CurrentUserProfilePage = props => {
+const CurrentUserProfilePage = ({ currentUser }) => {
 
     const [ open, setOpen ] = useState(false)
 
     // *** this works on initial render after login *** //
     useEffect(() => {
-        // debugger
-        fetchProfile(props.currentUser)
-        missingInfo(props.currentUser)
-    }, [props.currentUser])
-    
-    // *** this does not *** //
-    // useEffect(() => {
-    //     debugger
-    //     missingInfo()
-    // }, [])
-
-    // *** checks all user data for missing info (empty strings and null) ***
-    // const missingInfo = () => {
-    //     for( let [key, value] of Object.entries(props.currentUser)) {
-    //         if(value === '' || value === null) {
-    //             debugger
-    //             setOpen(true)
-    //             return
-    //         }
-    //     } 
-    // }
-
-    // *** checks if user needs to provide info on: ***
-    // *** Occupation/Age/Location/Languages ***
+        fetchProfile(currentUser)
+        missingInfo(currentUser)
+    }, [currentUser])
 
     const missingInfo = (user) => {
         const relevant = ['occupation', 'yob', 'language1', 'language2', 'language3', 'city', 'country']
@@ -73,7 +52,7 @@ const CurrentUserProfilePage = props => {
                 <Icon name='remove' /> I'll do it later
             </Button>
             <Button color='green' inverted 
-            onClick={() => window.location.href = `/users/${props.currentUser.username}/edit`}>
+            onClick={() => window.location.href = `/users/${currentUser.username}/edit`}>
                 <Icon name='checkmark' /> Let's do it!
             </Button>
           </Modal.Actions>
@@ -93,7 +72,7 @@ const CurrentUserProfilePage = props => {
 
                     <Grid.Column width={11} style={{'backgroundColor': '#276890', 'padding': '1px'}}>
                         <Grid.Row>
-                            <UserInfo user={props.currentUser} />
+                            <UserInfo user={currentUser} />
                         </Grid.Row>
                     </Grid.Column>
                     
@@ -104,9 +83,7 @@ const CurrentUserProfilePage = props => {
 }
 
 const mapStateToProps = state => {
-    // console.log(state)
     return {
-        users: state.users,
         currentUser: state.currentUser
     }
 }

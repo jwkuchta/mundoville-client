@@ -5,11 +5,10 @@ import UserProfileCard from '../components/UserProfileCard'
 import UserInfo from '../components/UserInfo'
 import SideBar from '../components/SideBar'
 
-const UserProfilePage = props => {
+const UserProfilePage = ({ users }) => {
 
     const username = window.location.pathname.split('/')[2]
-    const allUsers = props.users 
-    const user = allUsers.filter(user => user.username === username)[0]
+    const user = users.filter(user => user.username === username)[0]
 
     return (
         <Container>
@@ -39,12 +38,11 @@ const UserProfilePage = props => {
     )   
 }
 
-const mapSTP = state => {
-    // debugger
+const mapStateToProps = state => {
     return {
         users: state.users,
         selectedUser: state.selectedUser
     }
 }
 
-export default connect(mapSTP)(UserProfilePage)
+export default connect(mapStateToProps)(UserProfilePage)

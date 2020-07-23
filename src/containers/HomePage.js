@@ -5,7 +5,7 @@ import LoginForm from '../components/LoginForm'
 import { connect } from 'react-redux'
 import SignupForm from '../components/SignupForm'
 
-const HomePage = (props) => {
+const HomePage = ({ option }) => {
     // debugger
     return (
         // <>
@@ -21,16 +21,15 @@ const HomePage = (props) => {
                 <h3>don't just be a tourist</h3>
                 <h3>hang out with locals while you travel</h3>
             </Container>
-            {props.option === 'login' && <Container fluid className='login-form'><LoginForm /></Container>}
-            {props.option === 'signup' && <Container fluid className='signup-form'><SignupForm /></Container>} 
+            {option === 'login' && <Container fluid className='login-form'><LoginForm /></Container>}
+            {option === 'signup' && <Container fluid className='signup-form'><SignupForm /></Container>} 
         </Container>
         // </>
     )            
 }
 
-const mapSTP = state => {
-    // debugger
+const mapStateToProps = state => {
     return {option: state.options.option}
 }
 
-export default connect(mapSTP)(HomePage)
+export default connect(mapStateToProps)(HomePage)
