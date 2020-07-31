@@ -7,12 +7,12 @@ import world from '../photos/world.jpg'
 import friends from '../photos/friends.jpg'
 import profile from '../photos/profile.jpg'
 import explore from '../photos/explore.jpg'
+// we need StyleRoot for media queries
 
 const AboutPage = (props) => {
 
     return (
-        
-        <Container fluid style={{color: 'white'}}> 
+            <Container fluid style={{color: 'white'}}> 
         <br></br>
         <h1>How Mundoville Works</h1>
         <br></br>
@@ -85,6 +85,7 @@ const AboutPage = (props) => {
             {!localStorage.jwt && props.option === 'login' && <Container fluid className='login-form'><LoginForm /></Container>}
             {!localStorage.jwt && props.option === 'signup' && <Container fluid className='signup-form'><SignupForm /></Container>} 
         </Container>
+        
     )
 }
 
