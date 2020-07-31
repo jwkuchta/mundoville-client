@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Form, Button, Header, Modal, Icon, Ref } from 'semantic-ui-react'
 import { languages, countries, years } from './dropdown'
 // import Ref from '@bit/semantic-org.semantic-ui-react.ref'
-import Moment from 'react-moment'
 
 const usersUrl = 'http://localhost:3000/api/v1/users/'
 

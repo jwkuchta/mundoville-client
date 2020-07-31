@@ -20,6 +20,7 @@
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",
+    "radium": "^0.26.0",
     "react": "^16.12.0",
     "react-activestorage-provider": "^0.8.0",
     "react-autocomplete": "^1.8.1",

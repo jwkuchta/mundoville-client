@@ -2,10 +2,21 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
+import Radium from 'radium'
 
 const AddFriendButton = ({ user, currentUser, history }) => {
 
     let currentPage = history.location.pathname
+
+    // const style = {
+    //     backgroundColor: 'orange',
+    //     cursor: 'pointer',
+    //     ':hover': {
+    //         backgroundColor: 'black',
+    //         cursor: 'orange',
+    //         color: 'orange'
+    //     }
+    // }
 
     const addFriendFetch = () => {
         fetch('http://localhost:3000/api/v1/friendships', {
@@ -23,7 +34,7 @@ const AddFriendButton = ({ user, currentUser, history }) => {
     }
 
     return (
-        <Button 
+        <Button
             color='green' 
             inverted 
             onClick={addFriendFetch} 
@@ -38,4 +49,4 @@ const mapDTP = dispatch => {
     }
 }
 
-export default withRouter(connect(null, mapDTP)(AddFriendButton))
+export default Radium(withRouter(connect(null, mapDTP)(AddFriendButton)))
