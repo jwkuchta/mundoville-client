@@ -4,6 +4,7 @@ import { Icon, Popup } from 'semantic-ui-react'
 import logo from '../photos/logo_teal_cropped.png'
 import '../css/App.scss'
 import { withRouter, Link, Redirect } from 'react-router-dom'
+import Radium, { StyleRoot } from "radium"
 
 const LoggedInNavBar = props => {
 
@@ -17,8 +18,19 @@ const LoggedInNavBar = props => {
         return <Redirect to='/home' />;
     } 
 
+    const style = {
+        '@media (min-width: 500px)': {
+            display: 'inline-block', width: '100vw', backgroundColor: 'green'
+        },
+        '@media (max-midth: 499px)': {
+            display: 'inline-block', width: '50vw', backgroundColor: 'goldenrod'
+        }
+    }
+
     return (
-        <div style={{display: 'inline-block', width: '100vw', backgroundColor: 'white'}}>
+        <StyleRoot>
+            <div style={style}>
+            <div style={{display: 'inline-block', width: '100vw', backgroundColor: 'white'}}>
             <div style={{display: 'inline-block', backgroundColor: 'white', float:'left', paddingLeft: '10px'}}>
             <Link to='/'>
                 <Popup content='back to main page' trigger={<img 
@@ -86,6 +98,10 @@ const LoggedInNavBar = props => {
             </nav>
             </div>  
         </div>
+            </div>
+            
+        </StyleRoot>
+        
     )
 }
 
@@ -102,4 +118,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoggedInNavBar))
+export default Radium(withRouter(connect(mapStateToProps, mapDispatchToProps)(LoggedInNavBar)))
