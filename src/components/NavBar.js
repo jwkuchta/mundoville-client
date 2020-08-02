@@ -7,9 +7,9 @@ const NavBar = () => {
 
     return(
         <div style={{ backgroundColor: 'white'}}>
-        {!localStorage.jwt && <LoggedOutNavBar />}
-        {localStorage.jwt && <LoggedInNavBar />}
-        </div>
+            {!localStorage.jwt && <LoggedOutNavBar />}
+            {localStorage.jwt && <LoggedInNavBar />}
+        </div>  
     )
 }  
 
