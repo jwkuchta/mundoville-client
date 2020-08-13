@@ -40,7 +40,7 @@ class SignupForm extends Component {
     }
 
     addNewUser = user => {
-        fetch('http://mundoville-api.herokuapp.com/api/v1/users', {
+        fetch('/api/v1/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
