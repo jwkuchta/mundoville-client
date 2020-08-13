@@ -22,7 +22,7 @@ const NewExchangeForm = ({ allUsers, currentUser, setPageMessages }) => {
                 id: user.id, 
                 text: `${user.first_name} ${user.last_name}`,
                 value: user.id, 
-                image: {avatar: true, src: user.profile_pic_url ? `${apiBaseUrl}/${user.profile_pic_url}` : placeholder}
+                image: {avatar: true, src: user.profile_pic_url ? `${apiBaseUrl}${user.profile_pic_url}` : placeholder}
             }
             users.push(userInstance)
             return users
@@ -66,6 +66,7 @@ const NewExchangeForm = ({ allUsers, currentUser, setPageMessages }) => {
         })
         .then(resp => {
             console.log(resp)
+            
         })
     }
 
