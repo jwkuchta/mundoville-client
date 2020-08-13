@@ -17,7 +17,6 @@ import LoggedOutNavBar from './components/LoggedOutNavBar'
 import LoggedInNavBar from './components/LoggedInNavBar'
 import { Sticky } from 'semantic-ui-react'
 // import _ from 'lodash'
-import BlogButton from './components/BlogButton'
 import Radium, { StyleRoot } from 'radium'
 
 class App extends Component {
@@ -118,9 +117,6 @@ class App extends Component {
             {!localStorage.jwt
               ? <Redirect to='/login'/>
                 : <div className='mainPage'><MessagesContainer /></div>}
-          </Route>
-          <Route exact strict path='/blog'>
-          <div><BlogButton/></div>
           </Route>
           <Redirect from='*' to='/' />
         </Switch>
