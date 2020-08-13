@@ -31,7 +31,7 @@ app.get('/ping', function (req, res) {
 })
 
 app.get('/api/v1/users', (req, res) => {
-  res.redirect('http://mundoville-api.herokuapp.com/api/v1/users')
+  req.redirect('http://mundoville-api.herokuapp.com/api/v1/users')
 })
 
 app.get('/*', function (req, res) {
