@@ -54,7 +54,7 @@ const NewExchangeForm = ({ allUsers, currentUser, setPageMessages }) => {
             second_user_id: Number.parseInt(recipientId),
             body: message
         }
-        console.log('body is: ', body)
+        console.log('body is: ', messageBody)
         fetch(`${apiBaseUrl}/api/v1/exchanges`, {
             method: 'POST',
             headers: {
@@ -64,7 +64,9 @@ const NewExchangeForm = ({ allUsers, currentUser, setPageMessages }) => {
             },
             body: JSON.stringify(messageBody)
         })
-        .then(resp => console.log(resp))
+        .then(resp => {
+            console.log(resp)
+        })
     }
 
     return (
