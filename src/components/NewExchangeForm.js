@@ -48,7 +48,7 @@ const NewExchangeForm = ({ allUsers, currentUser, setPageMessages }) => {
     }
 
     const postNewExchange = () => {
-        fetch('http://localhost:3000/api/v1/exchanges', {
+        fetch('http://mundoville-api.herokuapp.com/api/v1/exchanges', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,
