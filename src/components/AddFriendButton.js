@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 import Radium from 'radium'
-import { apiBaseUrl } from '../../utils/constants'
+import { apiBaseUrl } from '../utils/constants'
 
 const AddFriendButton = ({ user, currentUser, history }) => {
 

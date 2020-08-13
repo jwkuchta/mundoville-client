@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Segment, Form, Button, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { placeholder } from '../photos/round_placeholder.png'
-import { apiBaseUrl } from '../../utils/constants'
+import { apiBaseUrl } from '../utils/constants'
 
 const NewExchangeForm = ({ allUsers, currentUser, setPageMessages }) => {
     
