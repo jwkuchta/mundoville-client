@@ -4,7 +4,7 @@ import { Form, Button, Header, Modal, Icon, Ref } from 'semantic-ui-react'
 import { languages, countries, years } from './dropdown'
 // import Ref from '@bit/semantic-org.semantic-ui-react.ref'
 
-const usersUrl = 'http://localhost:3000/api/v1/users/'
+const usersUrl = 'http://mundoville-api.herokuapp.com/api/v1/users/'
 
 // I left it as a class because of handleChange method. I would have to use useState() 13 times otherwise
 class EditProfileForm extends Component {

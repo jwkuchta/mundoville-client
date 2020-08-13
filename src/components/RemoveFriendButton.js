@@ -7,7 +7,7 @@ const RemoveFriendButton = ({ user, currentUser }) => {
     let currentPage = window.location.pathname
 
     const removeFriendFetch = () => {
-        fetch('http://localhost:3000/api/v1/unfriend', {
+        fetch('http://mundoville-api.herokuapp.com/api/v1/unfriend', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,

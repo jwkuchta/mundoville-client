@@ -26,7 +26,7 @@ const AddReview = ({ currentUser, user }) => {
 
         // create a new Review instance in the backend
         if (rating) {
-            fetch('http://localhost:3000/api/v1/reviews', {
+            fetch('http://mundoville-api.herokuapp.com/api/v1/reviews', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${localStorage.jwt}`,

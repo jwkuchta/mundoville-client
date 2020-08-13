@@ -5,7 +5,7 @@ import placeholder from '../photos/profilePicPlaceholder.png'
 
 const UserCard = ({ user }) => {
 
-    let profilePicUrl = `http://localhost:3000/${user.profile_pic_url}`
+    let profilePicUrl = `http://mundoville-api.herokuapp.com/${user.profile_pic_url}`
 
         return (
             <Card link style={{marginBottom: 25, padding: 10, backgroundColor: '#eeeeee'}}>

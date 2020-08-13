@@ -24,7 +24,7 @@ const Message = ({ message, user, currentUser }) => {
         .then(console.log)
     }
 
-    const senderPicUrl = `http://localhost:3000/${sender.profile_pic_url}`
+    const senderPicUrl = `http://mundoville-api.herokuapp.com/${sender.profile_pic_url}`
 
     return (
         <Comment>

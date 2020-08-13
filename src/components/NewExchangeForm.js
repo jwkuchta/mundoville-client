@@ -21,7 +21,7 @@ const NewExchangeForm = ({ allUsers, currentUser, setPageMessages }) => {
                 id: user.id, 
                 text: `${user.first_name} ${user.last_name}`,
                 value: user.id, 
-                image: {avatar: true, src: user.profile_pic_url ? `http://localhost:3000/${user.profile_pic_url}` : placeholder}
+                image: {avatar: true, src: user.profile_pic_url ? `http://mundoville-api.herokuapp.com/${user.profile_pic_url}` : placeholder}
             }
             users.push(userInstance)
             return users

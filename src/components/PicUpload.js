@@ -98,7 +98,7 @@ class PicUpload extends Component {
     }
 
     addPhotoToUser = (user, data) => {
-        fetch(`http://localhost:3000/api/v1/users/${user.id}`, {
+        fetch(`http://mundoville-api.herokuapp.com/api/v1/users/${user.id}`, {
             method: 'PATCH',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,

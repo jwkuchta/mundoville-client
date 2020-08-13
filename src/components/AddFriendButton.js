@@ -19,7 +19,7 @@ const AddFriendButton = ({ user, currentUser, history }) => {
     // }
 
     const addFriendFetch = () => {
-        fetch('http://localhost:3000/api/v1/friendships', {
+        fetch('http://mundoville-api.herokuapp.com/api/v1/friendships', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,

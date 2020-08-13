@@ -17,7 +17,7 @@ const NewMessageForm = ({ exchange, currentUser }) => {
         ? exchange.second_user_id 
         : exchange.first_user_id
 
-        fetch('http://localhost:3000/api/v1/exchanges',{
+        fetch('http://mundoville-api.herokuapp.com/api/v1/exchanges',{
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,

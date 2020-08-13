@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   fetchExchanges = () => {
-    fetch('http://localhost:3000/api/v1/findExchanges', {
+    fetch('mundoville-api.herokuapp.com/api/v1/findExchanges', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${localStorage.jwt}`,
@@ -53,7 +53,7 @@ class App extends Component {
   
   fetchReviews = () => {
     // debugger
-    fetch('http://localhost:3000/api/v1/reviews', {
+    fetch('http://mundoville-api.herokuapp.com/api/v1/reviews', {
       headers: {
         'Authorization': `Bearer ${localStorage.jwt}`,
         'Content-Type': 'application/json',
