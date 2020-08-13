@@ -25,7 +25,7 @@ const Message = ({ message, user, currentUser }) => {
         .then(console.log)
     }
 
-    const senderPicUrl = `${apiBaseUrl}/${sender.profile_pic_url}`
+    const senderPicUrl = `${apiBaseUrl}${sender.profile_pic_url}`
 
     return (
         <Comment>

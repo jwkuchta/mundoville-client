@@ -12,7 +12,7 @@ const Exchange = ({ exchange, users, currentUser }) => {
         const userId = exchange.first_user_id === currentUser.id ? exchange.second_user_id : exchange.first_user_id
         const otherUser = users.filter(user => user.id === userId)[0]
         const unread = exchange.messages.filter(m => m.user_id === otherUser.id && m.read === false)
-        const otherUserPic = `${apiBaseUrl}/${otherUser.profile_pic_url}`
+        const otherUserPic = `${apiBaseUrl}${otherUser.profile_pic_url}`
         
         let infoMessage
         if (unread.length === 1) {

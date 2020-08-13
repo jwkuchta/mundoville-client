@@ -9,16 +9,6 @@ const AddFriendButton = ({ user, currentUser, history }) => {
 
     let currentPage = history.location.pathname
 
-    // const style = {
-    //     backgroundColor: 'orange',
-    //     cursor: 'pointer',
-    //     ':hover': {
-    //         backgroundColor: 'black',
-    //         cursor: 'orange',
-    //         color: 'orange'
-    //     }
-    // }
-
     const addFriendFetch = () => {
         fetch(`${apiBaseUrl}/api/v1/friendships`, {
             method: 'POST',

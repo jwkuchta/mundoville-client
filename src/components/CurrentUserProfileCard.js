@@ -9,7 +9,7 @@ import { apiBaseUrl } from '../utils/constants'
 
 const CurrentUserProfileCard = props => {
 
-    let pic_url = `${apiBaseUrl}/${props.currentUser.profile_pic_url}`
+    let pic_url = `${apiBaseUrl}${props.currentUser.profile_pic_url}`
     let currentUser = props.currentUser
 
     return (
