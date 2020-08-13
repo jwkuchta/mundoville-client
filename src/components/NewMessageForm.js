@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
+import { apiBaseUrl } from '../../utils/constants'
 
 const NewMessageForm = ({ exchange, currentUser }) => {
     
@@ -17,7 +18,7 @@ const NewMessageForm = ({ exchange, currentUser }) => {
         ? exchange.second_user_id 
         : exchange.first_user_id
 
-        fetch('http://mundoville-api.herokuapp.com/api/v1/exchanges',{
+        fetch(`${apiBaseUrl}/api/v1/exchanges`,{
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,

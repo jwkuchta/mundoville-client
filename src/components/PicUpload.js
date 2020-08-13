@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Form } from 'semantic-ui-react'
 import ReactCrop from "react-image-crop"
 import "react-image-crop/dist/ReactCrop.css"
+import { apiBaseUrl } from '../../utils/constants'
 
 class PicUpload extends Component {
     
@@ -98,7 +99,7 @@ class PicUpload extends Component {
     }
 
     addPhotoToUser = (user, data) => {
-        fetch(`http://mundoville-api.herokuapp.com/api/v1/users/${user.id}`, {
+        fetch(`${apiBaseUrl}/api/v1/users/${user.id}`, {
             method: 'PATCH',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,

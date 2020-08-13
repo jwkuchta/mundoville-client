@@ -2,6 +2,7 @@ import React from 'react'
 import Moment from 'react-moment'
 import { Comment, Divider } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
+import { apiBaseUrl } from '../../utils/constants'
 
 const Message = ({ message, user, currentUser }) => {
     
@@ -11,7 +12,7 @@ const Message = ({ message, user, currentUser }) => {
 
     // marks message as 'read' when message is open
     if (message.user_id !== currentUser.id && message.read === false) {
-        fetch(`/api/v1/messages/${message.id}`, {
+        fetch(`${apiBaseUrl}/api/v1/messages/${message.id}`, {
             method: 'PATCH',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,
@@ -24,7 +25,7 @@ const Message = ({ message, user, currentUser }) => {
         .then(console.log)
     }
 
-    const senderPicUrl = `http://mundoville-api.herokuapp.com/${sender.profile_pic_url}`
+    const senderPicUrl = `${apiBaseUrl}/${sender.profile_pic_url}`
 
     return (
         <Comment>

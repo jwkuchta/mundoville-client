@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Segment, Form, Button, Message, Modal, Header } from 'semantic-ui-react'
+import { apiBaseUrl } from '../../utils/constants'
 
 const LoginForm = () => {
 
@@ -10,7 +11,7 @@ const LoginForm = () => {
     const [ error, setError ] = useState(false)
     
     const fetchLogin = () => {
-        fetch('http://mundoville-api.herokuapp.com/api/v1/login', {
+        fetch(`${apiBaseUrl}/api/v1/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

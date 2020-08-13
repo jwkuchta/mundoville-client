@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 import Radium from 'radium'
+import { apiBaseUrl } from '../../utils/constants'
 
 const AddFriendButton = ({ user, currentUser, history }) => {
 
@@ -19,7 +20,7 @@ const AddFriendButton = ({ user, currentUser, history }) => {
     // }
 
     const addFriendFetch = () => {
-        fetch('https://mundoville-api.herokuapp.com/api/v1/friendships', {
+        fetch(`${apiBaseUrl}/api/v1/friendships`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Segment, Form, Button, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { placeholder } from '../photos/round_placeholder.png'
+import { apiBaseUrl } from '../../utils/constants'
 
 const NewExchangeForm = ({ allUsers, currentUser, setPageMessages }) => {
     
@@ -21,7 +22,7 @@ const NewExchangeForm = ({ allUsers, currentUser, setPageMessages }) => {
                 id: user.id, 
                 text: `${user.first_name} ${user.last_name}`,
                 value: user.id, 
-                image: {avatar: true, src: user.profile_pic_url ? `http://mundoville-api.herokuapp.com/${user.profile_pic_url}` : placeholder}
+                image: {avatar: true, src: user.profile_pic_url ? `${apiBaseUrl}/${user.profile_pic_url}` : placeholder}
             }
             users.push(userInstance)
             return users
@@ -48,7 +49,7 @@ const NewExchangeForm = ({ allUsers, currentUser, setPageMessages }) => {
     }
 
     const postNewExchange = () => {
-        fetch('http://mundoville-api.herokuapp.com/api/v1/exchanges', {
+        fetch(`${apiBaseUrl}/api/v1/exchanges`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,

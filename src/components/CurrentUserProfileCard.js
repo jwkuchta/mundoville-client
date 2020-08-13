@@ -5,10 +5,11 @@ import placeholder from '../photos/profilePicPlaceholder.png'
 import { connect } from 'react-redux'
 import PicUpload from './PicUpload'
 // import PicUploadNoCrop from './PicUploadNoCrop'
+import { apiBaseUrl } from '../../utils/constants'
 
 const CurrentUserProfileCard = props => {
 
-    let pic_url = `http://localhost:3000/${props.currentUser.profile_pic_url}`
+    let pic_url = `${apiBaseUrl}/${props.currentUser.profile_pic_url}`
     let currentUser = props.currentUser
 
     return (

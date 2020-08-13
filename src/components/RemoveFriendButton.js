@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Button, Modal, Header, Icon } from 'semantic-ui-react'
+import { apiBaseUrl } from '../../utils/constants'
 
 const RemoveFriendButton = ({ user, currentUser }) => {
 
     let currentPage = window.location.pathname
 
     const removeFriendFetch = () => {
-        fetch('http://mundoville-api.herokuapp.com/api/v1/unfriend', {
+        fetch(`${apiBaseUrl}/api/v1/unfriend`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.jwt}`,

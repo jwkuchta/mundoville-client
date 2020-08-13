@@ -1,10 +1,11 @@
 import React from 'react'
 import { Card, Image } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
+import { apiBaseUrl } from '../../utils/constants'
 
 const UserCard = ({ user }) => {
 
-    let profilePicUrl = `http://mundoville-api.herokuapp.com/${user.profile_pic_url}`
+    let profilePicUrl = `${apiBaseUrl}/${user.profile_pic_url}`
 
     return (
         <Card>
