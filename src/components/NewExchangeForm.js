@@ -49,6 +49,7 @@ const NewExchangeForm = ({ allUsers, currentUser, setPageMessages }) => {
     }
 
     const postNewExchange = () => {
+        console.log('body is: ', body)
         fetch(`${apiBaseUrl}/api/v1/exchanges`, {
             method: 'POST',
             headers: {
