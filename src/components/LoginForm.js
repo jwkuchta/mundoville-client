@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Segment, Form, Button, Message, Modal, Header } from 'semantic-ui-react'
-import { apiBaseUrl } from '../../utils/constants'
+import { apiBaseUrl } from '../utils/constants'
 
 const LoginForm = () => {
 

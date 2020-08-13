@@ -2,7 +2,7 @@ import React from 'react'
 import Moment from 'react-moment'
 import { Comment, Divider } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
-import { apiBaseUrl } from '../../utils/constants'
+import { apiBaseUrl } from '../utils/constants'
 
 const Message = ({ message, user, currentUser }) => {
     

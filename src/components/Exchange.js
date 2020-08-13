@@ -4,7 +4,7 @@ import { Segment, Header, Modal, Button, Comment, Icon, Image } from 'semantic-u
 import Message from './Message'
 import NewMessageForm from './NewMessageForm'
 import placeholder from '../photos/profilePicPlaceholder.png'
-import { apiBaseUrl } from '../../utils/constants'
+import { apiBaseUrl } from '../utils/constants'
 
 const Exchange = ({ exchange, users, currentUser }) => {
         

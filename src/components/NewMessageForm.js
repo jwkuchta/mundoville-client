@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
-import { apiBaseUrl } from '../../utils/constants'
+import { apiBaseUrl } from '../utils/constants'
 
 const NewMessageForm = ({ exchange, currentUser }) => {
     

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Image } from 'semantic-ui-react'
 import placeholder from '../photos/profilePicPlaceholder.png'
-import { apiBaseUrl } from '../../utils/constants'
+import { apiBaseUrl } from '../utils/constants'
 
 const UserCard = ({ user }) => {
 

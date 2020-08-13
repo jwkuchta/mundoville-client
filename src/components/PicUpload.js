@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Form } from 'semantic-ui-react'
 import ReactCrop from "react-image-crop"
 import "react-image-crop/dist/ReactCrop.css"
-import { apiBaseUrl } from '../../utils/constants'
+import { apiBaseUrl } from '../utils/constants'
 
 class PicUpload extends Component {
     

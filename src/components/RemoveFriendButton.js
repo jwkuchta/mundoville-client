@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Button, Modal, Header, Icon } from 'semantic-ui-react'
-import { apiBaseUrl } from '../../utils/constants'
+import { apiBaseUrl } from '../utils/constants'
 
 const RemoveFriendButton = ({ user, currentUser }) => {
 

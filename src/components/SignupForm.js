@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Segment, Form, Button } from 'semantic-ui-react'
-import { apiBaseUrl } from '../../utils/constants'
+import { apiBaseUrl } from '../utils/constants'
 
 // left as a class component because if multiple form fields
 class SignupForm extends Component {

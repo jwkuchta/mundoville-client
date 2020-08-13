@@ -18,6 +18,7 @@ import LoggedInNavBar from './components/LoggedInNavBar'
 import { Sticky } from 'semantic-ui-react'
 // import _ from 'lodash'
 import Radium, { StyleRoot } from 'radium'
+import { apiBaseUrl } from '../src/utils/constants'
 
 class App extends Component {
 
@@ -33,7 +34,7 @@ class App extends Component {
   }
 
   fetchExchanges = () => {
-    fetch('mundoville-api.herokuapp.com/api/v1/exchanges', {
+    fetch(`${apiBaseUrl}/api/v1/exchanges`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${localStorage.jwt}`,
@@ -53,7 +54,7 @@ class App extends Component {
   
   fetchReviews = () => {
     // debugger
-    fetch('https://mundoville-api.herokuapp.com/api/v1/reviews', {
+    fetch(`${apiBaseUrl}/api/v1/reviews`, {
       headers: {
         'Authorization': `Bearer ${localStorage.jwt}`,
         'Content-Type': 'application/json',

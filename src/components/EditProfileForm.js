@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Form, Button, Header, Modal, Icon, Ref } from 'semantic-ui-react'
 import { languages, countries, years } from './dropdown'
 // import Ref from '@bit/semantic-org.semantic-ui-react.ref'
-import { apiBaseUrl } from '../../utils/constants'
+import { apiBaseUrl } from '../utils/constants'
 
 const usersUrl = `${apiBaseUrl}/api/v1/users/`
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Modal, Button, Form, Rating, Header, Icon } from 'semantic-ui-react'
-import { apiBaseUrl } from '../../utils/constants'
+import { apiBaseUrl } from '../utils/constants'
 
 const AddReview = ({ currentUser, user }) => {
 
