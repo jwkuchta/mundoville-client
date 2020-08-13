@@ -6,7 +6,7 @@ import { apiBaseUrl } from '../utils/constants'
 
 const NewExchangeForm = ({ allUsers, currentUser, setPageMessages }) => {
     
-    const [ body, setBody ] = useState()
+    const [ message, setMessage ] = useState()
     const [ recipientId, setRecipientId ] = useState()
     const [ users, setUsers ] = useState([])
 
@@ -49,6 +49,11 @@ const NewExchangeForm = ({ allUsers, currentUser, setPageMessages }) => {
     }
 
     const postNewExchange = () => {
+        const messageBody = {
+            first_user_id: currentUser.id,
+            second_user_id: Number.parseInt(recipientId),
+            body: message
+        }
         console.log('body is: ', body)
         fetch(`${apiBaseUrl}/api/v1/exchanges`, {
             method: 'POST',
@@ -57,11 +62,7 @@ const NewExchangeForm = ({ allUsers, currentUser, setPageMessages }) => {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify({
-                first_user_id: currentUser.id,
-                second_user_id: Number.parseInt(recipientId),
-                body: body
-            })
+            body: JSON.stringify(messageBody)
         })
         .then(resp => console.log(resp))
     }
@@ -86,7 +87,7 @@ const NewExchangeForm = ({ allUsers, currentUser, setPageMessages }) => {
                         inline
                         id='body'
                         placeholder='Type your message here'
-                        onChange={(e) => setBody(e.target.value)}
+                        onChange={(e) => setMessage(e.target.value)}
                     />
                 </Form.Group>
                 <Button type='submit' content='Send' />
