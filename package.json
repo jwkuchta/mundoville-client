@@ -42,7 +42,9 @@
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
-    "client": "npm run start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "postinstall": "react-scripts-build",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
   },
   "eslintConfig": {
