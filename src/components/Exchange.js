@@ -4,9 +4,11 @@ import { Segment, Header, Modal, Button, Comment, Icon, Image } from 'semantic-u
 import Message from './Message'
 import NewMessageForm from './NewMessageForm'
 import placeholder from '../photos/profilePicPlaceholder.png'
-import { apiBaseUrl } from '../utils/constants'
+// import { apiBaseUrl } from '../utils/constants'
 
 const Exchange = ({ exchange, users, currentUser }) => {
+
+    const apiBaseUrl = "http://mundoville-api.herokuapp.com"
         
     if (users.length > 0 && currentUser) {
         const userId = exchange.first_user_id === currentUser.id ? exchange.second_user_id : exchange.first_user_id

@@ -5,9 +5,11 @@ import placeholder from '../photos/profilePicPlaceholder.png'
 import { connect } from 'react-redux'
 import PicUpload from './PicUpload'
 // import PicUploadNoCrop from './PicUploadNoCrop'
-import { apiBaseUrl } from '../utils/constants'
+// import { apiBaseUrl } from '../utils/constants'
 
 const CurrentUserProfileCard = props => {
+
+    const apiBaseUrl = "http://mundoville-api.herokuapp.com"
 
     let pic_url = `${apiBaseUrl}${props.currentUser.profile_pic_url}`
     let currentUser = props.currentUser
