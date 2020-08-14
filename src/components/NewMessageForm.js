@@ -5,7 +5,7 @@ import { apiBaseUrl } from '../utils/constants'
 
 const NewMessageForm = ({ exchange, currentUser }) => {
     
-    const [ body, setBody ] = useState()
+    const [ message, setMessage ] = useState()
 
     const handleSubmit = (e, body) => {
         // e.target.childNodes[1].firstChild.value would also work
@@ -13,14 +13,14 @@ const NewMessageForm = ({ exchange, currentUser }) => {
         postNewMessage(body)
     }
 
-    const postNewMessage = body => {
+    const postNewMessage = () => {
         let otherUserId = exchange.second_user_id !== currentUser.id
         ? exchange.second_user_id 
         : exchange.first_user_id
         const messageBody = {
             first_user_id: currentUser.id,
             second_user_id: otherUserId,
-            body: body
+            body: message
         }
 
         fetch(`${apiBaseUrl}/api/v1/exchanges`,{
@@ -41,7 +41,7 @@ const NewMessageForm = ({ exchange, currentUser }) => {
         <Form onSubmit={(e) => handleSubmit(e, body)}>
             <Form.TextArea 
                 value={body}
-                onChange={(e) => setBody(e.target.value)} 
+                onChange={(e) => setMessage(e.target.value)} 
             />
             <Button 
                 type='submit' 
