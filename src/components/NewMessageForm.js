@@ -7,10 +7,10 @@ const NewMessageForm = ({ exchange, currentUser }) => {
     
     const [ message, setMessage ] = useState()
 
-    const handleSubmit = (e, body) => {
+    const handleSubmit = (e) => {
         // e.target.childNodes[1].firstChild.value would also work
         e.preventDefault()
-        postNewMessage(body)
+        postNewMessage()
     }
 
     const postNewMessage = () => {
@@ -38,9 +38,9 @@ const NewMessageForm = ({ exchange, currentUser }) => {
     }
 
     return (
-        <Form onSubmit={(e) => handleSubmit(e, body)}>
+        <Form onSubmit={(e) => handleSubmit(e)}>
             <Form.TextArea 
-                value={body}
+                value={message}
                 onChange={(e) => setMessage(e.target.value)} 
             />
             <Button 
