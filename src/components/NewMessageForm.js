@@ -17,6 +17,11 @@ const NewMessageForm = ({ exchange, currentUser }) => {
         let otherUserId = exchange.second_user_id !== currentUser.id
         ? exchange.second_user_id 
         : exchange.first_user_id
+        const messageBody = {
+            first_user_id: currentUser.id,
+            second_user_id: otherUserId,
+            body: body
+        }
 
         fetch(`${apiBaseUrl}/api/v1/exchanges`,{
             method: 'POST',
@@ -25,11 +30,7 @@ const NewMessageForm = ({ exchange, currentUser }) => {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify({
-                first_user_id: currentUser.id,
-                second_user_id: otherUserId,
-                body: body
-            })
+            body: JSON.stringify(messageBody)
         })
         .then(r => r.json())
         .then(window.location.href='/messages')
