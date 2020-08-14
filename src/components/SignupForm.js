@@ -41,7 +41,8 @@ class SignupForm extends Component {
     }
 
     addNewUser = user => {
-        fetch(`${apiBaseUrl}/api/v1/users`, {
+        debugger
+        fetch('http://localhost:3000/api/v1/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

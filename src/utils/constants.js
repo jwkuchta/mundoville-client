@@ -1,4 +1,3 @@
+export const apiBaseUrl = 'http://localhost:3000'
 
 
-export const apiBaseUrl = 'https://mundoville-api.herokuapp.com'
-// export const apiBaseUrl = 'https://localhost:3000'

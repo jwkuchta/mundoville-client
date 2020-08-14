@@ -99,6 +99,7 @@ class PicUpload extends Component {
     }
 
     addPhotoToUser = (user, data) => {
+        debugger
         fetch(`${apiBaseUrl}/api/v1/users/${user.id}`, {
             method: 'PATCH',
             headers: {

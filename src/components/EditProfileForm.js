@@ -36,7 +36,6 @@ class EditProfileForm extends Component {
 
     // filter fields and exclude 'password_conf' from the final object
     filterObj(obj) {
-        debugger
         const newObj = {};
         Object.keys(obj).forEach(key => {
           if (key !== 'password_conf') {
@@ -53,7 +52,6 @@ class EditProfileForm extends Component {
     }
 
     handleSubmit = (e, values, user) => {
-        debugger
         e.preventDefault()
         let updates = {}
         
@@ -127,7 +125,6 @@ class EditProfileForm extends Component {
     }
   
     render() {
-
         return (
             <>
             <Form 
