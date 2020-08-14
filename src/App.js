@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   fetchExchanges = () => {
-    fetch(`${apiBaseUrl}/api/v1/exchanges`, {
+    fetch(`${apiBaseUrl}/api/v1/findExchanges`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${localStorage.jwt}`,
@@ -53,7 +53,6 @@ class App extends Component {
   }
   
   fetchReviews = () => {
-    // debugger
     fetch(`${apiBaseUrl}/api/v1/reviews`, {
       headers: {
         'Authorization': `Bearer ${localStorage.jwt}`,
@@ -66,8 +65,6 @@ class App extends Component {
   
   render() {
 
-    // debugger
-    
     if (this.props.currentUser) {
       this.fetchExchanges()
       this.fetchReviews()

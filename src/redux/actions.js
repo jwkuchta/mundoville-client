@@ -54,7 +54,6 @@ export const getUsers = users => {
 }
 
 export const getExchanges = exchanges => {
-  // debugger
   return {type: 'GET_EXCHANGES', exchanges: exchanges}
 }
 
