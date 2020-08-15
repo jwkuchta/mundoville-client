@@ -46,8 +46,8 @@ const NewExchangeForm = ({ allUsers, currentUser, setPageMessages }) => {
     const handleSubmit = e => {
         e.preventDefault()
         postNewExchange()
-        // window.location.href='/messages'
-        // setPageMessages()
+        window.location.href='/messages'
+        setPageMessages()
     }
 
     const postNewExchange = () => {
